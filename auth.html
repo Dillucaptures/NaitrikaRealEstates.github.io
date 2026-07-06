@@ -94,7 +94,7 @@
         .form-input-container {
             margin-bottom: 10px;
             position: relative;
-            display: none; /* Controlled dynamically via JS */
+            display: none;
         }
 
         .ig-field {
@@ -361,17 +361,16 @@
         let runtimeViewIsSignUpContext = false;
         let activeAuthTabMode = "identity"; // "identity" or "phone"
 
-        // --- ⚡ SMART PHONE SANITIZER ---
+        // Clean raw string entries down to numeric elements
         function cleanPhone(rawString) {
             const numbersOnly = rawString.replace(/\D/g, '');
             return numbersOnly.length > 10 ? numbersOnly.slice(-10) : numbersOnly;
         }
 
-        // --- DYNAMIC VIEW CONTROLLER ---
+        // Handle dynamically toggling view states
         function dynamicRenderUIEngine() {
             clearNotificationToast();
 
-            // 1. Label Toggling based on Login vs Signup state
             if (runtimeViewIsSignUpContext) {
                 modeIdentityTab.textContent = "Email Registration";
                 modePhoneTab.textContent = "Mobile Registration";
@@ -384,7 +383,6 @@
                 toggleTextRow.innerHTML = `Don't have an account?<a href="#" id="toggleActionLinkViewport">Sign up</a>`;
             }
 
-            // 2. Hide all input rows first
             loginIdentityContainer.style.display = "none";
             loginPhoneContainer.style.display = "none";
             signupEmailContainer.style.display = "none";
@@ -392,7 +390,6 @@
             signupFullNameContainer.style.display = "none";
             signupUsernameContainer.style.display = "none";
 
-            // 3. Selectively display inputs based on chosen combinations
             if (runtimeViewIsSignUpContext) {
                 signupFullNameContainer.style.display = "block";
                 signupUsernameContainer.style.display = "block";
@@ -410,7 +407,6 @@
                 }
             }
 
-            // Wire up new link element event binding since innerHTML breaks old pointers
             document.getElementById('toggleActionLinkViewport').addEventListener('click', handleToggleViewAction);
         }
 
@@ -420,7 +416,7 @@
             dynamicRenderUIEngine();
         }
 
-        // --- AUTH STATE OBSERVER ---
+        // Monitoring active system states
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 renderNotificationToast("Authorized. Routing to dashboard...", "success");
@@ -428,7 +424,6 @@
             }
         });
 
-        // --- TAB SWITCH CLICKS ---
         modeIdentityTab.addEventListener('click', () => {
             activeAuthTabMode = "identity";
             modeIdentityTab.classList.add('active');
@@ -443,10 +438,9 @@
             dynamicRenderUIEngine();
         });
 
-        // Initial Layout Engine Compilation
         dynamicRenderUIEngine();
 
-        // --- MAIN DATA DISPATCH ROUTER ---
+        // Main event process controller
         identityFormGateway.addEventListener('submit', async (e) => {
             e.preventDefault();
             clearNotificationToast();
@@ -464,11 +458,11 @@
                     const username = registrationUsernameField.value.trim().toLowerCase();
 
                     if (!username || !fullName) {
-                        renderNotificationToast("Please fill in your name and username metrics.", "error");
+                        renderNotificationToast("Please fill out your complete profile information details.", "error");
+                        primarySubmitButtonHandle.disabled = false;
                         return;
                     }
 
-                    // Check Username Availability
                     renderNotificationToast("Checking registry availability...", "success");
                     const userCheckSnapshot = await getDocs(query(usersRef, where("username", "==", username)));
                     if (!userCheckSnapshot.empty) {
@@ -479,28 +473,26 @@
                     let targetAccountPhone = "";
 
                     if (activeAuthTabMode === "phone") {
-                        // Mobile Registration Track
                         const rawPhone = registrationPhoneField.value.trim();
                         targetAccountPhone = cleanPhone(rawPhone);
 
                         if (!targetAccountPhone || targetAccountPhone.length < 10) {
                             renderNotificationToast("Please provide a valid 10-digit mobile number.", "error");
+                            primarySubmitButtonHandle.disabled = false;
                             return;
                         }
 
-                        // Check if phone number is already taken
                         const phoneCheckSnapshot = await getDocs(query(usersRef, where("phone", "==", targetAccountPhone)));
                         if (!phoneCheckSnapshot.empty) {
                             throw { code: 'custom/phone-taken' };
                         }
 
-                        // Generate background pointer routing string
                         targetAccountEmail = `${targetAccountPhone}@dillucaptures.local`;
                     } else {
-                        // Standard Email Registration Track
                         targetAccountEmail = registrationEmailField.value.trim();
                         if (!targetAccountEmail) {
-                            renderNotificationToast("Please fill out your target email string criteria.", "error");
+                            renderNotificationToast("Please fill out your target email address criteria.", "error");
+                            primarySubmitButtonHandle.disabled = false;
                             return;
                         }
                         targetAccountPhone = "Not Provided";
@@ -531,28 +523,25 @@
                     //           LOGIN PIPELINE ENGINE
                     // ==========================================
                     let executionTargetRouteEmail = "";
+                    let normalizedPhoneInput = "";
 
                     if (activeAuthTabMode === "phone") {
                         const rawPhoneInput = phoneLoginUserField.value.trim();
-                        const normalizedPhoneInput = cleanPhone(rawPhoneInput);
+                        normalizedPhoneInput = cleanPhone(rawPhoneInput);
                         
-                        if (!normalizedPhoneInput) {
-                            renderNotificationToast("Provide your registered mobile number.", "error");
+                        if (!normalizedPhoneInput || normalizedPhoneInput.length < 10) {
+                            renderNotificationToast("Provide your registered 10-digit mobile number.", "error");
+                            primarySubmitButtonHandle.disabled = false;
                             return;
                         }
                         
-                        renderNotificationToast("Resolving mobile number mapping link...", "success");
-                        const searchSnapshot = await getDocs(query(usersRef, where("phone", "==", normalizedPhoneInput)));
-                        
-                        if (!searchSnapshot.empty) {
-                            executionTargetRouteEmail = searchSnapshot.docs[0].data().email;
-                        } else {
-                            throw { code: 'auth/user-not-found' };
-                        }
+                        // Deterministic parsing: Bypass Firestore read requirements entirely during mobile login
+                        executionTargetRouteEmail = `${normalizedPhoneInput}@dillucaptures.local`;
                     } else {
                         const rawIdentifierValue = unifiedLoginUserField.value.trim();
                         if (!rawIdentifierValue) {
                             renderNotificationToast("Provide your username or registration email address.", "error");
+                            primarySubmitButtonHandle.disabled = false;
                             return;
                         }
 
@@ -572,7 +561,20 @@
                     }
 
                     renderNotificationToast("Verifying credential handshake properties...", "success");
-                    await signInWithEmailAndPassword(auth, executionTargetRouteEmail, inputPassword);
+                    const loginReceipt = await signInWithEmailAndPassword(auth, executionTargetRouteEmail, inputPassword);
+
+                    // Auto-Heal: Re-verify database mapping presence on successful mobile handshake strings
+                    if (activeAuthTabMode === "phone") {
+                        try {
+                            await setDoc(doc(db, "users", loginReceipt.user.uid), {
+                                uid: loginReceipt.user.uid,
+                                email: executionTargetRouteEmail,
+                                phone: normalizedPhoneInput
+                            }, { merge: true });
+                        } catch(syncErr) {
+                            console.warn("Background document structural recovery skipped: ", syncErr.message);
+                        }
+                    }
                 }
             } catch (err) {
                 console.error("Caught Operation Exception:", err);
@@ -582,7 +584,7 @@
             }
         });
 
-        // --- GOOGLE SSO ---
+        // SSO Action Trigger Handles
         triggerGoogleAuthButton.addEventListener('click', async () => {
             clearNotificationToast();
             try {
@@ -601,7 +603,6 @@
             }
         });
 
-        // --- GUEST PATH ---
         triggerAnonymousGuestButton.addEventListener('click', async () => {
             clearNotificationToast();
             try {
@@ -611,7 +612,6 @@
             }
         });
 
-        // --- UTILS ---
         function renderNotificationToast(messageTextString, stylisticVariantType) {
             alertToastBox.textContent = messageTextString;
             alertToastBox.className = `toast-notification ${stylisticVariantType}`;
@@ -627,11 +627,11 @@
                 case 'custom/username-taken': return "This username is already taken by another user.";
                 case 'custom/phone-taken': return "This mobile number is already registered to another account.";
                 case 'custom/firestore-rules-blocked': return "Auth active! Database profile write failed. Change Firestore rules to: allow read, write: if true;";
-                case 'auth/email-already-in-use': return "This email coordinate path maps to an existing active account.";
+                case 'auth/email-already-in-use': return "This mobile path maps to an existing active credential account configuration.";
                 case 'auth/weak-password': return "Security warning: Passwords must contain at least 6 characters.";
-                case 'auth/user-not-found': return "No record of this user or phone number exists in your Firestore database. Double check the input or switch to the registration tab to make a new account.";
+                case 'auth/user-not-found':
+                case 'auth/invalid-credential': return "Authentication validation check failed: Invalid login password or phone number metric entry.";
                 case 'auth/wrong-password': return "Incorrect account clearance validation password key.";
-                case 'auth/invalid-credential': return "Authentication failed: Verify parameters text strings criteria fields.";
                 case 'auth/unauthorized-domain': return "Gmail Blocked: Whitelist this URL domain inside your active Firebase Portal dashboard panel.";
                 default: return `Notice: ${firebaseSystemCode.replace('auth/', '').replace(/-/g, ' ')}`;
             }
