@@ -5,24 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dillu Captures | Luxury Editorial Portfolio</title>
 
-    <!-- Premium Google Fonts -->
+    <!-- Google Fonts Integration -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --bg-gradient: radial-gradient(circle at 50% 0%, #1a242f 0%, #07090d 70%, #000000 100%);
+            --bg-gradient: radial-gradient(circle at 50% 0%, #161e29 0%, #06090d 70%, #000000 100%);
             --text-primary: #ffffff;
             --text-secondary: rgba(255, 255, 255, 0.65);
-            --accent: #C8A96A; /* Champagne Gold */
-            --glass-core: rgba(255, 255, 255, 0.03);
+            --accent: #D4AF37; /* Metallic Gold Accent */
+            --glass-core: rgba(255, 255, 255, 0.02);
             --glass-border: rgba(255, 255, 255, 0.12);
-            --glass-glow: rgba(255, 255, 255, 0.05);
-            --ios-blur: blur(40px) saturate(210%) brightness(1.05);
+            --glass-glow: rgba(255, 255, 255, 0.04);
+            --ios-blur: blur(45px) saturate(220%) brightness(1.05);
         }
 
-        /* Core System Reset */
+        /* Core System Settings */
         html { scroll-behavior: initial; }
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         
@@ -37,10 +37,10 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 120px 20px 60px 20px;
+            padding: 130px 20px 80px 20px;
         }
 
-        /* Ultra Premium Liquid Glass Specs */
+        /* Premium iOS Liquid Glass Specification */
         .liquid-glass {
             background: var(--glass-core);
             backdrop-filter: var(--ios-blur);
@@ -49,18 +49,18 @@
             border-radius: 32px;
             box-shadow: inset 0 1px 2px rgba(255,255,255,0.05),
                         inset 0 0 0 1px var(--glass-glow),
-                        0 24px 64px rgba(0, 0, 0, 0.5);
+                        0 28px 74px rgba(0, 0, 0, 0.6);
             padding: 40px;
             margin-bottom: 40px;
         }
 
-        /* Dynamic Engine Viewport Configuration */
+        /* View Switching Architecture States */
         .page-view {
             display: none;
             opacity: 0;
-            transform: translateY(30px) scale(0.99);
-            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
-                        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(24px) scale(0.99);
+            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+                        transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
         
         .page-view.active-view {
@@ -69,18 +69,18 @@
             transform: translateY(0) scale(1);
         }
 
-        /* Scroll Progress Metric Indicator */
+        /* Interactive Performance Progress Indicator */
         #scrollProgress {
             position: fixed; top: 0; left: 0; height: 3px; background: var(--accent);
             width: 0%; z-index: 9999; transition: width 0.1s linear;
         }
 
-        /* Fade In Reveal Framework for Elements */
+        /* Scroll Reveal Animation Framework */
         .reveal {
             opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
-                        transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(35px);
+            transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), 
+                        transform 1s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: transform, opacity;
         }
         .reveal.active-reveal {
@@ -88,22 +88,22 @@
             transform: translateY(0);
         }
 
-        /* iOS Floating Navigation Dock */
+        /* iOS Floating Interactive Dock Component */
         .ios-nav-dock {
             position: fixed; top: 24px; left: 50%; transform: translateX(-50%);
-            width: 90%; max-width: 600px; height: 64px; z-index: 9000;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(25px) saturate(180%);
-            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            width: 92%; max-width: 640px; height: 68px; z-index: 9000;
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(30px) saturate(190%);
+            -webkit-backdrop-filter: blur(30px) saturate(190%);
             border: 1px solid var(--glass-border);
             border-radius: 50px;
             display: flex; align-items: center; justify-content: space-between;
             padding: 0 24px;
-            box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
 
         .nav-logo {
-            font-family: 'Cinzel', serif; font-size: 16px; font-weight: 700;
+            font-family: 'Cinzel', serif; font-size: 17px; font-weight: 700;
             letter-spacing: 0.05em; color: var(--accent); cursor: pointer;
         }
 
@@ -111,23 +111,23 @@
         
         .nav-node {
             background: transparent; border: none; color: var(--text-secondary);
-            font-size: 12px; font-weight: 500; text-transform: uppercase;
-            letter-spacing: 0.08em; padding: 8px 16px; border-radius: 20px;
+            font-size: 11px; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.08em; padding: 10px 18px; border-radius: 20px;
             cursor: pointer; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .nav-node:hover, .nav-node.active-node {
-            color: var(--text-primary); background: rgba(255,255,255,0.1);
+            color: var(--text-primary); background: rgba(255,255,255,0.08);
         }
 
-        /* Text Headers Typography Spec */
+        /* Panel Headings Display System */
         .panel-heading {
-            font-family: 'Cinzel', serif; font-size: 26px; font-weight: 600;
+            font-family: 'Cinzel', serif; font-size: 24px; font-weight: 600;
             letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 35px;
             display: flex; justify-content: space-between; align-items: center;
             border-bottom: 1px solid var(--glass-border); padding-bottom: 15px;
         }
 
-        /* Filter Pills Spec */
+        /* Dynamic Filter Pill Elements */
         .filter-menu { display: flex; gap: 8px; flex-wrap: wrap; }
         .filter-pill {
             background: transparent; border: 1px solid transparent; padding: 6px 14px;
@@ -138,7 +138,7 @@
             border-color: var(--glass-border); background: rgba(255,255,255,0.08); color: var(--text-primary);
         }
 
-        /* Page Layout Architecture: Home View Asymmetric Grid */
+        /* Dynamic Portfolio Work Display Structural Grid */
         .masonry-matrix { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
         .matrix-cell {
             position: relative; border-radius: 20px; overflow: hidden; background: rgba(0,0,0,0.2);
@@ -158,7 +158,24 @@
         .cell-v3 { grid-column: 4; grid-row: span 2; height: 420px; }
         .cell-landscape { grid-column: 4; height: 100px; }
 
-        /* Page Layout Architecture: About View Matrix */
+        /* Premium Social Connect Interface Module */
+        .social-connection-strip {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;
+        }
+        .social-card {
+            background: rgba(255,255,255,0.01); border: 1px solid var(--glass-border);
+            border-radius: 24px; padding: 30px; display: flex; align-items: center; justify-content: space-between;
+            text-decoration: none; color: inherit; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .social-card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.3); }
+        .social-info h4 { font-family: 'Cinzel', serif; font-size: 16px; margin-bottom: 5px; letter-spacing: 0.05em; }
+        .social-info p { font-size: 12px; color: var(--text-secondary); }
+        .social-icon-box {
+            width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.06);
+            display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: bold;
+        }
+
+        /* About Page Framework Layout */
         .about-matrix { display: grid; grid-template-columns: 320px 1fr; gap: 50px; align-items: center; }
         .profile-wrapper {
             width: 100%; aspect-ratio: 4/5; border-radius: 24px; overflow: hidden;
@@ -175,7 +192,7 @@
         .stat-node h3 { font-size: 32px; font-weight: 300; color: var(--text-primary); }
         .stat-node p { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); }
 
-        /* Page Layout Architecture: Services Offering Structure */
+        /* Services Framework Matrix Layout */
         .services-matrix { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
         .service-node {
             background: rgba(255, 255, 255, 0.01); border: 1px solid var(--glass-border);
@@ -187,7 +204,7 @@
         .service-meta { display: flex; justify-content: space-between; align-items: center; }
         .price-tag { font-weight: 600; color: var(--accent); font-size: 13px; }
         
-        /* Interactive Buttons Specification */
+        /* Tactical Interactive Buttons Selection */
         .action-btn {
             background: var(--text-primary); color: #000000; border: none;
             padding: 10px 20px; border-radius: 30px; font-size: 11px; font-weight: 600;
@@ -196,11 +213,10 @@
         }
         .action-btn:hover { background: var(--accent); color: #ffffff; transform: translateY(-1px); }
 
-        /* Page Layout Architecture: Advanced Booking Engine */
+        /* Integrated Session Booking Matrix Pipeline */
         .booking-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-        @media (max-width: 850px) { .booking-layout { grid-template-columns: 1fr; } }
         
-        /* Interactive Engine Calendar */
+        /* Calendar UI Component Block */
         .calendar-container { max-width: 100%; }
         .cal-header-label { text-align: center; font-family: 'Cinzel', serif; font-size: 16px; margin-bottom: 20px; letter-spacing: 0.05em; }
         .cal-matrix { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; text-align: center; }
@@ -213,38 +229,48 @@
         .cal-cell:hover:not(.empty) { background: var(--text-primary); color: #000000; transform: scale(1.05); }
         .cal-cell.selected { background: var(--accent) !important; color: #ffffff; font-weight: 600; border-color: var(--accent); }
 
-        /* Interactive Engine Time Node Array */
-        .time-slots-container h4 { font-family: 'Cinzel', serif; font-size: 15px; margin-bottom: 20px; letter-spacing: 0.05em; text-transform: uppercase; }
-        .time-matrix { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+        /* Temporal Hour Matrix Node Design */
+        .time-slots-container h4 { font-family: 'Cinzel', serif; font-size: 14px; margin-bottom: 16px; letter-spacing: 0.05em; text-transform: uppercase; }
+        .time-matrix { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 24px; }
         .time-node {
             background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border);
             padding: 14px; border-radius: 16px; text-align: center; font-size: 13px;
             cursor: pointer; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .time-node:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.25); }
+        .time-node:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.25); }
         .time-node.selected { background: var(--text-primary); color: #000000; font-weight: 600; }
 
+        /* Integrated Input Fields Engine Spec */
+        .input-group { margin-bottom: 20px; }
+        .input-group label { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); margin-bottom: 8px; }
+        .input-field {
+            width: 100%; background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border);
+            padding: 14px 18px; border-radius: 16px; color: #fff; font-family: inherit; font-size: 13px;
+            outline: none; transition: border-color 0.3s ease;
+        }
+        .input-field:focus { border-color: var(--accent); }
+
         .submission-trigger {
-            width: 100%; margin-top: 30px; background: var(--accent); color: #ffffff;
+            width: 100%; background: var(--accent); color: #ffffff;
             padding: 16px; border-radius: 16px; font-family: 'Inter', sans-serif;
             font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;
             border: none; cursor: pointer; transition: all 0.3s ease;
-            box-shadow: 0 12px 30px rgba(200,169,106,0.2);
+            box-shadow: 0 12px 34px rgba(212,175,55,0.25);
         }
         .submission-trigger:hover { filter: brightness(1.1); transform: translateY(-1px); }
 
-        /* System Control Anchors */
+        /* Hardware Global Anchor Utilities */
         .control-dock { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 12px; z-index: 9500; }
         .control-node {
             width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
             cursor: pointer; font-size: 18px; transition: all 0.3s ease;
         }
 
-        /* Global Adaptive Breakpoints Configuration */
+        /* Adaptive Responsive Grid Engine Rules */
         @media (max-width: 968px) {
             .masonry-matrix { grid-template-columns: repeat(2, 1fr); }
             .cell-h1, .cell-h2, .cell-v1, .cell-s1, .cell-v2, .cell-v3, .cell-landscape { grid-column: auto !important; grid-row: auto !important; height: 280px; }
-            .about-matrix { grid-template-columns: 1fr; text-align: center; }
+            .about-matrix, .booking-layout, .social-connection-strip { grid-template-columns: 1fr; }
             .profile-wrapper { max-width: 280px; margin: 0 auto; }
             .stats-strip { justify-content: center; gap: 30px; }
         }
@@ -254,9 +280,9 @@
 
     <div id="scrollProgress"></div>
 
-    <!-- Navigation Island Structure -->
+    <!-- UI Glass Navigation Component -->
     <nav class="ios-nav-dock">
-        <div class="nav-logo" onclick="routeToView('home')">Dillu</div>
+        <div class="nav-logo" onclick="routeToView('home')">Dillu Captures</div>
         <div class="nav-links-cluster">
             <button class="nav-node active-node" id="nav-home" onclick="routeToView('home')">Work</button>
             <button class="nav-node" id="nav-about" onclick="routeToView('about')">About</button>
@@ -265,10 +291,10 @@
         </div>
     </nav>
 
-    <!-- Master Application Viewport -->
+    <!-- Master Application Content Framework -->
     <main class="container">
 
-        <!-- VIEW 1: HOME PAGE -->
+        <!-- VIEW 1: HOME PORTFOLIO VIEW -->
         <section id="view-home" class="page-view active-view">
             <div class="liquid-glass">
                 <div class="panel-heading">
@@ -284,91 +310,115 @@
                 <div class="masonry-matrix">
                     <div class="matrix-cell cell-h1 reveal" data-tags="wedding"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80" alt="Wedding"></div>
                     <div class="matrix-cell cell-v1 reveal" data-tags="maternity"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80" alt="Maternity"></div>
-                    <div class="matrix-cell cell-s1 reveal" data-tags="kids"><img src="https://images.unsplash.com/photo-1503919545889-aef636e10ad4?auto=format&fit=crop&w=800&q=80" alt="Kids Portfolio"></div>
-                    <div class="matrix-cell cell-v3 reveal" data-tags="wedding"><img src="https://images.unsplash.com/photo-1605001011156-cbf0b0f67a51?auto=format&fit=crop&w=800&q=80" alt="Bridal Sequence"></div>
-                    <div class="matrix-cell cell-h2 reveal" data-tags="wedding"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80" alt="Ceremony"></div>
-                    <div class="matrix-cell cell-v2 reveal" data-tags="kids"><img src="https://images.unsplash.com/photo-1519689680058-324335c77ebd?auto=format&fit=crop&w=800&q=80" alt="Family Essence"></div>
-                    <div class="matrix-cell cell-landscape reveal" data-tags="maternity"><img src="https://images.unsplash.com/photo-1566737236500-c8ac43014a67?auto=format&fit=crop&w=800&q=80" alt="Fine Art Studio"></div>
+                    <div class="matrix-cell cell-s1 reveal" data-tags="kids"><img src="https://images.unsplash.com/photo-1503919545889-aef636e10ad4?auto=format&fit=crop&w=800&q=80" alt="Kids Portraits"></div>
+                    <div class="matrix-cell cell-v3 reveal" data-tags="wedding"><img src="https://images.unsplash.com/photo-1605001011156-cbf0b0f67a51?auto=format&fit=crop&w=800&q=80" alt="Bridal Concept"></div>
+                    <div class="matrix-cell cell-h2 reveal" data-tags="wedding"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80" alt="Ceremonial Art"></div>
+                    <div class="matrix-cell cell-v2 reveal" data-tags="kids"><img src="https://images.unsplash.com/photo-1519689680058-324335c77ebd?auto=format&fit=crop&w=800&q=80" alt="Family Connection"></div>
+                    <div class="matrix-cell cell-landscape reveal" data-tags="maternity"><img src="https://images.unsplash.com/photo-1566737236500-c8ac43014a67?auto=format&fit=crop&w=800&q=80" alt="Fine Art Light"></div>
                 </div>
+            </div>
+
+            <!-- Client Conversion Bridge Channels -->
+            <div class="social-connection-strip reveal">
+                <!-- Replace with your actual Instagram URL profile pathway link below -->
+                <a href="https://instagram.com" target="_blank" class="social-card">
+                    <div class="social-info">
+                        <h4>Explore Instagram Signature</h4>
+                        <p>View daily behind-the-scenes shoots, style guides, and live reels.</p>
+                    </div>
+                    <div class="social-icon-box">📸</div>
+                </a>
+                <a href="#booking" onclick="routeToView('booking')" class="social-card">
+                    <div class="social-info">
+                        <h4>Direct Booking Desk</h4>
+                        <p>Secure calendar priority allocations and select premium package modules.</p>
+                    </div>
+                    <div class="social-icon-box">📅</div>
+                </a>
             </div>
         </section>
 
-        <!-- VIEW 2: ABOUT PAGE -->
+        <!-- VIEW 2: ABOUT VIEW -->
         <section id="view-about" class="page-view">
             <div class="liquid-glass">
-                <div class="panel-heading">The Perspective</div>
+                <div class="panel-heading">The Foundation</div>
                 <div class="about-matrix">
                     <div class="profile-wrapper reveal">
                         <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" alt="Dillu Profile Headshot">
                     </div>
                     <div class="about-body reveal">
-                        <h2>Im Dillu: Your Professional Photographer</h2>
-                        <p>I approach photography as a blend of classical art and modern storytelling. Every session is curated to showcase the elegance of the subject, utilizing light and shadow to create something timeless. Based in India, I am dedicated to providing a luxury experience, ensuring every client feels comfortable, confident, and immortalized in high definition.</p>
+                        <h2>I'm Dillu: Your Professional Photographer</h2>
+                        <p>Photography to me is the delicate art of organizing light to capture profound emotion. Grounded in a luxury lifestyle aesthetic and editorial elegance, I focus on spatial geometry, custom illumination configurations, and unscripted connection. Based in India, I run an upscale, highly comfortable client experience ensuring you feel empowered and immortalized in true heirloom resolution.</p>
                         <div class="stats-strip">
                             <div class="stat-node"><h3 data-count="1000">0</h3><p>Happy Clients</p></div>
                             <div class="stat-node"><h3 data-count="8">0</h3><p>Years Experience</p></div>
                             <div class="stat-node"><h3 data-count="500">0</h3><p>Events Covered</p></div>
-                            <div class="stat-node"><h3 data-count="35">0</h3><p>Awards</p></div>
+                            <div class="stat-node"><h3 data-count="35">0</h3><p>Awards Won</p></div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- VIEW 3: SERVICES PAGE -->
+        <!-- VIEW 3: SERVICES SERVICES OFFERING VIEW -->
         <section id="view-services" class="page-view">
             <div class="liquid-glass">
-                <div class="panel-heading">Exclusive Offerings</div>
+                <div class="panel-heading">Exclusive Portfolios</div>
                 <div class="services-matrix">
                     <div class="service-node reveal">
                         <h4>Wedding Masterpieces</h4>
-                        <p>High-fidelity cinematic framing and fine-art reportage documenting your sacred modern union.</p>
-                        <div class="service-meta"><span class="price-tag">Premium Tier</span><button class="action-btn" onclick="routeToView('booking', 'Wedding Masterpieces')">Select</button></div>
+                        <p>High-fidelity luxury dynamic tracking and timeless fine-art legacy portraiture documenting your union.</p>
+                        <div class="service-meta"><span class="price-tag">Premium Tier</span><button class="action-btn" onclick="routeToView('booking', 'Wedding Masterpieces')">Reserve</button></div>
                     </div>
                     <div class="service-node reveal">
                         <h4>Maternity Luxury</h4>
-                        <p>Graceful, sophisticated lighting setups capturing the quiet beauty of new beginnings.</p>
-                        <div class="service-meta"><span class="price-tag">Editorial Tier</span><button class="action-btn" onclick="routeToView('booking', 'Maternity Luxury')">Select</button></div>
+                        <p>Graceful, clean editorial lighting setups tracking the quiet anticipation of life expansions.</p>
+                        <div class="service-meta"><span class="price-tag">Editorial Tier</span><button class="action-btn" onclick="routeToView('booking', 'Maternity Luxury')">Reserve</button></div>
                     </div>
                     <div class="service-node reveal">
                         <h4>Editorial Kids</h4>
-                        <p>Raw, unscripted fine-art child portraits capturing authentic childhood joy and wonder.</p>
-                        <div class="service-meta"><span class="price-tag">Bespoke Tier</span><button class="action-btn" onclick="routeToView('booking', 'Editorial Kids')">Select</button></div>
+                        <p>Raw, high-contrast structural children portraits honoring innocent joy and true personality.</p>
+                        <div class="service-meta"><span class="price-tag">Bespoke Tier</span><button class="action-btn" onclick="routeToView('booking', 'Editorial Kids')">Reserve</button></div>
                     </div>
                     <div class="service-node reveal">
                         <h4>Family Portraits</h4>
-                        <p>Vibrant, high-contrast, atmospheric documentation honoring classical family legacies.</p>
-                        <div class="service-meta"><span class="price-tag">Elite Tier</span><button class="action-btn" onclick="routeToView('booking', 'Family Portraits')">Select</button></div>
+                        <p>Vibrant, traditional lighting configurations focused on multigenerational heritage archives.</p>
+                        <div class="service-meta"><span class="price-tag">Elite Tier</span><button class="action-btn" onclick="routeToView('booking', 'Family Portraits')">Reserve</button></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- VIEW 4: DEDICATED BOOKING ENGINE PAGE -->
+        <!-- VIEW 4: AUTOMATED INTUITIVE BOOKING ENGINE VIEW -->
         <section id="view-booking" class="page-view">
             <div class="liquid-glass">
-                <div class="panel-heading">Reserve Your Session</div>
+                <div class="panel-heading">Secure Priority Consultation Slot</div>
                 <div class="booking-layout">
                     
-                    <!-- Calendar Panel Container -->
+                    <!-- Calendar Interface Component Panel -->
                     <div class="calendar-container reveal">
-                        <div class="cal-header-label" id="calMonthDisplay">Select Date</div>
+                        <div class="cal-header-label" id="calMonthDisplay">Select Date Allocation</div>
                         <div class="cal-matrix" id="calendarGridNode">
-                            <!-- Weekday Headers -->
                             <div class="cal-day-lbl">Su</div><div class="cal-day-lbl">Mo</div><div class="cal-day-lbl">Tu</div><div class="cal-day-lbl">We</div><div class="cal-day-lbl">Th</div><div class="cal-day-lbl">Fr</div><div class="cal-day-lbl">Sa</div>
                         </div>
                     </div>
 
-                    <!-- Time & Confirmation Engine Panel -->
+                    <!-- Client Identification & Temporal Variable Array Panel -->
                     <div class="time-slots-container reveal">
-                        <h4>Select Time Frame</h4>
+                        <div class="input-group">
+                            <label for="clientInstagram">Your Instagram Handle</label>
+                            <input type="text" id="clientInstagram" class="input-field" placeholder="@username" autocomplete="off">
+                        </div>
+
+                        <h4>Select Hourly Frame Window</h4>
                         <div class="time-matrix">
                             <div class="time-node" onclick="selectTimeSlot(this)">09:00 AM - 12:00 PM</div>
                             <div class="time-node" onclick="selectTimeSlot(this)">12:00 PM - 03:00 PM</div>
                             <div class="time-node" onclick="selectTimeSlot(this)">03:00 PM - 06:00 PM</div>
                             <div class="time-node" onclick="selectTimeSlot(this)">06:00 PM - 09:00 PM</div>
                         </div>
-                        <button class="submission-trigger" onclick="compileAndLaunchBooking()">Confirm Via WhatsApp</button>
+                        
+                        <button class="submission-trigger" onclick="compileAndLaunchBooking()">Initialize Booking in WhatsApp</button>
                     </div>
 
                 </div>
@@ -377,181 +427,181 @@
 
     </main>
 
-    <!-- Global Control System Hardware -->
+    <!-- Global Interface Utility Hardware Controls -->
     <div class="control-dock">
         <div class="control-node liquid-glass" style="padding:0; border-radius:50%;" onclick="lenis.scrollTo(0)">↑</div>
     </div>
 
-    <!-- Core Systems Framework Scripts (Lenis Smooth Scrolling) -->
+    <!-- Core Scrolling Performance Script Library -->
     <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
     <script>
-        /* System 1: Lenis Ultra-Smooth Architecture Initialization */
+        /* System 1: Lenis Smooth Scrolling Engine Pipeline Setup */
         const lenis = new Lenis({
-            duration: 1.4,
+            duration: 1.3,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -11 * t)),
             smoothWheel: true
         });
 
-        function systemUpdateFrame(time) {
+        function structuralAnimationLoop(time) {
             lenis.raf(time);
-            calculateScrollProgress();
-            requestAnimationFrame(systemUpdateFrame);
+            updateScrollProgressTrack();
+            requestAnimationFrame(structuralAnimationLoop);
         }
-        requestAnimationFrame(systemUpdateFrame);
+        requestAnimationFrame(structuralAnimationLoop);
 
-        function calculateScrollProgress() {
-            const progress = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-            document.getElementById('scrollProgress').style.width = progress + '%';
+        function updateScrollProgressTrack() {
+            const trackProgress = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            document.getElementById('scrollProgress').style.width = trackProgress + '%';
         }
 
-        /* System 2: Scroll-Reveal Logic Module (Fade-in-up) */
-        const elementObserver = new IntersectionObserver((entries) => {
+        /* System 2: Performance Intersection Observer For Scroll Reveals */
+        const visualRevealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active-reveal');
-                    if(entry.target.classList.contains('about-body')) runStatsCounterEngine();
+                    if(entry.target.classList.contains('about-body')) initMetricsEngineCounters();
                 }
             });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.08 });
 
-        function reinitializeScrollObserver() {
-            document.querySelectorAll('.reveal').forEach(el => elementObserver.observe(el));
+        function hookScrollRevealElements() {
+            document.querySelectorAll('.reveal').forEach(el => visualRevealObserver.observe(el));
         }
-        reinitializeScrollObserver();
+        hookScrollRevealElements();
 
-        /* System 3: SPA Fluid Multi-Page Routing Engine */
-        let chosenServiceContext = "Photography Session";
+        /* System 3: SPA Multi-Page Routing Engine Framework */
+        let targetedServiceSelection = "Bespoke Shoot Consultation";
         
-        function routeToView(targetViewId, linkedService = null) {
-            if(linkedService) chosenServiceContext = linkedService;
+        function routeToView(destinationViewId, linkedPayloadContext = null) {
+            if(linkedPayloadContext) targetedServiceSelection = linkedPayloadContext;
             
-            // Manage UI Navigation State Pill Positions
             document.querySelectorAll('.nav-node').forEach(node => node.classList.remove('active-node'));
-            const specificNavNode = document.getElementById(`nav-${targetViewId}`);
-            if(specificNavNode) specificNavNode.classList.add('active-node');
+            const targetNavButton = document.getElementById(`nav-${destinationViewId}`);
+            if(targetNavButton) targetNavButton.classList.add('active-node');
 
-            const currentActivePage = document.querySelector('.page-view.active-view');
-            const targetPage = document.getElementById(`view-${targetViewId}`);
+            const sourcePageView = document.querySelector('.page-view.active-view');
+            const destinationPageView = document.getElementById(`view-${destinationViewId}`);
 
-            if (currentActivePage && currentActivePage !== targetPage) {
-                currentActivePage.style.opacity = '0';
-                currentActivePage.style.transform = 'translateY(-20px) scale(0.99)';
+            if (sourcePageView && sourcePageView !== destinationPageView) {
+                sourcePageView.style.opacity = '0';
+                sourcePageView.style.transform = 'translateY(-16px) scale(0.99)';
                 
                 setTimeout(() => {
-                    currentActivePage.classList.remove('active-view');
-                    targetPage.classList.add('active-view');
+                    sourcePageView.classList.remove('active-view');
+                    destinationPageView.classList.add('active-view');
                     
-                    // Reset positions before animating in
-                    targetPage.style.opacity = '0';
-                    targetPage.style.transform = 'translateY(20px) scale(0.99)';
+                    destinationPageView.style.opacity = '0';
+                    destinationPageView.style.transform = 'translateY(16px) scale(0.99)';
                     
-                    // Fire layout update to ensure clean calculations
                     lenis.scrollTo(0, { immediate: true });
                     
                     setTimeout(() => {
-                        targetPage.style.opacity = '1';
-                        targetPage.style.transform = 'translateY(0) scale(1)';
-                        reinitializeScrollObserver();
+                        destinationPageView.style.opacity = '1';
+                        destinationPageView.style.transform = 'translateY(0) scale(1)';
+                        hookScrollRevealElements();
+                        // Force a window refresh to alert Lenis to track revised structural boundaries
                         window.dispatchEvent(new Event('resize'));
                     }, 50);
-                }, 400);
+                }, 350);
             }
         }
 
-        /* System 4: Client Gallery Processing Matrix Filter */
-        function executeGalleryFilter(targetTag) {
+        /* System 4: Core Portfolio Gallery Filter Controller Matrix */
+        function executeGalleryFilter(filterSelectorTag) {
             document.querySelectorAll('.filter-pill').forEach(pill => pill.classList.remove('active'));
             event.target.classList.add('active');
 
             document.querySelectorAll('.matrix-cell').forEach(cell => {
-                if (targetTag === 'all' || cell.getAttribute('data-tags') === targetTag) {
+                if (filterSelectorTag === 'all' || cell.getAttribute('data-tags') === filterSelectorTag) {
                     cell.style.display = 'block';
                     setTimeout(() => { cell.style.opacity = '1'; cell.style.transform = 'scale(1)'; }, 50);
                 } else {
                     cell.style.opacity = '0';
-                    cell.style.transform = 'scale(0.9)';
-                    setTimeout(() => cell.style.display = 'none', 400);
+                    cell.style.transform = 'scale(0.94)';
+                    setTimeout(() => cell.style.display = 'none', 350);
                 }
             });
         }
 
-        /* System 5: Numeric Stat Accumulation Counter Engine */
-        let statisticsFired = false;
-        function runStatsCounterEngine() {
-            if (statisticsFired) return;
-            statisticsFired = true;
-            document.querySelectorAll('.stat-node h3').forEach(node => {
-                const targetLimit = parseInt(node.getAttribute('data-count'), 10);
-                let currentTick = 0;
-                const incrementalStep = Math.ceil(targetLimit / 40);
-                const loopInterval = setInterval(() => {
-                    currentTick += incrementalStep;
-                    if (currentTick >= targetLimit) {
-                        node.innerText = targetLimit + '+';
-                        clearInterval(loopInterval);
+        /* System 5: Numeric Metric Optimization Counter Module */
+        let metricsFiredStatus = false;
+        function initMetricsEngineCounters() {
+            if (metricsFiredStatus) return;
+            metricsFiredStatus = true;
+            document.querySelectorAll('.stat-node h3').forEach(element => {
+                const limitBound = parseInt(element.getAttribute('data-count'), 10);
+                let numericalTick = 0;
+                const dynamicIncrement = Math.ceil(limitBound / 45);
+                const loopingClock = setInterval(() => {
+                    numericalTick += dynamicIncrement;
+                    if (numericalTick >= limitBound) {
+                        element.innerText = limitBound + '+';
+                        clearInterval(loopingClock);
                     } else {
-                        node.innerText = currentTick + '+';
+                        element.innerText = numericalTick + '+';
                     }
                 }, 25);
             });
         }
 
-        /* System 6: Advanced Internal Booking Module Logic */
-        const activeTemporalState = new Date();
-        let finalizedDayValue = null;
-        let finalizedTimeSlotValue = null;
+        /* System 6: Advanced Functional Calendar & WhatsApp Compiler Module */
+        const operationalDateObject = new Date();
+        let selectedCalendarDayValue = null;
+        let selectedHourlyNodeValue = null;
 
-        function initializeEcosystemCalendar() {
-            const grid = document.getElementById('calendarGridNode');
-            const visualLabel = document.getElementById('calMonthDisplay');
-            if (!grid) return;
+        function runCalendarEcosystemGenerator() {
+            const frameGrid = document.getElementById('calendarGridNode');
+            const displayLabelText = document.getElementById('calMonthDisplay');
+            if (!frameGrid) return;
 
-            // Purge obsolete historical text allocations except days headers
-            document.querySelectorAll('.cal-cell').forEach(cell => cell.remove());
-            
-            visualLabel.innerText = activeTemporalState.toLocaleString('default', { month: 'long', year: 'numeric' });
+            document.querySelectorAll('.cal-cell').forEach(node => node.remove());
+            displayLabelText.innerText = operationalDateObject.toLocaleString('default', { month: 'long', year: 'numeric' });
 
-            const startIndexOfMonth = new Date(activeTemporalState.getFullYear(), activeTemporalState.getMonth(), 1).getDay();
-            const totalDaysInMonth = new Date(activeTemporalState.getFullYear(), activeTemporalState.getMonth() + 1, 0).getDate();
+            const startDayIndexOfMonth = new Date(operationalDateObject.getFullYear(), operationalDateObject.getMonth(), 1).getDay();
+            const absoluteDayCountInMonth = new Date(operationalDateObject.getFullYear(), operationalDateObject.getMonth() + 1, 0).getDate();
 
-            for (let padIndex = 0; padIndex < startIndexOfMonth; padIndex++) {
-                const spacerCell = document.createElement('div');
-                spacerCell.className = 'cal-cell empty';
-                grid.appendChild(spacerCell);
+            for (let padStep = 0; padStep < startDayIndexOfMonth; padStep++) {
+                const spacerElement = document.createElement('div');
+                spacerElement.className = 'cal-cell empty';
+                frameGrid.appendChild(spacerElement);
             }
 
-            for (let operationalDay = 1; operationalDay <= totalDaysInMonth; operationalDay++) {
-                const operationalCell = document.createElement('div');
-                operationalCell.className = 'cal-cell';
-                operationalCell.innerText = operationalDay;
-                operationalCell.onclick = () => {
-                    document.querySelectorAll('.cal-cell').forEach(c => c.classList.remove('selected'));
-                    operationalCell.classList.add('selected');
-                    finalizedDayValue = operationalDay;
+            for (let targetDay = 1; targetDay <= absoluteDayCountInMonth; targetDay++) {
+                const visualDayCell = document.createElement('div');
+                visualDayCell.className = 'cal-cell';
+                visualDayCell.innerText = targetDay;
+                visualDayCell.onclick = () => {
+                    document.querySelectorAll('.cal-cell').forEach(cell => cell.classList.remove('selected'));
+                    visualDayCell.classList.add('selected');
+                    selectedCalendarDayValue = targetDay;
                 };
-                grid.appendChild(operationalCell);
+                frameGrid.appendChild(visualDayCell);
             }
         }
 
-        function selectTimeSlot(DOMElement) {
-            document.querySelectorAll('.time-node').forEach(slot => slot.classList.remove('selected'));
-            DOMElement.classList.add('selected');
-            finalizedTimeSlotValue = DOMElement.innerText;
+        function selectTimeSlot(DOMReferenceNode) {
+            document.querySelectorAll('.time-node').forEach(node => node.classList.remove('selected'));
+            DOMReferenceNode.classList.add('selected');
+            selectedHourlyNodeValue = DOMReferenceNode.innerText;
         }
 
         function compileAndLaunchBooking() {
-            if (!finalizedDayValue || !finalizedTimeSlotValue) {
-                alert("Operational Parameters Missing: Please declare both an explicitly targeted Date and Time Slot.");
+            const userInstagramField = document.getElementById('clientInstagram').value.trim() || 'Not Provided';
+            
+            if (!selectedCalendarDayValue || !selectedHourlyNodeValue) {
+                alert("Booking Parameters Incomplete: Please explicitly declare your target Date and Time Window slots.");
                 return;
             }
-            const operationalMonthString = activeTemporalState.toLocaleString('default', { month: 'long', year: 'numeric' });
-            const messageOutputPayload = `Hello Dillu Captures, I would love to check availability and schedule a session for:\n\n• Type: ${chosenServiceContext}\n• Target Date: ${finalizedDayValue} ${operationalMonthString}\n• Preferred Window: ${finalizedTimeSlotValue}.`;
             
-            window.open(`https://wa.me/919700034138?text=${encodeURIComponent(messageOutputPayload)}`, '_blank');
+            const targetedMonthYearString = operationalDateObject.toLocaleString('default', { month: 'long', year: 'numeric' });
+            const consolidatedPayloadText = `Hello Dillu Captures, I would like to reserve a priority fine-art photography session:\n\n• Selected Package: ${targetedServiceSelection}\n• Target Date: ${selectedCalendarDayValue} ${targetedMonthYearString}\n• Time Window: ${selectedHourlyNodeValue}\n• Client Instagram: ${userInstagramField}`;
+            
+            // Fires booking details instantly directly out into WhatsApp Business
+            window.open(`https://wa.me/919700034138?text=${encodeURIComponent(consolidatedPayloadText)}`, '_blank');
         }
 
-        // Run baseline setup routines
-        initializeEcosystemCalendar();
+        // Run system deployment setups
+        runCalendarEcosystemGenerator();
     </script>
 </body>
 </html>
