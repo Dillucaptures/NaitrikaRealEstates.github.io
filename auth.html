@@ -25,7 +25,6 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* --- BRIGHT HIGH-KEY PHOTOGRAPHY BACKGROUND --- */
         body {
             background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(245, 247, 250, 0.4)), 
                         url('https://images.unsplash.com/photo-1495707902641-75cac588d2e9?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
@@ -45,13 +44,12 @@
             gap: 14px;
         }
 
-        /* --- PREMIUM ROUNDED LIGHT CARD ARCHITECTURE --- */
         .auth-box {
             background-color: var(--bg-card);
             backdrop-filter: blur(30px) saturate(200%);
             -webkit-backdrop-filter: blur(30px) saturate(200%);
             border: 1px solid var(--border-color);
-            border-radius: 20px; /* Enhanced modern curvature radius */
+            border-radius: 20px;
             padding: 40px 32px;
             text-align: center;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.02);
@@ -66,7 +64,6 @@
             text-transform: uppercase;
         }
 
-        /* --- MODERN SEGMENTED AUTHENTICATION MODE TABS --- */
         .login-tabs {
             display: flex;
             background: rgba(0, 0, 0, 0.04);
@@ -227,7 +224,6 @@
         }
         .switch-box a:hover { text-decoration: underline; }
 
-        /* Conditional Visibility Toggle Classes */
         .signup-field { display: none; }
         body.display-signup .signup-field { display: block; }
         body.display-signup .login-field, 
@@ -240,7 +236,6 @@
         <div class="auth-box">
             <div class="brand-heading">Dillu Captures</div>
             
-            <!-- Context Login Router Tab Links -->
             <div class="login-tabs" id="loginTabTrackBar">
                 <button type="button" class="tab-btn active" id="modeIdentityTab">Email / Username</button>
                 <button type="button" class="tab-btn" id="modePhoneTab">Mobile Phone</button>
@@ -248,15 +243,15 @@
 
             <form id="identityFormGateway">
                 
-                <!-- LOGIN INPUT VIEWS -->
+                <!-- LOGIN FIELDS -->
                 <div class="form-input-container login-field" id="identityFieldContainer">
                     <input type="text" id="unifiedLoginUserField" class="ig-field" placeholder="Username or email address">
                 </div>
                 <div class="form-input-container login-field" id="phoneFieldContainer" style="display: none;">
-                    <input type="text" id="phoneLoginUserField" class="ig-field" placeholder="Mobile phone number (e.g., 9876543210)">
+                    <input type="text" id="phoneLoginUserField" class="ig-field" placeholder="Phone number (e.g., +91 98765-43210)">
                 </div>
 
-                <!-- SIGNUP SPECIFIC REGISTRATION INPUT FIELDS -->
+                <!-- SIGNUP FIELDS -->
                 <div class="form-input-container signup-field">
                     <input type="email" id="registrationEmailField" class="ig-field" placeholder="Email address">
                 </div>
@@ -270,7 +265,7 @@
                     <input type="text" id="registrationPhoneField" class="ig-field" placeholder="Mobile phone number">
                 </div>
 
-                <!-- PASS SECURE CREDENTIAL ELEMENT MAP -->
+                <!-- PASSWORD -->
                 <div class="form-input-container">
                     <input type="password" id="secureCredentialPasswordField" class="ig-field" placeholder="Password" required>
                 </div>
@@ -323,7 +318,6 @@
             where 
         } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-        // Your Exact verified configurations
         const firebaseConfig = {
             apiKey: "AIzaSyATrPSHyg8SS6BzafsoFYI71g2-vAbMYjU",
             authDomain: "dillucaptures07.firebaseapp.com",
@@ -339,7 +333,6 @@
         const db = getFirestore(app);
         const googleProvider = new GoogleAuthProvider();
 
-        // UI Cache Element Map Allocations
         const body = document.body;
         const identityFormGateway = document.getElementById('identityFormGateway');
         const secureCredentialPasswordField = document.getElementById('secureCredentialPasswordField');
@@ -348,7 +341,6 @@
         const triggerAnonymousGuestButton = document.getElementById('triggerAnonymousGuestButton');
         const alertToastBox = document.getElementById('alertToastBox');
         
-        // Input Controls
         const unifiedLoginUserField = document.getElementById('unifiedLoginUserField');
         const phoneLoginUserField = document.getElementById('phoneLoginUserField');
         const registrationEmailField = document.getElementById('registrationEmailField');
@@ -358,16 +350,22 @@
         const toggleActionLinkViewport = document.getElementById('toggleActionLinkViewport');
         const toggleTextRow = document.getElementById('toggleTextRow');
 
-        // Tab Selectors
         const modeIdentityTab = document.getElementById('modeIdentityTab');
         const modePhoneTab = document.getElementById('modePhoneTab');
         const identityFieldContainer = document.getElementById('identityFieldContainer');
         const phoneFieldContainer = document.getElementById('phoneFieldContainer');
 
         let runtimeViewIsSignUpContext = false;
-        let activeLoginTabMode = "identity"; // identity or phone
+        let activeLoginTabMode = "identity"; 
 
-        // --- AUTH OBSERVER REDIRECT SYSTEM ---
+        // --- ⚡ SMART PHONE SANITIZER ---
+        // Keeps only the final 10 digits to ignore country codes (+91), spaces, or dashes completely.
+        function cleanPhone(rawString) {
+            const numbersOnly = rawString.replace(/\D/g, '');
+            return numbersOnly.length > 10 ? numbersOnly.slice(-10) : numbersOnly;
+        }
+
+        // --- AUTH OBSERVER ---
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 renderNotificationToast("Authorized. Routing to dashboard...", "success");
@@ -375,7 +373,7 @@
             }
         });
 
-        // --- LOGIN METHOD SWITCHING FLOWS ---
+        // --- TABS ---
         modeIdentityTab.addEventListener('click', () => {
             activeLoginTabMode = "identity";
             modeIdentityTab.classList.add('active');
@@ -392,7 +390,7 @@
             phoneFieldContainer.style.display = "block";
         });
 
-        // --- VIEWS TOGGLE INTERFACES CONTROLLER ---
+        // --- VIEW SWITCHER ---
         toggleActionLinkViewport.addEventListener('click', (e) => {
             e.preventDefault();
             runtimeViewIsSignUpContext = !runtimeViewIsSignUpContext;
@@ -414,7 +412,7 @@
             });
         });
 
-        // --- FORM ACTION SUBMISSION CAPTURE PIPELINES ---
+        // --- MAIN DISPATCH ROUTER ---
         identityFormGateway.addEventListener('submit', async (e) => {
             e.preventDefault();
             clearNotificationToast();
@@ -424,27 +422,27 @@
 
             try {
                 if (runtimeViewIsSignUpContext) {
-                    // --- SIGNUP PROCESSOR ROUTINE ---
+                    // --- SIGNUP PROCESS ---
                     const email = registrationEmailField.value.trim();
                     const fullName = registrationFullNameField.value.trim();
                     const username = registrationUsernameField.value.trim().toLowerCase();
-                    const phone = registrationPhoneField.value.trim().replace(/\s+/g, '');
+                    const rawPhone = registrationPhoneField.value.trim();
+                    const normalizedPhone = cleanPhone(rawPhone);
 
-                    if (!email || !username || !phone) {
+                    if (!email || !username || !normalizedPhone) {
                         renderNotificationToast("All credentials rows are required.", "error");
                         return;
                     }
 
                     renderNotificationToast("Checking registry availability...", "success");
                     
-                    // Collision query analysis checks on registration username mapping parameters
                     const usersRef = collection(db, "users");
                     const userCheckSnapshot = await getDocs(query(usersRef, where("username", "==", username)));
                     if (!userCheckSnapshot.empty) {
                         throw { code: 'custom/username-taken' };
                     }
 
-                    renderNotificationToast("Creating core credentials token inside Firebase...", "success");
+                    renderNotificationToast("Creating core credentials token...", "success");
                     const credentialsReceipt = await createUserWithEmailAndPassword(auth, email, inputPassword);
                     
                     renderNotificationToast("Upgrading user profile meta properties...", "success");
@@ -456,7 +454,7 @@
                             uid: credentialsReceipt.user.uid,
                             email: email,
                             username: username,
-                            phone: phone,
+                            phone: normalizedPhone, // Saved as standardized 10-digit string
                             displayName: fullName
                         });
                     } catch (firestoreError) {
@@ -465,18 +463,21 @@
                     }
 
                 } else {
-                    // --- LOGIN PROCESSOR ROUTINE ---
+                    // --- LOGIN PROCESS ---
                     let executionTargetRouteEmail = "";
 
                     if (activeLoginTabMode === "phone") {
-                        const targetSearchPhone = phoneLoginUserField.value.trim().replace(/\s+/g, '');
-                        if (!targetSearchPhone) {
-                            renderNotificationToast("Provide your registered mobile telephone handle.", "error");
+                        const rawPhoneInput = phoneLoginUserField.value.trim();
+                        const normalizedPhoneInput = cleanPhone(rawPhoneInput);
+                        
+                        if (!normalizedPhoneInput) {
+                            renderNotificationToast("Provide your registered mobile number.", "error");
                             return;
                         }
+                        
                         renderNotificationToast("Resolving mobile number mapping link...", "success");
                         const lookupRef = collection(db, "users");
-                        const searchSnapshot = await getDocs(query(lookupRef, where("phone", "==", targetSearchPhone)));
+                        const searchSnapshot = await getDocs(query(lookupRef, where("phone", "==", normalizedPhoneInput)));
                         
                         if (!searchSnapshot.empty) {
                             executionTargetRouteEmail = searchSnapshot.docs[0].data().email;
@@ -513,12 +514,11 @@
                 console.error("Caught Operation Exception:", err);
                 renderNotificationToast(translateFirebaseErrorCodeMessage(err.code || err.message), "error");
             } finally {
-                // ⚡ ABSOLUTE LOCK-UP FIX: The button always re-enables to avoid getting stuck!
                 primarySubmitButtonHandle.disabled = false;
             }
         });
 
-        // --- SOCIAL GOOGLE AUTH HANDLER ---
+        // --- GOOGLE SSO ---
         triggerGoogleAuthButton.addEventListener('click', async () => {
             clearNotificationToast();
             try {
@@ -527,7 +527,7 @@
                     uid: results.user.uid,
                     email: results.user.email,
                     username: results.user.email.split('@')[0],
-                    phone: results.user.phoneNumber || "Google Connected Account",
+                    phone: "Google Connected Account",
                     displayName: results.user.displayName
                 }, { merge: true });
             } catch (err) {
@@ -537,7 +537,7 @@
             }
         });
 
-        // --- GUEST PROTOCOL SYSTEM ROUTE ---
+        // --- GUEST PATH ---
         triggerAnonymousGuestButton.addEventListener('click', async () => {
             clearNotificationToast();
             try {
@@ -547,7 +547,7 @@
             }
         });
 
-        // --- UI TOAST NOTIFICATION UTIL LAYOUT CHANNELS ---
+        // --- UTILS ---
         function renderNotificationToast(messageTextString, stylisticVariantType) {
             alertToastBox.textContent = messageTextString;
             alertToastBox.className = `toast-notification ${stylisticVariantType}`;
@@ -564,7 +564,7 @@
                 case 'custom/firestore-rules-blocked': return "Auth active! Database profile write failed. Change Firestore rules to: allow read, write: if true;";
                 case 'auth/email-already-in-use': return "This email coordinate path maps to an existing active account.";
                 case 'auth/weak-password': return "Security warning: Passwords must contain at least 6 characters.";
-                case 'auth/user-not-found': return "No account data parameters align with that identifier entry string.";
+                case 'auth/user-not-found': return "No record of this user or phone number exists in your Firestore database. Remember, accounts made before updating the signup page must be recreated to generate database mappings.";
                 case 'auth/wrong-password': return "Incorrect account clearance validation password key.";
                 case 'auth/invalid-credential': return "Authentication failed: Verify parameters text strings criteria fields.";
                 case 'auth/unauthorized-domain': return "Gmail Blocked: Whitelist this URL domain inside your active Firebase Portal dashboard panel.";
