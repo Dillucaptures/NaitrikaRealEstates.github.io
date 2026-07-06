@@ -1,792 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instagram | Google Cloud IAM Gateway</title>
-    
-    <!-- Premium Typography System -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dillu Captures | Login</title>
 
-    <style>
-        :root {
-            /* Instagram Core Dark Color Space */
-            --insta-bg: #000000;
-            --insta-surface: #121212;
-            --insta-border: #262626;
-            --insta-text: #f5f5f5;
-            --insta-muted: #a8a8a8;
-            --insta-love: #ff3040;
-            --insta-link: #0095f6;
-            
-            /* Google Cloud Console IAM Color Identity */
-            --gcp-bg: #ffffff;
-            --gcp-text: #202124;
-            --gcp-muted: #5f6368;
-            --gcp-blue: #1a73e8;
-            --gcp-blue-hover: #1557b0;
-            --gcp-border: #dadce0;
-        }
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,sans-serif;
+}
 
-        /* Reset Architecture */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
-        body { background-color: var(--insta-bg); color: var(--insta-text); min-height: 100vh; overflow-x: hidden; }
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#08131f,#101d34,#0c0f19);
+overflow:hidden;
+}
 
-        /* Smooth Scroll Tracking Display */
-        #scrollTracker { position: fixed; top: 0; left: 0; height: 3px; background: var(--insta-link); width: 0%; z-index: 100000; transition: width 0.1s ease; }
+body::before{
+content:"";
+position:absolute;
+width:600px;
+height:600px;
+background:#4b6fff;
+border-radius:50%;
+filter:blur(160px);
+left:-180px;
+top:-180px;
+opacity:.4;
+}
 
-        /* -----------------------------------------
-           AUTHENTICATION VIEW: GOOGLE CLOUD CONSOLE
-        -------------------------------------------- */
-        #gcp-auth-screen {
-            position: fixed; inset: 0; background: var(--gcp-bg); color: var(--gcp-text);
-            display: flex; align-items: center; justify-content: center; z-index: 99999; padding: 20px;
-        }
-        .gcp-panel-card {
-            width: 100%; max-width: 450px; background: #ffffff; border: 1px solid var(--gcp-border);
-            border-radius: 8px; padding: 40px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-        .gcp-logo-container { display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 16px; font-weight: 500; font-size: 22px; color: #5f6368; letter-spacing: -0.5px; }
-        .gcp-logo-container span:nth-child(1) { color: #4285f4; font-weight: 700; }
-        .gcp-logo-container span:nth-child(2) { color: #ea4335; font-weight: 700; }
-        .gcp-logo-container span:nth-child(3) { color: #fbbc05; font-weight: 700; }
-        .gcp-logo-container span:nth-child(4) { color: #34a853; font-weight: 700; }
-        
-        .gcp-title { font-size: 24px; font-weight: 400; text-align: center; color: var(--gcp-text); margin-bottom: 8px; }
-        .gcp-subtitle { font-size: 16px; text-align: center; color: var(--gcp-muted); margin-bottom: 28px; }
+body::after{
+content:"";
+position:absolute;
+width:500px;
+height:500px;
+background:#00d2ff;
+border-radius:50%;
+filter:blur(160px);
+right:-150px;
+bottom:-150px;
+opacity:.25;
+}
 
-        .gcp-tab-dock { display: flex; border-bottom: 1px solid var(--gcp-border); margin-bottom: 24px; }
-        .gcp-tab-trigger { flex: 1; background: none; border: none; padding: 12px; font-size: 14px; font-weight: 500; color: var(--gcp-muted); cursor: pointer; text-align: center; }
-        .gcp-tab-trigger.active-tab { color: var(--gcp-blue); border-bottom: 2px solid var(--gcp-blue); }
+.login-card{
+position:relative;
+width:380px;
+padding:40px;
+border-radius:25px;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(25px);
+border:1px solid rgba(255,255,255,.15);
+box-shadow:0 20px 60px rgba(0,0,0,.45);
+animation:fade .8s;
+}
 
-        .gcp-field-group { position: relative; margin-bottom: 20px; }
-        .gcp-input {
-            width: 100%; padding: 14px; border: 1px solid var(--gcp-border); border-radius: 4px;
-            font-size: 14px; color: var(--gcp-text); background: transparent; outline: none; transition: border-color 0.2s;
-        }
-        .gcp-input:focus { border-color: var(--gcp-blue); box-shadow: 0 0 0 1px var(--gcp-blue); }
-        
-        .gcp-btn {
-            width: 100%; background: var(--gcp-blue); color: #ffffff; border: none; padding: 12px;
-            border-radius: 4px; font-size: 14px; font-weight: 500; cursor: pointer; transition: background 0.2s; margin-top: 10px;
-        }
-        .gcp-btn:hover { background: var(--gcp-blue-hover); }
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
 
-        /* -----------------------------------------
-           CORE INSTAGRAM LAYOUT DESIGN
-        -------------------------------------------- */
-        #instagram-app-space { display: none; padding-top: 60px; padding-bottom: 60px; }
+.logo{
+text-align:center;
+font-size:32px;
+margin-bottom:10px;
+}
 
-        /* Top Bar Element Rules */
-        .insta-top-nav {
-            position: fixed; top: 0; left: 0; width: 100%; height: 60px; background: var(--insta-bg);
-            border-bottom: 1px solid var(--insta-border); display: flex; align-items: center;
-            justify-content: space-between; padding: 0 20px; z-index: 1000;
-        }
-        .insta-logo-text { font-family: 'Playfair Display', serif; font-style: italic; font-size: 24px; font-weight: 600; cursor: pointer; letter-spacing: -0.5px; }
-        .nav-right-actions { display: flex; align-items: center; gap: 18px; position: relative; }
-        .nav-icon-action { background: none; border: none; color: var(--insta-text); font-size: 22px; cursor: pointer; position: relative; }
-        .notif-badge { position: absolute; top: -2px; right: -2px; width: 8px; height: 8px; background: var(--insta-love); border-radius: 50%; display: none; }
+h2{
+color:#fff;
+text-align:center;
+margin-bottom:8px;
+}
 
-        /* Dynamic Notification Dropdown Box */
-        .notif-dropdown-box {
-            position: absolute; top: 45px; right: 0; width: 320px; max-height: 360px; background: var(--insta-surface);
-            border: 1px solid var(--insta-border); border-radius: 8px; display: none; flex-direction: column; padding: 12px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.5); z-index: 2000; overflow-y: auto;
-        }
-        .notif-item { display: flex; align-items: center; gap: 10px; font-size: 12px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .notif-item img { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; }
+.subtitle{
+text-align:center;
+color:#cfd8e6;
+margin-bottom:30px;
+font-size:14px;
+}
 
-        /* Main Screen Core Sizing Layout */
-        .view-section-container { max-width: 600px; margin: 0 auto; display: none; padding: 20px 10px; }
-        .active-section { display: block; }
+.input-box{
+margin-bottom:18px;
+}
 
-        /* -----------------------------------------
-           FEED ARCHITECTURE MODULE
-        -------------------------------------------- */
-        .insta-card { background: var(--insta-bg); border: 1px solid var(--insta-border); border-radius: 8px; margin-bottom: 24px; overflow: hidden; }
-        .card-header { display: flex; align-items: center; justify-content: space-between; padding: 12px; }
-        .card-user-meta { display: flex; align-items: center; gap: 10px; cursor: pointer; }
-        .card-avatar { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 1px solid var(--insta-border); }
-        .card-username { font-size: 13px; font-weight: 600; }
-        .card-delete-btn { background: none; border: none; color: var(--insta-love); font-size: 11px; cursor: pointer; font-weight: 500; padding: 4px; opacity: 0.8; }
-        .card-delete-btn:hover { opacity: 1; }
+.input-box label{
+display:block;
+margin-bottom:8px;
+color:#fff;
+font-size:14px;
+}
 
-        .card-media-display { width: 100%; aspect-ratio: 1/1; background: #050505; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
-        .card-media-display img { width: 100%; height: 100%; object-fit: cover; }
-        
-        .card-action-bar { padding: 12px 14px 4px 14px; display: flex; gap: 16px; }
-        .action-icon { background: none; border: none; color: var(--insta-text); font-size: 22px; cursor: pointer; transition: transform 0.1s ease; }
-        .action-icon:hover { transform: scale(1.1); }
-        .action-icon.active-heart { color: var(--insta-love); }
+.input-box input{
+width:100%;
+padding:14px;
+border:none;
+outline:none;
+border-radius:12px;
+background:rgba(255,255,255,.12);
+color:white;
+font-size:15px;
+}
 
-        .card-likes-count { padding: 4px 14px; font-size: 13px; font-weight: 600; }
-        .card-caption-block { padding: 0 14px 12px 14px; font-size: 13px; line-height: 1.5; }
-        .card-caption-block strong { margin-right: 6px; }
+.input-box input::placeholder{
+color:#ccc;
+}
 
-        /* Comment Internal List Mechanics */
-        .card-comments-tray { padding: 12px 14px; border-top: 1px solid rgba(255,255,255,0.03); background: rgba(255,255,255,0.01); }
-        .comments-scroller { max-height: 100px; overflow-y: auto; display: flex; flex-direction: column; gap: 6px; }
-        .comment-row { font-size: 12px; }
-        .comment-row strong { margin-right: 6px; color: var(--insta-link); }
-        .comment-input-form { display: flex; gap: 8px; margin-top: 10px; }
-        .comment-text-field { flex: 1; background: var(--insta-surface); border: 1px solid var(--insta-border); border-radius: 20px; padding: 8px 14px; color: #fff; font-size: 12px; outline: none; }
+.password-box{
+position:relative;
+}
 
-        /* -----------------------------------------
-           DEDICATED PROFILE VIEW MODEL
-        -------------------------------------------- */
-        .profile-view-wrapper { max-width: 730px; margin: 0 auto; display: none; padding: 20px 10px; }
-        .profile-meta-panel { display: flex; gap: 32px; align-items: center; padding: 24px; border-bottom: 1px solid var(--insta-border); margin-bottom: 24px; }
-        
-        /* Profile Image Change Feature Layout */
-        .profile-avatar-container { position: relative; width: 90px; height: 90px; flex-shrink: 0; group: hover; cursor: pointer; }
-        .profile-main-avatar { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid var(--insta-border); }
-        .profile-avatar-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.5); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 500; opacity: 0; transition: opacity 0.2s ease; }
-        .profile-avatar-container:hover .profile-avatar-overlay { opacity: 1; }
+.password-box span{
+position:absolute;
+right:15px;
+top:14px;
+cursor:pointer;
+color:white;
+}
 
-        .profile-info-details { flex: 1; }
-        .profile-username-heading { font-size: 20px; font-weight: 300; margin-bottom: 12px; }
-        .profile-stats-metrics { display: flex; gap: 24px; margin-bottom: 12px; font-size: 14px; color: var(--insta-muted); }
-        .profile-stats-metrics strong { color: var(--insta-text); }
-        .profile-bio-text h1 { font-size: 14px; font-weight: 600; }
-        .profile-bio-text p { font-size: 13px; color: var(--insta-muted); line-height: 1.4; margin-top: 2px; }
+.options{
+display:flex;
+justify-content:space-between;
+align-items:center;
+font-size:14px;
+margin-bottom:20px;
+color:white;
+}
 
-        /* 3-Column Image Matrix Layout */
-        .insta-3col-matrix { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
-        .matrix-cell-photo { position: relative; aspect-ratio: 1/1; background: #0c0c0c; overflow: hidden; cursor: pointer; border: 1px solid rgba(255,255,255,0.02); }
-        .matrix-cell-photo img { width: 100%; height: 100%; object-fit: cover; }
-        .matrix-cell-hover { position: absolute; inset: 0; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.15s ease; gap: 14px; font-weight: 600; font-size: 14px; }
-        .matrix-cell-photo:hover .matrix-cell-hover { opacity: 1; }
+.options a{
+color:#7dcfff;
+text-decoration:none;
+}
 
-        /* -----------------------------------------
-           INTERACTIVE OPERATION MODAL WINDOWS
-        -------------------------------------------- */
-        .global-modal-overlay {
-            position: fixed; inset: 0; z-index: 5000; background: rgba(0,0,0,0.75);
-            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-            display: none; align-items: center; justify-content: center; padding: 16px;
-        }
-        .modal-body { width: 100%; max-width: 400px; background: var(--insta-surface); border: 1px solid var(--insta-border); border-radius: 12px; padding: 24px; position: relative; }
-        .modal-close-trigger { position: absolute; top: 14px; right: 16px; background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; }
-        .modal-body h3 { font-size: 16px; text-align: center; margin-bottom: 18px; font-weight: 500; }
+.options a:hover{
+text-decoration:underline;
+}
 
-        /* Decoupled Upload Component Area styling */
-        .decoupled-upload-dropzone {
-            border: 2px dashed var(--insta-border); border-radius: 8px; padding: 30px 10px;
-            text-align: center; cursor: pointer; margin-bottom: 16px; background: rgba(255,255,255,0.01);
-        }
-        .decoupled-upload-dropzone:hover { background: rgba(255,255,255,0.03); }
-        .decoupled-upload-dropzone p { font-size: 12px; color: var(--insta-muted); }
-        #uploadPreflightPreview { width: 100%; max-height: 180px; object-fit: contain; border-radius: 6px; display: none; margin-bottom: 16px; background: #000; }
+.login-btn{
+width:100%;
+padding:15px;
+border:none;
+border-radius:14px;
+background:linear-gradient(90deg,#4f8cff,#00d4ff);
+color:white;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
 
-        /* Bottom Control Dock Component Grid Bar */
-        .insta-bottom-dock {
-            position: fixed; bottom: 0; left: 0; width: 100%; height: 52px; background: var(--insta-bg);
-            border-top: 1px solid var(--insta-border); display: flex; align-items: center; justify-content: space-around; z-index: 1000;
-        }
-        .dock-action-node { background: none; border: none; color: var(--insta-text); font-size: 20px; cursor: pointer; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
-        .dock-action-node:hover { background: rgba(255,255,255,0.05); }
-    </style>
+.login-btn:hover{
+transform:translateY(-3px);
+box-shadow:0 10px 25px rgba(0,212,255,.4);
+}
+
+.register{
+margin-top:25px;
+text-align:center;
+color:white;
+}
+
+.register a{
+color:#00d4ff;
+text-decoration:none;
+font-weight:bold;
+}
+
+.register a:hover{
+text-decoration:underline;
+}
+
+.footer{
+margin-top:30px;
+text-align:center;
+font-size:12px;
+color:#b8b8b8;
+}
+
+@media(max-width:450px){
+
+.login-card{
+width:92%;
+padding:30px;
+}
+
+}
+</style>
 </head>
+
 <body>
 
-    <div id="scrollTracker"></div>
+<div class="login-card">
 
-    <!-- AUTH CORE FRONT-GATE SCREEN: GOOGLE CLOUD IAM SIMULATOR CONTAINER -->
-    <section id="gcp-auth-screen">
-        <div class="gcp-panel-card">
-            <div class="gcp-logo-container"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span> Cloud Console</div>
-            <h2 id="gcpHeadline">Sign in</h2>
-            <p id="gcpSubtitle">to continue to Identity Access Management (IAM)</p>
-            
-            <div class="gcp-tab-dock">
-                <button id="tabSelectorLogin" class="gcp-tab-trigger active-tab" onclick="adjustGcpAuthTabContext('login')">Sign In</button>
-                <button id="tabSelectorRegister" class="gcp-tab-trigger" onclick="adjustGcpAuthTabContext('register')">Create Account</button>
-            </div>
+<div class="logo">📸</div>
 
-            <form id="gcpAuthExecutionForm" onsubmit="executeGcpSecurityChallenge(event)">
-                <div id="gcpExtraFieldsGroup" style="display: none;">
-                    <div class="gcp-field-group">
-                        <input type="text" id="gcpInputFullName" class="gcp-input" placeholder="Display Name">
-                    </div>
-                    <div class="gcp-field-group">
-                        <input type="text" id="gcpInputBio" class="gcp-input" placeholder="Profile Bio Summary">
-                    </div>
-                </div>
-                
-                <div class="gcp-field-group">
-                    <input type="text" id="gcpInputUsername" class="gcp-input" placeholder="Username or Email" required autocomplete="off">
-                </div>
-                <div class="gcp-field-group">
-                    <input type="password" id="gcpInputPassword" class="gcp-input" placeholder="Password token matrix" required>
-                </div>
+<h2>Dillu Captures</h2>
 
-                <button type="submit" class="gcp-btn">Next</button>
-            </form>
-        </div>
-    </section>
+<p class="subtitle">
+Welcome Back! Login to your account.
+</p>
 
+<form action="dashboard.html" method="post">
 
-    <!-- SYSTEM MASTER CORE APPLICATION DESKTOP RUNTIME LAYOUT CONTAINER -->
-    <div id="instagram-app-space">
-        
-        <!-- Top Nav Element Bar -->
-        <header class="insta-top-nav">
-            <div class="insta-logo-text" onclick="routeToSectionView('feed')">Instagram</div>
-            <div class="nav-right-actions">
-                <button class="nav-icon-action" onclick="toggleActivityNotificationsPanel()" title="Activity Activity Log Tracker">
-                    ❤️<div class="notif-badge" id="activityBadgeAlertDot"></div>
-                </button>
-                <button class="nav-icon-action" onclick="logOutSessionTokenPipeline()" style="font-size: 15px;" title="Exit Dashboard Gate">🔒</button>
-                
-                <!-- Notifications Overlay Panel Target Window Dropdown -->
-                <div class="notif-dropdown-box" id="globalActivityNotificationDropdownTray">
-                    <div style="font-size: 13px; font-weight: 600; margin-bottom: 10px; padding-bottom: 4px; border-bottom: 1px solid var(--insta-border);">Activity Logs</div>
-                    <div id="notificationsInjectionElementWrapper"></div>
-                </div>
-            </div>
-        </header>
+<div class="input-box">
+<label>Email Address</label>
+<input
+type="email"
+placeholder="Enter your email"
+required>
+</div>
 
-        <!-- ROUTER CONTROL TARGET VIEW PANELS -->
+<div class="input-box password-box">
+<label>Password</label>
 
-        <!-- ROUTER CONTAINER 1: HOMEPAGE TIMELINE FEED PANEL -->
-        <main class="view-section-container" id="section-view-feed">
-            <div id="timelineFeedsInjectionWrapper"></div>
-        </main>
+<input
+type="password"
+id="password"
+placeholder="Enter your password"
+required>
 
-        <!-- ROUTER CONTAINER 2: DEDICATED PROFILE ACCOUNT METRIC MATRIX GRID VIEW -->
-        <section class="profile-view-wrapper" id="section-view-profile">
-            <div id="profileDetailsPanelInjectionWrapper"></div>
-        </section>
+<span onclick="togglePassword()">👁</span>
 
-        <!-- STATIC REUSABLE NAVIGATION FOOTER ACTION TRAY BAR DOCK DOCK -->
-        <nav class="insta-bottom-dock">
-            <button class="dock-action-node" onclick="routeToSectionView('feed')" title="Home Feed">🏠</button>
-            <button class="dock-action-node" onclick="triggerMediaUploadFlowSequenceModal(true)" title="Upload Post Photo">➕</button>
-            <button class="dock-action-node" onclick="routeToSectionView('profile', '')" title="My Private Profile Accounts Screen View">👤</button>
-        </nav>
+</div>
 
-        <!-- DECOUPLED DYNAMIC MEDIA CAPTURE CREATION GENERATION MODAL WINDOW BLOCKS -->
-        <div class="global-modal-overlay" id="imagePostCreationModalWindow" onclick="if(event.target === this) triggerMediaUploadFlowSequenceModal(false)">
-            <div class="modal-body">
-                <button class="modal-close-trigger" onclick="triggerMediaUploadFlowSequenceModal(false)">×</button>
-                <h3>Create New Post</h3>
-                
-                <div class="decoupled-upload-dropzone" id="decoupledFilePickerClickTriggerTargetZone">
-                    <p id="pickerProgressLabelPrompt">Click workspace framework layer bounds to load localized image assets file data...</p>
-                </div>
-                <input type="file" id="isolatedNativeSystemFileInputHandle" accept="image/*" style="display: none;">
+<div class="options">
 
-                <!-- Pre-flight Display Box Tag Target Node Element -->
-                <img id="uploadPreflightPreview" src="#" alt="Upload confirmation mapping visual asset preview tracker text">
+<label>
+<input type="checkbox">
+Remember Me
+</label>
 
-                <input type="text" id="postTextCaptionInputStringField" class="gcp-input" style="background: var(--insta-bg); color: #fff; border-color: var(--insta-border); border-radius: 6px; margin-bottom: 14px;" placeholder="Write description caption details string parameters..." autocomplete="off">
-                <button class="gcp-btn" style="background: var(--insta-link); border-radius: 6px;" onclick="commitExtractedBinaryPayloadToLiveTimelineDataset()">Share to Feed</button>
-            </div>
-        </div>
+<a href="#">Forgot Password?</a>
 
-        <!-- DECOUPLED INDEPENDENT AVATAR REPLACEMENT SYSTEM CONFIGURATION MODAL FILE SELECTOR LAYER -->
-        <input type="file" id="isolatedAvatarNativeSystemFileInputHandle" accept="image/*" style="display: none;">
+</div>
 
-    </div>
+<button class="login-btn">
+Login
+</button>
 
+</form>
 
-    <!-- CORE FRAMEWORK CONTROLLERS AND IMPLEMENTATIONS LOGIC ENGINES -->
-    <script>
-        /* Block 1: Real-Time Precision Navigation Scroll Tracker Lines Framework */
-        window.addEventListener('scroll', () => {
-            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-            if (scrollHeight > 0) {
-                const percent = (window.scrollY / scrollHeight) * 100;
-                document.getElementById('scrollTracker').style.width = percent + '%';
-            }
-        });
+<div class="register">
+Don't have an account?
+<a href="register.html">Create Account</a>
+</div>
 
-        /* Block 2: Fallback Bootstrap Default Memory Registry Values Sets */
-        const initialSeedRegistryUsersArray = [
-            { username: "dillu_captures", password: "123", name: "Dillu Captures Official", bio: "Editorial travel and architecture. Documenting fine art heirloom photography frameworks.", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" },
-            { username: "lens_craft", password: "123", name: "Sarah Jenkins Studio", bio: "Exploring geometry elements across organic continuous environments.", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80" }
-        ];
+<div class="footer">
+© 2026 Dillu Captures • All Rights Reserved
+</div>
 
-        const initialSeedRegistryPostsArray = [
-            { id: "seed-post-uuid-1", owner: "dillu_captures", imageUrl: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80", caption: "Bespoke spatial design layouts. Pure ambient natural lighting configurations.", likes: ["lens_craft"], comments: [{ author: "lens_craft", line: "This contrast curves alignment profile matrix balance is exceptional!" }] },
-            { id: "seed-post-uuid-2", owner: "lens_craft", imageUrl: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80", caption: "Tracking highlight values inside open visual exposure zones.", likes: [], comments: [] }
-        ];
+</div>
 
-        const initialSeedRegistryNotificationsArray = [
-            { id: "seed-noti-uuid-1", message: "@lens_craft liked your fine-art architecture timeline showcase item.", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" },
-            { id: "seed-noti-uuid-2", message: "IAM Client Framework node initialized successfully under session parameters.", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" }
-        ];
+<script>
 
-        let statePoolUsersArray = [];
-        let statePoolPostsArray = [];
-        let statePoolNotificationsArray = [];
-        let activeAuthenticationSessionUserHandle = null;
-        let activeGcpAuthSubContextTab = "login";
-        let temporaryCachedImageBase64PayloadString = "";
-        let trackedTargetProfileContextSelectorHandle = "";
+function togglePassword(){
 
-        /* Block 3: Dynamic Data Storage Memory Sync Operations Engines */
-        function bootSystemMemoryStorageDevicesOnLoad() {
-            if(!localStorage.getItem('INSTA_GCP_USERS_DATAPOOL_v5')) {
-                localStorage.setItem('INSTA_GCP_USERS_DATAPOOL_v5', JSON.stringify(initialSeedRegistryUsersArray));
-                localStorage.setItem('INSTA_GCP_POSTS_DATAPOOL_v5', JSON.stringify(initialSeedRegistryPostsArray));
-                localStorage.setItem('INSTA_GCP_NOTIF_DATAPOOL_v5', JSON.stringify(initialSeedRegistryNotificationsArray));
-            }
-            statePoolUsersArray = JSON.parse(localStorage.getItem('INSTA_GCP_USERS_DATAPOOL_v5'));
-            statePoolPostsArray = JSON.parse(localStorage.getItem('INSTA_GCP_POSTS_DATAPOOL_v5'));
-            statePoolNotificationsArray = JSON.parse(localStorage.getItem('INSTA_GCP_NOTIF_DATAPOOL_v5'));
+var x=document.getElementById("password");
 
-            const localSessionToken = localStorage.getItem('INSTA_GCP_SESSION_ACTIVE_TOKEN');
-            if(localSessionToken) {
-                activeAuthenticationSessionUserHandle = statePoolUsersArray.find(u => u.username === localSessionToken) || null;
-                bypassAuthenticationGatewayInterfaceBlocks();
-            }
-            updateActivityIndicatorAlertBadgeDotState();
-        }
+if(x.type==="password"){
+x.type="text";
+}
+else{
+x.type="password";
+}
 
-        function commitActiveMemoryStatesToStorageCacheDevices() {
-            localStorage.setItem('INSTA_GCP_USERS_DATAPOOL_v5', JSON.stringify(statePoolUsersArray));
-            localStorage.setItem('INSTA_GCP_POSTS_DATAPOOL_v5', JSON.stringify(statePoolPostsArray));
-            localStorage.setItem('INSTA_GCP_NOTIF_DATAPOOL_v5', JSON.stringify(statePoolNotificationsArray));
-            updateActivityIndicatorAlertBadgeDotState();
-        }
+}
 
-        /* Block 4: Google Cloud IAM Authentication Pipeline Challenge Operations Controls */
-        function adjustGcpAuthTabContext(targetContextTabCode) {
-            activeGcpAuthSubContextTab = targetContextTabCode;
-            document.getElementById('tabSelectorLogin').classList.remove('active-tab');
-            document.getElementById('tabSelectorRegister').classList.remove('active-tab');
-            const extendedFieldsBoxNode = document.getElementById('gcpExtraFieldsGroup');
+</script>
 
-            if(targetContextTabCode === 'login') {
-                document.getElementById('tabSelectorLogin').classList.add('active-tab');
-                document.getElementById('gcpHeadline').innerText = "Sign in";
-                document.getElementById('gcpSubtitle').innerText = "to continue to Identity Access Management (IAM)";
-                extendedFieldsBoxNode.style.display = "none";
-            } else {
-                document.getElementById('tabSelectorRegister').classList.add('active-tab');
-                document.getElementById('gcpHeadline').innerText = "Create Cloud Identity";
-                document.getElementById('gcpSubtitle').innerText = "Configure unique public platform client authorization configurations";
-                extendedFieldsBoxNode.style.display = "block";
-            }
-        }
-
-        function executeGcpSecurityChallenge(eventObj) {
-            eventObj.preventDefault();
-            const usernameInput = document.getElementById('gcpInputUsername').value.trim().toLowerCase();
-            const passwordInput = document.getElementById('gcpInputPassword').value;
-
-            if(activeGcpAuthSubContextTab === 'login') {
-                const userMatch = statePoolUsersArray.find(u => u.username === usernameInput && u.password === passwordInput);
-                if(userMatch) {
-                    activeAuthenticationSessionUserHandle = userMatch;
-                    localStorage.setItem('INSTA_GCP_SESSION_ACTIVE_TOKEN', userMatch.username);
-                    bypassAuthenticationGatewayInterfaceBlocks();
-                } else {
-                    alert("IAM Authorization Failure: Specified workspace identifier context strings or security credentials match no registered system identities.");
-                }
-            } else {
-                // Process dynamic entry calculations to accept third party creation requests
-                const fullNameInput = document.getElementById('gcpInputFullName').value.trim() || "Cloud Contributor";
-                const bioInput = document.getElementById('gcpInputBio').value.trim() || "Social client endpoint nodes resource profile layer description data.";
-
-                if(statePoolUsersArray.some(u => u.username === usernameInput)) {
-                    alert("IAM Account Validation Block: Selected allocation target account user path mapping string already exists inside device records.");
-                    return;
-                }
-
-                const newCloudUserInstanceStruct = {
-                    username: usernameInput,
-                    password: passwordInput,
-                    name: fullNameInput,
-                    bio: bioInput,
-                    avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=300&q=80" // Fallback template base avatar string
-                };
-
-                statePoolUsersArray.push(newCloudUserInstanceStruct);
-                activeAuthenticationSessionUserHandle = newCloudUserInstanceStruct;
-                localStorage.setItem('INSTA_GCP_SESSION_ACTIVE_TOKEN', newCloudUserInstanceStruct.username);
-                commitActiveMemoryStatesToStorageCacheDevices();
-                bypassAuthenticationGatewayInterfaceBlocks();
-            }
-        }
-
-        function bypassAuthenticationGatewayInterfaceBlocks() {
-            document.getElementById('gcp-auth-screen').style.display = "none";
-            document.getElementById('instagram-app-space').style.display = "block";
-            routeToSectionView('feed');
-        }
-
-        function logOutSessionTokenPipeline() {
-            localStorage.removeItem('INSTA_GCP_SESSION_ACTIVE_TOKEN');
-            location.reload();
-        }
-
-        /* Block 5: Core Application View Router Switch System Engines */
-        function routeToSectionView(targetViewSelectorCode, optionalContextPayloadString = null) {
-            document.querySelectorAll('.view-section-container').forEach(el => el.classList.remove('active-section'));
-            document.getElementById('section-view-profile').style.display = "none";
-            document.getElementById('globalActivityNotificationDropdownTray').style.display = "none";
-
-            if(targetViewSelectorCode === 'feed') {
-                document.getElementById('section-view-feed').classList.add('active-section');
-                generateTimelineFeedDisplayMarkup();
-            } else if(targetViewSelectorCode === 'profile') {
-                trackedTargetProfileContextSelectorHandle = (optionalContextPayloadString !== null && optionalContextPayloadString !== "") ? optionalContextPayloadString : (activeAuthenticationSessionUserHandle ? activeAuthenticationSessionUserHandle.username : "dillu_captures");
-                document.getElementById('section-view-profile').style.display = "block";
-                generateUserProfileLayoutDashboardGridMarkup();
-            }
-            window.scrollTo({ top: 0, behavior: 'instant' });
-        }
-
-        /* Block 6: Live Instagram Feed View Compilation Process Layer */
-        function generateTimelineFeedDisplayMarkup() {
-            const feedTargetWrapper = document.getElementById('timelineFeedsInjectionWrapper');
-            if(!feedTargetWrapper) return;
-            feedTargetWrapper.innerHTML = "";
-
-            if(statePoolPostsArray.length === 0) {
-                feedTargetWrapper.innerHTML = `<div style="padding: 60px 20px; text-align:center; color:var(--insta-muted); border: 1px dashed var(--insta-border); border-radius: 8px; font-size:13px;">No photography published to public stream panels yet. Click "+" to post.</div>`;
-                return;
-            }
-
-            statePoolPostsArray.forEach(post => {
-                const ownerMetaAccount = statePoolUsersArray.find(u => u.username === post.owner) || { name: "User Account Node", avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=300&q=80" };
-                const userHasLikedThisItemInstance = activeAuthenticationSessionUserHandle && post.likes.includes(activeAuthenticationSessionUserHandle.username);
-                const currentUserClaimsOwnershipRights = activeAuthenticationSessionUserHandle && (activeAuthenticationSessionUserHandle.username === post.owner || activeAuthenticationSessionUserHandle.username === "dillu_captures");
-
-                let compiledCommentLinesHTMLBuffer = "";
-                post.comments.forEach(comment => {
-                    compiledCommentLinesHTMLBuffer += `<div class="comment-row"><strong>@${comment.author}</strong>${comment.line}</div>`;
-                });
-
-                const outerArticleCardElementNode = document.createElement('article');
-                outerArticleCardElementNode.className = "insta-card";
-                outerArticleCardElementNode.innerHTML = `
-                    <div class="card-header">
-                        <div class="card-user-meta" onclick="routeToSectionView('profile', '${post.owner}')">
-                            <img src="${ownerMetaAccount.avatar}" class="card-avatar" alt="">
-                            <span class="card-username">${post.owner}</span>
-                        </div>
-                        ${currentUserClaimsOwnershipRights ? `<button class="card-delete-btn" onclick="executeTargetPostDestructionSequence('${post.id}')">Delete</button>` : ''}
-                    </div>
-
-                    <div class="card-media-display" ondblclick="toggleMediaTargetLikingInteraction('${post.id}')">
-                        <img src="${post.imageUrl}" alt="Instagram Media Stream Capture Asset Frame Data Line Row" loading="lazy">
-                    </div>
-
-                    <div class="card-action-bar">
-                        <button class="action-icon ${userHasLikedThisItemInstance ? 'active-heart' : ''}" onclick="toggleMediaTargetLikingInteraction('${post.id}')">
-                            ${userHasLikedThisItemInstance ? '❤️' : '🤍'}
-                        </button>
-                        <button class="action-icon" onclick="document.getElementById('cmt-field-id-${post.id}').focus()">💬</button>
-                    </div>
-
-                    <div class="card-likes-count">${post.likes.length} likes</div>
-                    <div class="card-caption-block"><strong>${post.owner}</strong>${post.caption}</div>
-
-                    <div class="card-comments-tray">
-                        <div class="comments-scroller">${compiledCommentLinesHTMLBuffer}</div>
-                        <form class="comment-input-form" onsubmit="appendNewCommentDataTextLineRow(event, '${post.id}')">
-                            <input type="text" id="cmt-field-id-${post.id}" class="comment-text-field" placeholder="Add custom comment text row details..." required autocomplete="off">
-                        </form>
-                    </div>
-                `;
-                feedTargetWrapper.appendChild(outerArticleCardElementNode);
-            });
-        }
-
-        /* Block 7: Dedicated Account Profile Architecture Grid Metrics Engine */
-        function generateUserProfileLayoutDashboardGridMarkup() {
-            const targetProfileContainerWrapper = document.getElementById('profileDetailsPanelInjectionWrapper');
-            if(!targetProfileContainerWrapper) return;
-            targetProfileContainerWrapper.innerHTML = "";
-
-            const targetUserObjectProfileContext = statePoolUsersArray.find(u => u.username === trackedTargetProfileContextSelectorHandle);
-            if(!targetUserObjectProfileContext) {
-                targetProfileContainerWrapper.innerHTML = `<div style="padding:40px; text-align:center; color:var(--insta-muted);">Target identity index handle matches no resident entities.</div>`;
-                return;
-            }
-
-            const historyUserPostsCollection = statePoolPostsArray.filter(p => p.owner === trackedTargetProfileContextSelectorHandle);
-            let summaryLikesComputationCount = 0;
-            historyUserPostsCollection.forEach(p => summaryLikesComputationCount += p.likes.length);
-
-            let profileGridBoxesHTMLBuffer = "";
-            historyUserPostsCollection.forEach(p => {
-                profileGridBoxesHTMLBuffer += `
-                    <div class="matrix-cell-photo" onclick="routeToSectionView('feed')">
-                        <img src="${p.imageUrl}" alt="" loading="lazy">
-                        <div class="matrix-cell-hover">
-                            <span>❤️ ${p.likes.length}</span>
-                            <span>💬 ${p.comments.length}</span>
-                        </div>
-                    </div>
-                `;
-            });
-
-            if(historyUserPostsCollection.length === 0) {
-                profileGridBoxesHTMLBuffer = `<div style="grid-column: span 3; padding: 60px 10px; text-align:center; color:var(--insta-muted); font-size:12px;">No historical items published to display matrices grid frames indexes.</div>`;
-            }
-
-            const allowAvatarModifications = activeAuthenticationSessionUserHandle && activeAuthenticationSessionUserHandle.username === targetUserObjectProfileContext.username;
-
-            targetProfileContainerWrapper.innerHTML = `
-                <div class="profile-meta-panel">
-                    <div class="profile-avatar-container" id="profileAvatarClickActionNodeTrigger">
-                        <img src="${targetUserObjectProfileContext.avatar}" class="profile-main-avatar" alt="">
-                        ${allowAvatarModifications ? `<div class="profile-avatar-overlay">Change Photo</div>` : ''}
-                    </div>
-                    <div class="profile-info-details">
-                        <h2 class="profile-username-heading">@${targetUserObjectProfileContext.username}</h2>
-                        <div class="profile-stats-metrics">
-                            <span><strong>${historyUserPostsCollection.length}</strong> posts</span>
-                            <span><strong>${summaryLikesComputationCount}</strong> total likes</span>
-                        </div>
-                        <div class="profile-bio-text">
-                            <h1>${targetUserObjectProfileContext.name}</h1>
-                            <p>${targetUserObjectProfileContext.bio}</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="insta-3col-matrix">
-                    ${profileGridBoxesHTMLBuffer}
-                </div>
-            `;
-
-            // Bind contextual listener loops to execute profile update files upload calls
-            if(allowAvatarModifications) {
-                const avatarTriggerBtn = document.getElementById('profileAvatarClickActionNodeTrigger');
-                if(avatarTriggerBtn) {
-                    avatarTriggerBtn.addEventListener('click', () => {
-                        document.getElementById('isolatedAvatarNativeSystemFileInputHandle').click();
-                    });
-                }
-            }
-        }
-
-        /* Block 8: Unified Social Engagement Pipelines (Likes, Comments, Deletions) */
-        function toggleMediaTargetLikingInteraction(postIdValueString) {
-            if(!activeAuthenticationSessionUserHandle) return;
-
-            statePoolPostsArray = statePoolPostsArray.map(post => {
-                if(post.id === postIdValueString) {
-                    const idx = post.likes.indexOf(activeAuthenticationSessionUserHandle.username);
-                    if(idx > -1) {
-                        post.likes.splice(idx, 1);
-                    } else {
-                        post.likes.push(activeAuthenticationSessionUserHandle.username);
-                        
-                        // Emit real time background synthetic telemetry notifications logs
-                        if(post.owner !== activeAuthenticationSessionUserHandle.username) {
-                            statePoolNotificationsArray.unshift({
-                                id: "noti-gen-uuid-" + Date.now(),
-                                message: `@${activeAuthenticationSessionUserHandle.username} loved your published feed artwork image item frame.`,
-                                avatar: activeAuthenticationSessionUserHandle.avatar
-                            });
-                        }
-                    }
-                }
-                return post;
-            });
-            commitActiveMemoryStatesToStorageCacheDevices();
-            generateTimelineFeedDisplayMarkup();
-        }
-
-        function appendNewCommentDataTextLineRow(eventObj, postIdValueString) {
-            eventObj.preventDefault();
-            if(!activeAuthenticationSessionUserHandle) return;
-
-            const inputField = document.getElementById(`cmt-field-id-${postIdValueString}`);
-            const commentStringValueText = inputField.value.trim();
-            if(!commentStringValueText) return;
-
-            statePoolPostsArray = statePoolPostsArray.map(post => {
-                if(post.id === postIdValueString) {
-                    post.comments.push({ author: activeAuthenticationSessionUserHandle.username, line: commentStringValueText });
-                    
-                    if(post.owner !== activeAuthenticationSessionUserHandle.username) {
-                        statePoolNotificationsArray.unshift({
-                            id: "noti-gen-uuid-" + Date.now(),
-                            message: `@${activeAuthenticationSessionUserHandle.username} commented: "${commentStringValueText.substring(0,16)}..." on your post layout.`,
-                            avatar: activeAuthenticationSessionUserHandle.avatar
-                        });
-                    }
-                }
-                return post;
-            });
-
-            inputField.value = "";
-            commitActiveMemoryStatesToStorageCacheDevices();
-            generateTimelineFeedDisplayMarkup();
-        }
-
-        function executeTargetPostDestructionSequence(postIdValueString) {
-            if(confirm("Confirm Deletion Challenge: Erase targeted photography asset post record entirely from index memory registers arrays?")) {
-                statePoolPostsArray = statePoolPostsArray.filter(p => p.id !== postIdValueString);
-                commitActiveMemoryStatesToStorageCacheDevices();
-                
-                if(document.getElementById('section-view-feed').classList.contains('active-section')) {
-                    generateTimelineFeedDisplayMarkup();
-                } else {
-                    generateUserProfileLayoutDashboardGridMarkup();
-                }
-            }
-        }
-
-        /* Block 9: Decoupled Independent File Extraction and Processing Engines */
-        const clickZoneBoxNode = document.getElementById('decoupledFilePickerClickTriggerTargetZone');
-        const hiddenNativeInputChannelNode = document.getElementById('isolatedSystemFileInputHandle');
-        const visualPreflightPreviewImageTag = document.getElementById('uploadPreflightPreview');
-
-        if(clickZoneBoxNode && hiddenNativeInputChannelNode) {
-            clickZoneBoxNode.addEventListener('click', (e) => {
-                e.preventDefault(); e.stopPropagation();
-                hiddenNativeInputChannelNode.click();
-            });
-            hiddenNativeInputChannelNode.addEventListener('change', runBinaryImageExtractionPipelineStream);
-        }
-
-        function triggerMediaUploadFlowSequenceModal(shouldDisplayModalWindowBlocks) {
-            const modalElementNode = document.getElementById('imagePostCreationModalWindow');
-            if(!modalElementNode) return;
-
-            if(shouldDisplayModalWindowBlocks) {
-                modalElementNode.style.display = "flex";
-            } else {
-                modalElementNode.style.display = "none";
-                temporaryCachedImageBase64PayloadString = "";
-                if(visualPreflightPreviewImageTag) { visualPreflightPreviewImageTag.style.display = "none"; visualPreflightPreviewImageTag.src = "#"; }
-                document.getElementById('pickerProgressLabelPrompt').innerText = "Click workspace framework layer bounds to load localized image assets file data...";
-                document.getElementById('postTextCaptionInputStringField').value = "";
-            }
-        }
-
-        function runBinaryImageExtractionPipelineStream(eventContext) {
-            const primaryFileObjectHandle = eventContext.target.files[0];
-            if(!primaryFileObjectHandle) return;
-
-            const standardReaderInstance = new FileReader();
-            document.getElementById('pickerProgressLabelPrompt').innerText = "Compiling binary system context streams calculations...";
-
-            standardReaderInstance.onload = function(completeProcessingEventResult) {
-                temporaryCachedImageBase64PayloadString = completeProcessingEventResult.target.result;
-                document.getElementById('pickerProgressLabelPrompt').innerText = `Target Bound: "${primaryFileObjectHandle.name.substring(0,16)}..." ready.`;
-                
-                if(visualPreflightPreviewImageTag) {
-                    visualPreflightPreviewImageTag.src = temporaryCachedImageBase64PayloadString;
-                    visualPreflightPreviewImageTag.style.display = "block";
-                }
-            };
-            standardReaderInstance.readAsDataURL(primaryFileObjectHandle);
-        }
-
-        function commitExtractedBinaryPayloadToLiveTimelineDataset() {
-            const descriptiveCaptionTextValue = document.getElementById('postTextCaptionInputStringField').value.trim() || "Social photography metadata showcase submission context asset allocation.";
-            
-            if(!temporaryCachedImageBase64PayloadString) {
-                alert("Compilation Block: Local cache memory buffers report no valid image base64 data structures stream configurations mapped.");
-                return;
-            }
-
-            const newGeneratedPostInstanceItemRow = {
-                id: "post-uuid-inst-" + Date.now(),
-                owner: activeAuthenticationSessionUserHandle.username,
-                imageUrl: temporaryCachedImageBase64PayloadString,
-                caption: descriptiveCaptionTextValue,
-                likes: [],
-                comments: []
-            };
-
-            statePoolPostsArray.unshift(newGeneratedPostInstanceItemRow);
-            commitActiveMemoryStatesToStorageCacheDevices();
-            triggerMediaUploadFlowSequenceModal(false);
-            routeToSectionView('feed');
-        }
-
-        /* Block 10: Dynamic Avatar Modification Implementations Systems */
-        const hiddenAvatarInputNodeChannel = document.getElementById('isolatedAvatarNativeSystemFileInputHandle');
-        if(hiddenAvatarInputNodeChannel) {
-            hiddenAvatarInputNodeChannel.addEventListener('change', executeProfileAvatarReplacementDataPipelineStream);
-        }
-
-        function executeProfileAvatarReplacementDataPipelineStream(eventContext) {
-            const targetAvatarFileHandle = eventContext.target.files[0];
-            if(!targetAvatarFileHandle) return;
-
-            const validationReaderInstance = new FileReader();
-            validationReaderInstance.onload = function(loadEventContext) {
-                const completedAvatarBase64StringPayload = loadEventContext.target.result;
-                
-                // Rewrite memory values profiles data inside general registry lists array sets
-                statePoolUsersArray = statePoolUsersArray.map(user => {
-                    if(user.username === activeAuthenticationSessionUserHandle.username) {
-                        user.avatar = completedAvatarBase64StringPayload;
-                        activeAuthenticationSessionUserHandle.avatar = completedAvatarBase64StringPayload;
-                    }
-                    return user;
-                });
-
-                commitActiveMemoryStatesToStorageCacheDevices();
-                generateUserProfileLayoutDashboardGridMarkup();
-            };
-            validationReaderInstance.readAsDataURL(targetAvatarFileHandle);
-        }
-
-        /* Block 11: Activity Log Notification Interface Panel Interactivity Actions */
-        function toggleActivityNotificationsPanel() {
-            const panel = document.getElementById('globalActivityNotificationDropdownTray');
-            if(!panel) return;
-
-            if(panel.style.display === "flex") {
-                panel.style.display = "none";
-            } else {
-                panel.style.display = "flex";
-                generateNotificationItemsMarkupMarkup();
-                localStorage.setItem('INSTA_GCP_LAST_READ_NOTI_COUNT_v5', statePoolNotificationsArray.length);
-                updateActivityIndicatorAlertBadgeDotState();
-            }
-        }
-
-        function generateNotificationItemsMarkupMarkup() {
-            const targetWrapperNode = document.getElementById('notificationsInjectionElementWrapper');
-            if(!targetWrapperNode) return;
-            targetWrapperNode.innerHTML = "";
-
-            if(statePoolNotificationsArray.length === 0) {
-                targetWrapperNode.innerHTML = `<div style="font-size:11px; text-align:center; color:var(--insta-muted); padding:14px 0;">No operational events logged yet.</div>`;
-                return;
-            }
-
-            statePoolNotificationsArray.forEach(noti => {
-                const rowElement = document.createElement('div');
-                rowElement.className = "notif-item";
-                rowElement.innerHTML = `
-                    <img src="${noti.avatar}" alt="">
-                    <span>${noti.message}</span>
-                `;
-                targetWrapperNode.appendChild(rowElement);
-            });
-        }
-
-        function updateActivityIndicatorAlertBadgeDotState() {
-            const alertBadgeDotElementNode = document.getElementById('activityBadgeAlertDot');
-            if(!alertBadgeDotElementNode) return;
-
-            const historicalReadCountMarker = parseInt(localStorage.getItem('INSTA_GCP_LAST_READ_NOTI_COUNT_v5') || "0", 10);
-            if(statePoolNotificationsArray.length > historicalReadCountMarker) {
-                alertBadgeDotElementNode.style.display = "block";
-            } else {
-                alertBadgeDotElementNode.style.display = "none";
-            }
-        }
-
-        // Hook framework startup bootstrap processes to initialize execution threads safely
-        window.addEventListener('DOMContentLoaded', bootSystemMemoryStorageDevicesOnLoad);
-    </script>
 </body>
 </html>
