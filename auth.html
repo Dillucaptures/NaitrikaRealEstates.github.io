@@ -115,10 +115,6 @@
             box-shadow: 0 0 0 3px rgba(0, 149, 246, 0.12);
         }
 
-        .ig-field::placeholder {
-            color: #999999;
-        }
-
         .submit-action-btn {
             width: 100%;
             padding: 13px;
@@ -133,14 +129,8 @@
             transition: background-color 0.2s ease;
         }
 
-        .submit-action-btn:hover {
-            background-color: var(--accent-blue-hover);
-        }
-
-        .submit-action-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
+        .submit-action-btn:hover { background-color: var(--accent-blue-hover); }
+        .submit-action-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
         .divider-row {
             display: flex;
@@ -217,12 +207,7 @@
             text-align: center;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
         }
-        .switch-box a {
-            color: var(--accent-blue);
-            text-decoration: none;
-            font-weight: 600;
-            margin-left: 5px;
-        }
+        .switch-box a { color: var(--accent-blue); text-decoration: none; font-weight: 600; margin-left: 5px; }
         .switch-box a:hover { text-decoration: underline; }
     </style>
 </head>
@@ -232,49 +217,37 @@
         <div class="auth-box">
             <div class="brand-heading">Dillu Captures</div>
             
-            <div class="login-tabs" id="loginTabTrackBar">
-                <button type="button" class="tab-btn active" id="modeIdentityTab">Email / Username</button>
-                <button type="button" class="tab-btn" id="modePhoneTab">Mobile Phone</button>
+            <div class="login-tabs">
+                <button type="button" class="tab-btn active" id="tabEmail">Email Address</button>
+                <button type="button" class="tab-btn" id="tabPhone">Mobile Phone</button>
             </div>
 
-            <form id="identityFormGateway">
-                
-                <!-- LOGIN UNIQUE FIELDS -->
-                <div class="form-input-container" id="loginIdentityContainer">
-                    <input type="text" id="unifiedLoginUserField" class="ig-field" placeholder="Username or email address">
-                </div>
-                <div class="form-input-container" id="loginPhoneContainer">
-                    <input type="text" id="phoneLoginUserField" class="ig-field" placeholder="Phone number (e.g., 9876543210)">
+            <form id="authForm">
+                <!-- Registration Profile Name Field -->
+                <div class="form-input-container" id="container-fullname">
+                    <input type="text" id="inputFullName" class="ig-field" placeholder="Full Name">
                 </div>
 
-                <!-- SIGNUP UNIQUE FIELDS -->
-                <div class="form-input-container" id="signupEmailContainer">
-                    <input type="email" id="registrationEmailField" class="ig-field" placeholder="Email address">
+                <!-- Input Contexts -->
+                <div class="form-input-container" id="container-email">
+                    <input type="email" id="inputEmail" class="ig-field" placeholder="Email address">
                 </div>
-                <div class="form-input-container" id="signupPhoneContainer">
-                    <input type="text" id="registrationPhoneField" class="ig-field" placeholder="Mobile phone number">
-                </div>
-
-                <!-- SIGNUP SHARED PROFILE FIELDS -->
-                <div class="form-input-container" id="signupFullNameContainer">
-                    <input type="text" id="registrationFullNameField" class="ig-field" placeholder="Full Name">
-                </div>
-                <div class="form-input-container" id="signupUsernameContainer">
-                    <input type="text" id="registrationUsernameField" class="ig-field" placeholder="Username">
+                <div class="form-input-container" id="container-phone">
+                    <input type="text" id="inputPhone" class="ig-field" placeholder="Phone number (e.g., 9876543210)">
                 </div>
 
-                <!-- PASSWORD FIELD (ALWAYS VISIBLE) -->
-                <div class="form-input-container" id="passwordContainer" style="display: block;">
-                    <input type="password" id="secureCredentialPasswordField" class="ig-field" placeholder="Password" required>
+                <!-- Password Field -->
+                <div class="form-input-container" id="container-password" style="display: block;">
+                    <input type="password" id="inputPassword" class="ig-field" placeholder="Password" required>
                 </div>
 
-                <button type="submit" id="primarySubmitButtonHandle" class="submit-action-btn">Log In</button>
+                <button type="submit" id="btnSubmit" class="submit-action-btn">Log In</button>
             </form>
 
             <div class="divider-row">or</div>
 
             <div class="social-stack">
-                <button type="button" class="social-btn" id="triggerGoogleAuthButton">
+                <button type="button" class="social-btn" id="btnGoogle">
                     <svg viewBox="0 0 24 24">
                         <path fill="#EA4335" d="M5.266 9.765A7.077 7.077 0 0 1 12 4.909c1.69 0 3.218.6 4.418 1.582l3.51-3.51C17.817 1.192 15.06 0 12 0 7.354 0 3.303 2.672 1.34 6.577l3.926 3.188z"/>
                         <path fill="#4285F4" d="M23.491 12.274c0-.796-.073-1.564-.205-2.304H12v4.383h6.455a5.537 5.537 0 0 1-2.4 3.633l3.741 2.899c2.187-2.014 3.695-4.978 3.695-8.611z"/>
@@ -285,12 +258,12 @@
                 </button>
             </div>
 
-            <button type="button" class="guest-link-btn" id="triggerAnonymousGuestButton">Browse as Guest</button>
-            <div id="alertToastBox" class="toast-notification"></div>
+            <button type="button" class="guest-link-btn" id="btnGuest">Browse as Guest</button>
+            <div id="toast" class="toast-notification"></div>
         </div>
 
         <div class="switch-box">
-            <span id="toggleTextRow">Don't have an account?<a href="#" id="toggleActionLinkViewport">Sign up</a></span>
+            <span id="toggleText">Don't have an account?<a href="#" id="toggleAction">Sign up</a></span>
         </div>
     </div>
 
@@ -306,15 +279,7 @@
             updateProfile,
             onAuthStateChanged
         } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-        import { 
-            getFirestore, 
-            doc, 
-            setDoc, 
-            getDocs, 
-            collection, 
-            query, 
-            where 
-        } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyATrPSHyg8SS6BzafsoFYI71g2-vAbMYjU",
@@ -322,8 +287,7 @@
             projectId: "dillucaptures07",
             storageBucket: "dillucaptures07.firebasestorage.app",
             messagingSenderId: "331192229836",
-            appId: "1:331192229836:web:dbde836b8e043558038769",
-            measurementId: "G-R0ES0XEHSV"
+            appId: "1:331192229836:web:dbde836b8e043558038769"
         };
 
         const app = initializeApp(firebaseConfig);
@@ -331,309 +295,164 @@
         const db = getFirestore(app);
         const googleProvider = new GoogleAuthProvider();
 
-        const identityFormGateway = document.getElementById('identityFormGateway');
-        const secureCredentialPasswordField = document.getElementById('secureCredentialPasswordField');
-        const primarySubmitButtonHandle = document.getElementById('primarySubmitButtonHandle');
-        const triggerGoogleAuthButton = document.getElementById('triggerGoogleAuthButton');
-        const triggerAnonymousGuestButton = document.getElementById('triggerAnonymousGuestButton');
-        const alertToastBox = document.getElementById('alertToastBox');
-        
-        // Form Inputs
-        const unifiedLoginUserField = document.getElementById('unifiedLoginUserField');
-        const phoneLoginUserField = document.getElementById('phoneLoginUserField');
-        const registrationEmailField = document.getElementById('registrationEmailField');
-        const registrationPhoneField = document.getElementById('registrationPhoneField');
-        const registrationFullNameField = document.getElementById('registrationFullNameField');
-        const registrationUsernameField = document.getElementById('registrationUsernameField');
-        
-        // Layout Containers
-        const loginIdentityContainer = document.getElementById('loginIdentityContainer');
-        const loginPhoneContainer = document.getElementById('loginPhoneContainer');
-        const signupEmailContainer = document.getElementById('signupEmailContainer');
-        const signupPhoneContainer = document.getElementById('signupPhoneContainer');
-        const signupFullNameContainer = document.getElementById('signupFullNameContainer');
-        const signupUsernameContainer = document.getElementById('signupUsernameContainer');
-        
-        const toggleTextRow = document.getElementById('toggleTextRow');
-        const modeIdentityTab = document.getElementById('modeIdentityTab');
-        const modePhoneTab = document.getElementById('modePhoneTab');
+        let isSignUp = false;
+        let authMode = 'email'; // 'email' or 'phone'
 
-        let runtimeViewIsSignUpContext = false;
-        let activeAuthTabMode = "identity"; // "identity" or "phone"
+        const authForm = document.getElementById('authForm');
+        const toast = document.getElementById('toast');
+        const btnSubmit = document.getElementById('btnSubmit');
 
-        // Clean raw string entries down to numeric elements
         function cleanPhone(rawString) {
             const numbersOnly = rawString.replace(/\D/g, '');
             return numbersOnly.length > 10 ? numbersOnly.slice(-10) : numbersOnly;
         }
 
-        // Handle dynamically toggling view states
-        function dynamicRenderUIEngine() {
-            clearNotificationToast();
+        function updateView() {
+            toast.style.display = 'none';
 
-            if (runtimeViewIsSignUpContext) {
-                modeIdentityTab.textContent = "Email Registration";
-                modePhoneTab.textContent = "Mobile Registration";
-                primarySubmitButtonHandle.textContent = "Sign Up";
-                toggleTextRow.innerHTML = `Have an account?<a href="#" id="toggleActionLinkViewport">Log in</a>`;
-            } else {
-                modeIdentityTab.textContent = "Email / Username";
-                modePhoneTab.textContent = "Mobile Phone";
-                primarySubmitButtonHandle.textContent = "Log In";
-                toggleTextRow.innerHTML = `Don't have an account?<a href="#" id="toggleActionLinkViewport">Sign up</a>`;
-            }
+            // Configure layout updates based on context
+            document.getElementById('container-fullname').style.display = isSignUp ? 'block' : 'none';
+            document.getElementById('container-email').style.display = (authMode === 'email') ? 'block' : 'none';
+            document.getElementById('container-phone').style.display = (authMode === 'phone') ? 'block' : 'none';
 
-            loginIdentityContainer.style.display = "none";
-            loginPhoneContainer.style.display = "none";
-            signupEmailContainer.style.display = "none";
-            signupPhoneContainer.style.display = "none";
-            signupFullNameContainer.style.display = "none";
-            signupUsernameContainer.style.display = "none";
+            document.getElementById('tabEmail').className = `tab-btn ${authMode === 'email' ? 'active' : ''}`;
+            document.getElementById('tabPhone').className = `tab-btn ${authMode === 'phone' ? 'active' : ''}`;
+            
+            btnSubmit.textContent = isSignUp ? "Sign Up" : "Log In";
+            document.getElementById('toggleText').innerHTML = isSignUp 
+                ? `Have an account?<a href="#" id="toggleAction">Log in</a>` 
+                : `Don't have an account?<a href="#" id="toggleAction">Sign up</a>`;
 
-            if (runtimeViewIsSignUpContext) {
-                signupFullNameContainer.style.display = "block";
-                signupUsernameContainer.style.display = "block";
-                
-                if (activeAuthTabMode === "identity") {
-                    signupEmailContainer.style.display = "block";
-                } else {
-                    signupPhoneContainer.style.display = "block";
-                }
-            } else {
-                if (activeAuthTabMode === "identity") {
-                    loginIdentityContainer.style.display = "block";
-                } else {
-                    loginPhoneContainer.style.display = "block";
-                }
-            }
-
-            document.getElementById('toggleActionLinkViewport').addEventListener('click', handleToggleViewAction);
+            document.getElementById('toggleAction').onclick = (e) => {
+                e.preventDefault();
+                isSignUp = !isSignUp;
+                updateView();
+            };
         }
 
-        function handleToggleViewAction(e) {
-            e.preventDefault();
-            runtimeViewIsSignUpContext = !runtimeViewIsSignUpContext;
-            dynamicRenderUIEngine();
-        }
+        document.getElementById('tabEmail').onclick = () => { authMode = 'email'; updateView(); };
+        document.getElementById('tabPhone').onclick = () => { authMode = 'phone'; updateView(); };
+        
+        updateView();
 
-        // Monitoring active system states
+        // Check authentication state shifts
         onAuthStateChanged(auth, (user) => {
             if (user) {
-                renderNotificationToast("Authorized. Routing to dashboard...", "success");
+                showToast("Authenticated! Redirecting...", "success");
                 window.location.href = "index.html";
             }
         });
 
-        modeIdentityTab.addEventListener('click', () => {
-            activeAuthTabMode = "identity";
-            modeIdentityTab.classList.add('active');
-            modePhoneTab.classList.remove('active');
-            dynamicRenderUIEngine();
-        });
-
-        modePhoneTab.addEventListener('click', () => {
-            activeAuthTabMode = "phone";
-            modePhoneTab.classList.add('active');
-            modeIdentityTab.classList.remove('active');
-            dynamicRenderUIEngine();
-        });
-
-        dynamicRenderUIEngine();
-
-        // Main event process controller
-        identityFormGateway.addEventListener('submit', async (e) => {
+        authForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            clearNotificationToast();
-            primarySubmitButtonHandle.disabled = true;
+            toast.style.display = 'none';
+            btnSubmit.disabled = true;
 
-            const inputPassword = secureCredentialPasswordField.value;
-            const usersRef = collection(db, "users");
+            const password = document.getElementById('inputPassword').value;
 
             try {
-                if (runtimeViewIsSignUpContext) {
-                    // ==========================================
-                    //           SIGNUP PIPELINE ENGINE
-                    // ==========================================
-                    const fullName = registrationFullNameField.value.trim();
-                    const username = registrationUsernameField.value.trim().toLowerCase();
+                let emailToUse = "";
+                let phoneToUse = "Not Provided";
 
-                    if (!username || !fullName) {
-                        renderNotificationToast("Please fill out your complete profile information details.", "error");
-                        primarySubmitButtonHandle.disabled = false;
-                        return;
+                if (authMode === 'phone') {
+                    const rawPhone = document.getElementById('inputPhone').value.trim();
+                    phoneToUse = cleanPhone(rawPhone);
+                    if (!phoneToUse || phoneToUse.length < 10) {
+                        throw new Error("Please enter a valid 10-digit phone number.");
                     }
-
-                    renderNotificationToast("Checking registry availability...", "success");
-                    const userCheckSnapshot = await getDocs(query(usersRef, where("username", "==", username)));
-                    if (!userCheckSnapshot.empty) {
-                        throw { code: 'custom/username-taken' };
-                    }
-
-                    let targetAccountEmail = "";
-                    let targetAccountPhone = "";
-
-                    if (activeAuthTabMode === "phone") {
-                        const rawPhone = registrationPhoneField.value.trim();
-                        targetAccountPhone = cleanPhone(rawPhone);
-
-                        if (!targetAccountPhone || targetAccountPhone.length < 10) {
-                            renderNotificationToast("Please provide a valid 10-digit mobile number.", "error");
-                            primarySubmitButtonHandle.disabled = false;
-                            return;
-                        }
-
-                        const phoneCheckSnapshot = await getDocs(query(usersRef, where("phone", "==", targetAccountPhone)));
-                        if (!phoneCheckSnapshot.empty) {
-                            throw { code: 'custom/phone-taken' };
-                        }
-
-                        targetAccountEmail = `${targetAccountPhone}@dillucaptures.local`;
-                    } else {
-                        targetAccountEmail = registrationEmailField.value.trim();
-                        if (!targetAccountEmail) {
-                            renderNotificationToast("Please fill out your target email address criteria.", "error");
-                            primarySubmitButtonHandle.disabled = false;
-                            return;
-                        }
-                        targetAccountPhone = "Not Provided";
-                    }
-
-                    renderNotificationToast("Creating core credentials token...", "success");
-                    const credentialsReceipt = await createUserWithEmailAndPassword(auth, targetAccountEmail, inputPassword);
-                    
-                    renderNotificationToast("Upgrading user profile meta properties...", "success");
-                    await updateProfile(credentialsReceipt.user, { displayName: fullName });
-                    
-                    renderNotificationToast("Writing tracking entry into Firestore indices...", "success");
-                    try {
-                        await setDoc(doc(db, "users", credentialsReceipt.user.uid), {
-                            uid: credentialsReceipt.user.uid,
-                            email: targetAccountEmail,
-                            username: username,
-                            phone: targetAccountPhone,
-                            displayName: fullName
-                        });
-                    } catch (firestoreError) {
-                        console.error("Firestore Write Error Details:", firestoreError);
-                        throw { code: 'custom/firestore-rules-blocked', message: firestoreError.message };
-                    }
-
+                    emailToUse = `${phoneToUse}@dillucaptures.local`;
                 } else {
-                    // ==========================================
-                    //           LOGIN PIPELINE ENGINE
-                    // ==========================================
-                    let executionTargetRouteEmail = "";
-                    let normalizedPhoneInput = "";
+                    emailToUse = document.getElementById('inputEmail').value.trim();
+                    if (!emailToUse) {
+                        throw new Error("Please enter an email address.");
+                    }
+                }
 
-                    if (activeAuthTabMode === "phone") {
-                        const rawPhoneInput = phoneLoginUserField.value.trim();
-                        normalizedPhoneInput = cleanPhone(rawPhoneInput);
-                        
-                        if (!normalizedPhoneInput || normalizedPhoneInput.length < 10) {
-                            renderNotificationToast("Provide your registered 10-digit mobile number.", "error");
-                            primarySubmitButtonHandle.disabled = false;
-                            return;
-                        }
-                        
-                        // Deterministic parsing: Bypass Firestore read requirements entirely during mobile login
-                        executionTargetRouteEmail = `${normalizedPhoneInput}@dillucaptures.local`;
-                    } else {
-                        const rawIdentifierValue = unifiedLoginUserField.value.trim();
-                        if (!rawIdentifierValue) {
-                            renderNotificationToast("Provide your username or registration email address.", "error");
-                            primarySubmitButtonHandle.disabled = false;
-                            return;
-                        }
-
-                        executionTargetRouteEmail = rawIdentifierValue;
-
-                        if (!rawIdentifierValue.includes('@')) {
-                            const sanitizedSearchQueryValue = rawIdentifierValue.toLowerCase();
-                            renderNotificationToast("Resolving user account string indexes...", "success");
-                            const searchSnapshot = await getDocs(query(usersRef, where("username", "==", sanitizedSearchQueryValue)));
-
-                            if (!searchSnapshot.empty) {
-                                executionTargetRouteEmail = searchSnapshot.docs[0].data().email;
-                            } else {
-                                throw { code: 'auth/user-not-found' };
-                            }
-                        }
+                if (isSignUp) {
+                    const fullName = document.getElementById('inputFullName').value.trim();
+                    if (!fullName) {
+                        throw new Error("Please fill out your full name.");
                     }
 
-                    renderNotificationToast("Verifying credential handshake properties...", "success");
-                    const loginReceipt = await signInWithEmailAndPassword(auth, executionTargetRouteEmail, inputPassword);
+                    showToast("Creating user account profile...", "success");
+                    const userCredential = await createUserWithEmailAndPassword(auth, emailToUse, password);
+                    
+                    await updateProfile(userCredential.user, { displayName: fullName });
+                    
+                    showToast("Saving user data mapping profile...", "success");
+                    await setDoc(doc(db, "users", userCredential.user.uid), {
+                        uid: userCredential.user.uid,
+                        email: emailToUse,
+                        phone: phoneToUse,
+                        displayName: fullName
+                    });
+                } else {
+                    showToast("Verifying access authorization data...", "success");
+                    const userCredential = await signInWithEmailAndPassword(auth, emailToUse, password);
 
-                    // Auto-Heal: Re-verify database mapping presence on successful mobile handshake strings
-                    if (activeAuthTabMode === "phone") {
+                    // Sync recovery path for existing phone numbers without firestore collections
+                    if (authMode === 'phone') {
                         try {
-                            await setDoc(doc(db, "users", loginReceipt.user.uid), {
-                                uid: loginReceipt.user.uid,
-                                email: executionTargetRouteEmail,
-                                phone: normalizedPhoneInput
+                            await setDoc(doc(db, "users", userCredential.user.uid), {
+                                uid: userCredential.user.uid,
+                                email: emailToUse,
+                                phone: phoneToUse
                             }, { merge: true });
-                        } catch(syncErr) {
-                            console.warn("Background document structural recovery skipped: ", syncErr.message);
+                        } catch (sErr) {
+                            console.warn("Doc synchronization bypassed:", sErr.message);
                         }
                     }
                 }
             } catch (err) {
-                console.error("Caught Operation Exception:", err);
-                renderNotificationToast(translateFirebaseErrorCodeMessage(err.code || err.message), "error");
+                console.error(err);
+                showToast(translateError(err.code || err.message), "error");
             } finally {
-                primarySubmitButtonHandle.disabled = false;
+                btnSubmit.disabled = false;
             }
         });
 
-        // SSO Action Trigger Handles
-        triggerGoogleAuthButton.addEventListener('click', async () => {
-            clearNotificationToast();
+        // Google Sign In Flow
+        document.getElementById('btnGoogle').onclick = async () => {
+            toast.style.display = 'none';
             try {
-                const results = await signInWithPopup(auth, googleProvider);
-                await setDoc(doc(db, "users", results.user.uid), {
-                    uid: results.user.uid,
-                    email: results.user.email,
-                    username: results.user.email.split('@')[0],
+                const result = await signInWithPopup(auth, googleProvider);
+                await setDoc(doc(db, "users", result.user.uid), {
+                    uid: result.user.uid,
+                    email: result.user.email,
                     phone: "Google Connected Account",
-                    displayName: results.user.displayName
+                    displayName: result.user.displayName
                 }, { merge: true });
             } catch (err) {
                 if (err.code !== "auth/popup-closed-by-user") {
-                    renderNotificationToast(translateFirebaseErrorCodeMessage(err.code || err.message), "error");
+                    showToast(translateError(err.code || err.message), "error");
                 }
             }
-        });
+        };
 
-        triggerAnonymousGuestButton.addEventListener('click', async () => {
-            clearNotificationToast();
+        // Anonymous Guest Sign In Flow
+        document.getElementById('btnGuest').onclick = async () => {
+            toast.style.display = 'none';
             try {
                 await signInAnonymously(auth);
             } catch (err) {
-                renderNotificationToast(translateFirebaseErrorCodeMessage(err.code || err.message), "error");
+                showToast(translateError(err.code || err.message), "error");
             }
-        });
+        };
 
-        function renderNotificationToast(messageTextString, stylisticVariantType) {
-            alertToastBox.textContent = messageTextString;
-            alertToastBox.className = `toast-notification ${stylisticVariantType}`;
-            alertToastBox.style.display = "block";
+        function showToast(msg, status) {
+            toast.textContent = msg;
+            toast.className = `toast-notification ${status}`;
+            toast.style.display = "block";
         }
 
-        function clearNotificationToast() {
-            alertToastBox.style.display = "none";
-        }
-
-        function translateFirebaseErrorCodeMessage(firebaseSystemCode) {
-            switch(firebaseSystemCode) {
-                case 'custom/username-taken': return "This username is already taken by another user.";
-                case 'custom/phone-taken': return "This mobile number is already registered to another account.";
-                case 'custom/firestore-rules-blocked': return "Auth active! Database profile write failed. Change Firestore rules to: allow read, write: if true;";
-                case 'auth/email-already-in-use': return "This mobile path maps to an existing active credential account configuration.";
-                case 'auth/weak-password': return "Security warning: Passwords must contain at least 6 characters.";
-                case 'auth/user-not-found':
-                case 'auth/invalid-credential': return "Authentication validation check failed: Invalid login password or phone number metric entry.";
-                case 'auth/wrong-password': return "Incorrect account clearance validation password key.";
-                case 'auth/unauthorized-domain': return "Gmail Blocked: Whitelist this URL domain inside your active Firebase Portal dashboard panel.";
-                default: return `Notice: ${firebaseSystemCode.replace('auth/', '').replace(/-/g, ' ')}`;
+        function translateError(code) {
+            switch(code) {
+                case 'auth/email-already-in-use': return "This address or number profile matches an active existing account setup.";
+                case 'auth/weak-password': return "Security restriction: Passwords must be at least 6 characters long.";
+                case 'auth/invalid-credential':
+                case 'auth/user-not-found': return "Authentication failure: Incorrect entry parameters matched.";
+                case 'auth/wrong-password': return "Incorrect authorization credential passkey verification mapping.";
+                default: return msg.replace('auth/', '').replace(/-/g, ' ');
             }
         }
     </script>
