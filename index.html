@@ -3,414 +3,286 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Photography Studio | Cloud Access</title>
+    <title>Dillu Captures | Studio Dashboard</title>
     <style>
         :root {
-            --glass-bg: rgba(255, 255, 255, 0.04);
-            --glass-border: rgba(255, 255, 255, 0.18);
-            --glass-glow: rgba(255, 255, 255, 0.12);
-            --text-primary: #ffffff;
-            --text-secondary: rgba(255, 255, 255, 0.6);
-            --instagram-blue: #0095f6;
-            --instagram-blue-hover: #1877f2;
+            --bg-dark: #0a0a0a;
+            --surface-dark: #121212;
+            --border-color: #222222;
+            --text-main: #f5f5f5;
+            --text-muted: #888888;
+            --accent-blue: #0095f6;
+            --accent-danger: #ff3b30;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            -webkit-font-smoothing: antialiased;
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        body { background-color: var(--bg-dark); color: var(--text-main); min-height: 100vh; padding-bottom: 60px; }
+
+        header {
+            border-bottom: 1px solid var(--border-color); padding: 15px 30px;
+            display: flex; justify-content: space-between; align-items: center;
+            position: fixed; top: 0; width: 100%; background: rgba(10,10,10,0.8);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); z-index: 100;
         }
+        .brand { font-weight: 300; letter-spacing: 3px; font-size: 20px; }
+        .user-panel { display: flex; align-items: center; gap: 15px; }
+        .user-avatar { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border-color); }
+        .logout-btn { background: none; border: 1px solid var(--border-color); color: var(--text-muted); padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 12px; }
+        .logout-btn:hover { color: var(--text-main); border-color: var(--text-main); }
 
-        body {
-            background-color: #000;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            padding: 20px;
+        main { max-width: 1200px; margin: 100px auto 0 auto; padding: 0 20px; }
+
+        .upload-deck {
+            background: var(--surface-dark); border: 1px dashed var(--border-color);
+            border-radius: 12px; padding: 40px; margin-bottom: 40px; text-align: center;
         }
-
-        /* --- iOS 26 LIQUID REFRACTIVE MESH ENVIRONMENT --- */
-        .liquid-environment {
-            position: fixed;
-            inset: 0;
-            z-index: 1;
-            overflow: hidden;
-            background: radial-gradient(circle at 50% 50%, #0c0d14 0%, #020204 100%);
+        .upload-deck.dragover { border-color: var(--accent-blue); background: rgba(0,149,246,0.03); }
+        .file-label { cursor: pointer; color: var(--accent-blue); font-weight: 500; display: block; margin-bottom: 15px; }
+        .caption-field {
+            background: var(--bg-dark); border: 1px solid var(--border-color);
+            color: #fff; padding: 12px 15px; border-radius: 8px; width: 100%; max-width: 500px;
+            outline: none; margin-bottom: 15px; font-size: 14px;
         }
-
-        .liquid-blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.45;
-            mix-blend-mode: screen;
-            animation: moveLiquid 25s infinite alternate ease-in-out;
+        .caption-field:focus { border-color: #444; }
+        .submit-btn {
+            background: var(--accent-blue); color: #fff; border: none; padding: 11px 24px;
+            border-radius: 8px; font-weight: 600; cursor: pointer; transition: opacity 0.2s;
         }
+        .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        
+        .progress-container { width: 100%; max-width: 500px; background: #222; height: 4px; border-radius: 2px; margin: 15px auto; display: none; overflow: hidden; }
+        .progress-bar { height: 100%; background: var(--accent-blue); width: 0%; transition: width 0.1s linear; }
 
-        .blob-magenta { width: 500px; height: 500px; background: #ff2d55; top: -10%; left: -5%; animation-delay: 0s; }
-        .blob-blue { width: 600px; height: 600px; background: #007aff; bottom: -15%; right: -5%; animation-delay: -5s; }
-        .blob-cyan { width: 400px; height: 400px; background: #4cd964; top: 30%; left: 40%; animation-delay: -12s; }
-
-        @keyframes moveLiquid {
-            0% { transform: translate(0px, 0px) scale(1) rotate(0deg); }
-            50% { transform: translate(80px, -60px) scale(1.15) rotate(180deg); }
-            100% { transform: translate(-50px, 40px) scale(0.9) rotate(360deg); }
+        .gallery-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px; margin-top: 20px;
         }
-
-        /* --- INSTAGRAM SYSTEM HOUSING (LIQUID GLASS IMPLEMENTATION) --- */
-        .auth-container {
-            position: relative;
-            z-index: 10;
-            width: 100%;
-            max-width: 385px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
+        .photo-card {
+            background: var(--surface-dark); border: 1px solid var(--border-color);
+            border-radius: 12px; overflow: hidden; position: relative;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
-
-        .liquid-glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(35px) saturate(210%);
-            -webkit-backdrop-filter: blur(35px) saturate(210%);
-            border: 1px solid var(--glass-border);
-            border-radius: 30px;
-            padding: 40px 35px;
-            text-align: center;
-            box-shadow: 
-                0 30px 70px rgba(0, 0, 0, 0.6),
-                inset 0 1px 0 var(--glass-glow),
-                inset 0 10px 20px rgba(255, 255, 255, 0.05);
-            position: relative;
+        .photo-card:hover { transform: translateY(-4px); }
+        .image-wrapper { width: 100%; aspect-ratio: 4/5; background: #000; overflow: hidden; position: relative; }
+        .image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .card-overlay {
+            position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 50%);
+            display: flex; flex-direction: column; justify-content: space-between; opacity: 0; transition: opacity 0.2s ease; padding: 15px;
         }
-
-        /* Specular light refraction layer across organic boundaries */
-        .liquid-glass-card::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 30px;
-            background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 60%);
-            pointer-events: none;
+        .photo-card:hover .card-overlay { opacity: 1; }
+        
+        .delete-trigger {
+            align-self: flex-end; background: rgba(255, 59, 48, 0.9); color: white;
+            border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; font-size: 18px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: transform 0.2s;
         }
-
-        /* Typography & Instagram Style Identity */
-        .brand-logo {
-            font-size: 2.1rem;
-            color: var(--text-primary);
-            font-weight: 300;
-            letter-spacing: 5px;
-            margin-bottom: 35px;
-            text-transform: uppercase;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        }
-
-        /* Form Controls Framework */
-        .input-group {
-            margin-bottom: 8px;
-            position: relative;
-        }
-
-        .glass-input {
-            width: 100%;
-            padding: 11px 14px;
-            background: rgba(0, 0, 0, 0.35);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 8px;
-            color: var(--text-primary);
-            font-size: 13px;
-            outline: none;
-            transition: all 0.2s ease;
-        }
-
-        .glass-input:focus {
-            border-color: rgba(255, 255, 255, 0.35);
-            background: rgba(0, 0, 0, 0.5);
-        }
-
-        .glass-input::placeholder {
-            color: rgba(255, 255, 255, 0.35);
-        }
-
-        /* Call To Action Controls */
-        .action-button {
-            width: 100%;
-            padding: 12px;
-            background: var(--instagram-blue);
-            border: none;
-            border-radius: 10px;
-            color: white;
-            font-weight: 600;
-            font-size: 14px;
-            cursor: pointer;
-            margin-top: 14px;
-            transition: background-color 0.2s, transform 0.1s;
-        }
-
-        .action-button:hover { background-color: var(--instagram-blue-hover); }
-        .action-button:active { transform: scale(0.99); }
-
-        /* Structural Divider Elements */
-        .or-divider {
-            display: flex;
-            align-items: center;
-            margin: 22px 0;
-            color: var(--text-secondary);
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .or-divider::before, .or-divider::after {
-            content: "";
-            flex: 1;
-            height: 1px;
-            background: rgba(255, 255, 255, 0.1);
-        }
-        .or-divider::before { margin-right: 18px; }
-        .or-divider::after { margin-left: 18px; }
-
-        /* Alternative OAuth Providers Linkages */
-        .google-auth-trigger {
-            background: transparent;
-            border: none;
-            color: var(--text-primary);
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 5px;
-        }
-        .google-auth-trigger svg { width: 16px; height: 16px; fill: currentColor; }
-
-        /* Feedback Messenger Components */
-        .status-toast {
-            font-size: 12px;
-            margin-top: 15px;
-            padding: 8px;
-            border-radius: 6px;
-            display: none;
-        }
-        .status-toast.error { background: rgba(255, 59, 48, 0.15); color: #ff453a; border: 1px solid rgba(255, 59, 48, 0.2); }
-        .status-toast.success { background: rgba(48, 209, 88, 0.15); color: #30d158; border: 1px solid rgba(48, 209, 88, 0.2); }
-
-        /* Context Tab Toggle Box (Instagram Layout Standard) */
-        .toggle-view-card {
-            padding: 22px;
-            font-size: 14px;
-            color: var(--text-primary);
-        }
-        .toggle-view-card a {
-            color: var(--instagram-blue);
-            text-decoration: none;
-            font-weight: 600;
-            margin-left: 4px;
-        }
-        .toggle-view-card a:hover { text-decoration: underline; }
-
-        /* Structural Visibility Flags */
-        .signup-context { display: none; }
-        body.signup-active .signup-context { display: block; }
-        body.signup-active .login-context { display: none; }
+        .delete-trigger:hover { transform: scale(1.1); background: var(--accent-danger); }
+        .meta-caption { margin-top: auto; color: #fff; font-size: 14px; }
+        .meta-author { color: var(--text-muted); font-size: 11px; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
     </style>
 </head>
 <body>
 
-    <!-- LIQUID SPACE BACKDROP LAYER -->
-    <div class="liquid-environment">
-        <div class="liquid-blob blob-magenta"></div>
-        <div class="liquid-blob blob-blue"></div>
-        <div class="liquid-blob blob-cyan"></div>
-    </div>
+    <header>
+        <div class="brand">DILLU CAPTURES</div>
+        <div class="user-panel">
+            <img src="" alt="Avatar" class="user-avatar" id="userAvatar">
+            <button class="logout-btn" id="logoutBtn">Log Out</button>
+        </div>
+    </header>
 
-    <!-- CORE INSTAGRAM CONTEXT AUTH WRAPPER -->
-    <div class="auth-container">
-        
-        <!-- MODULE CARD 1: PRIMARY INTERACTION SUITE -->
-        <div class="liquid-glass-card">
-            <div class="brand-logo">LENS•STUDIO</div>
+    <main>
+        <section class="upload-deck" id="dropZone">
+            <label for="fileInput" class="file-label">Select photography file or drop image here</label>
+            <input type="file" id="fileInput" accept="image/*" style="display: none;">
             
-            <form id="authForm">
-                <!-- Sign Up Specific Fields -->
-                <div class="input-group signup-context">
-                    <input type="text" id="displayNameField" class="glass-input" placeholder="Full Name" autocomplete="name">
-                </div>
+            <input type="text" id="captionInput" class="caption-field" placeholder="Add capture data, context, or caption..."><br>
+            
+            <div class="progress-container" id="progressWrap">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            
+            <button class="submit-btn" id="uploadBtn">Publish Asset to Gallery</button>
+        </section>
 
-                <!-- Shared Credentials System Fields -->
-                <div class="input-group">
-                    <input type="email" id="emailField" class="glass-input" placeholder="Email address" required autocomplete="email">
-                </div>
-                <div class="input-group">
-                    <input type="password" id="passwordField" class="glass-input" placeholder="Password" required autocomplete="current-password">
-                </div>
+        <section class="gallery-grid" id="galleryContainer"></section>
+    </main>
 
-                <button type="submit" id="mainActionButton" class="action-button">Log In</button>
-            </form>
-
-            <div class="or-divider">or</div>
-
-            <button type="button" class="google-auth-trigger" id="googleAuthButton">
-                <svg viewBox="0 0 24 24">
-                    <path d="M12.24 10.285V13.4h6.887c-.275 1.565-1.88 4.604-6.887 4.604-4.33 0-7.866-3.577-7.866-8s3.536-8 7.866-8c2.46 0 4.105 1.025 5.047 1.926l2.427-2.334C17.955 2.192 15.34 1 12.24 1 6.033 1 1 6.033 1 12.24s5.033 11.24 11.24 11.24c6.478 0 10.793-4.537 10.793-10.997 0-.746-.08-1.32-.176-1.898H12.24z"/>
-                </svg>
-                Log in with Google
-            </button>
-
-            <div id="statusToast" class="status-toast"></div>
-        </div>
-
-        <!-- MODULE CARD 2: RUNTIME TAB CONTROL BAR -->
-        <div class="liquid-glass-card toggle-view-card">
-            <span class="login-context">Don't have an account?<a href="#" id="switchToSignUp">Sign up</a></span>
-            <span class="signup-context">Have an account?<a href="#" id="switchToLogIn">Log in</a></span>
-        </div>
-    </div>
-
-    <!-- REVOLUTIONARY CDN DRIVEN MODULAR JS ARCHITECTURE -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { 
-            getAuth, 
-            createUserWithEmailAndPassword, 
-            signInWithEmailAndPassword, 
-            signInWithPopup, 
-            GoogleAuthProvider,
-            updateProfile 
-        } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { getFirestore, collection, addDoc, deleteDoc, doc, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { getStorage, ref, uploadBytesResumable, getDownloadURL, deleteObject } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
 
-        // ================================================================
-        // INSERT REQUISITE SYSTEM PARAMETERS FROM FIREBASE CONSOLE HERE:
-        // ================================================================
+        // Integrated Configuration Object
         const firebaseConfig = {
-            apiKey: "YOUR_API_KEY",
-            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-            projectId: "YOUR_PROJECT_ID",
-            storageBucket: "YOUR_PROJECT_ID.appspot.com",
-            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-            appId: "YOUR_APP_ID"
+            apiKey: "AIzaSyATrPSHyg8SS6BzafsoFYI71g2-vAbMYjU",
+            authDomain: "dillucaptures07.firebaseapp.com",
+            projectId: "dillucaptures07",
+            storageBucket: "dillucaptures07.firebasestorage.app",
+            messagingSenderId: "331192229836",
+            appId: "1:331192229836:web:dbde836b8e043558038769",
+            measurementId: "G-R0ES0XEHSV"
         };
 
-        // Initialize Runtime Services
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
-        const googleProvider = new GoogleAuthProvider();
+        const db = getFirestore(app);
+        const storage = getStorage(app);
 
-        // Document Object Model Targets Maps
-        const bodyNode = document.body;
-        const authForm = document.getElementById('authForm');
-        const emailInput = document.getElementById('emailField');
-        const passwordInput = document.getElementById('passwordField');
-        const nameInput = document.getElementById('displayNameField');
-        const submitBtn = document.getElementById('mainActionButton');
-        const googleBtn = document.getElementById('googleAuthButton');
-        const statusToast = document.getElementById('statusToast');
-        
-        const triggerSignUp = document.getElementById('switchToSignUp');
-        const triggerLogIn = document.getElementById('switchToLogIn');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const userAvatar = document.getElementById('userAvatar');
+        const fileInput = document.getElementById('fileInput');
+        const captionInput = document.getElementById('captionInput');
+        const uploadBtn = document.getElementById('uploadBtn');
+        const dropZone = document.getElementById('dropZone');
+        const progressWrap = document.getElementById('progressWrap');
+        const progressBar = document.getElementById('progressBar');
+        const galleryContainer = document.getElementById('galleryContainer');
 
-        // State machine parameter values
-        let checkSignUpStateActive = false;
+        let currentUser = null;
 
-        // --- SUBSTRUCTURE CONTROLLER MECHANICS ---
-        triggerSignUp.addEventListener('click', (e) => {
-            e.preventDefault();
-            checkSignUpStateActive = true;
-            bodyNode.classList.add('signup-active');
-            submitBtn.textContent = "Sign Up";
-            clearToast();
-        });
+        logoutBtn.addEventListener('click', () => signOut(auth));
 
-        triggerLogIn.addEventListener('click', (e) => {
-            e.preventDefault();
-            checkSignUpStateActive = false;
-            bodyNode.classList.remove('signup-active');
-            submitBtn.textContent = "Log In";
-            clearToast();
-        });
-
-        // --- CORE ATOMIC HANDSHAKE ACTIONS DISPATCHER ---
-        authForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            clearToast();
-
-            const targetEmailValue = emailInput.value.trim();
-            const targetPasswordValue = passwordInput.value;
-            const targetNameValue = nameInput.value.trim();
-
-            if (checkSignUpStateActive) {
-                // Task Array Alpha: Execute Firebase Web Account Creation Loop
-                try {
-                    const credentialsReceipt = await createUserWithEmailAndPassword(auth, targetEmailValue, targetPasswordValue);
-                    
-                    if (targetNameValue) {
-                        await updateProfile(credentialsReceipt.user, { displayName: targetNameValue });
-                    }
-                    
-                    displayToast("Account initialized successfully! Connecting...", "success");
-                    redirectUserToDashboard();
-                } catch (error) {
-                    displayToast(parseFirebaseErrorMessage(error.code), "error");
-                }
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                currentUser = user;
+                userAvatar.src = user.photoURL || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&q=80';
+                initializeGalleryStream();
             } else {
-                // Task Array Beta: Secure Authentication Sign In Loop Execution
-                try {
-                    await signInWithEmailAndPassword(auth, targetEmailValue, targetPasswordValue);
-                    displayToast("Identity validated. Access granted.", "success");
-                    redirectUserToDashboard();
-                } catch (error) {
-                    displayToast(parseFirebaseErrorMessage(error.code), "error");
-                }
+                window.location.href = "auth.html";
             }
         });
 
-        // --- GOOGLE IDENTITY PROVIDER DEPLOYMENT OAUTH LINKAGES ---
-        googleBtn.addEventListener('click', async () => {
-            clearToast();
+        // Drag & Drop
+        ['dragenter', 'dragover'].forEach(name => {
+            dropZone.addEventListener(name, (e) => { e.preventDefault(); dropZone.classList.add('dragover'); });
+        });
+        ['dragleave', 'drop'].forEach(name => {
+            dropZone.addEventListener(name, (e) => { e.preventDefault(); dropZone.classList.remove('dragover'); });
+        });
+        dropZone.addEventListener('drop', (e) => {
+            if(e.dataTransfer.files.length) fileInput.files = e.dataTransfer.files;
+        });
+
+        // Storage Upload Operations Pipeline
+        uploadBtn.addEventListener('click', () => {
+            const rawFile = fileInput.files[0];
+            const captionText = captionInput.value.trim();
+
+            if (!rawFile) {
+                alert("Please select an image file to upload.");
+                return;
+            }
+
+            uploadBtn.disabled = true;
+            progressWrap.style.display = 'block';
+
+            const filePath = `photography/${Date.now()}_${rawFile.name}`;
+            const fileRef = ref(storage, filePath);
+            const uploadTask = uploadBytesResumable(fileRef, rawFile);
+
+            uploadTask.on('state_changed', 
+                (snapshot) => {
+                    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    progressBar.style.width = progress + '%';
+                }, 
+                (error) => {
+                    console.error("Upload process error: ", error);
+                    alert("Upload failed. Verify your Firebase Storage rules allow authenticated users.");
+                    resetUploadZone();
+                }, 
+                async () => {
+                    const downloadUrl = await getDownloadURL(uploadTask.snapshot.ref);
+                    
+                    await addDoc(collection(db, "photography_gallery"), {
+                        assetUrl: downloadUrl,
+                        storagePath: filePath,
+                        caption: captionText || "Untitled Capture Asset",
+                        ownerUid: currentUser.uid,
+                        ownerDisplayName: currentUser.displayName || "Anonymous Creator",
+                        timestamp: Date.now()
+                    });
+
+                    resetUploadZone();
+                }
+            );
+        });
+
+        function resetUploadZone() {
+            uploadBtn.disabled = false;
+            progressWrap.style.display = 'none';
+            progressBar.style.width = '0%';
+            captionInput.value = "";
+            fileInput.value = "";
+        }
+
+        // Live Real-Time Gallery Synchronization Loop
+        function initializeGalleryStream() {
+            const galleryQuery = query(collection(db, "photography_gallery"), orderBy("timestamp", "desc"));
+
+            onSnapshot(galleryQuery, (snapshot) => {
+                galleryContainer.innerHTML = "";
+                
+                if(snapshot.empty) {
+                    galleryContainer.innerHTML = `<div style="grid-column: 1/-1; padding: 40px; text-align:center; color:var(--text-muted);">No images found in your photography feed. Upload your first capture above!</div>`;
+                    return;
+                }
+
+                snapshot.forEach((docRecord) => {
+                    const data = docRecord.data();
+                    const docId = docRecord.id;
+                    const isOwner = currentUser && (currentUser.uid === data.ownerUid);
+
+                    const card = document.createElement('div');
+                    card.className = "photo-card";
+                    card.innerHTML = `
+                        <div class="image-wrapper">
+                            <img src="${data.assetUrl}" alt="Photo Gallery Asset" loading="lazy">
+                            <div class="card-overlay">
+                                ${isOwner ? `<button class="delete-trigger" data-id="${docId}" data-path="${data.storagePath}">&times;</button>` : '<div></div>'}
+                                <div>
+                                    <p class="meta-caption">${escapeHtml(data.caption)}</p>
+                                    <p class="meta-author">By ${escapeHtml(data.ownerDisplayName)}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+
+                    if(isOwner) {
+                        card.querySelector('.delete-trigger').addEventListener('click', (e) => {
+                            deleteAssetRecord(e.target.dataset.id, e.target.dataset.path);
+                        });
+                    }
+
+                    galleryContainer.appendChild(card);
+                });
+            });
+        }
+
+        // Atomic File Deletion Method Block
+        async function deleteAssetRecord(firestoreDocId, storagePath) {
+            if (!confirm("Are you sure you want to permanently delete this photograph from your collection?")) return;
+
             try {
-                await signInWithPopup(auth, googleProvider);
-                displayToast("Google identity synchronized. Relocating context...", "success");
-                redirectUserToDashboard();
-            } catch (error) {
-                if (error.code !== "auth/popup-closed-by-user") {
-                    displayToast(parseFirebaseErrorMessage(error.code), "error");
-                }
+                // Delete from Firebase Storage Bucket
+                const assetStorageRef = ref(storage, storagePath);
+                await deleteObject(assetStorageRef);
+
+                // Delete Document Record metadata from Firestore NoSQL Index
+                await deleteDoc(doc(db, "photography_gallery", firestoreDocId));
+            } catch (err) {
+                console.error("Deletion error tracking output: ", err);
+                alert("Failed to fully clean up data assets. Confirm your security policies allow write/delete executions.");
             }
-        });
-
-        // --- SYSTEM AUXILIARY UTILITY INTERFACES ---
-        function displayToast(msg, variant) {
-            statusToast.textContent = msg;
-            statusToast.className = `status-toast ${variant}`;
-            statusToast.style.display = "block";
         }
 
-        function clearToast() {
-            statusToast.style.display = "none";
-            statusToast.textContent = "";
-        }
-
-        function redirectUserToDashboard() {
-            submitBtn.disabled = true;
-            // Point this directly to your photography portfolio gallery dashboard landing address
-            setTimeout(() => { window.location.href = "index.html"; }, 1200);
-        }
-
-        function parseFirebaseErrorMessage(systemErrorCode) {
-            switch(systemErrorCode) {
-                case 'auth/email-already-in-use': return "This email registry tracking is occupied by another account.";
-                case 'auth/invalid-email': return "The submitted email does not conform to address schemas.";
-                case 'auth/operation-not-allowed': return "The backend authentication provider is currently disabled.";
-                case 'auth/weak-password': return "Security floor rejected: Provide a stronger password metric matrix.";
-                case 'auth/missing-password': return "Authentication rejected: Password buffer cannot be empty.";
-                case 'auth/invalid-credential': return "Authentication failure: Credentials mismatch system logs.";
-                default: return `Gateway Connection Drop: ${systemErrorCode.replace('auth/', '').replace(/-/g, ' ')}`;
-            }
+        function escapeHtml(str) {
+            const div = document.createElement('div');
+            div.innerText = str;
+            return div.innerHTML;
         }
     </script>
 </body>
