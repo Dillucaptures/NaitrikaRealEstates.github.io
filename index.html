@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dillu Captures - Premium Photography Platform</title>
+    <title>Dillu Captures</title>
     <style>
         :root {
             --bg-black: #000000;
@@ -30,7 +30,7 @@
             overflow-x: hidden; 
         }
 
-        /* --- INSTAGRAM SIDEBAR NAVIGATION --- */
+        /* --- INSTAGRAM NAVIGATION SIDEBAR --- */
         .side-navigation {
             position: fixed; 
             top: 0; 
@@ -90,7 +90,7 @@
             margin-top: auto; 
         }
 
-        /* --- MAIN WORKSPACE FEED GRID --- */
+        /* --- CENTRAL MAIN STREAM FEED --- */
         .feed-container { 
             margin-left: 244px; 
             display: flex; 
@@ -107,7 +107,7 @@
             padding-bottom: 100px; 
         }
 
-        /* --- POST CARD DESIGN --- */
+        /* --- POST COMPONENT CARD --- */
         .ig-post { 
             border-bottom: 1px solid var(--ig-border); 
             padding-bottom: 20px; 
@@ -154,7 +154,7 @@
             display: block; 
         }
 
-        /* Post Image Container */
+        /* Post Image Housing Frame */
         .post-media-frame { 
             width: 100%; 
             border-radius: 4px; 
@@ -171,7 +171,7 @@
             max-height: 585px; 
         }
 
-        /* Action Row Controls */
+        /* Action bar elements layout */
         .post-actions { 
             display: flex; 
             align-items: center; 
@@ -216,7 +216,7 @@
             100% { transform: scale(1); }
         }
 
-        /* Engagement Content Blocks */
+        /* Metadata & comments details structure */
         .likes-count { 
             font-size: 14px; 
             font-weight: 600; 
@@ -236,7 +236,6 @@
             margin-right: 8px; 
         }
         
-        /* Comments Panel */
         .comments-section { 
             padding: 0 4px; 
             display: flex; 
@@ -261,7 +260,7 @@
             color: #efefef; 
         }
 
-        /* Interactive Comment Input */
+        /* Comment writing frame container */
         .comment-form-container { 
             display: flex; 
             align-items: center; 
@@ -298,7 +297,7 @@
             pointer-events: auto; 
         }
 
-        /* --- TOAST NOTIFICATION SYSTEM --- */
+        /* --- FLOATING TOAST NOTIFICATION BLOCKS --- */
         .share-alert {
             position: fixed; 
             bottom: 20px; 
@@ -316,7 +315,7 @@
         }
         @keyframes slideUpIn { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
-        /* --- APP STANDARD MODAL CONFIGURATION --- */
+        /* --- SYSTEM DESIGN COMPLEX OVERLAYS (MODALS) --- */
         .composition-modal {
             position: fixed; 
             inset: 0; 
@@ -423,7 +422,7 @@
             cursor: not-allowed; 
         }
         
-        /* Upload Progress Loading Bar */
+        /* Modern Upload Performance Loading Bars */
         .modal-progress { 
             width: 100%; 
             height: 6px; 
@@ -441,7 +440,7 @@
             transition: width 0.1s linear;
         }
 
-        /* Profile Display Details */
+        /* Profile Interface Formatting */
         .profile-avatar-large {
             width: 80px;
             height: 80px;
@@ -457,7 +456,7 @@
             margin-bottom: 4px;
         }
 
-        /* Responsive UI Adjustments */
+        /* Responsive Layout Overrides */
         @media(max-width: 768px) {
             .side-navigation { width: 72px; padding: 25px 0; align-items: center; }
             .nav-logo { display: none; }
@@ -468,7 +467,7 @@
 </head>
 <body>
 
-    <!-- INSTAGRAM APP SIDE SIDEBAR NAVIGATION -->
+    <!-- APPLICATION INSTAGRAM STYLE SIDE NAVIGATION BAR -->
     <nav class="side-navigation">
         <div class="nav-logo">Dillu Captures</div>
         
@@ -493,12 +492,12 @@
         </div>
     </nav>
 
-    <!-- CENTER FEED LAYOUT CONTAINER -->
+    <!-- MAIN INTERACTIVE STREAM WORKSPACE AREA -->
     <div class="feed-container">
         <main class="feed-column" id="socialFeedContainer"></main>
     </div>
 
-    <!-- CREATE COMPOSITION MODAL DIALOG -->
+    <!-- CREATE COMPOSITION ENGINE POPUP BOX -->
     <div class="composition-modal" id="createPostModal">
         <div class="modal-body-card">
             <div class="modal-header">
@@ -521,7 +520,7 @@
         </div>
     </div>
 
-    <!-- PROFILE MANAGEMENT DIALOG OVERLAY -->
+    <!-- USER ACCREDITATION PROFILE CARD OVERLAY -->
     <div class="composition-modal" id="profileViewModal">
         <div class="modal-body-card">
             <div class="modal-header">
@@ -530,18 +529,18 @@
                 <button class="close-modal-x" id="closeProfileModal">&times;</button>
             </div>
             <div class="modal-content-area" style="text-align: center;">
-                <img id="profileUserImage" src="" alt="User Identity Portrait" class="profile-avatar-large">
+                <img id="profileUserImage" src="" alt="User Portrait Identity" class="profile-avatar-large">
                 <h3 id="profileUsernameDisplay" style="margin-bottom: 12px;">Photographer</h3>
                 <div class="profile-meta-text" id="profileEmailDisplay">Email Account</div>
-                <div class="profile-meta-text" id="profileUidDisplay" style="font-family: monospace; font-size: 11px;">UID Reference</div>
+                <div class="profile-meta-text" id="profileUidDisplay" style="font-family: monospace; font-size: 11px;">UID Hash</div>
             </div>
         </div>
     </div>
 
-    <!-- COMPONENT ALERT TOAST PANELS -->
+    <!-- GLOBAL STATUS FEEDBACK MECHANISMS -->
     <div class="share-alert" id="toastAlert">Asset CDN url successfully linked to clipboard!</div>
 
-    <!-- BACKEND ENGINE STORAGE LAYER CONNECTORS -->
+    <!-- FIREBASE PLATFORM ENGINE DISTRIBUTED BACKEND SYSTEMS SCRIPTS -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
@@ -559,13 +558,13 @@
             measurementId: "G-R0ES0XEHSV"
         };
 
-        // App Engine Global Instances
+        // App Engine Architecture Global Instances
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
         const storage = getStorage(app);
 
-        // Core App Node Interface Pointers
+        // Core App UI Interface Node Pointers
         const socialFeedContainer = document.getElementById('socialFeedContainer');
         const triggerCreateModal = document.getElementById('triggerCreateModal');
         const closeCreateModal = document.getElementById('closeCreateModal');
@@ -573,7 +572,7 @@
         const logoutActionTrigger = document.getElementById('logoutActionTrigger');
         const toastAlert = document.getElementById('toastAlert');
         
-        // Profile Modal Component Elements
+        // Profile Modal Pointers
         const triggerProfileModal = document.getElementById('triggerProfileModal');
         const profileViewModal = document.getElementById('profileViewModal');
         const closeProfileModal = document.getElementById('closeProfileModal');
@@ -582,7 +581,7 @@
         const profileEmailDisplay = document.getElementById('profileEmailDisplay');
         const profileUidDisplay = document.getElementById('profileUidDisplay');
 
-        // File Uploader Elements
+        // Form Fields Pointers
         const modalFileInput = document.getElementById('modalFileInput');
         const modalFileLabel = document.getElementById('modalFileLabel');
         const fileSelectionFeedback = document.getElementById('fileSelectionFeedback');
@@ -592,9 +591,9 @@
         const modalUploadProgressBar = document.getElementById('modalUploadProgressBar');
 
         let activeUser = null;
-        let unsubscribeFeed = null; // Unsubscribe reference to clean up snapshot listeners clean
+        let unsubscribeFeed = null; 
 
-        // --- ACCOUNT ACCESS SECURITY STATUS ROUTINES ---
+        // --- ACCOUNT SECURITY STATUS REALTIME CHECKERS ---
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 activeUser = user;
@@ -610,7 +609,7 @@
             signOut(auth);
         });
 
-        // --- PROFILE VISIBILITY HANDLERS ---
+        // --- ACCOUNT META CARD DISPLAY UTILS ---
         triggerProfileModal.addEventListener('click', () => profileViewModal.classList.add('active'));
         closeProfileModal.addEventListener('click', () => profileViewModal.classList.remove('active'));
 
@@ -618,17 +617,17 @@
             if(!activeUser) return;
             profileUsernameDisplay.textContent = activeUser.displayName || activeUser.email.split('@')[0];
             profileEmailDisplay.textContent = activeUser.email;
-            profileUidDisplay.textContent = `ID Reference: ${activeUser.uid}`;
+            profileUidDisplay.textContent = `ID Hash Reference: ${activeUser.uid}`;
             profileUserImage.src = activeUser.photoURL || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80';
         }
 
-        // --- COMPOSITION MODAL DISPLAY CONTROLS ---
+        // --- MODAL UTILS CONTROLS INTERFACES ---
         triggerCreateModal.addEventListener('click', () => createPostModal.classList.add('active'));
         closeCreateModal.addEventListener('click', () => clearAndCloseUploadModal());
         
         modalFileInput.addEventListener('change', (e) => {
             if(e.target.files.length) {
-                fileSelectionFeedback.textContent = `Selected File: ${e.target.files[0].name}`;
+                fileSelectionFeedback.textContent = `File Detected: ${e.target.files[0].name}`;
                 modalFileLabel.classList.add('has-file');
             }
         });
@@ -644,20 +643,21 @@
             modalPublishBtn.disabled = false;
         }
 
-        // --- BINARY IMAGE MULTIPART DATA STREAM PUBLISHING ---
+        // --- FIXED: SECURE BOUND BINARY MULTIPART UPLOAD PIPELINE ---
         modalPublishBtn.addEventListener('click', () => {
             const rawFile = modalFileInput.files[0];
             const captionContent = modalCaptionInput.value.trim();
 
             if(!rawFile) {
-                alert("Validation Fail: Please select an image asset to publish first.");
+                alert("Validation Exception: Select a clean photographic source image file first.");
                 return;
             }
 
             modalPublishBtn.disabled = true;
             modalUploadProgressContainer.style.display = 'block';
 
-            const assetPath = `social_feed/${Date.now()}_${rawFile.name}`;
+            // FIXED: Path alignment matches the secure storage rules pattern: social_feed/{userId}/{file}
+            const assetPath = `social_feed/${activeUser.uid}/${Date.now()}_${rawFile.name}`;
             const targetStorageRef = ref(storage, assetPath);
             const dataUploadTask = uploadBytesResumable(targetStorageRef, rawFile);
 
@@ -667,16 +667,14 @@
                     modalUploadProgressBar.style.width = currentProgress + '%';
                 }, 
                 (err) => {
-                    console.error("Storage upload pipe failed: ", err);
-                    alert("Upload Failed! Make sure your Firebase Storage Rules permit writes.");
+                    console.error("Storage upload pipe breakdown: ", err);
+                    alert("Upload Blocked by Security Policies! Your frontend paths are verified, double-check your storage console rules deployment status.");
                     modalPublishBtn.disabled = false;
                 }, 
                 async () => {
                     try {
-                        // Fixed: Directly querying target storage pointer for absolute stability
                         const publicCdnUrl = await getDownloadURL(targetStorageRef);
                         
-                        // Add direct entry inside firestore database collection
                         await addDoc(collection(db, "photography_posts"), {
                             mediaUrl: publicCdnUrl,
                             storageFilePath: assetPath,
@@ -691,17 +689,16 @@
 
                         clearAndCloseUploadModal();
                     } catch (dbError) {
-                        console.error("Database write mismatch error:", dbError);
-                        alert("Image uploaded, but metadata failed to save to Firestore. Check Firestore Rules.");
+                        console.error("Firestore database mapping structural layout mismatch:", dbError);
+                        alert("Storage upload cleared successfully, but transaction metadata could not be recorded in database collections.");
                         modalPublishBtn.disabled = false;
                     }
                 }
             );
         });
 
-        // --- REALTIME REACTIVE GRAPHICAL TIMELINE ENGINE ---
+        // --- REALTIME RESPONSIVE RENDERING TIMELINE MATRIX ENGINE ---
         function initializeRealtimeSocialFeed() {
-            // Safe cleanup of duplicate instances to prevent listener layering bugs
             if (unsubscribeFeed) unsubscribeFeed();
 
             const chronologicalPostsQuery = query(collection(db, "photography_posts"), orderBy("timestampEpochMillis", "desc"));
@@ -712,7 +709,7 @@
                 if (snapshot.empty) {
                     socialFeedContainer.innerHTML = `
                         <div style="text-align:center; padding:120px 20px; color:var(--text-grey); font-size:14px;">
-                            No captures submitted yet. Click "Create Post" to kickstart the feed timeline!
+                            Timeline is clean. Tap "Create Post" to instantiate photography structures.
                         </div>`;
                     return;
                 }
@@ -728,7 +725,6 @@
                     const postCardElement = document.createElement('article');
                     postCardElement.className = `ig-post ${isOwnerMatch ? 'is-owner' : ''}`;
                     
-                    // Render dynamic comments lines loop
                     let structuralCommentsBlock = "";
                     if(data.comments && data.comments.length > 0) {
                         data.comments.forEach(comment => {
@@ -741,18 +737,17 @@
                         });
                     }
 
-                    // Added fallback graphic handling layout to img blocks via dynamic onerror metrics
                     postCardElement.innerHTML = `
                         <div class="post-header">
                             <div class="post-user-info">
-                                <img src="${data.creatorPhoto}" alt="Creator Profile Portrait" class="post-avatar">
+                                <img src="${data.creatorPhoto}" alt="User Identity Avatar" class="post-avatar">
                                 <span class="post-username">${sanitizeHtmlEntities(data.creatorUsername)}</span>
                             </div>
                             <button class="delete-post-btn" id="deleteBtn-${postId}">Delete</button>
                         </div>
                         
                         <div class="post-media-frame">
-                            <img src="${data.mediaUrl}" alt="Photography Asset" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/600x400/121212/a8a8a8?text=Image+Load+Failed+-+Check+Firebase+Storage+Rules';">
+                            <img src="${data.mediaUrl}" alt="Photography Render Capture File" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/600x400/121212/a8a8a8?text=Image+Load+Failed+-+Path+Mismatch';">
                         </div>
 
                         <div class="post-actions">
@@ -776,14 +771,14 @@
                         <div class="comments-section">${structuralCommentsBlock}</div>
 
                         <div class="comment-form-container">
-                            <input type="text" class="comment-input-element" id="commentInput-${postId}" placeholder="Add a comment safely..." autocomplete="off">
+                            <input type="text" class="comment-input-element" id="commentInput-${postId}" placeholder="Add a comment..." autocomplete="off">
                             <button class="comment-post-trigger" id="commentSubmit-${postId}">Post</button>
                         </div>
                     `;
 
                     socialFeedContainer.appendChild(postCardElement);
 
-                    // Hook Event Listeners Into Elements Directly
+                    // Map Transaction Execution Listeners
                     document.getElementById(`likeBtn-${postId}`).addEventListener('click', () => {
                         togglePostLikeState(postId, userHasLikedState);
                     });
@@ -808,12 +803,12 @@
                     }
                 });
             }, (error) => {
-                console.error("Snapshot listener failed: ", error);
-                socialFeedContainer.innerHTML = `<div style="color:var(--ig-danger); text-align:center; margin-top:50px;">Failed to read stream entries. Check your Firebase Firestore database access rules.</div>`;
+                console.error("Stream reader thread terminated error: ", error);
+                socialFeedContainer.innerHTML = `<div style="color:var(--ig-danger); text-align:center; margin-top:50px;">Database configuration error: Check Firestore Cloud security rules.</div>`;
             });
         }
 
-        // --- DATA INTERACTION MUTATION CONTRACTS ---
+        // --- METADATA TRANSACTIONS DATA CONTROL LAYER CONTRACTS ---
         async function togglePostLikeState(postId, userHasLikedState) {
             const targetDocumentRef = doc(db, "photography_posts", postId);
             try {
@@ -823,7 +818,7 @@
                     await updateDoc(targetDocumentRef, { likes: arrayUnion(activeUser.uid) });
                 }
             } catch (err) {
-                console.error("Liking transaction error encountered: ", err);
+                console.error("Like transaction operation failed: ", err);
             }
         }
 
@@ -842,7 +837,7 @@
                 });
                 textInputElement.value = "";
             } catch (err) {
-                console.error("Appending comment matrix line failed: ", err);
+                console.error("Comment submission breakdown error: ", err);
             }
         }
 
@@ -850,23 +845,23 @@
             navigator.clipboard.writeText(mediaUrlString).then(() => {
                 toastAlert.style.display = "block";
                 setTimeout(() => { toastAlert.style.display = "none"; }, 2500);
-            }).catch(err => console.error("Clipboard failure: ", err));
+            }).catch(err => console.error("Clipboard access framework execution failure: ", err));
         }
 
         async function purgePostCaptureAsset(postId, fileStoragePath) {
-            if(!confirm("Are you confident you want to remove this work from the photo stream permanently?")) return;
+            if(!confirm("Are you confident you want to clean this work from the photo stream permanently?")) return;
 
             try {
                 const targetObjectStoragePointer = ref(storage, fileStoragePath);
                 await deleteObject(targetObjectStoragePointer);
                 await deleteDoc(doc(db, "photography_posts", postId));
             } catch (err) {
-                console.error("Purging operations execution fail: ", err);
-                alert("An error occurred cleanly removing files from storage indexes.");
+                console.error("Clean operation pipeline failure: ", err);
+                alert("An error occurred cleanly removing linked elements from server array pointers.");
             }
         }
 
-        // --- SECURE XSS PROTECTION INJECTION STRINGS SANITIZER ---
+        // --- BASIC DESTRUCTIVE VECTOR STRINGS INJECTION SANITIZER ---
         function sanitizeHtmlEntities(rawInputText) {
             const renderingSanitizeDivNode = document.createElement('div');
             renderingSanitizeDivNode.innerText = rawInputText || "";
