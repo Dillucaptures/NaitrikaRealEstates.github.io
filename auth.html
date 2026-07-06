@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dillu Captures | Login</title>
+    <title>Dillu Captures | Secure Access Portal</title>
     <style>
         :root {
-            --bg-card: rgba(0, 0, 0, 0.78);
-            --border-color: #262626;
+            --bg-card: rgba(10, 10, 10, 0.82);
+            --border-color: rgba(255, 255, 255, 0.12);
             --text-primary: #ffffff;
             --text-secondary: #a8a8a8;
             --ig-blue: #0095f6;
             --ig-blue-hover: #1877f2;
-            --system-error: #ed4956;
+            --system-error: #ff453a;
             --system-success: #30d158;
         }
 
@@ -20,13 +20,13 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* --- SONY CAMERA BACKGROUND LAYER --- */
+        /* --- SONY CAMERA BACKGROUND SCENE --- */
         body {
-            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), 
+            background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.7)), 
                         url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
             background-size: cover;
             min-height: 100vh;
@@ -38,67 +38,71 @@
 
         .auth-wrapper {
             width: 100%;
-            max-width: 350px;
+            max-width: 360px;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
         }
 
-        /* --- INSTAGRAM COMPACT DARK UI BOX --- */
+        /* --- MODERN PREMIUM GLASS BOX GRAPHICS --- */
         .auth-box {
             background-color: var(--bg-card);
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
             border: 1px solid var(--border-color);
-            border-radius: 4px;
+            border-radius: 8px;
             padding: 40px 30px;
             text-align: center;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 24px 50px rgba(0, 0, 0, 0.6);
         }
 
         .brand-heading {
-            font-size: 1.75rem;
+            font-size: 1.85rem;
             color: var(--text-primary);
-            font-weight: 700;
-            letter-spacing: 2px;
+            font-weight: 300;
+            letter-spacing: 3px;
             margin-bottom: 35px;
             text-transform: uppercase;
         }
 
         .form-input-container {
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             position: relative;
         }
 
         .ig-field {
             width: 100%;
-            padding: 10px 12px;
-            background: #121212;
+            padding: 12px 14px;
+            background: rgba(0, 0, 0, 0.5);
             border: 1px solid var(--border-color);
-            border-radius: 3px;
+            border-radius: 6px;
             color: var(--text-primary);
-            font-size: 12px;
+            font-size: 13px;
             outline: none;
+            transition: all 0.2s ease;
         }
 
         .ig-field:focus {
-            border-color: #a8a8a8;
+            border-color: rgba(255, 255, 255, 0.4);
+            background: rgba(0, 0, 0, 0.8);
         }
 
         .ig-field::placeholder {
-            color: #737373;
+            color: #666666;
         }
 
         .submit-action-btn {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             background-color: var(--ig-blue);
             border: none;
-            border-radius: 4px;
+            border-radius: 6px;
             color: #ffffff;
             font-weight: 600;
             font-size: 14px;
             cursor: pointer;
             margin-top: 10px;
-            transition: background-color 0.1s ease;
+            transition: background-color 0.15s ease;
         }
 
         .submit-action-btn:hover {
@@ -113,53 +117,78 @@
         .divider-row {
             display: flex;
             align-items: center;
-            margin: 20px 0;
+            margin: 22px 0;
             color: var(--text-secondary);
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .divider-row::before, .divider-row::after {
             content: "";
             flex: 1;
             height: 1px;
-            background: var(--border-color);
+            background: rgba(255, 255, 255, 0.15);
         }
-        .divider-row::before { margin-right: 18px; }
-        .divider-row::after { margin-left: 18px; }
+        .divider-row::before { margin-right: 15px; }
+        .divider-row::after { margin-left: 15px; }
 
-        .google-login-btn {
-            background: transparent;
-            border: none;
+        .social-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .social-btn {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
             color: var(--text-primary);
-            font-size: 14px;
+            padding: 11px;
+            border-radius: 6px;
+            font-size: 13px;
             font-weight: 600;
             cursor: pointer;
-            display: inline-flex;
+            display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            width: 100%;
+            gap: 10px;
+            transition: background 0.2s;
         }
-        .google-login-btn svg { width: 16px; height: 16px; fill: currentColor; }
+        .social-btn:hover { background: rgba(255, 255, 255, 0.12); }
+        .social-btn svg { width: 16px; height: 16px; fill: currentColor; }
+
+        .guest-link-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 12px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 15px;
+            display: inline-block;
+            transition: color 0.2s;
+        }
+        .guest-link-btn:hover { color: var(--text-primary); }
 
         .toast-notification {
-            font-size: 13px;
+            font-size: 12px;
             margin-top: 15px;
-            padding: 10px;
-            border-radius: 4px;
+            padding: 11px;
+            border-radius: 6px;
             display: none;
             line-height: 16px;
-            text-align: center;
+            text-align: left;
         }
-        .toast-notification.error { background: rgba(237, 73, 86, 0.15); color: var(--system-error); border: 1px solid rgba(237, 73, 86, 0.25); }
+        .toast-notification.error { background: rgba(255, 69, 58, 0.15); color: var(--system-error); border: 1px solid rgba(255, 69, 58, 0.25); }
         .toast-notification.success { background: rgba(48, 209, 88, 0.15); color: var(--system-success); border: 1px solid rgba(48, 209, 88, 0.25); }
 
         .switch-box {
             background-color: var(--bg-card);
             border: 1px solid var(--border-color);
-            border-radius: 4px;
+            border-radius: 8px;
             padding: 20px;
             font-size: 14px;
             color: var(--text-primary);
@@ -173,41 +202,40 @@
         }
         .switch-box a:hover { text-decoration: underline; }
 
-        /* Dynamic Visibility Viewports Mapping */
-        .signup-only-field { display: none; }
-        body.display-signup .signup-only-field { display: block; }
-        body.display-signup .login-only-field { display: none; }
+        /* Structural Layout Toggle States */
+        .signup-field { display: none; }
+        body.display-signup .signup-field { display: block; }
+        body.display-signup .login-field { display: none; }
     </style>
 </head>
 <body>
 
     <div class="auth-wrapper">
-        <!-- PRIMARY SUBMISSION CONTAINER CORE -->
         <div class="auth-box">
             <div class="brand-heading">Dillu Captures</div>
             
-            <form id="identityFormActionGateway">
+            <form id="identityFormGateway">
                 
-                <!-- UNIFIED INPUT MATRIX FIELD (Resolves Username, Email, or Phone inputs) -->
-                <div class="form-input-container login-only-field">
+                <!-- UNIFIED LOG IN FIELD ENTRY NODE (Resolves Email, Phone, or Username strings) -->
+                <div class="form-input-container login-field">
                     <input type="text" id="unifiedLoginUserField" class="ig-field" placeholder="Phone number, username, or email">
                 </div>
 
-                <!-- SIGNUP EXPLICIT ENTRY SPLIT NODES -->
-                <div class="form-input-container signup-only-field">
+                <!-- EXPLICIT SIGNUP REGISTRY CHANNELS -->
+                <div class="form-input-container signup-field">
                     <input type="email" id="registrationEmailField" class="ig-field" placeholder="Email address">
                 </div>
-                <div class="form-input-container signup-only-field">
+                <div class="form-input-container signup-field">
                     <input type="text" id="registrationFullNameField" class="ig-field" placeholder="Full Name">
                 </div>
-                <div class="form-input-container signup-only-field">
+                <div class="form-input-container signup-field">
                     <input type="text" id="registrationUsernameField" class="ig-field" placeholder="Username">
                 </div>
-                <div class="form-input-container signup-only-field">
-                    <input type="text" id="registrationPhoneField" class="ig-field" placeholder="Mobile Number">
+                <div class="form-input-container signup-field">
+                    <input type="text" id="registrationPhoneField" class="ig-field" placeholder="Mobile number (e.g. 9876543210)">
                 </div>
 
-                <!-- PASS SECURED ACCESS CAPTURE CODE WORD -->
+                <!-- UNIFIED SECURITY PASSWORD PARAMETER Input -->
                 <div class="form-input-container">
                     <input type="password" id="secureCredentialPasswordField" class="ig-field" placeholder="Password" required>
                 </div>
@@ -217,24 +245,28 @@
 
             <div class="divider-row">or</div>
 
-            <!-- FEDERATED GMAIL SIGN IN ENTRY NODE -->
-            <button type="button" class="google-login-btn" id="triggerGoogleAuthButton">
-                <svg viewBox="0 0 24 24">
-                    <path d="M12.24 10.285V13.4h6.887c-.275 1.565-1.88 4.604-6.887 4.604-4.33 0-7.866-3.577-7.866-8s3.536-8 7.866-8c2.46 0 4.105 1.025 5.047 1.926l2.427-2.334C17.955 2.192 15.34 1 12.24 1 6.033 1 1 6.033 1 12.24s5.033 11.24 11.24 11.24c6.478 0 10.793-4.537 10.793-10.997 0-.746-.08-1.32-.176-1.898H12.24z"/>
-                </svg>
-                Log in with Google / Gmail
-            </button>
+            <div class="social-stack">
+                <!-- GOOGLE SIGN IN SCRIPT TRIGGER -->
+                <button type="button" class="social-btn" id="triggerGoogleAuthButton">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12.24 10.285V13.4h6.887c-.275 1.565-1.88 4.604-6.887 4.604-4.33 0-7.866-3.577-7.866-8s3.536-8 7.866-8c2.46 0 4.105 1.025 5.047 1.926l2.427-2.334C17.955 2.192 15.34 1 12.24 1 6.033 1 1 6.033 1 12.24s5.033 11.24 11.24 11.24c6.478 0 10.793-4.537 10.793-10.997 0-.746-.08-1.32-.176-1.898H12.24z"/>
+                    </svg>
+                    Continue with Gmail / Google
+                </button>
+            </div>
+
+            <!-- ANONYMOUS GUEST PATH LINK CONTROLLER -->
+            <button type="button" class="guest-link-btn" id="triggerAnonymousGuestButton">Browse as Guest</button>
 
             <div id="alertToastBox" class="toast-notification"></div>
         </div>
 
-        <!-- FOOTER TOGGLE PANEL VIEWPORTS CONTROLLER LINKS -->
         <div class="switch-box">
             <span id="toggleTextRow">Don't have an account?<a href="#" id="toggleActionLinkViewport">Sign up</a></span>
         </div>
     </div>
 
-    <!-- MODULE SERVICE WORKER CLIENT INJECTIONS -->
+    <!-- FIREBASE PLATFORM CLIENT SCRIPTS PIPELINES MODULE -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { 
@@ -243,7 +275,9 @@
             signInWithEmailAndPassword, 
             signInWithPopup, 
             GoogleAuthProvider,
-            updateProfile 
+            signInAnonymously,
+            updateProfile,
+            onAuthStateChanged
         } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
         import { 
             getFirestore, 
@@ -255,7 +289,7 @@
             where 
         } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-        // Maintained Original Keys Context Architecture Tracking Formats
+        // Verified Explicit Match User Instance Configuration Settings 
         const firebaseConfig = {
             apiKey: "AIzaSyATrPSHyg8SS6BzafsoFYI71g2-vAbMYjU",
             authDomain: "dillucaptures07.firebaseapp.com",
@@ -271,15 +305,16 @@
         const db = getFirestore(app);
         const googleProvider = new GoogleAuthProvider();
 
-        // Screen Element Cache Map Allocations
+        // Screen Element Layout Interface Handles Map Caching
         const body = document.body;
-        const identityFormActionGateway = document.getElementById('identityFormActionGateway');
+        const identityFormGateway = document.getElementById('identityFormGateway');
         const secureCredentialPasswordField = document.getElementById('secureCredentialPasswordField');
         const primarySubmitButtonHandle = document.getElementById('primarySubmitButtonHandle');
         const triggerGoogleAuthButton = document.getElementById('triggerGoogleAuthButton');
+        const triggerAnonymousGuestButton = document.getElementById('triggerAnonymousGuestButton');
         const alertToastBox = document.getElementById('alertToastBox');
         
-        // Input Element Assignments Handles
+        // Input Node References Mappings
         const unifiedLoginUserField = document.getElementById('unifiedLoginUserField');
         const registrationEmailField = document.getElementById('registrationEmailField');
         const registrationFullNameField = document.getElementById('registrationFullNameField');
@@ -290,7 +325,16 @@
 
         let runtimeViewIsSignUpContext = false;
 
-        // --- MANIPULATE SPA VIEW RECONFIGURATIONS INTERFACE MAPS ---
+        // --- ⚡ CRITICAL FIX: THE GLOBAL STATE AUTHENTICATION REDIRECT OBSERVER ---
+        // This listens natively to the exact session verification moment on the Firebase instance core.
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                renderNotificationToast("Session synchronized. Redirecting to workspace...", "success");
+                window.location.href = "index.html";
+            }
+        });
+
+        // --- INTERFACE TOGGLE VIEWS CONFIGURATOR SCENE LAYOUTS ---
         toggleActionLinkViewport.addEventListener('click', (e) => {
             e.preventDefault();
             runtimeViewIsSignUpContext = !runtimeViewIsSignUpContext;
@@ -306,15 +350,15 @@
                 toggleTextRow.innerHTML = `Don't have an account?<a href="#" id="toggleActionLinkViewport">Sign up</a>`;
             }
 
-            // Re-bind target action tracking references onto dynamically drawn inner HTML layout streams
+            // Sync structural loop listeners on dynamically altered inner HTML lines references
             document.getElementById('toggleActionLinkViewport').addEventListener('click', (e) => {
                 e.preventDefault();
                 toggleActionLinkViewport.click();
             });
         });
 
-        // --- SUBMISSION CONTROLLER INTERCEPT HANDLERS ---
-        identityFormActionGateway.addEventListener('submit', async (e) => {
+        // --- FORM DATA PROCESSING DISPATCH EDGE SYSTEM ROUTER ---
+        identityFormGateway.addEventListener('submit', async (e) => {
             e.preventDefault();
             clearNotificationToast();
             primarySubmitButtonHandle.disabled = true;
@@ -322,48 +366,48 @@
             const targetInputSecretValue = secureCredentialPasswordField.value;
 
             if (runtimeViewIsSignUpContext) {
-                // --- SIGN UP ROUTINE PIPELINES ---
+                // --- CUSTOM USER DATABASE SIGN UP ROUTE ---
                 const email = registrationEmailField.value.trim();
                 const fullName = registrationFullNameField.value.trim();
                 const username = registrationUsernameField.value.trim().toLowerCase();
-                const phone = registrationPhoneField.value.trim();
+                const phone = registrationPhoneField.value.trim().replace(/\s+/g, '');
 
                 if (!email || !username || !phone) {
-                    renderNotificationToast("All registration metadata elements are required to construct profiles.", "error");
+                    renderNotificationToast("All signup metrics lines must be filled to compile profile mappings.", "error");
                     primarySubmitButtonHandle.disabled = false;
                     return;
                 }
 
                 try {
-                    // Pre-flight parsing verification check to confirm unique handles availability loops
+                    // Pre-flight database collision analysis search to protect unique handles rows
                     const usersRef = collection(db, "users");
-                    const userCheckSnapshot = await getDocs(query(usersRef, where("username", "==", username)));
-                    if (!userCheckSnapshot.empty) throw { code: 'custom/username-taken' };
+                    const usernameCheckResult = await getDocs(query(usersRef, where("username", "==", username)));
+                    if (!usernameCheckResult.empty) throw { code: 'custom/username-taken' };
 
-                    const registrationReceipt = await createUserWithEmailAndPassword(auth, email, targetInputSecretValue);
-                    await updateProfile(registrationReceipt.user, { displayName: fullName || username });
+                    const credentialsReceipt = await createUserWithEmailAndPassword(auth, email, targetInputSecretValue);
+                    await updateProfile(credentialsReceipt.user, { displayName: fullName || username });
                     
-                    // Generate searchable entity references mapping table maps inside Firestore
-                    await setDoc(doc(db, "users", registrationReceipt.user.uid), {
-                        uid: registrationReceipt.user.uid,
+                    // Register fallback verification identifier pathways matrix table indexes inside Firestore
+                    await setDoc(doc(db, "users", credentialsReceipt.user.uid), {
+                        uid: credentialsReceipt.user.uid,
                         email: email,
                         username: username,
                         phone: phone,
                         displayName: fullName
                     });
 
-                    renderNotificationToast("Account verification mapping created successfully. Initializing stream...", "success");
-                    executeSecureNavigationRouting();
+                    // The global onAuthStateChanged state handler observer triggers redirect instantly.
                 } catch (err) {
+                    console.error("Signup Processing Exception:", err);
                     renderNotificationToast(translateFirebaseErrorCodeMessage(err.code || err.message), "error");
                     primarySubmitButtonHandle.disabled = false;
                 }
 
             } else {
-                // --- RE-ROUTED LOG IN PARSING SYSTEM (Zero reCAPTCHA footprint) ---
+                // --- UNIFIED SECURED ZERO RECAPTCHA LOG IN RESOLUTION matrix ---
                 const rawIdentifierValue = unifiedLoginUserField.value.trim();
                 if (!rawIdentifierValue) {
-                    renderNotificationToast("Provide your username, registration email, or mobile coordinate handle.", "error");
+                    renderNotificationToast("Provide your registration email, username, or telephone handle.", "error");
                     primarySubmitButtonHandle.disabled = false;
                     return;
                 }
@@ -371,16 +415,16 @@
                 let executionTargetRouteEmail = rawIdentifierValue;
 
                 try {
-                    // Check if entry string maps an explicit domain schema construct natively
+                    // If parsing checks evaluate that user input string does not pass a standard email structure symbol
                     if (!rawIdentifierValue.includes('@')) {
-                        const sanitizedSearchQueryValue = rawIdentifierValue.toLowerCase();
+                        const sanitizedSearchQueryValue = rawIdentifierValue.toLowerCase().replace(/\s+/g, '');
                         const lookupRef = collection(db, "users");
 
-                        // Execute parsing search check against username rows
+                        // Path Alpha mapping search checks through profile Username rows
                         let crossCheckQueryInstance = query(lookupRef, where("username", "==", sanitizedSearchQueryValue));
                         let searchReceiptSnapshot = await getDocs(crossCheckQueryInstance);
 
-                        // Fallback check processing phone string sequences
+                        // Path Beta mapping search fallback loops checking telephone rows
                         if (searchReceiptSnapshot.empty) {
                             crossCheckQueryInstance = query(lookupRef, where("phone", "==", sanitizedSearchQueryValue));
                             searchReceiptSnapshot = await getDocs(crossCheckQueryInstance);
@@ -394,41 +438,52 @@
                     }
 
                     await signInWithEmailAndPassword(auth, executionTargetRouteEmail, targetInputSecretValue);
-                    renderNotificationToast("Profile context confirmed. Access authorized.", "success");
-                    executeSecureNavigationRouting();
+                    // The global onAuthStateChanged state handler observer triggers redirect instantly.
                 } catch (err) {
+                    console.error("Login Parsing Exception:", err);
                     renderNotificationToast(translateFirebaseErrorCodeMessage(err.code || err.message), "error");
                     primarySubmitButtonHandle.disabled = false;
                 }
             }
         });
 
-        // --- GOOGLE GMAIL SSO COMPONENT ROUTING PIPELINE ---
+        // --- GOOGLE GMAIL SSO PORTAL ENTRY EXECUTION LINKER ---
         triggerGoogleAuthButton.addEventListener('click', async () => {
             clearNotificationToast();
             try {
                 const results = await signInWithPopup(auth, googleProvider);
                 
-                // Keep Firestore index records in sync if logging in via Google for the first time
+                // Write active document maps onto indexed database if Google instance represents a fresh user
                 await setDoc(doc(db, "users", results.user.uid), {
                     uid: results.user.uid,
                     email: results.user.email,
                     username: results.user.email.split('@')[0],
-                    phone: results.user.phoneNumber || "Google Connected Account",
+                    phone: results.user.phoneNumber || "Google Synced Profile Link",
                     displayName: results.user.displayName
                 }, { merge: true });
 
-                renderNotificationToast("Google validation handshake resolved safely.", "success");
-                executeSecureNavigationRouting();
+                // The global onAuthStateChanged state handler observer triggers redirect instantly.
             } catch (err) {
-                // Ignore standard window dismissal interrupts explicitly caught from users closures
                 if (err.code !== "auth/popup-closed-by-user") {
+                    console.error("Google Auth Exception:", err);
                     renderNotificationToast(translateFirebaseErrorCodeMessage(err.code || err.message), "error");
                 }
             }
         });
 
-        // --- UTILITY RUNTIME TOAST CONSOLE CHANNELS ---
+        // --- NATIVE GUEST METHOD ANONYMOUS ACCOUNT PROCESSING ---
+        triggerAnonymousGuestButton.addEventListener('click', async () => {
+            clearNotificationToast();
+            try {
+                await signInAnonymously(auth);
+                // The global onAuthStateChanged state handler observer triggers redirect instantly.
+            } catch (err) {
+                console.error("Anonymous System Route Exception:", err);
+                renderNotificationToast(translateFirebaseErrorCodeMessage(err.code || err.message), "error");
+            }
+        });
+
+        // --- NOTIFICATION COMPONENT TOAST INTERFACES ---
         function renderNotificationToast(messageTextString, stylisticVariantType) {
             alertToastBox.textContent = messageTextString;
             alertToastBox.className = `toast-notification ${stylisticVariantType}`;
@@ -439,20 +494,17 @@
             alertToastBox.style.display = "none";
         }
 
-        function executeSecureNavigationRouting() {
-            setTimeout(() => { window.location.href = "index.html"; }, 1000);
-        }
-
         function translateFirebaseErrorCodeMessage(firebaseSystemCode) {
             switch(firebaseSystemCode) {
-                case 'custom/username-taken': return "This username is already taken by another creator.";
-                case 'auth/email-already-in-use': return "This email coordinates track an existing user record profile.";
-                case 'auth/weak-password': return "Security restriction exception: Passwords must measure 6 characters minimum.";
-                case 'auth/user-not-found': return "No validation identity parameters align with that user entry profile.";
-                case 'auth/wrong-password': return "Incorrect account login credentials validation mismatch.";
-                case 'auth/invalid-credential': return "Authentication failure: Verify identity mapping fields data parameters matches.";
-                case 'auth/unauthorized-domain': return "Gmail Authorization Block: Whitelist your current browser domain inside your Firebase Console -> Authentication Settings -> Authorized Domains dashboard panel view loop.";
-                default: return `System Exception Notice: ${firebaseSystemCode.replace('auth/', '').replace(/-/g, ' ')}`;
+                case 'custom/username-taken': return "This unique username identifier is already owned by another creator.";
+                case 'auth/email-already-in-use': return "This email address matching path maps to an existing account record.";
+                case 'auth/weak-password': return "Security validation fail: Passwords must contain a minimum of 6 characters.";
+                case 'auth/user-not-found': return "Identity check mismatch: No profile record strings match that identifier coordinate.";
+                case 'auth/wrong-password': return "Security key error: The verification password credentials do not match.";
+                case 'auth/invalid-credential': return "Authentication rejected: Double check entry criteria alignments data.";
+                case 'auth/unauthorized-domain': return "Gmail Handshake Exception: Whitelist your hosting URL domain location inside Firebase Console -> Authentication Settings -> Authorized Domains.";
+                case 'auth/operation-not-allowed': return "Instance Configuration Notice: Confirm that this entry route method remains toggled ON inside your active console platform.";
+                default: return `System Tracking Exception: ${firebaseSystemCode.replace('auth/', '').replace(/-/g, ' ')}`;
             }
         }
     </script>
