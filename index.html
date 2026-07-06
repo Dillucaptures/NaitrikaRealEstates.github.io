@@ -1,282 +1,363 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dillu Captures | Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bespoke Lens | Premium Photography Suite</title>
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --surface-dark: #121212;
+            --border-color: #222222;
+            --text-main: #f5f5f5;
+            --text-muted: #888888;
+            --accent-blue: #3897f0;
+            --accent-danger: #ff3b30;
+        }
 
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Segoe UI,sans-serif;
-}
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        body { background-color: var(--bg-dark); color: var(--text-main); min-height: 100vh; padding-bottom: 60px; }
 
-body{
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-background:linear-gradient(135deg,#08131f,#101d34,#0c0f19);
-overflow:hidden;
-}
+        /* --- AUTHENTICATION GATE --- */
+        #auth-view {
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            min-height: 100vh; background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+        }
+        .auth-card {
+            background: var(--surface-dark); border: 1px solid var(--border-color);
+            padding: 40px; border-radius: 12px; text-align: center; max-width: 400px; width: 90%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .auth-card h1 { font-weight: 300; letter-spacing: 2px; margin-bottom: 10px; font-size: 28px; }
+        .auth-card p { color: var(--text-muted); font-size: 14px; margin-bottom: 30px; }
+        .google-btn {
+            background: #ffffff; color: #000000; border: none; padding: 12px 24px;
+            border-radius: 6px; font-weight: 600; font-size: 14px; cursor: pointer;
+            display: inline-flex; align-items: center; gap: 10px; transition: transform 0.2s;
+        }
+        .google-btn:hover { transform: scale(1.02); background: #f0f0f0; }
 
-body::before{
-content:"";
-position:absolute;
-width:600px;
-height:600px;
-background:#4b6fff;
-border-radius:50%;
-filter:blur(160px);
-left:-180px;
-top:-180px;
-opacity:.4;
-}
+        /* --- MAIN DASHBOARD INTERFACE --- */
+        #app-view { display: none; }
+        
+        header {
+            border-bottom: 1px solid var(--border-color); padding: 15px 30px;
+            display: flex; justify-content: space-between; align-items: center;
+            position: fixed; top: 0; width: 100%; background: rgba(10,10,10,0.8);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); z-index: 100;
+        }
+        .brand { font-weight: 300; letter-spacing: 3px; font-size: 20px; }
+        .user-panel { display: flex; align-items: center; gap: 15px; }
+        .user-avatar { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border-color); }
+        .logout-btn { background: none; border: 1px solid var(--border-color); color: var(--text-muted); padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 12px; }
+        .logout-btn:hover { color: var(--text-main); border-color: var(--text-main); }
 
-body::after{
-content:"";
-position:absolute;
-width:500px;
-height:500px;
-background:#00d2ff;
-border-radius:50%;
-filter:blur(160px);
-right:-150px;
-bottom:-150px;
-opacity:.25;
-}
+        main { max-width: 1200px; margin: 100px auto 0 auto; padding: 0 20px; }
 
-.login-card{
-position:relative;
-width:380px;
-padding:40px;
-border-radius:25px;
-background:rgba(255,255,255,.08);
-backdrop-filter:blur(25px);
-border:1px solid rgba(255,255,255,.15);
-box-shadow:0 20px 60px rgba(0,0,0,.45);
-animation:fade .8s;
-}
+        /* --- STUDIO UPLOAD CONTROL DECK --- */
+        .upload-deck {
+            background: var(--surface-dark); border: 1px dashed var(--border-color);
+            border-radius: 8px; padding: 30px; margin-bottom: 40px; text-align: center;
+        }
+        .upload-deck.dragover { border-color: var(--accent-blue); background: rgba(56,151,240,0.02); }
+        .file-label { cursor: pointer; color: var(--accent-blue); font-weight: 500; display: block; margin-bottom: 15px; }
+        .caption-field {
+            background: var(--bg-dark); border: 1px solid var(--border-color);
+            color: #fff; padding: 10px 15px; border-radius: 6px; width: 100%; max-width: 500px;
+            outline: none; margin-bottom: 15px; font-size: 14px;
+        }
+        .caption-field:focus { border-color: #444; }
+        .submit-btn {
+            background: var(--accent-blue); color: #fff; border: none; padding: 10px 24px;
+            border-radius: 6px; font-weight: 600; cursor: pointer; transition: opacity 0.2s;
+        }
+        .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        
+        /* Progress Monitor */
+        .progress-container { width: 100%; max-width: 500px; background: #222; height: 4px; border-radius: 2px; margin: 15px auto display: none; overflow: hidden; }
+        .progress-bar { height: 100%; background: var(--accent-blue); width: 0%; transition: width 0.1s linear; }
 
-@keyframes fade{
-from{
-opacity:0;
-transform:translateY(30px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-.logo{
-text-align:center;
-font-size:32px;
-margin-bottom:10px;
-}
-
-h2{
-color:#fff;
-text-align:center;
-margin-bottom:8px;
-}
-
-.subtitle{
-text-align:center;
-color:#cfd8e6;
-margin-bottom:30px;
-font-size:14px;
-}
-
-.input-box{
-margin-bottom:18px;
-}
-
-.input-box label{
-display:block;
-margin-bottom:8px;
-color:#fff;
-font-size:14px;
-}
-
-.input-box input{
-width:100%;
-padding:14px;
-border:none;
-outline:none;
-border-radius:12px;
-background:rgba(255,255,255,.12);
-color:white;
-font-size:15px;
-}
-
-.input-box input::placeholder{
-color:#ccc;
-}
-
-.password-box{
-position:relative;
-}
-
-.password-box span{
-position:absolute;
-right:15px;
-top:14px;
-cursor:pointer;
-color:white;
-}
-
-.options{
-display:flex;
-justify-content:space-between;
-align-items:center;
-font-size:14px;
-margin-bottom:20px;
-color:white;
-}
-
-.options a{
-color:#7dcfff;
-text-decoration:none;
-}
-
-.options a:hover{
-text-decoration:underline;
-}
-
-.login-btn{
-width:100%;
-padding:15px;
-border:none;
-border-radius:14px;
-background:linear-gradient(90deg,#4f8cff,#00d4ff);
-color:white;
-font-size:16px;
-font-weight:bold;
-cursor:pointer;
-transition:.3s;
-}
-
-.login-btn:hover{
-transform:translateY(-3px);
-box-shadow:0 10px 25px rgba(0,212,255,.4);
-}
-
-.register{
-margin-top:25px;
-text-align:center;
-color:white;
-}
-
-.register a{
-color:#00d4ff;
-text-decoration:none;
-font-weight:bold;
-}
-
-.register a:hover{
-text-decoration:underline;
-}
-
-.footer{
-margin-top:30px;
-text-align:center;
-font-size:12px;
-color:#b8b8b8;
-}
-
-@media(max-width:450px){
-
-.login-card{
-width:92%;
-padding:30px;
-}
-
-}
-</style>
+        /* --- GALLERY MASONRY MATRIX GRID --- */
+        .gallery-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px; margin-top: 20px;
+        }
+        .photo-card {
+            background: var(--surface-dark); border: 1px solid var(--border-color);
+            border-radius: 8px; overflow: hidden; position: relative;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .photo-card:hover { transform: translateY(-4px); }
+        .image-wrapper { width: 100%; aspect-ratio: 4/5; background: #000; overflow: hidden; position: relative; }
+        .image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+        
+        /* Action Overlay system */
+        .card-overlay {
+            position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 40%);
+            display: flex; flex-direction: column; justify-content: space-between; p: 15px;
+            opacity: 0; transition: opacity 0.2s ease; padding: 15px;
+        }
+        .photo-card:hover .card-overlay { opacity: 1; }
+        
+        .delete-trigger {
+            align-self: flex-end; background: rgba(255, 59, 48, 0.9); color: white;
+            border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: transform 0.2s;
+        }
+        .delete-trigger:hover { transform: scale(1.1); background: var(--accent-danger); }
+        .meta-caption { margin-top: auto; color: #fff; font-size: 14px; text-shadow: 0 1px 4px rgba(0,0,0,0.6); }
+        .meta-author { color: var(--text-muted); font-size: 11px; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+    </style>
 </head>
-
 <body>
 
-<div class="login-card">
+    <!-- SECTION A: INSTANT SECURE RUNTIME AUTHENTICATION GATE -->
+    <div id="auth-view">
+        <div class="auth-card">
+            <h1>BESPOKE LENS</h1>
+            <p>Identity Access Control Framework Gateway</p>
+            <button class="google-btn" id="loginBtn">
+                <svg width="18" height="18" viewBox="0 0 18 18"><path fill="#4285F4" d="M17.64 9.2c0-.63-.06-1.25-.16-1.84H9v3.47h4.84c-.21 1.12-.84 2.07-1.79 2.7l2.78 2.16c1.63-1.5 2.57-3.7 2.57-6.32z"/><path fill="#34A853" d="M9 18c2.43 0 4.47-.8 5.96-2.2l-2.78-2.16c-.77.52-1.77.83-2.98.83-2.3 0-4.25-1.55-4.94-3.64L1.4 13.01C2.88 15.96 5.93 18 9 18z"/><path fill="#FBBC05" d="M4.06 10.83A5.4 5.4 0 0 1 3.75 9c0-.63.1-1.24.31-1.83L1.4 4.99A8.95 8.95 0 0 0 0 9c0 1.45.35 2.82.97 4.04l3.09-2.21z"/><path fill="#EA4335" d="M9 3.58c1.32 0 2.5.45 3.44 1.35l2.58-2.59C13.46.8 11.43 0 9 0 5.93 0 2.88 2.04 1.4 4.99l3.09 2.21c.69-2.1 2.64-3.64 4.94-3.64z"/></svg>
+                Sign in with Google
+            </button>
+        </div>
+    </div>
 
-<div class="logo">📸</div>
+    <!-- SECTION B: CORE PROTECTED APPLICATION SUITE workspace -->
+    <div id="app-view">
+        <header>
+            <div class="brand">BESPOKE LENS</div>
+            <div class="user-panel">
+                <img src="" alt="User Identity Avatar" class="user-avatar" id="userAvatar">
+                <button class="logout-btn" id="logoutBtn">Disconnect Engine</button>
+            </div>
+        </header>
 
-<h2>Dillu Captures</h2>
+        <main>
+            <!-- 1. Media File Upload Control Matrix -->
+            <section class="upload-deck" id="dropZone">
+                <label for="fileInput" class="file-label">Choose high-fidelity asset or drag & drop here</label>
+                <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                
+                <input type="text" id="captionInput" class="caption-field" placeholder="Enter frame descriptive metadata profile context lines..." autocomplete="off"><br>
+                
+                <div class="progress-container" id="progressWrap">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+                
+                <button class="submit-btn" id="uploadBtn">Publish Frame to Registry</button>
+            </section>
 
-<p class="subtitle">
-Welcome Back! Login to your account.
-</p>
+            <!-- 2. Real-time Reactive Portfolio Grid Showcase Area -->
+            <section class="gallery-grid" id="galleryContainer"></section>
+        </main>
+    </div>
 
-<form action="dashboard.html" method="post">
+    <!-- APPLICATION RUNTIME LOGIC ENGINE & FIREBASE INTERFACING INTERRUPTS -->
+    <script type="module">
+        // Import essential target functional points from Firebase ecosystem infrastructure CDN references
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { getFirestore, collection, addDoc, deleteDoc, doc, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { getStorage, ref, uploadBytesResumable, getDownloadURL, deleteObject } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
 
-<div class="input-box">
-<label>Email Address</label>
-<input
-type="email"
-placeholder="Enter your email"
-required>
-</div>
+        // ==========================================
+        //  REPLACE THIS WITH YOUR FIREBASE CONFIG
+        // ==========================================
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_PROJECT_ID.appspot.com",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
 
-<div class="input-box password-box">
-<label>Password</label>
+        // Initialize Native Instances
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const storage = getStorage(app);
+        const googleProvider = new GoogleAuthProvider();
 
-<input
-type="password"
-id="password"
-placeholder="Enter your password"
-required>
+        // Target UI Layout Element Map Handles
+        const authView = document.getElementById('auth-view');
+        const appView = document.getElementById('app-view');
+        const loginBtn = document.getElementById('loginBtn');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const userAvatar = document.getElementById('userAvatar');
+        const fileInput = document.getElementById('fileInput');
+        const captionInput = document.getElementById('captionInput');
+        const uploadBtn = document.getElementById('uploadBtn');
+        const dropZone = document.getElementById('dropZone');
+        const progressWrap = document.getElementById('progressWrap');
+        const progressBar = document.getElementById('progressBar');
+        const galleryContainer = document.getElementById('galleryContainer');
 
-<span onclick="togglePassword()">👁</span>
+        let activeUserTokenInstance = null;
 
-</div>
+        // --- AUTH ACTION ROUTINES & SYSTEM LISTENERS ---
+        loginBtn.addEventListener('click', async () => {
+            try {
+                await signInWithPopup(auth, googleProvider);
+            } catch (err) {
+                console.error("Authentication handshake process dropped context: ", err);
+                alert("Security Gateway rejection received during provider callback processing loops.");
+            }
+        });
 
-<div class="options">
+        logoutBtn.addEventListener('click', () => signOut(auth));
 
-<label>
-<input type="checkbox">
-Remember Me
-</label>
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                activeUserTokenInstance = user;
+                authView.style.display = 'none';
+                appView.style.display = 'block';
+                userAvatar.src = user.photoURL || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&q=80';
+                initializeRealtimeGallerySyncStream();
+            } else {
+                activeUserTokenInstance = null;
+                authView.style.display = 'flex';
+                appView.style.display = 'none';
+            }
+        });
 
-<a href="#">Forgot Password?</a>
+        // --- DRAG AND DROP DESKTOP COUPLER UTILITIES ---
+        ['dragenter', 'dragover'].forEach(name => {
+            dropZone.addEventListener(name, (e) => { e.preventDefault(); dropZone.classList.add('dragover'); });
+        });
+        ['dragleave', 'drop'].forEach(name => {
+            dropZone.addEventListener(name, (e) => { e.preventDefault(); dropZone.classList.remove('dragover'); });
+        });
+        dropZone.addEventListener('drop', (e) => {
+            if(e.dataTransfer.files.length) fileInput.files = e.dataTransfer.files;
+        });
 
-</div>
+        // --- ASSET BINARY UPLOAD PIPELINE PIPELINES ---
+        uploadBtn.addEventListener('click', () => {
+            const rawFileObject = fileInput.files[0];
+            const captionTextValue = captionInput.value.trim();
 
-<button class="login-btn">
-Login
-</button>
+            if (!rawFileObject) {
+                alert("Operation Blocked: No image binary selected in standard upload buffer.");
+                return;
+            }
 
-</form>
+            uploadBtn.disabled = true;
+            progressWrap.style.display = 'block';
 
-<div class="register">
-Don't have an account?
-<a href="register.html">Create Account</a>
-</div>
+            // Generate structured safe absolute paths using high resolution entropy metrics markers
+            const binaryStoragePathPointerString = `photography/${Date.now()}_${rawFileObject.name}`;
+            const targetBucketStorageRef = ref(storage, binaryStoragePathPointerString);
+            const uploadTaskProgressTracker = uploadBytesResumable(targetBucketStorageRef, rawFileObject);
 
-<div class="footer">
-© 2026 Dillu Captures • All Rights Reserved
-</div>
+            uploadTaskProgressTracker.on('state_changed', 
+                (snapshot) => {
+                    const computationProgressValue = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    progressBar.style.width = computationProgressValue + '%';
+                }, 
+                (error) => {
+                    console.error("Storage upload loop runtime breakdown: ", error);
+                    alert("Write operation access tracking fault within storage buckets architecture paths.");
+                    resetUploadDeckUIControls();
+                }, 
+                async () => {
+                    const cloudCDNPublicFetchURL = await getDownloadURL(uploadTaskProgressTracker.snapshot.ref);
+                    
+                    // Inject metadata object definitions directly across unified Firestore documents index collections
+                    await addDoc(collection(db, "photography_gallery"), {
+                        assetUrl: cloudCDNPublicFetchURL,
+                        storagePath: binaryStoragePathPointerString,
+                        caption: captionTextValue || "Fine art media portfolio collection item context.",
+                        ownerUid: activeUserTokenInstance.uid,
+                        ownerDisplayName: activeUserTokenInstance.displayName || "Anonymous Creator",
+                        timestampSystemMillis: Date.now()
+                    });
 
-</div>
+                    resetUploadDeckUIControls();
+                }
+            );
+        });
 
-<script>
+        function resetUploadDeckUIControls() {
+            uploadBtn.disabled = false;
+            progressWrap.style.display = 'none';
+            progressBar.style.width = '0%';
+            captionInput.value = "";
+            fileInput.value = "";
+        }
 
-function togglePassword(){
+        // --- REAL-TIME PORTFOLIO MATRIX FEED SYNC EXTENSIONS ---
+        function initializeRealtimeGallerySyncStream() {
+            const chronologicalOrderingQueryParameters = query(
+                collection(db, "photography_gallery"), 
+                orderBy("timestampSystemMillis", "desc")
+            );
 
-var x=document.getElementById("password");
+            onSnapshot(chronologicalOrderingQueryParameters, (snapshot) => {
+                galleryContainer.innerHTML = "";
+                
+                if(snapshot.empty) {
+                    galleryContainer.innerHTML = `<div style="grid-column: 1/-1; padding: 60px 10px; text-align:center; color:var(--text-muted); font-size:14px;">No photography published to public stream panels yet. Use the workspace drag zone above.</div>`;
+                    return;
+                }
 
-if(x.type==="password"){
-x.type="text";
-}
-else{
-x.type="password";
-}
+                snapshot.forEach((documentRecordNode) => {
+                    const recordDataStruct = documentRecordNode.data();
+                    const recordDocumentUniqueIdString = documentRecordNode.id;
+                    const evaluationIsOwnerMatch = activeUserTokenInstance && (activeUserTokenInstance.uid === recordDataStruct.ownerUid);
 
-}
+                    const layoutCardTemplateNode = document.createElement('div');
+                    layoutCardTemplateNode.className = "photo-card";
+                    layoutCardTemplateNode.innerHTML = `
+                        <div class="image-wrapper">
+                            <img src="${recordDataStruct.assetUrl}" alt="Photography Asset Frame Data Line Row" loading="lazy">
+                            <div class="card-overlay">
+                                ${evaluationIsOwnerMatch ? `<button class="delete-trigger" data-id="${recordDocumentUniqueIdString}" data-path="${recordDataStruct.storagePath}">×</button>` : '<div></div>'}
+                                <div>
+                                    <p class="meta-caption">${escapeHtmlStringEntities(recordDataStruct.caption)}</p>
+                                    <p class="meta-author">By ${escapeHtmlStringEntities(recordDataStruct.ownerDisplayName)}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
 
-</script>
+                    // Bind isolated target destruction calls into dynamically mounted card elements structures
+                    if(evaluationIsOwnerMatch) {
+                        layoutCardTemplateNode.querySelector('.delete-trigger').addEventListener('click', (e) => {
+                            executeAssetDestructionChainPipeline(e.target.dataset.id, e.target.dataset.path);
+                        });
+                    }
 
+                    galleryContainer.appendChild(layoutCardTemplateNode);
+                });
+            });
+        }
+
+        // --- SECURE ATOMIC MEDIA EXTINCTION SEQUENCE DELETION PROCESSOR ---
+        async function executeAssetDestructionChainPipeline(firestoreDocIdReference, exactBucketStorageFilePathPointer) {
+            if (!confirm("Confirm Deletion Challenge: Erase targeted photography asset post record entirely from cloud storage servers?")) return;
+
+            try {
+                // Task 1: Purge biological file asset content allocations from Google Storage spaces handles
+                const primaryTargetObjectStorageBucketAllocationRef = ref(storage, exactBucketStorageFilePathPointer);
+                await deleteObject(primaryTargetObjectStorageBucketAllocationRef);
+
+                // Task 2: Purge logical metadata description schemas indexes from Firestore tables arrays
+                await deleteDoc(doc(db, "photography_gallery", firestoreDocIdReference));
+            } catch (err) {
+                console.error("Purge operations routines failure track: ", err);
+                alert("Encountered security exceptions while attempting database document deletion tasks.");
+            }
+        }
+
+        // XSS Anti-injection mitigation utilities sanitizer methods
+        function escapeHtmlStringEntities(inputRawString) {
+            const temporaryDivElementNode = document.createElement('div');
+            temporaryDivElementNode.innerText = inputRawString;
+            return temporaryDivElementNode.innerHTML;
+        }
+    </script>
 </body>
 </html>
