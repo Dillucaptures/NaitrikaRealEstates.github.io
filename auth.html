@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dillu Captures | Secure Portal</title>
+    <style>
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.04);
+            --glass-border: rgba(255, 255, 255, 0.18);
+            --glass-glow: rgba(255, 255, 255, 0.12);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.6);
+            --instagram-blue: #0095f6;
+            --instagram-blue-hover: #1877f2;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: #000;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        /* --- iOS 26 LIQUID REFRACTIVE MESH ENVIRONMENT --- */
+        .liquid-environment {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            overflow: hidden;
+            background: radial-gradient(circle at 50% 50%, #0c0d14 0%, #020204 100%);
+        }
+
+        .liquid-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.45;
+            mix-blend-mode: screen;
+            animation: moveLiquid 25s infinite alternate ease-in-out;
+        }
+
+        .blob-magenta { width: 500px; height: 500px; background: #ff2d55; top: -10%; left: -5%; animation-delay: 0s; }
+        .blob-blue { width: 600px; height: 600px; background: #007aff; bottom: -15%; right: -5%; animation-delay: -5s; }
+        .blob-cyan { width: 400px; height: 400px; background: #4cd964; top: 30%; left: 40%; animation-delay: -12s; }
+
+        @keyframes moveLiquid {
+            0% { transform: translate(0px, 0px) scale(1) rotate(0deg); }
+            50% { transform: translate(80px, -60px) scale(1.15) rotate(180deg); }
+            100% { transform: translate(-50px, 40px) scale(0.9) rotate(360deg); }
+        }
+
+        /* --- INSTAGRAM CONTAINER HOUSING --- */
+        .auth-container {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 385px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .liquid-glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(35px) saturate(210%);
+            -webkit-backdrop-filter: blur(35px) saturate(210%);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 40px 35px;
+            text-align: center;
+            box-shadow: 
+                0 30px 70px rgba(0, 0, 0, 0.6),
+                inset 0 1px 0 var(--glass-glow),
+                inset 0 10px 20px rgba(255, 255, 255, 0.05);
+            position: relative;
+        }
+
+        .liquid-glass-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 30px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 60%);
+            pointer-events: none;
+        }
+
+        .brand-logo {
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            font-weight: 300;
+            letter-spacing: 4px;
+            margin-bottom: 35px;
+            text-transform: uppercase;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .input-group {
+            margin-bottom: 8px;
+            position: relative;
+        }
+
+        .glass-input {
+            width: 100%;
+            padding: 11px 14px;
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 13px;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .glass-input:focus {
+            border-color: rgba(255, 255, 255, 0.35);
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .glass-input::placeholder {
+            color: rgba(255, 255, 255, 0.35);
+        }
+
+        .action-button {
+            width: 100%;
+            padding: 12px;
+            background: var(--instagram-blue);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            margin-top: 14px;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        .action-button:hover { background-color: var(--instagram-blue-hover); }
+        .action-button:active { transform: scale(0.99); }
+
+        .or-divider {
+            display: flex;
+            align-items: center;
+            margin: 22px 0;
+            color: var(--text-secondary);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .or-divider::before, .or-divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .or-divider::before { margin-right: 18px; }
+        .or-divider::after { margin-left: 18px; }
+
+        .google-auth-trigger {
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        .google-auth-trigger svg { width: 16px; height: 16px; fill: currentColor; }
+
+        .status-toast {
+            font-size: 12px;
+            margin-top: 15px;
+            padding: 8px;
+            border-radius: 6px;
+            display: none;
+        }
+        .status-toast.error { background: rgba(255, 59, 48, 0.15); color: #ff453a; border: 1px solid rgba(255, 59, 48, 0.2); }
+        .status-toast.success { background: rgba(48, 209, 88, 0.15); color: #30d158; border: 1px solid rgba(48, 209, 88, 0.2); }
+
+        .toggle-view-card {
+            padding: 22px;
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+        .toggle-view-card a {
+            color: var(--instagram-blue);
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 4px;
+        }
+        .toggle-view-card a:hover { text-decoration: underline; }
+
+        .signup-context { display: none; }
+        body.signup-active .signup-context { display: block; }
+        body.signup-active .login-context { display: none; }
+    </style>
+</head>
+<body>
+
+    <div class="liquid-environment">
+        <div class="liquid-blob blob-magenta"></div>
+        <div class="liquid-blob blob-blue"></div>
+        <div class="liquid-blob blob-cyan"></div>
+    </div>
+
+    <div class="auth-container">
+        <div class="liquid-glass-card">
+            <div class="brand-logo">DILLU CAPTURES</div>
+            
+            <form id="authForm">
+                <div class="input-group signup-context">
+                    <input type="text" id="displayNameField" class="glass-input" placeholder="Full Name" autocomplete="name">
+                </div>
+                <div class="input-group">
+                    <input type="email" id="emailField" class="glass-input" placeholder="Email address" required autocomplete="email">
+                </div>
+                <div class="input-group">
+                    <input type="password" id="passwordField" class="glass-input" placeholder="Password" required autocomplete="current-password">
+                </div>
+                <button type="submit" id="mainActionButton" class="action-button">Log In</button>
+            </form>
+
+            <div class="or-divider">or</div>
+
+            <button type="button" class="google-auth-trigger" id="googleAuthButton">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12.24 10.285V13.4h6.887c-.275 1.565-1.88 4.604-6.887 4.604-4.33 0-7.866-3.577-7.866-8s3.536-8 7.866-8c2.46 0 4.105 1.025 5.047 1.926l2.427-2.334C17.955 2.192 15.34 1 12.24 1 6.033 1 1 6.033 1 12.24s5.033 11.24 11.24 11.24c6.478 0 10.793-4.537 10.793-10.997 0-.746-.08-1.32-.176-1.898H12.24z"/>
+                </svg>
+                Log in with Google
+            </button>
+
+            <div id="statusToast" class="status-toast"></div>
+        </div>
+
+        <div class="liquid-glass-card toggle-view-card">
+            <span class="login-context">Don't have an account?<a href="#" id="switchToSignUp">Sign up</a></span>
+            <span class="signup-context">Have an account?<a href="#" id="switchToLogIn">Log in</a></span>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { 
+            getAuth, 
+            createUserWithEmailAndPassword, 
+            signInWithEmailAndPassword, 
+            signInWithPopup, 
+            GoogleAuthProvider,
+            updateProfile 
+        } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+        // Integrated Configuration Object
+        const firebaseConfig = {
+            apiKey: "AIzaSyATrPSHyg8SS6BzafsoFYI71g2-vAbMYjU",
+            authDomain: "dillucaptures07.firebaseapp.com",
+            projectId: "dillucaptures07",
+            storageBucket: "dillucaptures07.firebasestorage.app",
+            messagingSenderId: "331192229836",
+            appId: "1:331192229836:web:dbde836b8e043558038769",
+            measurementId: "G-R0ES0XEHSV"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const googleProvider = new GoogleAuthProvider();
+
+        const bodyNode = document.body;
+        const authForm = document.getElementById('authForm');
+        const emailInput = document.getElementById('emailField');
+        const passwordInput = document.getElementById('passwordField');
+        const nameInput = document.getElementById('displayNameField');
+        const submitBtn = document.getElementById('mainActionButton');
+        const googleBtn = document.getElementById('googleAuthButton');
+        const statusToast = document.getElementById('statusToast');
+        const triggerSignUp = document.getElementById('switchToSignUp');
+        const triggerLogIn = document.getElementById('switchToLogIn');
+
+        let checkSignUpStateActive = false;
+
+        triggerSignUp.addEventListener('click', (e) => {
+            e.preventDefault();
+            checkSignUpStateActive = true;
+            bodyNode.classList.add('signup-active');
+            submitBtn.textContent = "Sign Up";
+            clearToast();
+        });
+
+        triggerLogIn.addEventListener('click', (e) => {
+            e.preventDefault();
+            checkSignUpStateActive = false;
+            bodyNode.classList.remove('signup-active');
+            submitBtn.textContent = "Log In";
+            clearToast();
+        });
+
+        authForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            clearToast();
+
+            const targetEmailValue = emailInput.value.trim();
+            const targetPasswordValue = passwordInput.value;
+            const targetNameValue = nameInput.value.trim();
+
+            if (checkSignUpStateActive) {
+                try {
+                    const credentialsReceipt = await createUserWithEmailAndPassword(auth, targetEmailValue, targetPasswordValue);
+                    if (targetNameValue) {
+                        await updateProfile(credentialsReceipt.user, { displayName: targetNameValue });
+                    }
+                    displayToast("Account initialized! Access granted...", "success");
+                    redirectUserToDashboard();
+                } catch (error) {
+                    displayToast(parseFirebaseErrorMessage(error.code), "error");
+                }
+            } else {
+                try {
+                    await signInWithEmailAndPassword(auth, targetEmailValue, targetPasswordValue);
+                    displayToast("Identity verified. Access granted.", "success");
+                    redirectUserToDashboard();
+                } catch (error) {
+                    displayToast(parseFirebaseErrorMessage(error.code), "error");
+                }
+            }
+        });
+
+        googleBtn.addEventListener('click', async () => {
+            clearToast();
+            try {
+                await signInWithPopup(auth, googleProvider);
+                displayToast("Google synchronization complete. Access granted.", "success");
+                redirectUserToDashboard();
+            } catch (error) {
+                if (error.code !== "auth/popup-closed-by-user") {
+                    displayToast(parseFirebaseErrorMessage(error.code), "error");
+                }
+            }
+        });
+
+        function displayToast(msg, variant) {
+            statusToast.textContent = msg;
+            statusToast.className = `status-toast ${variant}`;
+            statusToast.style.display = "block";
+        }
+
+        function clearToast() {
+            statusToast.style.display = "none";
+        }
+
+        function redirectUserToDashboard() {
+            submitBtn.disabled = true;
+            setTimeout(() => { window.location.href = "index.html"; }, 1000);
+        }
+
+        function parseFirebaseErrorMessage(systemErrorCode) {
+            switch(systemErrorCode) {
+                case 'auth/email-already-in-use': return "This email is already associated with another account.";
+                case 'auth/invalid-email': return "The submitted email address format is invalid.";
+                case 'auth/weak-password': return "Password rejected: Must be at least 6 characters.";
+                case 'auth/missing-password': return "Please input your password parameters.";
+                case 'auth/invalid-credential': return "Credentials mismatch standard system profiles.";
+                default: return `Authentication Error: ${systemErrorCode.replace('auth/', '').replace(/-/g, ' ')}`;
+            }
+        }
+    </script>
+</body>
+</html>
