@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dillu Captures | Instagram Luxury Feed</title>
+    <title>Dillu Captures | Public Social Architecture</title>
 
-    <!-- External Typography & Layout Kits -->
+    <!-- Typography and Visual Icon Subsystems -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -13,563 +13,609 @@
     <style>
         :root {
             --bg-base: #000000;
-            --bg-gradient: radial-gradient(circle at 50% 0%, #121824 0%, #05070a 60%, #000000 100%);
+            --bg-gradient: radial-gradient(circle at 50% 0%, #131924 0%, #06080c 65%, #000000 100%);
             --text-main: #ffffff;
-            --text-muted: rgba(255, 255, 255, 0.6);
-            --accent: #ff3040; /* Instagram Crimson Like Target */
-            --gold: #D4AF37; /* Branding Elegance */
+            --text-muted: rgba(255, 255, 255, 0.55);
+            --accent: #ff3040; /* Instagram Core Like Crimson */
+            --gold: #D4AF37; /* Legacy Aesthetic Contrast Accents */
             --glass-sheet: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.12);
-            --ios-blur: blur(40px) saturate(210%) brightness(1.02);
+            --glass-border: rgba(255, 255, 255, 0.11);
+            --ios-blur: blur(35px) saturate(210%) brightness(1.02);
         }
 
-        html { scroll-behavior: initial; }
+        /* Essential Reset Configurations */
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-
         body {
-            background: var(--bg-base);
-            background-image: var(--bg-gradient);
-            color: var(--text-main);
-            font-family: 'Inter', sans-serif;
-            min-height: 100vh;
-            overflow-x: hidden;
+            background: var(--bg-base); background-image: var(--bg-gradient);
+            color: var(--text-main); font-family: 'Inter', sans-serif;
+            min-height: 100vh; overflow-x: hidden; padding-bottom: 90px;
         }
 
-        /* Fluid UI Glass Panel Design */
+        /* Glassmorphic Core Specifications */
         .liquid-glass {
-            background: var(--glass-sheet);
-            backdrop-filter: var(--ios-blur);
-            -webkit-backdrop-filter: var(--ios-blur);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            box-shadow: inset 0 1px 2px rgba(255,255,255,0.05), 0 20px 50px rgba(0,0,0,0.7);
+            background: var(--glass-sheet); backdrop-filter: var(--ios-blur); -webkit-backdrop-filter: var(--ios-blur);
+            border: 1px solid var(--glass-border); border-radius: 20px;
+            box-shadow: inset 0 1px 1px rgba(255,255,255,0.05), 0 15px 45px rgba(0,0,0,0.6);
         }
 
-        /* System Gateways: Authentication Interface Layer */
-        #gatekeeper-auth-view {
-            position: fixed; inset: 0; z-index: 99999;
-            display: flex; align-items: center; justify-content: center;
-            background: var(--bg-base);
-            padding: 20px;
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .login-card {
-            width: 100%; max-width: 400px; padding: 40px; text-align: center;
-        }
-
-        .login-card h2 {
-            font-family: 'Cinzel', serif; font-size: 26px; margin-bottom: 8px; color: var(--gold); letter-spacing: 0.05em;
-        }
-
-        .login-card p { font-size: 13px; color: var(--text-muted); margin-bottom: 30px; }
-
-        .input-control {
-            width: 100%; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border);
-            padding: 14px 18px; border-radius: 14px; color: #fff; font-size: 14px; outline: none;
-            margin-bottom: 16px; transition: border-color 0.3s;
-        }
-        .input-control:focus { border-color: var(--gold); }
-
-        .action-submit-trigger {
-            width: 100%; background: var(--text-main); color: #000; border: none;
-            padding: 14px; border-radius: 14px; font-weight: 600; font-size: 13px;
-            text-transform: uppercase; letter-spacing: 0.05em; cursor: pointer; transition: all 0.3s;
-        }
-        .action-submit-trigger:hover { background: var(--gold); color: #fff; }
-
-        /* Primary App Engine Structural Setup */
-        #master-application-view { display: none; opacity: 0; transition: opacity 0.5s ease; }
-
-        /* Navigation Architecture Frame: Instagram Glass Matrix */
+        /* Sticky Global Top Header Architecture */
         .instagram-header-dock {
-            position: fixed; top: 0; left: 0; width: 100%; height: 70px;
-            z-index: 9000; display: flex; align-items: center; justify-content: space-between;
-            padding: 0 30px; background: rgba(0, 0, 0, 0.2);
-            backdrop-filter: var(--ios-blur); -webkit-backdrop-filter: var(--ios-blur);
+            position: fixed; top: 0; left: 0; width: 100%; height: 70px; z-index: 9000;
+            display: flex; align-items: center; justify-content: space-between; padding: 0 24px;
+            background: rgba(0,0,0,0.2); backdrop-filter: var(--ios-blur); -webkit-backdrop-filter: var(--ios-blur);
             border-bottom: 1px solid var(--glass-border);
         }
-
-        .brand-signature {
-            font-family: 'Cinzel', serif; font-size: 20px; font-weight: 700;
-            letter-spacing: 0.04em; color: var(--text-main); cursor: pointer;
-        }
+        .brand-signature { font-family: 'Cinzel', serif; font-size: 21px; font-weight: 700; letter-spacing: 0.04em; cursor: pointer; }
         .brand-signature span { color: var(--gold); }
+        .header-auth-status { display: flex; align-items: center; gap: 14px; }
 
-        .action-icon-cluster { display: flex; gap: 20px; align-items: center; }
-        
-        .nav-icon-btn {
-            background: transparent; border: none; color: var(--text-main);
-            font-size: 20px; cursor: pointer; transition: transform 0.3s ease;
-            width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
-            border-radius: 50%;
-        }
-        .nav-icon-btn:hover { background: rgba(255,255,255,0.08); transform: scale(1.05); }
+        /* Dynamic Section Router Configurations */
+        .app-view-panel { display: none; opacity: 0; transform: translateY(12px); transition: opacity 0.4s ease, transform 0.4s ease; }
+        .active-view { display: block; opacity: 1; transform: translateY(0); }
 
-        /* Center Layout Engine Base */
-        .feed-container {
-            max-width: 620px; margin: 0 auto; padding: 110px 20px 100px 20px;
-        }
+        .container { max-width: 640px; margin: 0 auto; padding: 100px 16px 40px 16px; }
 
-        /* Post Architecture Cards Template */
-        .instagram-post-card {
-            width: 100%; margin-bottom: 35px; overflow: hidden; border-radius: 24px;
+        /* Generic Core Buttons Layout */
+        .action-btn {
+            background: var(--text-main); color: #000; border: none; padding: 10px 18px; border-radius: 12px;
+            font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s ease;
         }
+        .action-btn:hover { background: var(--gold); color: #fff; }
+        .action-btn.secondary { background: rgba(255,255,255,0.08); color: #fff; border: 1px solid var(--glass-border); }
+        .action-btn.secondary:hover { background: rgba(255,255,255,0.15); }
 
-        .post-header-node {
-            display: flex; align-items: center; justify-content: space-between; padding: 16px 20px;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-        .user-meta-zone { display: flex; align-items: center; gap: 12px; }
+        /* VIEW 1: HOME FEED ARCHITECTURE CARDS */
+        .instagram-post-card { width: 100%; margin-bottom: 30px; overflow: hidden; border-radius: 20px; }
+        .post-header-node { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; }
+        .user-meta-zone { display: flex; align-items: center; gap: 10px; cursor: pointer; }
         .user-avatar-circle {
-            width: 36px; height: 36px; border-radius: 50%;
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-            padding: 2px;
+            width: 34px; height: 34px; border-radius: 50%; padding: 2px;
+            background: linear-gradient(45deg, #f09433 0%, #dc2743 50%, #bc1888 100%);
         }
         .user-avatar-circle img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 2px solid #000; }
-        .profile-name-string { font-size: 13px; font-weight: 600; letter-spacing: 0.02em; }
+        .profile-name-string { font-size: 13px; font-weight: 600; }
+        .delete-post-node { background: transparent; border: none; color: rgba(255,48,64,0.6); font-size: 11px; cursor: pointer; padding: 4px 8px; }
 
-        .delete-post-node {
-            background: transparent; border: none; color: rgba(255,255,255,0.4);
-            font-size: 11px; cursor: pointer; padding: 6px 12px; border-radius: 8px; transition: all 0.2s;
-        }
-        .delete-post-node:hover { color: var(--accent); background: rgba(255,48,64,0.1); }
-
-        /* Media Presentation Container */
-        .post-visual-viewport {
-            width: 100%; aspect-ratio: 4/5; overflow: hidden; background: #000;
-            position: relative; display: flex; align-items: center; justify-content: center;
-        }
+        .post-visual-viewport { width: 100%; aspect-ratio: 4/5; overflow: hidden; background: #000; }
         .post-visual-viewport img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* Micro Interactive Controls Layer */
-        .post-interactions-panel { padding: 16px 20px 8px 20px; display: flex; gap: 16px; }
-        .interaction-trigger-item {
-            background: transparent; border: none; color: var(--text-main); font-size: 22px; cursor: pointer; transition: transform 0.2s;
-        }
-        .interaction-trigger-item:hover { transform: scale(1.1); }
+        .post-interactions-panel { padding: 14px 18px 6px 18px; display: flex; gap: 16px; }
+        .interaction-trigger-item { background: transparent; border: none; color: #fff; font-size: 20px; cursor: pointer; }
         .interaction-trigger-item.liked-state { color: var(--accent); }
+        .post-metrics-readout { padding: 0 18px; font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+        .post-caption-box { padding: 0 18px; font-size: 13px; line-height: 1.5; margin-bottom: 12px; }
+        .post-caption-box strong { color: var(--gold); margin-right: 6px; }
 
-        /* Statistics Metrics Panel */
-        .post-metrics-readout { padding: 0 20px; font-size: 13px; font-weight: 600; margin-bottom: 10px; }
+        .comments-dock-area { padding: 12px 18px 18px 18px; border-top: 1px solid rgba(255,255,255,0.04); }
+        .comments-history-output { max-height: 120px; overflow-y: auto; display: flex; flex-direction: column; gap: 6px; }
+        .comment-node-string { font-size: 12px; }
+        .comment-node-string strong { color: var(--text-main); margin-right: 6px; }
+        .comment-input-form-box { display: flex; gap: 8px; margin-top: 12px; }
+        .comment-input-field { flex: 1; background: rgba(255,255,255,0.04); border: 1px solid var(--glass-border); border-radius: 8px; padding: 8px 12px; color: #fff; font-size: 12px; outline: none; }
 
-        /* Interactive Dynamic Comments Stream */
-        .comments-dock-area {
-            padding: 0 20px 20px 20px; border-top: 1px solid rgba(255,255,255,0.04); margin-top: 12px;
-        }
-        .comments-history-output {
-            max-height: 140px; overflow-y: auto; padding-top: 12px; display: flex; flex-direction: column; gap: 8px;
-        }
-        /* Custom mini scroller bar layout rules */
-        .comments-history-output::-webkit-scrollbar { width: 4px; }
-        .comments-history-output::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
+        /* VIEW 2: INSTAGRAM PROFILE SPECIFICATIONS */
+        .profile-container { max-width: 760px; margin: 0 auto; padding: 100px 16px 40px 16px; }
+        .profile-header-card { padding: 30px; display: flex; gap: 40px; align-items: center; margin-bottom: 30px; }
+        .profile-avatar-large { width: 100px; height: 100px; border-radius: 50%; overflow: hidden; border: 3px solid var(--gold); flex-shrink: 0; }
+        .profile-avatar-large img { width: 100%; height: 100%; object-fit: cover; }
+        .profile-info-column { flex: 1; }
+        .profile-meta-row { display: flex; align-items: center; gap: 20px; margin-bottom: 14px; flex-wrap: wrap; }
+        .profile-username-header { font-size: 20px; font-weight: 400; }
+        .profile-metrics-row { display: flex; gap: 24px; margin-bottom: 14px; font-size: 14px; }
+        .profile-metrics-row span strong { color: #fff; margin-right: 3px; }
+        .profile-bio-text h1 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+        .profile-bio-text p { font-size: 13px; color: var(--text-muted); line-height: 1.4; }
 
-        .comment-node-string { font-size: 12px; line-height: 1.5; }
-        .comment-node-string strong { font-weight: 600; color: var(--gold); margin-right: 6px; }
+        /* 3-Column Image Layout Matrix */
+        .instagram-grid-matrix { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+        .grid-matrix-cell { position: relative; aspect-ratio: 1/1; border-radius: 12px; overflow: hidden; background: #080c12; cursor: pointer; border: 1px solid var(--glass-border); }
+        .grid-matrix-cell img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+        .grid-matrix-cell:hover img { transform: scale(1.05); }
+        .grid-cell-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.2s ease; gap: 14px; font-size: 14px; font-weight: 600; }
+        .grid-matrix-cell:hover .grid-cell-overlay { opacity: 1; }
 
-        .comment-input-form-box { display: flex; gap: 10px; margin-top: 14px; }
-        .comment-input-field {
-            flex: 1; background: rgba(255,255,255,0.04); border: 1px solid var(--glass-border);
-            border-radius: 10px; padding: 10px 14px; color: #fff; font-size: 12px; outline: none;
-        }
-        .comment-submit-btn {
-            background: transparent; border: none; color: var(--gold); font-size: 12px; font-weight: 600; cursor: pointer; padding: 0 8px;
-        }
+        /* VIEW 3: DUAL REGISTER & SIGN IN CARD */
+        .auth-master-card { max-width: 420px; margin: 120px auto 40px auto; padding: 40px; text-align: center; }
+        .auth-master-card h2 { font-family: 'Cinzel', serif; font-size: 24px; margin-bottom: 6px; color: var(--gold); }
+        .auth-master-card p { font-size: 13px; color: var(--text-muted); margin-bottom: 24px; }
+        .auth-toggle-header { display: flex; border-bottom: 1px solid var(--glass-border); margin-bottom: 24px; }
+        .auth-toggle-btn { flex: 1; background: transparent; border: none; padding: 12px; color: var(--text-muted); font-size: 13px; font-weight: 600; cursor: pointer; }
+        .auth-toggle-btn.active-tab { color: #fff; border-bottom: 2px solid var(--gold); }
+        .input-control { width: 100%; background: rgba(255,255,255,0.04); border: 1px solid var(--glass-border); padding: 12px 16px; border-radius: 10px; color: #fff; font-size: 13px; outline: none; margin-bottom: 14px; }
+        .input-control:focus { border-color: var(--gold); }
 
-        /* Create Upload Sheet System Overlay Modal */
-        #global-upload-modal-view {
-            position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.6);
-            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-            display: none; align-items: center; justify-content: center; padding: 20px;
-        }
-        .modal-body-panel {
-            width: 100%; max-width: 460px; padding: 30px; position: relative;
-        }
-        .close-modal-trigger {
-            position: absolute; top: 20px; right: 20px; background: transparent; border: none; color: #fff; font-size: 20px; cursor: pointer;
-        }
-        .modal-body-panel h3 { font-family: 'Cinzel', serif; font-size: 20px; margin-bottom: 20px; text-align: center; }
-
-        /* Native File Dropzone Input Component */
-        .file-dropzone-area {
-            border: 2px dashed var(--glass-border); border-radius: 16px; padding: 35px 20px;
-            text-align: center; cursor: pointer; margin-bottom: 20px; transition: background 0.3s;
-        }
-        .file-dropzone-area:hover { background: rgba(255,255,255,0.02); }
+        /* VIEW 4: BROADCAST MODAL BOX WINDOW */
+        #global-upload-modal-view { position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.6); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); display: none; align-items: center; justify-content: center; padding: 16px; }
+        .modal-body-panel { width: 100%; max-width: 440px; padding: 30px; position: relative; }
+        .close-modal-trigger { position: absolute; top: 16px; right: 20px; background: transparent; border: none; color: #fff; font-size: 22px; cursor: pointer; }
+        .modal-body-panel h3 { font-family: 'Cinzel', serif; font-size: 18px; margin-bottom: 16px; text-align: center; }
+        .file-dropzone-area { border: 2px dashed var(--glass-border); border-radius: 12px; padding: 30px 16px; text-align: center; cursor: pointer; margin-bottom: 16px; }
         .file-dropzone-area p { font-size: 12px; color: var(--text-muted); }
 
-        /* Quick Utility Bottom Static Dock */
-        .ios-action-dock-bar {
-            position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
-            width: 90%; max-width: 400px; height: 60px; z-index: 9000;
-            display: flex; align-items: center; justify-content: space-around; padding: 0 10px;
-        }
-        .dock-action-node {
-            background: transparent; border: none; color: var(--text-main); font-size: 18px; cursor: pointer;
-            width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: all 0.2s;
-        }
-        .dock-action-node:hover { background: rgba(255,255,255,0.1); color: var(--gold); }
+        /* Persistent Dynamic Sticky Footer Navigation Controller Dock */
+        .ios-action-dock-bar { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 440px; height: 60px; z-index: 9000; display: flex; align-items: center; justify-content: space-around; padding: 0 8px; }
+        .dock-action-node { background: transparent; border: none; color: #fff; font-size: 18px; cursor: pointer; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
+        .dock-action-node:hover { background: rgba(255,255,255,0.08); color: var(--gold); }
 
-        /* Scroll Progress Metrics Line */
-        #scrollTrackerBar {
-            position: fixed; top: 0; left: 0; height: 3px; background: var(--gold); width: 0%; z-index: 99999;
-        }
+        #scrollTrackerBar { position: fixed; top: 0; left: 0; height: 3px; background: var(--gold); width: 0%; z-index: 99999; }
     </style>
 </head>
 <body>
 
     <div id="scrollTrackerBar"></div>
 
-    <!-- GATEWAY 1: SIMULATED CLIENT ACCESS LOCK SCREEN -->
-    <section id="gatekeeper-auth-view">
-        <div class="login-card liquid-glass">
-            <h2>DILLU CAPTURES</h2>
-            <p>Enter administrative credential gateway portfolio access.</p>
-            <form onsubmit="executeGatewayLoginVerify(event)">
-                <input type="text" id="authUserNameField" class="input-control" placeholder="Username (Hint: admin)" required autocomplete="off">
-                <input type="password" id="authPasswordField" class="input-control" placeholder="Access Password (Hint: 1234)" required>
-                <button type="submit" class="action-submit-trigger">Unlock Portfolio Profile</button>
+    <!-- Top Navigation Layer -->
+    <header class="instagram-header-dock">
+        <div class="brand-signature" onclick="navigateToAppSection('feed')">Dillu_<span>Captures</span></div>
+        <div class="header-auth-status" id="headerAuthPanelControls">
+            <!-- Programmatically Injected Login / Signout Triggers -->
+        </div>
+    </header>
+
+    <!-- UI ROUTER CHANNELS TARGETS -->
+
+    <!-- VIEW 1: CENTRAL GENERAL FEED TIMELINE -->
+    <section id="view-feed" class="app-view-panel container">
+        <div id="timelineFeedInjectedWrapper"></div>
+    </section>
+
+    <!-- VIEW 2: INSTAGRAM MATRICES PROFILE VIEW -->
+    <section id="view-profile" class="app-view-panel profile-container">
+        <div id="profileContextInjectedWrapper"></div>
+    </section>
+
+    <!-- VIEW 3: SYSTEM MULTI-USER AUTHENTICATION HUB (LOGIN / REGISTER) -->
+    <section id="view-auth" class="app-view-panel">
+        <div class="auth-master-card liquid-glass">
+            <h2 id="authInterfaceHeadline">Welcome Back</h2>
+            <p id="authInterfaceSubtext">Access your public photography timeline index profile.</p>
+            
+            <div class="auth-toggle-header">
+                <button id="toggleLoginModeBtn" class="auth-toggle-btn active-tab" onclick="switchAuthModeTab('login')">Sign In</button>
+                <button id="toggleRegisterModeBtn" class="auth-toggle-btn" onclick="switchAuthModeTab('register')">Create Account</button>
+            </div>
+
+            <!-- Single Input Controller Processing Grid -->
+            <form id="systemAuthInputPipelineForm" onsubmit="executeAuthenticationChallenge(event)">
+                <div id="extendedRegisterFieldsGroup" style="display: none;">
+                    <input type="text" id="authFullNameField" class="input-control" placeholder="Full Profile Name (e.g. Jane Doe)">
+                    <input type="text" id="authBioSummaryField" class="input-control" placeholder="Bio Summary (e.g. Editorial Photographer)">
+                </div>
+                <input type="text" id="authUsernameField" class="input-control" placeholder="Unique Username" required autocomplete="off">
+                <input type="password" id="authPasswordField" class="input-control" placeholder="Account Security Password" required>
+                
+                <button type="submit" id="authExecutionSubmitTrigger" class="action-btn" style="width: 100%; padding: 14px; margin-top: 10px;">Authenticate Access</button>
             </form>
         </div>
     </section>
 
-    <!-- CORE INSTAGRAM VIEW INTERFACE LAYER -->
-    <main id="master-application-view">
-        
-        <!-- Sticky Header Navigation Area -->
-        <header class="instagram-header-dock">
-            <div class="brand-signature" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">Dillu_<span>Captures</span></div>
-            <div class="action-icon-cluster">
-                <button class="nav-icon-btn" onclick="toggleUploadModalState(true)" title="Upload Image">+</button>
-                <button class="nav-icon-btn" onclick="triggerPlatformSignout()" title="Lock Platform">🔒</button>
+    <!-- VIEW 4: MEDIA COMPILATION MODAL WINDOW BLOCKS -->
+    <div id="global-upload-modal-view" onclick="if(event.target === this) toggleMediaUploadModalWindow(false)">
+        <div class="modal-body-panel liquid-glass">
+            <button class="close-modal-trigger" onclick="toggleMediaUploadModalWindow(false)">×</button>
+            <h3>Publish Capture Target</h3>
+            
+            <div class="file-dropzone-area" onclick="document.getElementById('nativeSystemFilePicker').click()">
+                <p id="dropzoneStatusStringPrompt">Click inside grid frame bounds to select desktop or mobile photo image file...</p>
+                <input type="file" id="nativeSystemFilePicker" accept="image/*" style="display: none;" onchange="convertUploadedImageToBase64String(event)">
             </div>
-        </header>
 
-        <!-- Main Structural Feed Column -->
-        <section class="feed-container" id="injectedDynamicFeedContainer"></section>
-
-        <!-- Floating iOS Interactive Dock Device Bar -->
-        <nav class="ios-action-dock-bar liquid-glass">
-            <button class="dock-action-node" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Feed Base">🏠</button>
-            <button class="dock-action-node" onclick="toggleUploadModalState(true)" title="Add Content">➕</button>
-            <button class="dock-action-node" onclick="triggerClientMessagingRedirect('General Consultation')" title="WhatsApp Contact">💬</button>
-            <button class="dock-action-node" onclick="window.open('https://instagram.com', '_blank')" title="Instagram Mirror Profile">📸</button>
-        </nav>
-
-        <!-- Hidden Interactive Modal Creation Overlay Sheets Template -->
-        <div id="global-upload-modal-view" onclick="if(event.target === this) toggleUploadModalState(false)">
-            <div class="modal-body-panel liquid-glass">
-                <button class="close-modal-trigger" onclick="toggleUploadModalState(false)">×</button>
-                <h3>Broadcast New Frame</h3>
-                
-                <div class="file-dropzone-area" onclick="document.getElementById('nativeFileSelectorInput').click()">
-                    <p id="dropzonePromptText">Click anywhere inside frame to load system image photo...</p>
-                    <input type="file" id="nativeFileSelectorInput" accept="image/*" style="display: none;" onchange="processLocalImageSelection(event)">
-                </div>
-
-                <div class="input-group">
-                    <input type="text" id="customCaptionField" class="input-control" placeholder="Write editorial style caption summary..." autocomplete="off">
-                </div>
-
-                <button class="action-submit-trigger" onclick="commitPostToPipeline()">Publish To Live Feed</button>
-            </div>
+            <input type="text" id="newFrameCaptionTextField" class="input-control" placeholder="Write comprehensive frame context caption layout...">
+            <button class="action-btn" style="width: 100%; padding: 14px; margin-top: 8px;" onclick="commitNewMediaPostToTimeline()">Broadcast Image Frame</button>
         </div>
+    </div>
 
-    </main>
+    <!-- Constant Sticky Footer Control Center Modules -->
+    <nav class="ios-action-dock-bar liquid-glass">
+        <button class="dock-action-node" onclick="navigateToAppSection('feed')" title="Timeline Feed">🏠</button>
+        <button class="dock-action-node" onclick="initiateSecureMediaUploadSequence()" title="Publish Frame">➕</button>
+        <button class="dock-action-node" id="footerNavProfileShortcutNode" onclick="navigateToAppSection('profile')" title="My Profile">👤</button>
+    </nav>
 
-    <!-- Core Smooth Scrolling Performance Pipeline Engine Script -->
+    <!-- Lenis Library Integration -->
     <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
     <script>
-        /* System 1: Lenis Smooth Scroll Core Setup */
-        const lenis = new Lenis({
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -11 * t)),
-            smoothWheel: true
-        });
-
-        function processingAnimationLoop(time) {
-            lenis.raf(time);
-            updateGlobalProgressIndicator();
-            requestAnimationFrame(processingAnimationLoop);
+        /* Engine Core 1: System Scrolling Track Engines */
+        const lenis = new Lenis({ duration: 1.1, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -11 * t)), smoothWheel: true });
+        function renderingAnimationFrameStep(timeValue) {
+            lenis.raf(timeValue);
+            const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            const markerBar = document.getElementById('scrollTrackerBar');
+            if(markerBar) markerBar.style.width = scrollPercent + '%';
+            requestAnimationFrame(renderingAnimationFrameStep);
         }
-        requestAnimationFrame(processingAnimationLoop);
+        requestAnimationFrame(renderingAnimationFrameStep);
 
-        function updateGlobalProgressIndicator() {
-            const dynamicPercentageTrack = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-            const trackingBarElement = document.getElementById('scrollTrackerBar');
-            if(trackingBarElement) trackingBarElement.style.width = dynamicPercentageTrack + '%';
-        }
-
-        /* System 2: Local Core Storage State Array Engine Initialization Rules */
-        const operationalFallbackSeedData = [
-            {
-                id: "seed-post-wedding-art",
-                imageUrl: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80",
-                caption: "Cinematic architecture patterns framing continuous commitment. Editorial Wedding Portraiture.",
-                likesCount: 142,
-                userHasLiked: false,
-                commentsList: [
-                    { owner: "avant_garde_portraits", text: "Stunning light alignment setups here Dillu!" },
-                    { owner: "vogue_india", text: "Pure masterclass spatial framing balance." }
-                ],
-                isClientCreated: false
-            },
-            {
-                id: "seed-post-maternity-luxe",
-                imageUrl: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80",
-                caption: "Honoring expectations with soft continuous light parameters.",
-                likesCount: 98,
-                userHasLiked: false,
-                commentsList: [
-                    { owner: "elizabeth_styles", text: "This backdrop saturation curve is incredible." }
-                ],
-                isClientCreated: false
-            }
+        /* Engine Core 2: Seed Dataset Allocations */
+        const seedUsersStore = [
+            { username: "dillu_captures", password: "123", name: "Dillu Captures Official", bio: "Luxury lifestyle, fine-art configurations, and editorial architectural photography across India.", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" },
+            { username: "creative_lens", password: "123", name: "Alex Mercer", bio: "Visualizing organic patterns via clean continuous custom natural light setups.", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80" }
         ];
 
-        let internalApplicationStateDataset = [];
-        let temporalEncodedImageString = "";
+        const seedPostsStore = [
+            { id: "seed-post-1", owner: "dillu_captures", imageUrl: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80", caption: "Timeless matrimonial structural geometric configurations. Organized light framework.", likes: ["creative_lens"], comments: [{ author: "creative_lens", line: "This contrast metric curve is flawlessly balanced!" }] },
+            { id: "seed-post-2", owner: "creative_lens", imageUrl: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80", caption: "Continuous portrait illumination monitoring internal lifecycle elegance.", likes: [], comments: [] }
+        ];
 
-        function synchroniseApplicationStateStorage(payloadArrayData = null) {
-            if(payloadArrayData) {
-                internalApplicationStateDataset = payloadArrayData;
-            }
-            localStorage.setItem('DILLU_CAPTURES_PERSISTED_DATA_STORE', JSON.stringify(internalApplicationStateDataset));
-            renderPlatformFeedDOM();
-        }
+        let activeUserRegistryState = [];
+        let activeGlobalTimelinePosts = [];
+        let currentlyAuthenticatedUser = null; 
+        let activeCurrentAuthTabState = "login"; 
+        let temporaryCachedBase64String = "";
+        let trackedTargetProfileContextUsername = "";
 
-        function bootstrapApplicationStateEngine() {
-            const gatheredLocalDatabaseStore = localStorage.getItem('DILLU_CAPTURES_PERSISTED_DATA_STORE');
-            if(gatheredLocalDatabaseStore) {
-                internalApplicationStateDataset = JSON.parse(gatheredLocalDatabaseStore);
-            } else {
-                internalApplicationStateDataset = operationalFallbackSeedData;
+        /* Engine Core 3: System State Synchronizers */
+        function loadPlatformMemoryEngines() {
+            if(!localStorage.getItem('IG_ENGINE_USERS_REGISTRY')) {
+                localStorage.setItem('IG_ENGINE_USERS_REGISTRY', JSON.stringify(seedUsersStore));
+                localStorage.setItem('IG_ENGINE_TIMELINE_POSTS', JSON.stringify(seedPostsStore));
             }
+            activeUserRegistryState = JSON.parse(localStorage.getItem('IG_ENGINE_USERS_REGISTRY'));
+            activeGlobalTimelinePosts = JSON.parse(localStorage.getItem('IG_ENGINE_TIMELINE_POSTS'));
             
-            // Check structural persistence for active authentication state token
-            if(localStorage.getItem('DILLU_AUTH_TOKEN_STATE') === 'true') {
-                bypassLoginScreenInterface();
+            const localSessionToken = localStorage.getItem('IG_ENGINE_SESSION_TOKEN');
+            if(localSessionToken) {
+                currentlyAuthenticatedUser = activeUserRegistryState.find(u => u.username === localSessionToken) || null;
             }
+            evaluateHeaderNavigationControlsDOM();
+            navigateToAppSection('feed');
         }
 
-        /* System 3: Interactive Login System Processing */
-        function executeGatewayLoginVerify(eventContextReference) {
-            eventContextReference.preventDefault();
-            const definedUserString = document.getElementById('authUserNameField').value.trim();
-            const definedPasswordString = document.getElementById('authPasswordField').value;
-
-            if(definedUserString === 'admin' && definedPasswordString === '1234') {
-                localStorage.setItem('DILLU_AUTH_TOKEN_STATE', 'true');
-                bypassLoginScreenInterface();
-            } else {
-                alert("Security Authorization Rejection: Provided username or password pattern is incorrect.");
-            }
+        function commitPlatformMemoryEngineUpdates() {
+            localStorage.setItem('IG_ENGINE_USERS_REGISTRY', JSON.stringify(activeUserRegistryState));
+            localStorage.setItem('IG_ENGINE_TIMELINE_POSTS', JSON.stringify(activeGlobalTimelinePosts));
+            evaluateHeaderNavigationControlsDOM();
         }
 
-        function bypassLoginScreenInterface() {
-            const accessViewPanel = document.getElementById('gatekeeper-auth-view');
-            const mainApplicationFrame = document.getElementById('master-application-view');
+        /* Engine Core 4: App Navigation & Router Controls */
+        function navigateToAppSection(destinationSectionViewCode, operationalContextString = null) {
+            document.querySelectorAll('.app-view-panel').forEach(panel => panel.classList.remove('active-view'));
             
-            accessViewPanel.style.opacity = '0';
-            accessViewPanel.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                accessViewPanel.style.display = 'none';
-                mainApplicationFrame.style.display = 'block';
-                setTimeout(() => {
-                    mainApplicationFrame.style.opacity = '1';
-                    renderPlatformFeedDOM();
-                    window.dispatchEvent(new Event('resize'));
-                }, 50);
-            }, 600);
+            if(destinationSectionViewCode === 'feed') {
+                document.getElementById('view-feed').classList.add('active-view');
+                renderCentralTimelineFeedDOM();
+            } else if(destinationSectionViewCode === 'profile') {
+                trackedTargetProfileContextUsername = operationalContextString || (currentlyAuthenticatedUser ? currentlyAuthenticatedUser.username : "dillu_captures");
+                document.getElementById('view-profile').classList.add('active-view');
+                renderInstagramProfileLayoutDOM();
+            } else if(destinationSectionViewCode === 'auth') {
+                document.getElementById('view-auth').classList.add('active-view');
+            }
+            lenis.scrollTo(0, { immediate: true });
+            setTimeout(() => { window.dispatchEvent(new Event('resize')); }, 50);
         }
 
-        function triggerPlatformSignout() {
-            localStorage.removeItem('DILLU_AUTH_TOKEN_STATE');
-            location.reload();
+        function evaluateHeaderNavigationControlsDOM() {
+            const containerNode = document.getElementById('headerAuthPanelControls');
+            if(!containerNode) return;
+
+            if(currentlyAuthenticatedUser) {
+                containerNode.innerHTML = `
+                    <span style="font-size:12px; color:var(--gold); font-weight:600;">@${currentlyAuthenticatedUser.username}</span>
+                    <button class="action-btn secondary" onclick="executeProfileSignoutSequence()">Sign Out</button>
+                `;
+            } else {
+                containerNode.innerHTML = `
+                    <button class="action-btn" onclick="navigateToAppSection('auth')">Sign In / Register</button>
+                `;
+            }
         }
 
-        /* System 4: Instagram Feed Generation & Processing Factory */
-        function renderPlatformFeedDOM() {
-            const feedTargetWrapper = document.getElementById('injectedDynamicFeedContainer');
-            if(!feedTargetWrapper) return;
+        /* Engine Core 5: Sign In & Public Sign Up Implementation Engines */
+        function switchAuthModeTab(targetTabSelector) {
+            activeCurrentAuthTabState = targetTabSelector;
+            document.getElementById('toggleLoginModeBtn').classList.remove('active-tab');
+            document.getElementById('toggleRegisterModeBtn').classList.remove('active-tab');
+            
+            const registerFieldsBox = document.getElementById('extendedRegisterFieldsGroup');
 
-            feedTargetWrapper.innerHTML = "";
+            if(targetTabSelector === 'login') {
+                document.getElementById('toggleLoginModeBtn').classList.add('active-tab');
+                document.getElementById('authInterfaceHeadline').innerText = "Welcome Back";
+                document.getElementById('authInterfaceSubtext').innerText = "Access your public photography timeline index profile.";
+                registerFieldsBox.style.display = "none";
+            } else {
+                document.getElementById('toggleRegisterModeBtn').classList.add('active-tab');
+                document.getElementById('authInterfaceHeadline').innerText = "Create Public Account";
+                document.getElementById('authInterfaceSubtext').innerText = "Join the photography index to showcase frames publicly.";
+                registerFieldsBox.style.display = "block";
+            }
+        }
 
-            if(internalApplicationStateDataset.length === 0) {
-                feedTargetWrapper.innerHTML = `<div class="liquid-glass" style="padding: 40px; text-align: center; color: var(--text-muted); font-size: 13px;">No artwork currently loaded onto live portfolio timelines. Click "+" to create a new post.</div>`;
+        function executeAuthenticationChallenge(eventObj) {
+            eventObj.preventDefault();
+            const targetUsernameInput = document.getElementById('authUsernameField').value.trim().toLowerCase();
+            const targetPasswordInput = document.getElementById('authPasswordField').value;
+
+            if(activeCurrentAuthTabState === 'login') {
+                const userMatch = activeUserRegistryState.find(u => u.username === targetUsernameInput && u.password === targetPasswordInput);
+                if(userMatch) {
+                    currentlyAuthenticatedUser = userMatch;
+                    localStorage.setItem('IG_ENGINE_SESSION_TOKEN', userMatch.username);
+                    commitPlatformMemoryEngineUpdates();
+                    navigateToAppSection('feed');
+                } else {
+                    alert("Authentication Error: Invalid profile username or secure account password pattern configuration.");
+                }
+            } else {
+                // Public Account Creation Handling Pipelines
+                const targetFullNameInput = document.getElementById('authFullNameField').value.trim() || "Public Contributor";
+                const targetBioSummaryInput = document.getElementById('authBioSummaryField').value.trim() || "Photography enthusiast profile frame.";
+
+                if(activeUserRegistryState.some(u => u.username === targetUsernameInput)) {
+                    alert("Registration Blocked: Chosen username profile parameters already exist inside registry memory.");
+                    return;
+                }
+
+                const brandNewUserObjectInstance = {
+                    username: targetUsernameInput,
+                    password: targetPasswordInput,
+                    name: targetFullNameInput,
+                    bio: targetBioSummaryInput,
+                    avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=300&q=80" // Baseline fallback placeholder asset avatar string 
+                };
+
+                activeUserRegistryState.push(brandNewUserObjectInstance);
+                currentlyAuthenticatedUser = brandNewUserObjectInstance;
+                localStorage.setItem('IG_ENGINE_SESSION_TOKEN', brandNewUserObjectInstance.username);
+                commitPlatformMemoryEngineUpdates();
+                
+                // Clear validation field input sets
+                document.getElementById('authFullNameField').value = "";
+                document.getElementById('authBioSummaryField').value = "";
+                document.getElementById('authUsernameField').value = "";
+                document.getElementById('authPasswordField').value = "";
+
+                navigateToAppSection('profile', currentlyAuthenticatedUser.username);
+            }
+        }
+
+        function executeProfileSignoutSequence() {
+            currentlyAuthenticatedUser = null;
+            localStorage.removeItem('IG_ENGINE_SESSION_TOKEN');
+            commitPlatformMemoryEngineUpdates();
+            navigateToAppSection('feed');
+        }
+
+        /* Engine Core 6: Live Timeline Feed Builders */
+        function renderCentralTimelineFeedDOM() {
+            const container = document.getElementById('timelineFeedInjectedWrapper');
+            if(!container) return;
+            container.innerHTML = "";
+
+            if(activeGlobalTimelinePosts.length === 0) {
+                container.innerHTML = `<div class="liquid-glass" style="padding:40px; text-align:center; color:var(--text-muted); font-size:13px;">No photography published to public databases yet.</div>`;
                 return;
             }
 
-            internalApplicationStateDataset.forEach((artworkPostItem) => {
-                const cardOuterMarkupNode = document.createElement('article');
-                cardOuterMarkupNode.className = "instagram-post-card liquid-glass";
-                
-                // Mount internal components sequentially
-                let embeddedCommentsHtmlBlock = "";
-                artworkPostItem.commentsList.forEach(commentNode => {
-                    embeddedCommentsHtmlBlock += `
-                        <div class="comment-node-string">
-                            <strong>${commentNode.owner}</strong>${commentNode.text}
-                        </div>
-                    `;
+            activeGlobalTimelinePosts.forEach(post => {
+                const authorAccount = activeUserRegistryState.find(u => u.username === post.owner) || { name: "Unknown", avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=300&q=80" };
+                const isItemDeletable = currentlyAuthenticatedUser && (currentlyAuthenticatedUser.username === post.owner || currentlyAuthenticatedUser.username === "dillu_captures");
+                const userHasLikedItem = currentlyAuthenticatedUser && post.likes.includes(currentlyAuthenticatedUser.username);
+
+                let inlineCommentsBufferHTML = "";
+                post.comments.forEach(c => {
+                    inlineCommentsBufferHTML += `<div class="comment-node-string"><strong>@${c.author}</strong>${c.line}</div>`;
                 });
 
-                cardOuterMarkupNode.innerHTML = `
+                const postCardMarkupElement = document.createElement('article');
+                postCardMarkupElement.className = "instagram-post-card liquid-glass";
+                postCardMarkupElement.innerHTML = `
                     <div class="post-header-node">
-                        <div class="user-meta-zone">
-                            <div class="user-avatar-circle">
-                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Avatar">
-                            </div>
-                            <span class="profile-name-string">dillu_captures</span>
+                        <div class="user-meta-zone" onclick="navigateToAppSection('profile', '${post.owner}')">
+                            <div class="user-avatar-circle"><img src="${authorAccount.avatar}" alt=""></div>
+                            <span class="profile-name-string">${post.owner}</span>
                         </div>
-                        <button class="delete-post-node" onclick="executePostDeletion('${artworkPostItem.id}')">Delete Frame</button>
+                        ${isItemDeletable ? `<button class="delete-post-node" onclick="executeTimelinePostDeletion('${post.id}')">Delete</button>` : ''}
                     </div>
 
-                    <div class="post-visual-viewport" ondblclick="executeLikeActionToggle('${artworkPostItem.id}')">
-                        <img src="${artworkPostItem.imageUrl}" alt="Portfolio Visual Content" loading="lazy">
+                    <div class="post-visual-viewport" ondblclick="toggleTimelinePostLikingState('${post.id}')">
+                        <img src="${post.imageUrl}" alt="Visual Content Capture Block" loading="lazy">
                     </div>
 
                     <div class="post-interactions-panel">
-                        <button class="interaction-trigger-item ${artworkPostItem.userHasLiked ? 'liked-state' : ''}" onclick="executeLikeActionToggle('${artworkPostItem.id}')">
-                            ${artworkPostItem.userHasLiked ? '❤️' : '🤍'}
+                        <button class="interaction-trigger-item ${userHasLikedItem ? 'liked-state' : ''}" onclick="toggleTimelinePostLikingState('${post.id}')">
+                            ${userHasLikedItem ? '❤️' : '🤍'}
                         </button>
-                        <button class="interaction-trigger-item" onclick="document.getElementById('input-field-${artworkPostItem.id}').focus()">💬</button>
-                        <button class="interaction-trigger-item" onclick="triggerClientMessagingRedirect('${artworkPostItem.id}')">✉️</button>
+                        <button class="interaction-trigger-item" onclick="document.getElementById('comment-input-node-${post.id}').focus()">💬</button>
                     </div>
 
-                    <div class="post-metrics-readout">
-                        <span>${artworkPostItem.likesCount} likes</span>
-                    </div>
+                    <div class="post-metrics-readout"><span>${post.likes.length} likes</span></div>
 
-                    <div class="post-metrics-readout" style="font-weight: 400; font-size: 13px; line-height: 1.6;">
-                        <span style="font-weight: 600; margin-right: 6px; color: var(--gold);">dillu_captures</span>${artworkPostItem.caption}
-                    </div>
+                    <div class="post-caption-box"><strong>${post.owner}</strong>${post.caption}</div>
 
                     <div class="comments-dock-area">
-                        <div class="comments-history-output">
-                            ${embeddedCommentsHtmlBlock}
-                        </div>
-                        <form class="comment-input-form-box" onsubmit="executeCommentSubmission(event, '${artworkPostItem.id}')">
-                            <input type="text" id="input-field-${artworkPostItem.id}" class="comment-input-field" placeholder="Add an editorial annotation..." required autocomplete="off">
-                            <button type="submit" class="comment-submit-btn">Post</button>
+                        <div class="comments-history-output">${inlineCommentsBufferHTML}</div>
+                        <form class="comment-input-form-box" onsubmit="commitUserAnnotationCommentLine(event, '${post.id}')">
+                            <input type="text" id="comment-input-node-${post.id}" class="comment-input-field" placeholder="Add custom comment note..." required autocomplete="off">
                         </form>
                     </div>
                 `;
-
-                feedTargetWrapper.appendChild(cardOuterMarkupNode);
+                container.appendChild(postCardMarkupElement);
             });
         }
 
-        /* System 5: Native Pipeline Interaction Controls (Likes, Comments, Deletions) */
-        function executeLikeActionToggle(targetPostIdCode) {
-            const mappedMutatedStateDataset = internalApplicationStateDataset.map(itemNode => {
-                if(itemNode.id === targetPostIdCode) {
-                    const revisedLikeFlag = !itemNode.userHasLiked;
-                    return {
-                        ...itemNode,
-                        userHasLiked: revisedLikeFlag,
-                        likesCount: revisedLikeFlag ? itemNode.likesCount + 1 : itemNode.likesCount - 1
-                    };
+        /* Engine Core 7: Instagram Grid & Metrics Profile Builders */
+        function renderInstagramProfileLayoutDOM() {
+            const container = document.getElementById('profileContextInjectedWrapper');
+            if(!container) return;
+            container.innerHTML = "";
+
+            const targetedProfileObjectData = activeUserRegistryState.find(u => u.username === trackedTargetProfileContextUsername);
+            if(!targetedProfileObjectData) {
+                container.innerHTML = `<div class="liquid-glass" style="padding:40px; text-align:center;">Target profile directory index not found.</div>`;
+                return;
+            }
+
+            const historicalUserPostsCollection = activeGlobalTimelinePosts.filter(p => p.owner === trackedTargetProfileContextUsername);
+            
+            // Collate absolute interactive like computations across individual historical elements
+            let rollingSumLikesCount = 0;
+            historicalUserPostsCollection.forEach(p => rollingSumLikesCount += p.likes.length);
+
+            let structureGridCellsHTML = "";
+            historicalUserPostsCollection.forEach(p => {
+                structureGridCellsHTML += `
+                    <div class="grid-matrix-cell" onclick="navigateToAppSection('feed')">
+                        <img src="${p.imageUrl}" alt="" loading="lazy">
+                        <div class="grid-cell-overlay">
+                            <span>❤️ ${p.likes.length}</span>
+                            <span>💬 ${p.comments.length}</span>
+                        </div>
+                    </div>
+                `;
+            });
+
+            if(historicalUserPostsCollection.length === 0) {
+                structureGridCellsHTML = `<div style="grid-column: span 3; padding: 60px 20px; text-align:center; color:var(--text-muted); font-size:13px;">No published showcase grids currently configured.</div>`;
+            }
+
+            container.innerHTML = `
+                <div class="profile-header-card liquid-glass">
+                    <div class="profile-avatar-large"><img src="${targetedProfileObjectData.avatar}" alt=""></div>
+                    <div class="profile-info-column">
+                        <div class="profile-meta-row">
+                            <h2 class="profile-username-header">@${targetedProfileObjectData.username}</h2>
+                        </div>
+                        <div class="profile-metrics-row">
+                            <span><strong>${historicalUserPostsCollection.length}</strong> posts</span>
+                            <span><strong>${rollingSumLikesCount}</strong> total likes</span>
+                        </div>
+                        <div class="profile-bio-text">
+                            <h1>${targetedProfileObjectData.name}</h1>
+                            <p>${targetedProfileObjectData.bio}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="instagram-grid-matrix">
+                    ${structureGridCellsHTML}
+                </div>
+            `;
+        }
+
+        /* Engine Core 8: Direct Social Interactions Pipeline Framework */
+        function toggleTimelinePostLikingState(targetPostId) {
+            if(!currentlyAuthenticatedUser) {
+                alert("Action Blocked: Anonymous actions are protected. Please create an account or sign in to configure likes.");
+                navigateToAppSection('auth');
+                return;
+            }
+
+            activeGlobalTimelinePosts = activeGlobalTimelinePosts.map(post => {
+                if(post.id === targetPostId) {
+                    const trackingIdx = post.likes.indexOf(currentlyAuthenticatedUser.username);
+                    if(trackingIdx > -1) {
+                        post.likes.splice(trackingIdx, 1);
+                    } else {
+                        post.likes.push(currentlyAuthenticatedUser.username);
+                    }
                 }
-                return itemNode;
+                return post;
             });
-            synchroniseApplicationStateStorage(mappedMutatedStateDataset);
+            commitPlatformMemoryEngineUpdates();
+            renderCentralTimelineFeedDOM();
         }
 
-        function executeCommentSubmission(eventContext, targetPostIdCode) {
-            eventContext.preventDefault();
-            const validationTargetInputNode = document.getElementById(`input-field-${targetPostIdCode}`);
-            if(!validationTargetInputNode) return;
+        function commitUserAnnotationCommentLine(eventObj, targetPostId) {
+            eventObj.preventDefault();
+            if(!currentlyAuthenticatedUser) {
+                alert("Action Blocked: Please log in to publish feedback annotations.");
+                navigateToAppSection('auth');
+                return;
+            }
 
-            const structuredTextString = validationTargetInputNode.value.trim();
-            if(!structuredTextString) return;
+            const inputNode = document.getElementById(`comment-input-node-${targetPostId}`);
+            const commentText = inputNode.value.trim();
+            if(!commentText) return;
 
-            const mappedMutatedStateDataset = internalApplicationStateDataset.map(itemNode => {
-                if(itemNode.id === targetPostIdCode) {
-                    return {
-                        ...itemNode,
-                        commentsList: [...itemNode.commentsList, { owner: "anonymous_patron", text: structuredTextString }]
-                    };
+            activeGlobalTimelinePosts = activeGlobalTimelinePosts.map(post => {
+                if(post.id === targetPostId) {
+                    post.comments.push({ author: currentlyAuthenticatedUser.username, line: commentText });
                 }
-                return itemNode;
+                return post;
             });
 
-            validationTargetInputNode.value = "";
-            synchroniseApplicationStateStorage(mappedMutatedStateDataset);
+            inputNode.value = "";
+            commitPlatformMemoryEngineUpdates();
+            renderCentralTimelineFeedDOM();
         }
 
-        function executePostDeletion(targetPostIdCode) {
-            if(confirm("Confirm Destruction Pipeline: Do you want to remove this media post permanently from local view?")) {
-                const filteredDatasetResult = internalApplicationStateDataset.filter(itemNode => itemNode.id !== targetPostIdCode);
-                synchroniseApplicationStateStorage(filteredDatasetResult);
+        function executeTimelinePostDeletion(targetPostId) {
+            if(confirm("Confirm Deletion Request: Permanently clear this object matrix instance from live view panels?")) {
+                activeGlobalTimelinePosts = activeGlobalTimelinePosts.filter(p => p.id !== targetPostId);
+                commitPlatformMemoryEngineUpdates();
+                if(document.getElementById('view-feed').classList.contains('active-view')) {
+                    renderCentralTimelineFeedDOM();
+                } else {
+                    renderInstagramProfileLayoutDOM();
+                }
             }
         }
 
-        /* System 6: Image Selection and Creation Pipeline Operations */
-        function toggleUploadModalState(shouldDisplayModalWindow) {
-            const structuralModalElement = document.getElementById('global-upload-modal-view');
-            if(!structuralModalElement) return;
+        /* Engine Core 9: Local Multi-User Image Upload Pipelines */
+        function initiateSecureMediaUploadSequence() {
+            if(!currentlyAuthenticatedUser) {
+                alert("Action Blocked: Anyone can browse publicly, but account registration is required to upload frames.");
+                navigateToAppSection('auth');
+                return;
+            }
+            toggleMediaUploadModalWindow(true);
+        }
 
-            if(shouldDisplayModalWindow) {
-                structuralModalElement.style.display = 'flex';
-                lenis.stop(); // Halt scrolling updates while interactive screen configuration layers are processing
+        function toggleMediaUploadModalWindow(shouldShowModal) {
+            const modal = document.getElementById('global-upload-modal-view');
+            if(shouldShowShowModal || shouldShowModal) {
+                modal.style.display = "flex";
+                lenis.stop();
             } else {
-                structuralModalElement.style.display = 'none';
-                // Flush temporary binary files cached inside local states
-                temporalEncodedImageString = "";
-                document.getElementById('dropzonePromptText').innerText = "Click anywhere inside frame to load system image photo...";
-                document.getElementById('customCaptionField').value = "";
+                modal.style.display = "none";
+                temporaryCachedBase64String = "";
+                document.getElementById('dropzoneStatusStringPrompt').innerText = "Click inside grid frame bounds to select desktop or mobile photo image file...";
+                document.getElementById('newFrameCaptionTextField').value = "";
                 lenis.start();
             }
         }
 
-        function processLocalImageSelection(eventContext) {
-            const rawFileHandle = eventContext.target.files[0];
-            if(!rawFileHandle) return;
+        function convertUploadedImageToBase64String(eventObj) {
+            const imageFileHandle = eventObj.target.files[0];
+            if(!imageFileHandle) return;
 
-            const readingPipelineEngine = new FileReader();
-            document.getElementById('dropzonePromptText').innerText = "Compressing photo matrices into local data strings...";
+            const trackingReaderInstance = new FileReader();
+            document.getElementById('dropzoneStatusStringPrompt').innerText = "Compressing multi-layer asset pixel matrices...";
             
-            readingPipelineEngine.onload = function(completionEvent) {
-                temporalEncodedImageString = completionEvent.target.result;
-                document.getElementById('dropzonePromptText').innerText = `Success: "${rawFileHandle.name}" successfully parsed. Ready to commit portfolio parameters!`;
+            trackingReaderInstance.onload = function(completeEvent) {
+                temporaryCachedBase64String = completeEvent.target.result;
+                document.getElementById('dropzoneStatusStringPrompt').innerText = `Loaded: "${imageFileHandle.name}". Allocation ready to publish!`;
             };
-            readingPipelineEngine.readAsDataURL(rawFileHandle);
+            trackingReaderInstance.readAsDataURL(imageFileHandle);
         }
 
-        function commitPostToPipeline() {
-            const targetedCaptionText = document.getElementById('customCaptionField').value.trim() || "Bespoke studio capture asset.";
+        function commitNewMediaPostToTimeline() {
+            const captionValue = document.getElementById('newFrameCaptionTextField').value.trim() || "Showcase capture asset configuration.";
             
-            if(!temporalEncodedImageString) {
-                alert("Creation Blocked: Please load a valid operational file matrix inside the target dropzone box area.");
+            if(!temporaryCachedBase64String) {
+                alert("Compilation Blocked: Please map an active system file handle configuration matrix before publishing.");
                 return;
             }
 
-            const constructedPostDataObject = {
-                id: "custom-client-post-" + Date.now(),
-                imageUrl: temporalEncodedImageString,
-                caption: targetedCaptionText,
-                likesCount: 1,
-                userHasLiked: true,
-                commentsList: [],
-                isClientCreated: true
+            const freshGeneratedPostInstance = {
+                id: "custom-post-matrix-" + Date.now(),
+                owner: currentlyAuthenticatedUser.username,
+                imageUrl: temporaryCachedBase64String,
+                caption: captionValue,
+                likes: [],
+                comments: []
             };
 
-            const updatedCombinedDatasetArray = [constructedPostDataObject, ...internalApplicationStateDataset];
-            synchroniseApplicationStateStorage(updatedCombinedDatasetArray);
-            toggleUploadModalState(false);
-            
-            // Re-align structural boundary configurations inside parent frameworks
-            setTimeout(() => { window.dispatchEvent(new Event('resize')); }, 100);
+            activeGlobalTimelinePosts.unshift(freshGeneratedPostInstance);
+            commitPlatformMemoryEngineUpdates();
+            toggleMediaUploadModalWindow(false);
+            navigateToAppSection('feed');
         }
 
-        function triggerClientMessagingRedirect(contextualPostTrackingId) {
-            const targetedPayloadQueryText = `Hello Dillu Captures! I am browsing through your interactive live portfolio feed platform and would love to process information requirements or check booking allocations regarding item capture index reference context: [Post Context: ${contextualPostTrackingId}].`;
-            window.open(`https://wa.me/919700034138?text=${encodeURIComponent(targetedPayloadQueryText)}`, '_blank');
-        }
-
-        // Initialize framework engines
-        bootstrapApplicationStateEngine();
+        // Initialize engine environments on bootstrap trigger
+        window.addEventListener('DOMContentLoaded', loadPlatformMemoryEngines);
     </script>
 </body>
 </html>
