@@ -3,120 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dillu Captures | Studio Dashboard</title>
+    <title>Instagram</title>
     <style>
         :root {
-            --bg-dark: #0a0a0a;
+            --bg-black: #000000;
             --surface-dark: #121212;
-            --border-color: #222222;
-            --text-main: #f5f5f5;
-            --text-muted: #888888;
-            --accent-blue: #0095f6;
-            --accent-danger: #ff3b30;
+            --ig-border: #262626;
+            --text-white: #f5f5f5;
+            --text-grey: #a8a8a8;
+            --ig-blue: #0095f6;
+            --ig-danger: #ed4956;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-        body { background-color: var(--bg-dark); color: var(--text-main); min-height: 100vh; padding-bottom: 60px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        body { background-color: var(--bg-black); color: var(--text-white); min-height: 100vh; overflow-x: hidden; }
 
-        header {
-            border-bottom: 1px solid var(--border-color); padding: 15px 30px;
-            display: flex; justify-content: space-between; align-items: center;
-            position: fixed; top: 0; width: 100%; background: rgba(10,10,10,0.8);
-            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); z-index: 100;
+        /* --- INSTAGRAM SIDEBAR NAVIGATION FIXED LOOK --- */
+        .side-navigation {
+            position: fixed; top: 0; left: 0; bottom: 0; width: 244px;
+            border-right: 1px solid var(--ig-border); padding: 25px 12px;
+            display: flex; flex-direction: column; background: var(--bg-black); z-index: 100;
         }
-        .brand { font-weight: 300; letter-spacing: 3px; font-size: 20px; }
-        .user-panel { display: flex; align-items: center; gap: 15px; }
-        .user-avatar { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border-color); }
-        .logout-btn { background: none; border: 1px solid var(--border-color); color: var(--text-muted); padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 12px; }
-        .logout-btn:hover { color: var(--text-main); border-color: var(--text-main); }
+        .nav-logo { font-size: 1.4rem; font-weight: 700; letter-spacing: 1px; padding: 12px; margin-bottom: 30px; cursor: pointer; text-transform: uppercase;}
+        .nav-item {
+            display: flex; align-items: center; gap: 16px; padding: 12px;
+            border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: 400;
+            transition: background 0.2s ease; margin-bottom: 4px; color: var(--text-white); text-decoration: none;
+        }
+        .nav-item:hover { background: rgba(255, 255, 255, 0.1); }
+        .nav-item svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; }
+        .user-nav-avatar { width: 24px; height: 24px; border-radius: 50%; object-fit: cover; }
+        .nav-footer { margin-top: auto; }
 
-        main { max-width: 1200px; margin: 100px auto 0 auto; padding: 0 20px; }
+        /* --- APP MAIN APP WORKSPACE FEED GRID --- */
+        .feed-container { margin-left: 244px; display: flex; justify-content: center; padding-top: 30px; }
+        .feed-column { width: 100%; max-width: 470px; display: flex; flex-direction: column; gap: 20px; padding-bottom: 100px; }
 
-        .upload-deck {
-            background: var(--surface-dark); border: 1px dashed var(--border-color);
-            border-radius: 12px; padding: 40px; margin-bottom: 40px; text-align: center;
-        }
-        .upload-deck.dragover { border-color: var(--accent-blue); background: rgba(0,149,246,0.03); }
-        .file-label { cursor: pointer; color: var(--accent-blue); font-weight: 500; display: block; margin-bottom: 15px; }
-        .caption-field {
-            background: var(--bg-dark); border: 1px solid var(--border-color);
-            color: #fff; padding: 12px 15px; border-radius: 8px; width: 100%; max-width: 500px;
-            outline: none; margin-bottom: 15px; font-size: 14px;
-        }
-        .caption-field:focus { border-color: #444; }
-        .submit-btn {
-            background: var(--accent-blue); color: #fff; border: none; padding: 11px 24px;
-            border-radius: 8px; font-weight: 600; cursor: pointer; transition: opacity 0.2s;
-        }
-        .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        /* --- INSTAGRAM POST BOX CARD DESIGN --- */
+        .ig-post { border-bottom: 1px solid var(--ig-border); padding-bottom: 16px; margin-bottom: 10px; }
         
-        .progress-container { width: 100%; max-width: 500px; background: #222; height: 4px; border-radius: 2px; margin: 15px auto; display: none; overflow: hidden; }
-        .progress-bar { height: 100%; background: var(--accent-blue); width: 0%; transition: width 0.1s linear; }
+        /* Post Header Layout */
+        .post-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 4px; }
+        .post-user-info { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+        .post-avatar { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 1px solid var(--ig-border); }
+        .post-username { font-size: 14px; font-weight: 600; }
+        .delete-post-btn { background: none; border: none; color: var(--ig-danger); font-size: 14px; cursor: pointer; font-weight: 600; display: none; }
+        .ig-post.is-owner .delete-post-btn { display: block; }
 
-        .gallery-grid {
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 24px; margin-top: 20px;
-        }
-        .photo-card {
-            background: var(--surface-dark); border: 1px solid var(--border-color);
-            border-radius: 12px; overflow: hidden; position: relative;
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .photo-card:hover { transform: translateY(-4px); }
-        .image-wrapper { width: 100%; aspect-ratio: 4/5; background: #000; overflow: hidden; position: relative; }
-        .image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+        /* Post Image Content Aspect Framework */
+        .post-media-frame { width: 100%; border-radius: 4px; overflow: hidden; background: #050505; border: 1px solid var(--ig-border); position: relative; }
+        .post-media-frame img { width: 100%; height: auto; display: block; object-fit: contain; max-height: 585px; }
+
+        /* Action Row Utility Controls Matrix */
+        .post-actions { display: flex; align-items: center; gap: 16px; padding: 12px 4px 8px 4px; }
+        .action-icon-btn { background: none; border: none; color: var(--text-white); cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; }
+        .action-icon-btn svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; transition: transform 0.15s ease; }
+        .action-icon-btn:hover svg { transform: scale(1.05); color: var(--text-grey); }
+        .action-icon-btn.liked svg { fill: var(--ig-danger); stroke: var(--ig-danger); animation: heartBeat 0.3s ease-in-out; }
+        .action-icon-btn.liked:hover svg { color: var(--ig-danger); }
         
-        .card-overlay {
-            position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 50%);
-            display: flex; flex-direction: column; justify-content: space-between; opacity: 0; transition: opacity 0.2s ease; padding: 15px;
+        @keyframes heartBeat {
+            0% { transform: scale(1); }
+            30% { transform: scale(1.25); }
+            60% { transform: scale(0.9); }
+            100% { transform: scale(1); }
         }
-        .photo-card:hover .card-overlay { opacity: 1; }
+
+        /* Engagement Data Copy Blocks */
+        .likes-count { font-size: 14px; font-weight: 600; padding: 0 4px; margin-bottom: 6px; }
+        .caption-block { font-size: 14px; padding: 0 4px; line-height: 18px; margin-bottom: 8px; }
+        .caption-user { font-weight: 600; margin-right: 8px; cursor: pointer; }
         
-        .delete-trigger {
-            align-self: flex-end; background: rgba(255, 59, 48, 0.9); color: white;
-            border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer;
-            display: flex; align-items: center; justify-content: center; font-size: 18px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: transform 0.2s;
+        /* Comments Display Feed Panels */
+        .comments-section { padding: 0 4px; display: flex; flex-direction: column; gap: 4px; margin-bottom: 12px; }
+        .comment-item { font-size: 14px; line-height: 18px; }
+        .comment-user { font-weight: 600; margin-right: 6px; }
+        .comment-text { color: #f5f5f5; }
+
+        /* Interactive Comment Bar Input field */
+        .comment-form-container { display: flex; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); padding: 4px 4px 12px 4px; }
+        .comment-input-element { background: none; border: none; flex-grow: 1; color: var(--text-white); font-size: 14px; outline: none; }
+        .comment-input-element::placeholder { color: var(--text-grey); }
+        .comment-post-trigger { background: none; border: none; color: var(--ig-blue); font-weight: 600; font-size: 14px; cursor: pointer; opacity: 0.5; pointer-events: none; }
+        .comment-input-element:not(:placeholder-shown) + .comment-post-trigger { opacity: 1; pointer-events: auto; }
+
+        /* --- GENERIC SHARING NOTIFICATION SYSTEM TOAST --- */
+        .share-alert {
+            position: fixed; bottom: 20px; right: 20px; background: #262626; color: var(--text-white);
+            padding: 12px 24px; border-radius: 8px; font-size: 14px; font-weight: 600; z-index: 1000;
+            display: none; animation: slideUpIn 0.3s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.5);
         }
-        .delete-trigger:hover { transform: scale(1.1); background: var(--accent-danger); }
-        .meta-caption { margin-top: auto; color: #fff; font-size: 14px; }
-        .meta-author { color: var(--text-muted); font-size: 11px; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+        @keyframes slideUpIn { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+        /* --- THE CREATE COMPOSITION MODAL DIALOG CONTAINER --- */
+        .composition-modal {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.65); backdrop-filter: blur(8px);
+            z-index: 500; display: flex; align-items: center; justify-content: center; visibility: hidden; opacity: 0; transition: all 0.25s ease;
+        }
+        .composition-modal.active { visibility: visible; opacity: 1; }
+        .modal-body-card {
+            background: #262626; border-radius: 12px; border: 1px solid var(--ig-border); width: 100%; max-width: 500px;
+            display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+        }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; padding: 14px; border-bottom: 1px solid var(--ig-border); text-align: center; }
+        .modal-title { font-size: 16px; font-weight: 600; flex-grow: 1; text-align: center; margin-left: 30px;}
+        .close-modal-x { background: none; border: none; color: var(--text-white); font-size: 20px; cursor: pointer; }
+        .modal-content-area { padding: 20px; display: flex; flex-direction: column; gap: 16px; text-align: center; }
+        .modal-file-selector { border: 2px dashed #444; padding: 40px 20px; border-radius: 8px; cursor: pointer; }
+        .modal-file-selector:hover { border-color: var(--ig-blue); }
+        .modal-caption-box { background: var(--bg-black); border: 1px solid var(--ig-border); border-radius: 8px; padding: 12px; color: #fff; outline: none; width: 100%; resize: none; font-size: 14px; }
+        .modal-publish-btn { background: var(--ig-blue); color: white; border: none; border-radius: 8px; padding: 12px; font-weight: 600; cursor: pointer; }
+        .modal-publish-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        
+        /* Modal Upload Progress */
+        .modal-progress { width: 100%; height: 3px; background: #111; display: none; border-radius: 2px; overflow: hidden; }
+        .modal-progress-fill { height: 100%; background: var(--ig-blue); width: 0%; }
+
+        /* Responsive Optimization Tweaks */
+        @media(max-width: 768px) {
+            .side-navigation { width: 72px; padding: 25px 0; align-items: center; }
+            .nav-logo { display: none; }
+            .nav-text { display: none; }
+            .feed-container { margin-left: 72px; padding: 10px; }
+        }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="brand">DILLU CAPTURES</div>
-        <div class="user-panel">
-            <img src="" alt="Avatar" class="user-avatar" id="userAvatar">
-            <button class="logout-btn" id="logoutBtn">Log Out</button>
+    <!-- INSTAGRAM APP LAYOUT LEFT PANEL SIDE NAVIGATION BAR -->
+    <nav class="side-navigation">
+        <div class="nav-logo">Dillu Captures</div>
+        
+        <a class="nav-item" href="#">
+            <svg viewBox="0 0 24 24"><path d="M9.005 16.545a2.5 2.5 0 101.99-2.417 4.453 4.453 0 00-4.45 4.45.5.5 0 001 0c0-1.902 1.548-3.45 3.45-3.45.986 0 1.86.415 2.477 1.077A2.5 2.5 0 1014.5 14.5a4.47 4.47 0 00-2.495.762 2.5 2.5 0 00-3-.717z"/><path stroke-linecap="round" stroke-linejoin="round" d="M20.5 21.5h-17a1 1 0 01-1-1v-14a1 1 0 011-1h4l2-3h5l2 3h4a1 1 0 011 1v14a1 1 0 01-1 1z"/></svg>
+            <span class="nav-text">Feed Home</span>
+        </a>
+        
+        <div class="nav-item" id="triggerCreateModal">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <span class="nav-text">Create Post</span>
         </div>
-    </header>
 
-    <main>
-        <section class="upload-deck" id="dropZone">
-            <label for="fileInput" class="file-label">Select photography file or drop image here</label>
-            <input type="file" id="fileInput" accept="image/*" style="display: none;">
-            
-            <input type="text" id="captionInput" class="caption-field" placeholder="Add capture data, context, or caption..."><br>
-            
-            <div class="progress-container" id="progressWrap">
-                <div class="progress-bar" id="progressBar"></div>
+        <div class="nav-item nav-footer" id="logoutActionTrigger">
+            <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" /></svg>
+            <span class="nav-text">Log Out</span>
+        </div>
+    </nav>
+
+    <!-- CENTER FEED CONTENT STREAM AREA -->
+    <div class="feed-container">
+        <main class="feed-column" id="socialFeedContainer"></main>
+    </div>
+
+    <!-- POPUP COMPOSITION DIALOG FOR UPLOADING MEDIA -->
+    <div class="composition-modal" id="createPostModal">
+        <div class="modal-body-card">
+            <div class="modal-header">
+                <div class="modal-title">Create new post</div>
+                <button class="close-modal-x" id="closeCreateModal">&times;</button>
             </div>
-            
-            <button class="submit-btn" id="uploadBtn">Publish Asset to Gallery</button>
-        </section>
+            <div class="modal-content-area">
+                <label class="modal-file-selector">
+                    <span style="color:var(--ig-blue); font-weight:600; cursor:pointer;">Select image file from computer</span>
+                    <input type="file" id="modalFileInput" accept="image/*" style="display:none;">
+                    <div id="fileSelectionFeedback" style="font-size:12px; color:var(--text-grey); margin-top:8px;"></div>
+                </label>
+                <textarea id="modalCaptionInput" class="modal-caption-box" rows="4" placeholder="Write a caption..."></textarea>
+                <div class="modal-progress" id="modalUploadProgressContainer">
+                    <div class="modal-progress-fill" id="modalUploadProgressBar"></div>
+                </div>
+                <button class="modal-publish-btn" id="modalPublishBtn">Share</button>
+            </div>
+        </div>
+    </div>
 
-        <section class="gallery-grid" id="galleryContainer"></section>
-    </main>
+    <!-- NOTIFICATION SYSTEM TOAST COMPONENT -->
+    <div class="share-alert" id="toastAlert">Link copied to clipboard!</div>
 
+    <!-- WEB COMPONENT ENGINE LOGIC SCRIPT MATRICES -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-        import { getFirestore, collection, addDoc, deleteDoc, doc, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { getFirestore, collection, addDoc, deleteDoc, doc, onSnapshot, query, orderBy, updateDoc, arrayUnion, arrayRemove } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
         import { getStorage, ref, uploadBytesResumable, getDownloadURL, deleteObject } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
 
-        // Integrated Configuration Object
+        // Verified Firebase Config Object Tracking Keys
         const firebaseConfig = {
             apiKey: "AIzaSyATrPSHyg8SS6BzafsoFYI71g2-vAbMYjU",
             authDomain: "dillucaptures07.firebaseapp.com",
@@ -127,162 +198,266 @@
             measurementId: "G-R0ES0XEHSV"
         };
 
+        // Initialize Global Infrastructure Framework Layers
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
         const storage = getStorage(app);
 
-        const logoutBtn = document.getElementById('logoutBtn');
-        const userAvatar = document.getElementById('userAvatar');
-        const fileInput = document.getElementById('fileInput');
-        const captionInput = document.getElementById('captionInput');
-        const uploadBtn = document.getElementById('uploadBtn');
-        const dropZone = document.getElementById('dropZone');
-        const progressWrap = document.getElementById('progressWrap');
-        const progressBar = document.getElementById('progressBar');
-        const galleryContainer = document.getElementById('galleryContainer');
+        // Core Layout DOM References Mapping
+        const socialFeedContainer = document.getElementById('socialFeedContainer');
+        const triggerCreateModal = document.getElementById('triggerCreateModal');
+        const closeCreateModal = document.getElementById('closeCreateModal');
+        const createPostModal = document.getElementById('createPostModal');
+        const logoutActionTrigger = document.getElementById('logoutActionTrigger');
+        const toastAlert = document.getElementById('toastAlert');
 
-        let currentUser = null;
+        // Modal Specific Form Handles
+        const modalFileInput = document.getElementById('modalFileInput');
+        const fileSelectionFeedback = document.getElementById('fileSelectionFeedback');
+        const modalCaptionInput = document.getElementById('modalCaptionInput');
+        const modalPublishBtn = document.getElementById('modalPublishBtn');
+        const modalUploadProgressContainer = document.getElementById('modalUploadProgressContainer');
+        const modalUploadProgressBar = document.getElementById('modalUploadProgressBar');
 
-        logoutBtn.addEventListener('click', () => signOut(auth));
+        let activeUser = null;
 
+        // --- GATE ACCESS ROUTINE VERBAL HANDSHAKES ---
         onAuthStateChanged(auth, (user) => {
             if (user) {
-                currentUser = user;
-                userAvatar.src = user.photoURL || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&q=80';
-                initializeGalleryStream();
+                activeUser = user;
+                initializeRealtimeSocialFeed();
             } else {
                 window.location.href = "auth.html";
             }
         });
 
-        // Drag & Drop
-        ['dragenter', 'dragover'].forEach(name => {
-            dropZone.addEventListener(name, (e) => { e.preventDefault(); dropZone.classList.add('dragover'); });
-        });
-        ['dragleave', 'drop'].forEach(name => {
-            dropZone.addEventListener(name, (e) => { e.preventDefault(); dropZone.classList.remove('dragover'); });
-        });
-        dropZone.addEventListener('drop', (e) => {
-            if(e.dataTransfer.files.length) fileInput.files = e.dataTransfer.files;
+        logoutActionTrigger.addEventListener('click', () => signOut(auth));
+
+        // --- COMPOSITION MODAL VISIBILITY LAYER INTERRUPTS ---
+        triggerCreateModal.addEventListener('click', () => createPostModal.classList.add('active'));
+        closeCreateModal.addEventListener('click', () => closeModalViewResetFields());
+        modalFileInput.addEventListener('change', (e) => {
+            if(e.target.files.length) fileSelectionFeedback.textContent = `Selected: ${e.target.files[0].name}`;
         });
 
-        // Storage Upload Operations Pipeline
-        uploadBtn.addEventListener('click', () => {
-            const rawFile = fileInput.files[0];
-            const captionText = captionInput.value.trim();
+        function closeModalViewResetFields() {
+            createPostModal.classList.remove('active');
+            modalFileInput.value = "";
+            fileSelectionFeedback.textContent = "";
+            modalCaptionInput.value = "";
+            modalUploadProgressContainer.style.display = 'none';
+            modalUploadProgressBar.style.width = '0%';
+            modalPublishBtn.disabled = false;
+        }
 
-            if (!rawFile) {
-                alert("Please select an image file to upload.");
+        // --- PRODUCTION STORAGE PUBLISHING ACTIONS PIPELINE ---
+        modalPublishBtn.addEventListener('click', () => {
+            const rawFile = modalFileInput.files[0];
+            const captionContent = modalCaptionInput.value.trim();
+
+            if(!rawFile) {
+                alert("Validation error: No high fidelity picture binary selected.");
                 return;
             }
 
-            uploadBtn.disabled = true;
-            progressWrap.style.display = 'block';
+            modalPublishBtn.disabled = true;
+            modalUploadProgressContainer.style.display = 'block';
 
-            const filePath = `photography/${Date.now()}_${rawFile.name}`;
-            const fileRef = ref(storage, filePath);
-            const uploadTask = uploadBytesResumable(fileRef, rawFile);
+            const assetUniquePathString = `social_feed/${Date.now()}_${rawFile.name}`;
+            const targetStorageBucketPointer = ref(storage, assetUniquePathString);
+            const dataUploadTaskTracker = uploadBytesResumable(targetStorageBucketPointer, rawFile);
 
-            uploadTask.on('state_changed', 
+            dataUploadTaskTracker.on('state_changed', 
                 (snapshot) => {
-                    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                    progressBar.style.width = progress + '%';
+                    const trackingMetricsPercentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    modalUploadProgressBar.style.width = trackingMetricsPercentage + '%';
                 }, 
-                (error) => {
-                    console.error("Upload process error: ", error);
-                    alert("Upload failed. Verify your Firebase Storage rules allow authenticated users.");
-                    resetUploadZone();
+                (err) => {
+                    console.error("Pipeline file stream fail: ", err);
+                    alert("Write operations sequence execution exception encountered.");
+                    modalPublishBtn.disabled = false;
                 }, 
                 async () => {
-                    const downloadUrl = await getDownloadURL(uploadTask.snapshot.ref);
+                    const cloudPublicCDNUrl = await getDownloadURL(dataUploadTaskTracker.snapshot.ref);
                     
-                    await addDoc(collection(db, "photography_gallery"), {
-                        assetUrl: downloadUrl,
-                        storagePath: filePath,
-                        caption: captionText || "Untitled Capture Asset",
-                        ownerUid: currentUser.uid,
-                        ownerDisplayName: currentUser.displayName || "Anonymous Creator",
-                        timestamp: Date.now()
+                    // Inject initialized base schema configurations safely tracking state arrays
+                    await addDoc(collection(db, "photography_posts"), {
+                        mediaUrl: cloudPublicCDNUrl,
+                        storageFilePath: assetUniquePathString,
+                        captionText: captionContent,
+                        creatorUid: activeUser.uid,
+                        creatorUsername: activeUser.displayName || activeUser.email.split('@')[0],
+                        creatorPhoto: activeUser.photoURL || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&q=80',
+                        likes: [],
+                        comments: [],
+                        timestampEpochMillis: Date.now()
                     });
 
-                    resetUploadZone();
+                    closeModalViewResetFields();
                 }
             );
         });
 
-        function resetUploadZone() {
-            uploadBtn.disabled = false;
-            progressWrap.style.display = 'none';
-            progressBar.style.width = '0%';
-            captionInput.value = "";
-            fileInput.value = "";
-        }
+        // --- REALTIME REACTIVE SOCIAL MEDIA RENDER STREAMER ---
+        function initializeRealtimeSocialFeed() {
+            const chronologicallyOrderedQuery = query(collection(db, "photography_posts"), orderBy("timestampEpochMillis", "desc"));
 
-        // Live Real-Time Gallery Synchronization Loop
-        function initializeGalleryStream() {
-            const galleryQuery = query(collection(db, "photography_gallery"), orderBy("timestamp", "desc"));
-
-            onSnapshot(galleryQuery, (snapshot) => {
-                galleryContainer.innerHTML = "";
+            onSnapshot(chronologicallyOrderedQuery, (snapshot) => {
+                socialFeedContainer.innerHTML = "";
                 
-                if(snapshot.empty) {
-                    galleryContainer.innerHTML = `<div style="grid-column: 1/-1; padding: 40px; text-align:center; color:var(--text-muted);">No images found in your photography feed. Upload your first capture above!</div>`;
+                if (snapshot.empty) {
+                    socialFeedContainer.innerHTML = `<div style="text-align:center; padding:100px 20px; color:var(--text-grey); font-size:14px;">No posts published yet. Select "Create Post" to populate the layout.</div>`;
                     return;
                 }
 
-                snapshot.forEach((docRecord) => {
-                    const data = docRecord.data();
-                    const docId = docRecord.id;
-                    const isOwner = currentUser && (currentUser.uid === data.ownerUid);
+                snapshot.forEach((documentNode) => {
+                    const data = documentNode.data();
+                    const postId = documentNode.id;
+                    
+                    const isOwnerMatch = activeUser && (activeUser.uid === data.creatorUid);
+                    const userHasLikedState = data.likes && data.likes.includes(activeUser.uid);
+                    const likesCount = data.likes ? data.likes.length : 0;
 
-                    const card = document.createElement('div');
-                    card.className = "photo-card";
-                    card.innerHTML = `
-                        <div class="image-wrapper">
-                            <img src="${data.assetUrl}" alt="Photo Gallery Asset" loading="lazy">
-                            <div class="card-overlay">
-                                ${isOwner ? `<button class="delete-trigger" data-id="${docId}" data-path="${data.storagePath}">&times;</button>` : '<div></div>'}
-                                <div>
-                                    <p class="meta-caption">${escapeHtml(data.caption)}</p>
-                                    <p class="meta-author">By ${escapeHtml(data.ownerDisplayName)}</p>
+                    const postCardWrapperElement = document.createElement('article');
+                    postCardWrapperElement.className = `ig-post ${isOwnerMatch ? 'is-owner' : ''}`;
+                    
+                    // Process Nested Structured Comments Array Compilation HTML lines
+                    let structuralCommentsHtmlBlock = "";
+                    if(data.comments && data.comments.length > 0) {
+                        data.comments.forEach(comment => {
+                            structuralCommentsHtmlBlock += `
+                                <div class="comment-item">
+                                    <span class="comment-user">${escapeOutputHtmlEntities(comment.username)}</span>
+                                    <span class="comment-text">${escapeOutputHtmlEntities(comment.text)}</span>
                                 </div>
-                            </div>
-                        </div>
-                    `;
-
-                    if(isOwner) {
-                        card.querySelector('.delete-trigger').addEventListener('click', (e) => {
-                            deleteAssetRecord(e.target.dataset.id, e.target.dataset.path);
+                            `;
                         });
                     }
 
-                    galleryContainer.appendChild(card);
+                    postCardWrapperElement.innerHTML = `
+                        <div class="post-header">
+                            <div class="post-user-info">
+                                <img src="${data.creatorPhoto}" alt="User identity descriptor" class="post-avatar">
+                                <span class="post-username">${escapeOutputHtmlEntities(data.creatorUsername)}</span>
+                            </div>
+                            <button class="delete-post-btn" data-id="${postId}" data-path="${data.storageFilePath}">Delete</button>
+                        </div>
+                        
+                        <div class="post-media-frame">
+                            <img src="${data.mediaUrl}" alt="High definition photographic upload capture grid feed asset" loading="lazy">
+                        </div>
+
+                        <div class="post-actions">
+                            <button class="action-icon-btn ${userHasLikedState ? 'liked' : ''}" data-id="${postId}" data-liked="${userHasLikedState}" id="likeBtn-${postId}">
+                                <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                            </button>
+                            <button class="action-icon-btn" onclick="document.getElementById('commentInput-${postId}').focus();">
+                                <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+                            </button>
+                            <button class="action-icon-btn share-trigger-btn" data-url="${data.mediaUrl}">
+                                <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                            </button>
+                        </div>
+
+                        <div class="likes-count">${likesCount} likes</div>
+                        
+                        <div class="caption-block">
+                            <span class="caption-user">${escapeOutputHtmlEntities(data.creatorUsername)}</span>${escapeOutputHtmlEntities(data.captionText)}
+                        </div>
+
+                        <div class="comments-section">${structuralCommentsHtmlBlock}</div>
+
+                        <div class="comment-form-container">
+                            <input type="text" class="comment-input-element" id="commentInput-${postId}" placeholder="Add a comment..." autocomplete="off">
+                            <button class="comment-post-trigger" data-id="${postId}">Post</button>
+                        </div>
+                    `;
+
+                    // Connect dynamic click events handling pipelines safely across elements
+                    postCardWrapperElement.querySelector(`#likeBtn-${postId}`).addEventListener('click', (e) => {
+                        const targetBtn = e.currentTarget;
+                        toggleLikeStateMetric(targetBtn.dataset.id, targetBtn.dataset.liked === "true");
+                    });
+
+                    postCardWrapperElement.querySelector('.comment-post-trigger').addEventListener('click', (e) => {
+                        const targetPostId = e.target.dataset.id;
+                        const correspondingInputElement = document.getElementById(`commentInput-${targetPostId}`);
+                        submitCommentDataString(targetPostId, correspondingInputElement.value.trim(), correspondingInputElement);
+                    });
+
+                    postCardWrapperElement.querySelector('.share-trigger-btn').addEventListener('click', (e) => {
+                        triggerSystemShareClipboardAlert(e.currentTarget.dataset.url);
+                    });
+
+                    if(isOwnerMatch) {
+                        postCardWrapperElement.querySelector('.delete-post-btn').addEventListener('click', (e) => {
+                            executeDestructionPipeline(e.target.dataset.id, e.target.dataset.path);
+                        });
+                    }
+
+                    socialFeedContainer.appendChild(postCardWrapperElement);
                 });
             });
         }
 
-        // Atomic File Deletion Method Block
-        async function deleteAssetRecord(firestoreDocId, storagePath) {
-            if (!confirm("Are you sure you want to permanently delete this photograph from your collection?")) return;
-
+        // --- ATOMIC INTERACTION CONTROLLER INTERFACES ---
+        async function toggleLikeStateMetric(postId, evaluationHasLikedLocalState) {
+            const targetsPostDocumentInstanceRef = doc(db, "photography_posts", postId);
             try {
-                // Delete from Firebase Storage Bucket
-                const assetStorageRef = ref(storage, storagePath);
-                await deleteObject(assetStorageRef);
-
-                // Delete Document Record metadata from Firestore NoSQL Index
-                await deleteDoc(doc(db, "photography_gallery", firestoreDocId));
+                if (evaluationHasLikedLocalState) {
+                    await updateDoc(targetsPostDocumentInstanceRef, { likes: arrayRemove(activeUser.uid) });
+                } else {
+                    await updateDoc(targetsPostDocumentInstanceRef, { likes: arrayUnion(activeUser.uid) });
+                }
             } catch (err) {
-                console.error("Deletion error tracking output: ", err);
-                alert("Failed to fully clean up data assets. Confirm your security policies allow write/delete executions.");
+                console.error("Like mutation failed: ", err);
             }
         }
 
-        function escapeHtml(str) {
-            const div = document.createElement('div');
-            div.innerText = str;
-            return div.innerHTML;
+        async function submitCommentDataString(postId, targetCommentText, bindingInputDomNode) {
+            if(!targetCommentText) return;
+            const targetPostDocumentInstanceRef = doc(db, "photography_posts", postId);
+            
+            try {
+                await updateDoc(targetPostDocumentInstanceRef, {
+                    comments: arrayUnion({
+                        uid: activeUser.uid,
+                        username: activeUser.displayName || activeUser.email.split('@')[0],
+                        text: targetCommentText,
+                        timestamp: Date.now()
+                    })
+                });
+                bindingInputDomNode.value = "";
+            } catch (err) {
+                console.error("Comment mutation transaction failure: ", err);
+            }
+        }
+
+        function triggerSystemShareClipboardAlert(mediaUrlString) {
+            navigator.clipboard.writeText(mediaUrlString).then(() => {
+                toastAlert.style.display = "block";
+                setTimeout(() => { toastAlert.style.display = "none"; }, 2500);
+            }).catch(err => console.error("Clipboard failure: ", err));
+        }
+
+        async function executeDestructionPipeline(postId, storageFilePathString) {
+            if(!confirm("Are you sure you want to delete this Instagram post?")) return;
+
+            try {
+                const targetAssetRef = ref(storage, storageFilePathString);
+                await deleteObject(targetAssetRef);
+                await deleteDoc(doc(db, "photography_posts", postId));
+            } catch (err) {
+                console.error("Purging operations route failed: ", err);
+                alert("Security policy exception thrown during target document cleanup loops.");
+            }
+        }
+
+        function escapeOutputHtmlEntities(rawInputString) {
+            const safeContainerNode = document.createElement('div');
+            safeContainerNode.innerText = rawInputString || "";
+            return safeContainerNode.innerHTML;
         }
     </script>
 </body>
