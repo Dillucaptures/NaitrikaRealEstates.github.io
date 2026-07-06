@@ -544,7 +544,7 @@
     <!-- BACKEND ENGINE STORAGE LAYER CONNECTORS -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-            import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
         import { getFirestore, collection, addDoc, deleteDoc, doc, onSnapshot, query, orderBy, updateDoc, arrayUnion, arrayRemove } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
         import { getStorage, ref, uploadBytesResumable, getDownloadURL, deleteObject } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
 
@@ -553,7 +553,7 @@
             apiKey: "AIzaSyATrPSHyg8SS6BzafsoFYI71g2-vAbMYjU",
             authDomain: "dillucaptures07.firebaseapp.com",
             projectId: "dillucaptures07",
-            storageBucket: "dillucaptures07.firebasestorage.app",
+            storageBucket: "dillucaptures07.firebasestorage.app", 
             messagingSenderId: "331192229836",
             appId: "1:331192229836:web:dbde836b8e043558038769",
             measurementId: "G-R0ES0XEHSV"
@@ -592,6 +592,7 @@
         const modalUploadProgressBar = document.getElementById('modalUploadProgressBar');
 
         let activeUser = null;
+        let unsubscribeFeed = null; // Unsubscribe reference to clean up snapshot listeners clean
 
         // --- ACCOUNT ACCESS SECURITY STATUS ROUTINES ---
         onAuthStateChanged(auth, (user) => {
@@ -604,7 +605,10 @@
             }
         });
 
-        logoutActionTrigger.addEventListener('click', () => signOut(auth));
+        logoutActionTrigger.addEventListener('click', () => {
+            if (unsubscribeFeed) unsubscribeFeed();
+            signOut(auth);
+        });
 
         // --- PROFILE VISIBILITY HANDLERS ---
         triggerProfileModal.addEventListener('click', () => profileViewModal.classList.add('active'));
@@ -664,35 +668,45 @@
                 }, 
                 (err) => {
                     console.error("Storage upload pipe failed: ", err);
-                    alert("Fatal error running file block uploads workflows.");
+                    alert("Upload Failed! Make sure your Firebase Storage Rules permit writes.");
                     modalPublishBtn.disabled = false;
                 }, 
                 async () => {
-                    const publicCdnUrl = await getDownloadURL(dataUploadTask.snapshot.ref);
-                    
-                    // Add direct structured entry inside photography collection database
-                    await addDoc(collection(db, "photography_posts"), {
-                        mediaUrl: publicCdnUrl,
-                        storageFilePath: assetPath,
-                        captionText: captionContent,
-                        creatorUid: activeUser.uid,
-                        creatorUsername: activeUser.displayName || activeUser.email.split('@')[0],
-                        creatorPhoto: activeUser.photoURL || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&q=80',
-                        likes: [],
-                        comments: [],
-                        timestampEpochMillis: Date.now()
-                    });
+                    try {
+                        // Fixed: Directly querying target storage pointer for absolute stability
+                        const publicCdnUrl = await getDownloadURL(targetStorageRef);
+                        
+                        // Add direct entry inside firestore database collection
+                        await addDoc(collection(db, "photography_posts"), {
+                            mediaUrl: publicCdnUrl,
+                            storageFilePath: assetPath,
+                            captionText: captionContent,
+                            creatorUid: activeUser.uid,
+                            creatorUsername: activeUser.displayName || activeUser.email.split('@')[0],
+                            creatorPhoto: activeUser.photoURL || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&q=80',
+                            likes: [],
+                            comments: [],
+                            timestampEpochMillis: Date.now()
+                        });
 
-                    clearAndCloseUploadModal();
+                        clearAndCloseUploadModal();
+                    } catch (dbError) {
+                        console.error("Database write mismatch error:", dbError);
+                        alert("Image uploaded, but metadata failed to save to Firestore. Check Firestore Rules.");
+                        modalPublishBtn.disabled = false;
+                    }
                 }
             );
         });
 
         // --- REALTIME REACTIVE GRAPHICAL TIMELINE ENGINE ---
         function initializeRealtimeSocialFeed() {
+            // Safe cleanup of duplicate instances to prevent listener layering bugs
+            if (unsubscribeFeed) unsubscribeFeed();
+
             const chronologicalPostsQuery = query(collection(db, "photography_posts"), orderBy("timestampEpochMillis", "desc"));
 
-            onSnapshot(chronologicalPostsQuery, (snapshot) => {
+            unsubscribeFeed = onSnapshot(chronologicalPostsQuery, (snapshot) => {
                 socialFeedContainer.innerHTML = "";
                 
                 if (snapshot.empty) {
@@ -714,7 +728,7 @@
                     const postCardElement = document.createElement('article');
                     postCardElement.className = `ig-post ${isOwnerMatch ? 'is-owner' : ''}`;
                     
-                    // Render dynamic comments lines safely loop
+                    // Render dynamic comments lines loop
                     let structuralCommentsBlock = "";
                     if(data.comments && data.comments.length > 0) {
                         data.comments.forEach(comment => {
@@ -727,6 +741,7 @@
                         });
                     }
 
+                    // Added fallback graphic handling layout to img blocks via dynamic onerror metrics
                     postCardElement.innerHTML = `
                         <div class="post-header">
                             <div class="post-user-info">
@@ -737,7 +752,7 @@
                         </div>
                         
                         <div class="post-media-frame">
-                            <img src="${data.mediaUrl}" alt="Photography Asset" loading="lazy">
+                            <img src="${data.mediaUrl}" alt="Photography Asset" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/600x400/121212/a8a8a8?text=Image+Load+Failed+-+Check+Firebase+Storage+Rules';">
                         </div>
 
                         <div class="post-actions">
@@ -766,10 +781,9 @@
                         </div>
                     `;
 
-                    // Connect Live Event Listeners into Node elements safely
                     socialFeedContainer.appendChild(postCardElement);
 
-                    // Hook Actions
+                    // Hook Event Listeners Into Elements Directly
                     document.getElementById(`likeBtn-${postId}`).addEventListener('click', () => {
                         togglePostLikeState(postId, userHasLikedState);
                     });
@@ -793,6 +807,9 @@
                         });
                     }
                 });
+            }, (error) => {
+                console.error("Snapshot listener failed: ", error);
+                socialFeedContainer.innerHTML = `<div style="color:var(--ig-danger); text-align:center; margin-top:50px;">Failed to read stream entries. Check your Firebase Firestore database access rules.</div>`;
             });
         }
 
