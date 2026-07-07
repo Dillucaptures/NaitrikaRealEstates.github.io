@@ -2,21 +2,47 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dilip Photography | Liquid Glass Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Dillu Captures | Liquid Glass Portfolio</title>
   <meta
     name="description"
     content="A liquid glass photography portfolio with immersive galleries, glassy motion, and elegant booking sections."
   />
   <link rel="preconnect" href="https://images.unsplash.com" />
+  <script>
+    (() => {
+      try {
+        const savedTheme = localStorage.getItem("dillu-captures-theme");
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.dataset.theme = savedTheme || (prefersDark ? "dark" : "light");
+      } catch {
+        document.documentElement.dataset.theme = "light";
+      }
+    })();
+  </script>
   <style>
     :root {
       --ink: #161616;
       --muted: #65686d;
       --paper: #f7f4ef;
+      --page-wash: rgba(247, 244, 239, 0.92);
+      --body-gradient-start: rgba(247, 244, 239, 0.36);
+      --body-gradient-end: rgba(247, 244, 239, 0.92);
+      --bg-vignette: rgba(255, 255, 255, 0.74);
+      --hero-fade: rgba(247, 244, 239, 0.96);
+      --hero-text: #ffffff;
+      --hero-muted: rgba(255, 255, 255, 0.84);
+      --nav-link: rgba(22, 22, 22, 0.84);
+      --field-bg: rgba(255, 255, 255, 0.4);
+      --soft-surface: rgba(255, 255, 255, 0.38);
+      --soft-surface-hover: rgba(255, 255, 255, 0.58);
+      --text-soft: rgba(22, 22, 22, 0.72);
+      --text-medium: rgba(22, 22, 22, 0.78);
       --glass-strong: rgba(255, 255, 255, 0.68);
       --glass-soft: rgba(255, 255, 255, 0.34);
       --glass-edge: rgba(255, 255, 255, 0.76);
+      --glass-depth: rgba(255, 255, 255, 0.22);
+      --glass-chrome: rgba(156, 231, 255, 0.32);
       --shadow: 0 26px 80px rgba(20, 24, 31, 0.22);
       --shadow-soft: 0 14px 44px rgba(26, 29, 34, 0.14);
       --coral: #ef6b55;
@@ -28,12 +54,40 @@
       color-scheme: light;
     }
 
+    :root[data-theme="dark"] {
+      --ink: #f6f7fb;
+      --muted: #bdc4cc;
+      --paper: #0d1016;
+      --page-wash: rgba(9, 12, 18, 0.88);
+      --body-gradient-start: rgba(10, 13, 20, 0.16);
+      --body-gradient-end: rgba(8, 10, 15, 0.9);
+      --bg-vignette: rgba(6, 8, 13, 0.88);
+      --hero-fade: rgba(9, 12, 18, 0.96);
+      --hero-text: #ffffff;
+      --hero-muted: rgba(255, 255, 255, 0.8);
+      --nav-link: rgba(246, 247, 251, 0.84);
+      --field-bg: rgba(255, 255, 255, 0.1);
+      --soft-surface: rgba(255, 255, 255, 0.12);
+      --soft-surface-hover: rgba(255, 255, 255, 0.2);
+      --text-soft: rgba(246, 247, 251, 0.74);
+      --text-medium: rgba(246, 247, 251, 0.82);
+      --glass-strong: rgba(24, 29, 39, 0.72);
+      --glass-soft: rgba(255, 255, 255, 0.11);
+      --glass-edge: rgba(255, 255, 255, 0.34);
+      --glass-depth: rgba(0, 0, 0, 0.18);
+      --glass-chrome: rgba(83, 213, 255, 0.26);
+      --shadow: 0 30px 90px rgba(0, 0, 0, 0.42);
+      --shadow-soft: 0 18px 52px rgba(0, 0, 0, 0.28);
+      color-scheme: dark;
+    }
+
     * {
       box-sizing: border-box;
     }
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 104px;
     }
 
     body {
@@ -43,11 +97,16 @@
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.5;
       letter-spacing: 0;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
       background:
-        linear-gradient(180deg, rgba(247, 244, 239, 0.3), rgba(247, 244, 239, 0.9) 680px),
-        url("https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=2200&q=88") center top / cover fixed,
-        #f7f4ef;
+        radial-gradient(circle at 12% 8%, rgba(242, 184, 75, 0.2), transparent 28%),
+        radial-gradient(circle at 82% 16%, rgba(43, 183, 169, 0.22), transparent 30%),
+        linear-gradient(180deg, var(--body-gradient-start), var(--body-gradient-end) 720px),
+        url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2400&q=88") center top / cover fixed,
+        var(--paper);
       overflow-x: hidden;
+      transition: background-color 420ms ease, color 420ms ease;
     }
 
     body::before {
@@ -59,7 +118,8 @@
       background:
         linear-gradient(120deg, rgba(43, 183, 169, 0.22), transparent 28%),
         linear-gradient(290deg, rgba(239, 107, 85, 0.2), transparent 32%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.74));
+        linear-gradient(180deg, rgba(255, 255, 255, 0.12), var(--bg-vignette));
+      transition: background 420ms ease;
     }
 
     body::after {
@@ -79,6 +139,8 @@
     a {
       color: inherit;
       text-decoration: none;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
     }
 
     img {
@@ -96,6 +158,8 @@
     button {
       border: 0;
       cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
     }
 
     .page-shell {
@@ -107,13 +171,25 @@
       position: relative;
       border: 1px solid rgba(255, 255, 255, 0.58);
       background:
-        linear-gradient(135deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.32)),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.52), rgba(255, 255, 255, 0.14));
-      box-shadow: var(--shadow-soft), inset 0 1px 0 var(--glass-edge), inset 0 -1px 0 rgba(255, 255, 255, 0.28);
-      backdrop-filter: blur(28px) saturate(170%);
-      -webkit-backdrop-filter: blur(28px) saturate(170%);
+        radial-gradient(circle at var(--mx, 18%) var(--my, 0%), rgba(255, 255, 255, 0.96), transparent 30%),
+        linear-gradient(135deg, var(--glass-strong), var(--glass-soft)),
+        linear-gradient(225deg, rgba(156, 231, 255, 0.22), transparent 42%, rgba(239, 107, 85, 0.12)),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.54), rgba(255, 255, 255, 0.12));
+      box-shadow:
+        var(--shadow-soft),
+        inset 0 1px 0 var(--glass-edge),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.24),
+        inset 0 0 34px var(--glass-depth);
+      backdrop-filter: blur(34px) saturate(190%) contrast(1.04);
+      -webkit-backdrop-filter: blur(34px) saturate(190%) contrast(1.04);
       overflow: hidden;
       isolation: isolate;
+      transition:
+        transform 520ms var(--spring),
+        background 420ms ease,
+        border-color 420ms ease,
+        box-shadow 520ms var(--spring),
+        color 420ms ease;
     }
 
     .liquid-glass::before {
@@ -123,8 +199,9 @@
       z-index: -1;
       opacity: 0.7;
       background:
-        radial-gradient(circle at var(--mx, 16%) var(--my, 0%), rgba(255, 255, 255, 0.72), transparent 31%),
-        linear-gradient(130deg, rgba(255, 255, 255, 0.7), transparent 34%, rgba(255, 255, 255, 0.18) 72%, rgba(255, 255, 255, 0.65));
+        radial-gradient(circle at var(--mx, 16%) var(--my, 0%), rgba(255, 255, 255, 0.84), transparent 30%),
+        linear-gradient(130deg, rgba(255, 255, 255, 0.82), transparent 34%, rgba(255, 255, 255, 0.16) 72%, rgba(255, 255, 255, 0.7)),
+        linear-gradient(90deg, transparent, var(--glass-chrome), transparent);
       transition: opacity 320ms ease;
     }
 
@@ -134,9 +211,19 @@
       inset: 0;
       z-index: -1;
       border-radius: inherit;
-      background: linear-gradient(145deg, rgba(255, 255, 255, 0.38), transparent 46%);
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.46), transparent 44%),
+        linear-gradient(315deg, transparent 58%, rgba(255, 255, 255, 0.34));
       mix-blend-mode: screen;
       pointer-events: none;
+    }
+
+    :root[data-theme="dark"] .liquid-glass::before {
+      opacity: 0.42;
+    }
+
+    :root[data-theme="dark"] .liquid-glass::after {
+      opacity: 0.58;
     }
 
     .glass-bounce {
@@ -163,11 +250,12 @@
       z-index: 20;
       width: min(1160px, calc(100% - 28px));
       transform: translateX(-50%);
+      padding-top: env(safe-area-inset-top);
     }
 
     .nav {
       display: grid;
-      grid-template-columns: auto 1fr auto;
+      grid-template-columns: auto 1fr auto auto;
       gap: 20px;
       align-items: center;
       min-height: 64px;
@@ -213,23 +301,25 @@
       min-width: 0;
     }
 
-    .nav-links a,
-    .nav-cta,
-    .filter-btn,
-    .primary-btn,
-    .ghost-btn {
+      .nav-links a,
+      .nav-cta,
+      .theme-toggle,
+      .filter-btn,
+      .primary-btn,
+      .ghost-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       min-height: 40px;
       padding: 0 16px;
       border-radius: 999px;
-      color: rgba(22, 22, 22, 0.84);
+      color: var(--nav-link);
       transition: transform 420ms var(--spring), background 280ms ease, color 280ms ease, box-shadow 280ms ease;
       white-space: nowrap;
     }
 
     .nav-links a:hover,
+    .theme-toggle:hover,
     .filter-btn:hover,
     .ghost-btn:hover {
       transform: translateY(-2px) scale(1.02);
@@ -254,13 +344,38 @@
       background: rgba(255, 255, 255, 0.3);
     }
 
+    .theme-toggle {
+      gap: 8px;
+      min-width: 112px;
+      border: 1px solid rgba(255, 255, 255, 0.56);
+      background: rgba(255, 255, 255, 0.28);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.42);
+    }
+
+    .theme-icon {
+      display: grid;
+      width: 24px;
+      height: 24px;
+      place-items: center;
+      border-radius: 50%;
+      color: white;
+      background: linear-gradient(135deg, var(--gold), var(--coral));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.42), 0 8px 18px rgba(0, 0, 0, 0.16);
+      transition: background 320ms ease, transform 420ms var(--spring);
+    }
+
+    :root[data-theme="dark"] .theme-icon {
+      background: linear-gradient(135deg, var(--teal), var(--iris));
+      transform: rotate(-18deg);
+    }
+
     .menu-toggle {
       display: none;
       width: 44px;
       height: 44px;
       border-radius: 50%;
       color: var(--ink);
-      background: rgba(255, 255, 255, 0.34);
+      background: var(--field-bg);
     }
 
     .menu-toggle span {
@@ -277,6 +392,7 @@
       position: relative;
       display: grid;
       min-height: 88svh;
+      min-height: 88dvh;
       padding: 132px 0 44px;
       overflow: hidden;
     }
@@ -302,7 +418,7 @@
       inset: 0;
       background:
         linear-gradient(90deg, rgba(12, 12, 13, 0.72), rgba(16, 17, 18, 0.2) 50%, rgba(255, 255, 255, 0.18)),
-        linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(247, 244, 239, 0.96) 94%);
+        linear-gradient(180deg, rgba(0, 0, 0, 0.1), var(--hero-fade) 94%);
     }
 
     .hero-content {
@@ -310,7 +426,7 @@
       align-content: center;
       gap: 28px;
       width: min(760px, 100%);
-      color: white;
+      color: var(--hero-text);
       text-shadow: 0 18px 50px rgba(0, 0, 0, 0.36);
     }
 
@@ -355,7 +471,7 @@
 
     .hero-copy {
       max-width: 620px;
-      color: rgba(255, 255, 255, 0.84);
+      color: var(--hero-muted);
       font-size: 1.12rem;
     }
 
@@ -411,12 +527,13 @@
     .metric span {
       display: block;
       margin-top: 8px;
-      color: rgba(22, 22, 22, 0.64);
+      color: var(--text-soft);
       font-size: 0.92rem;
     }
 
     section {
       padding: 76px 0;
+      scroll-margin-top: 104px;
     }
 
     .section-head {
@@ -460,7 +577,7 @@
     .filter-btn {
       min-height: 38px;
       background: transparent;
-      color: rgba(22, 22, 22, 0.66);
+      color: var(--text-soft);
     }
 
     .filter-btn.is-active {
@@ -656,7 +773,7 @@
     .signature-item {
       padding: 14px;
       border-radius: var(--radius);
-      background: rgba(255, 255, 255, 0.34);
+      background: var(--soft-surface);
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.46);
     }
 
@@ -697,7 +814,7 @@
 
     .testimonial-card p {
       align-self: center;
-      color: rgba(22, 22, 22, 0.78);
+      color: var(--text-medium);
       font-size: 1.02rem;
     }
 
@@ -736,14 +853,14 @@
       min-height: 54px;
       padding: 0 16px;
       border-radius: var(--radius);
-      background: rgba(255, 255, 255, 0.38);
+      background: var(--soft-surface);
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
       transition: transform 420ms var(--spring), background 260ms ease;
     }
 
     .contact-list a:hover {
       transform: translateY(-3px);
-      background: rgba(255, 255, 255, 0.56);
+      background: var(--soft-surface-hover);
     }
 
     form {
@@ -760,7 +877,7 @@
     label {
       display: grid;
       gap: 7px;
-      color: rgba(22, 22, 22, 0.72);
+      color: var(--text-soft);
       font-size: 0.9rem;
       font-weight: 800;
     }
@@ -771,7 +888,7 @@
       border: 1px solid rgba(255, 255, 255, 0.58);
       border-radius: var(--radius);
       color: var(--ink);
-      background: rgba(255, 255, 255, 0.4);
+      background: var(--field-bg);
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.56);
       outline: none;
       transition: border-color 220ms ease, box-shadow 220ms ease, background 220ms ease;
@@ -802,7 +919,7 @@
     }
 
     .site-footer {
-      padding: 28px 0 44px;
+      padding: 28px 0 calc(44px + env(safe-area-inset-bottom));
     }
 
     .footer-inner {
@@ -813,7 +930,7 @@
       min-height: 62px;
       padding: 10px 18px;
       border-radius: 999px;
-      color: rgba(22, 22, 22, 0.72);
+      color: var(--text-soft);
     }
 
     .socials {
@@ -829,13 +946,13 @@
       border-radius: 50%;
       color: var(--ink);
       font-weight: 900;
-      background: rgba(255, 255, 255, 0.36);
+      background: var(--soft-surface);
       transition: transform 420ms var(--spring), background 260ms ease;
     }
 
     .socials a:hover {
       transform: translateY(-3px) scale(1.04);
-      background: rgba(255, 255, 255, 0.62);
+      background: var(--soft-surface-hover);
     }
 
     .reveal {
@@ -871,6 +988,7 @@
       display: grid;
       width: min(1040px, 100%);
       max-height: calc(100svh - 56px);
+      max-height: calc(100dvh - 56px);
       grid-template-columns: minmax(0, 1fr) 290px;
       border-radius: var(--radius);
       color: white;
@@ -884,6 +1002,7 @@
     .lightbox-image {
       min-height: 620px;
       max-height: calc(100svh - 56px);
+      max-height: calc(100dvh - 56px);
       object-fit: cover;
       width: 100%;
       height: 100%;
@@ -1020,9 +1139,26 @@
       }
 
       .nav {
-        grid-template-columns: auto auto;
+        grid-template-columns: auto auto auto;
         justify-content: space-between;
+        gap: 10px;
         border-radius: 28px;
+      }
+
+      .theme-toggle {
+        min-width: 46px;
+        width: 46px;
+        height: 44px;
+        padding: 0;
+      }
+
+      .theme-label {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
       }
 
       .menu-toggle {
@@ -1041,7 +1177,7 @@
         display: none;
         padding: 10px;
         border-radius: 22px;
-        background: rgba(255, 255, 255, 0.64);
+        background: var(--glass-strong);
         box-shadow: var(--shadow-soft), inset 0 1px 0 rgba(255, 255, 255, 0.62);
         backdrop-filter: blur(22px) saturate(170%);
         -webkit-backdrop-filter: blur(22px) saturate(170%);
@@ -1065,6 +1201,7 @@
 
       .hero {
         min-height: 86svh;
+        min-height: 86dvh;
       }
 
       h1 {
@@ -1133,6 +1270,7 @@
 
       .hero {
         min-height: 90svh;
+        min-height: 90dvh;
         padding-top: 116px;
       }
 
@@ -1215,11 +1353,13 @@
 
       .lightbox-panel {
         max-height: calc(100svh - 24px);
+        max-height: calc(100dvh - 24px);
       }
 
       .lightbox-image {
         min-height: 420px;
         max-height: 56svh;
+        max-height: 56dvh;
       }
 
       .lightbox-info {
@@ -1229,6 +1369,66 @@
       .lightbox-nav {
         width: 42px;
         height: 42px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .container {
+        width: min(100% - 18px, 1160px);
+      }
+
+      .brand-name {
+        max-width: 132px;
+      }
+
+      h1 {
+        font-size: 2.7rem;
+      }
+
+      .hero {
+        padding-top: 108px;
+      }
+
+      .photo-card,
+      .photo-card.wide,
+      .photo-card.tall {
+        min-height: 360px;
+      }
+
+      .contact-list a {
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        padding: 10px 14px;
+      }
+    }
+
+    @media (hover: none) {
+      .nav {
+        animation: none;
+      }
+
+      .glass-bounce:hover {
+        transform: perspective(900px) rotateX(0deg) rotateY(0deg) translateY(0) scale(1);
+      }
+
+      .photo-card:hover img {
+        transform: scale(1.02);
+      }
+
+      .contact-list a:hover,
+      .socials a:hover,
+      .nav-links a:hover,
+      .theme-toggle:hover,
+      .filter-btn:hover,
+      .ghost-btn:hover {
+        transform: none;
+      }
+    }
+
+    @media (pointer: coarse), (-webkit-touch-callout: none) {
+      body {
+        background-attachment: scroll;
       }
     }
 
@@ -1248,9 +1448,9 @@
   <div class="page-shell">
     <header class="site-header">
       <nav class="nav liquid-glass" aria-label="Primary navigation">
-        <a class="brand" href="#top" aria-label="Dilip Photography home">
+        <a class="brand" href="#top" aria-label="Dillu Captures home">
           <span class="brand-mark" aria-hidden="true"><span></span></span>
-          <span class="brand-name">Dilip Photography</span>
+          <span class="brand-name">Dillu Captures</span>
         </a>
         <div class="nav-links" id="navLinks">
           <a href="#work">Work</a>
@@ -1259,6 +1459,10 @@
           <a href="#notes">Notes</a>
           <a href="#contact">Contact</a>
         </div>
+        <button class="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false">
+          <span class="theme-icon" aria-hidden="true">L</span>
+          <span class="theme-label">Light</span>
+        </button>
         <a class="nav-cta" href="#contact">Book a shoot</a>
         <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
           <span></span>
@@ -1279,7 +1483,7 @@
         <div class="container">
           <div class="hero-content">
             <span class="eyebrow"><span class="spark" aria-hidden="true"></span>Editorial, wedding, and travel stories</span>
-            <h1>Dilip Photography</h1>
+            <h1>Dillu Captures</h1>
             <p class="hero-copy">
               Cinematic portraits, luminous weddings, and quiet travel frames shaped with clean composition,
               soft color, and a calm editorial rhythm.
@@ -1532,7 +1736,7 @@
           <div class="testimonial-grid">
             <article class="testimonial-card liquid-glass glass-bounce reveal">
               <span class="quote-mark">"</span>
-              <p>The photos felt cinematic without losing who we are. Dilip made the whole day feel calm.</p>
+              <p>The photos felt cinematic without losing who we are. Dillu made the whole day feel calm.</p>
               <span class="client">Maya and Arjun</span>
             </article>
             <article class="testimonial-card liquid-glass glass-bounce reveal">
@@ -1560,16 +1764,16 @@
                 I will reply with availability and a tailored quote.
               </p>
               <div class="contact-list">
-                <a href="mailto:hello@dilipphotography.com">
-                  <span>hello@dilipphotography.com</span>
+                <a href="mailto:Dillucapture2@gmail.com">
+                  <span>Dillucapture2@gmail.com</span>
                   <strong>Mail</strong>
                 </a>
-                <a href="tel:+919876543210">
-                  <span>+91 98765 43210</span>
+                <a href="tel:+919700034138">
+                  <span>9700034138</span>
                   <strong>Call</strong>
                 </a>
                 <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">
-                  <span>@dilip.photography</span>
+                  <span>@dillu.captures</span>
                   <strong>Instagram</strong>
                 </a>
               </div>
@@ -1611,7 +1815,7 @@
     <footer class="site-footer">
       <div class="container">
         <div class="footer-inner liquid-glass">
-          <span>Copyright 2026 Dilip Photography. Available for portraits, weddings, and campaigns.</span>
+          <span>Copyright 2026 Dillu Captures. Available for portraits, weddings, and campaigns.</span>
           <div class="socials" aria-label="Social links">
             <a href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram">Ig</a>
             <a href="https://www.behance.net/" target="_blank" rel="noreferrer" aria-label="Behance">Be</a>
@@ -1653,6 +1857,21 @@
     const bookingForm = document.querySelector("#bookingForm");
     const formStatus = document.querySelector("#formStatus");
     let activeIndex = 0;
+
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener("click", (event) => {
+        const targetId = anchor.getAttribute("href");
+        if (!targetId || targetId === "#") return;
+        const target = document.querySelector(targetId);
+        if (!target) return;
+
+        event.preventDefault();
+        target.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      });
+    });
 
     menuToggle.addEventListener("click", () => {
       const isOpen = nav.classList.toggle("is-open");
