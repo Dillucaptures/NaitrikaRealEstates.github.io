@@ -6,7 +6,6 @@
     <meta name="color-scheme" content="light dark">
     <title>Dillu Captures | Luxury Photography</title>
 
-    <!-- Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@100;300;400;500;600;700&display=swap" rel="stylesheet">
@@ -62,7 +61,7 @@
             transform: translateY(0);
         }
 
-        /* iOS 26 GLASS UI */
+        /* iOS GLASS UI */
         .glass {
             backdrop-filter: var(--ios-blur);
             -webkit-backdrop-filter: var(--ios-blur);
@@ -212,7 +211,7 @@
         }
         .btn:hover { transform: translateY(-5px); box-shadow: 0 25px 50px rgba(0,0,0,0.15); }
 
-        /* AUTH & DASHBOARD LUXURY LAYOUT INJECTIONS */
+        /* AUTH & DASHBOARD STYLES */
         #auth-modal {
             position: fixed; inset: 0; z-index: 9999; display: none;
             justify-content: center; align-items: center; background: rgba(0,0,0,0.6);
@@ -259,7 +258,7 @@
             header h1 { font-size: 14px; }
             .menu-toggle { display: block; }
             nav .theme-toggle { display: none; }
-            .mobile-theme-toggle { display: block; position: absolute; right: calc(5% + 75px); top: 50%; transform: translateY(-50%); }
+            .mobile-theme-toggle { display: block; position: absolute; right: calc(5% + 65px); top: 50%; transform: translateY(-50%); }
             nav { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background: rgba(var(--glass-rgb), 0.98); backdrop-filter: blur(25px); flex-direction: column; justify-content: center; align-items: center; gap: 40px; transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1); z-index: 5500; }
             nav.active { right: 0; }
             nav a { font-size: 24px; font-family: 'Cinzel'; opacity: 1; }
@@ -276,7 +275,6 @@
 
 <div class="intro" id="intro"><div class="intro-text">DILLU CAPTURES</div></div>
 
-<!-- SYSTEM AUTH MODAL CONTAINER -->
 <div id="auth-modal" onclick="closeAuthModal()">
     <div class="auth-card glass" onclick="event.stopPropagation()">
         <h2 id="auth-title">Client Access</h2>
@@ -380,12 +378,11 @@
         </div>
     </section>
 
-    <!-- INTEGRATED LIVE CLIENT PROFILE & HOOK SYSTEM -->
     <section id="dashboard" style="display: none; padding: 120px 5%; background: rgba(var(--glass-rgb), 0.02); text-align: center;">
         <h2 class="section-title reveal">Client Dashboard</h2>
         <div class="dash-container glass reveal">
             <div class="dash-profile-meta">
-                <div class="dash-avatar" id="profile-initials">U</div>
+                <div class="dash-avatar" id="profile-initials">C</div>
                 <div>
                     <h3 id="profile-email" style="font-family:'Inter'; font-weight:600; font-size:18px;">client@dillucaptures.com</h3>
                     <div id="booking-status-badge" class="status-pill">No Session Tracked</div>
@@ -415,24 +412,22 @@
 
 <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
 
-<!-- FIREBASE PORTAL INTEGRATION SCRIPTS -->
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
     import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
     import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-    // REPLACE CONFIGURATION BLOCK WITH REAL KEYS FROM FIREBASE CONSOLE
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyATrPSHyg8SS6BzafsoFYI71g2-vAbMYjU",
-  authDomain: "dillucaptures07.firebaseapp.com",
-  databaseURL: "https://dillucaptures07-default-rtdb.firebaseio.com",
-  projectId: "dillucaptures07",
-  storageBucket: "dillucaptures07.firebasestorage.app",
-  messagingSenderId: "331192229836",
-  appId: "1:331192229836:web:dbde836b8e043558038769",
-  measurementId: "G-R0ES0XEHSV"
-};
+    // Production verified configuration array
+    const firebaseConfig = {
+        apiKey: "AIzaSyATrPSHyg8SS6BzafsoFYI71g2-vAbMYjU",
+        authDomain: "dillucaptures07.firebaseapp.com",
+        databaseURL: "https://dillucaptures07-default-rtdb.firebaseio.com",
+        projectId: "dillucaptures07",
+        storageBucket: "dillucaptures07.firebasestorage.app",
+        messagingSenderId: "331192229836",
+        appId: "1:331192229836:web:dbde836b8e043558038769",
+        measurementId: "G-R0ES0XEHSV"
+    };
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
@@ -441,7 +436,7 @@ const firebaseConfig = {
     let authIsSignUp = false;
     let currentUser = null;
 
-    // Control Auth Modal Transitions
+    // Attach modules safely to window layout to guarantee availability to global onclick definitions
     window.openAuthModal = (e) => {
         if(e) e.preventDefault();
         document.getElementById('auth-modal').style.display = 'flex';
@@ -460,33 +455,36 @@ const firebaseConfig = {
         document.getElementById('auth-switch-mode').innerText = authIsSignUp ? "Already a tracked client? Sign In" : "New client? Create a luxury dashboard profile";
     };
 
-    // Form submission processing module
     window.processAuth = async () => {
         const email = document.getElementById('auth-email').value.trim();
         const pass = document.getElementById('auth-pass').value;
 
-        if(!email || !pass) { alert("Please compile all fields completely."); return; }
+        if(!email || !pass) { alert("Please complete all input tracking metrics correctly."); return; }
 
         try {
             if (authIsSignUp) {
                 const cred = await createUserWithEmailAndPassword(auth, email, pass);
-                // Setup baseline data architecture inside Firestore for new client
-                await setDoc(doc(db, "bookings", cred.user.uid), {
-                    email: email,
-                    dateString: "None Selected",
-                    timeWindow: "N/A",
-                    status: "Profile Initiated"
-                });
+                // Graceful check wrapper around Firestore creation to protect auth status
+                try {
+                    await setDoc(doc(db, "bookings", cred.user.uid), {
+                        email: email,
+                        dateString: "None Selected",
+                        timeWindow: "N/A",
+                        status: "Profile Initiated"
+                    });
+                } catch(firestoreErr) {
+                    console.error("Firestore initialization failed. Check rule access:", firestoreErr);
+                }
             } else {
                 await signInWithEmailAndPassword(auth, email, pass);
             }
             closeAuthModal();
         } catch(err) {
-            alert("Authentication Event Halted: " + err.message);
+            alert("Authentication Error: " + err.message);
         }
     };
 
-    // Sync state dynamic execution
+    // State observation engine layout updates
     onAuthStateChanged(auth, async (user) => {
         const desktopTrigger = document.getElementById('nav-auth-trigger');
         const dashLink = document.getElementById('nav-dash-link');
@@ -499,19 +497,25 @@ const firebaseConfig = {
             dashLink.style.display = "block";
             dashSection.style.display = "block";
 
-            // Map variables inside display node
             document.getElementById('profile-email').innerText = user.email;
             document.getElementById('profile-initials').innerText = user.email.charAt(0).toUpperCase();
 
-            // Pull live details from cloud container
-            const userDocRef = doc(db, "bookings", user.uid);
-            const userSnap = await getDoc(userDocRef);
+            // Safe fetch mechanism
+            try {
+                const userDocRef = doc(db, "bookings", user.uid);
+                const userSnap = await getDoc(userDocRef);
 
-            if(userSnap.exists()){
-                const data = userSnap.data();
-                document.getElementById('booking-status-badge').innerText = data.status || "Profile Configured";
-                document.getElementById('dash-session-date').innerText = data.dateString || "None Booked";
-                document.getElementById('dash-session-time').innerText = data.timeWindow || "N/A";
+                if(userSnap.exists()){
+                    const data = userSnap.data();
+                    document.getElementById('booking-status-badge').innerText = data.status || "Profile Configured";
+                    document.getElementById('dash-session-date').innerText = data.dateString || "None Booked";
+                    document.getElementById('dash-session-time').innerText = data.timeWindow || "N/A";
+                } else {
+                    document.getElementById('booking-status-badge').innerText = "Profile Configured";
+                }
+            } catch(dbErr) {
+                console.warn("Firestore collection parsing restricted or unconfigured:", dbErr);
+                document.getElementById('booking-status-badge').innerText = "Active Access (No Cloud Sync)";
             }
         } else {
             currentUser = null;
@@ -528,10 +532,9 @@ const firebaseConfig = {
         });
     };
 
-    // Override the display logic inside core system to push reservation nodes directly to Firestore cloud layer
     window.syncBookingToCloud = async (timeString, dateString) => {
         if(!currentUser) {
-            alert("To lock in standard portfolio reservations, please log in or create a client profile first.");
+            alert("To record selections inside your system cloud history, please log in or create a dashboard profile.");
             openAuthModal();
             return;
         }
@@ -544,21 +547,19 @@ const firebaseConfig = {
                 status: "Pending Approval"
             }, { merge: true });
 
-            // Refresh parameters inside the user's dashboard view frame natively
             document.getElementById('booking-status-badge').innerText = "Pending Approval";
             document.getElementById('dash-session-date').innerText = dateString;
             document.getElementById('dash-session-time').innerText = timeString;
-
-            // Trigger fallback messaging link array 
-            const formattedMsg = `Hi Dillu, I just updated my dashboard profile portal requesting a ${timeString} session on ${dateString}.`;
-            window.open(`https://wa.me/919700034138?text=${encodeURIComponent(formattedMsg)}`);
         } catch(err) {
-            console.error("Cloud processing anomaly caught:", err);
+            console.error("Firestore cloud sync write denied. Falling back directly to messaging:", err);
         }
+
+        // Keep fallback messaging action cleanly active
+        const formattedMsg = `Hi Dillu, I just updated my dashboard profile portal requesting a ${timeString} session on ${dateString}.`;
+        window.open(`https://wa.me/919700034138?text=${encodeURIComponent(formattedMsg)}`);
     };
 </script>
 
-<!-- NATIVE SCRIPTS LAYER -->
 <script>
 /* 1. LENIS INITIALIZATION */
 const lenis = new Lenis({
@@ -587,11 +588,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             lenis.scrollTo(0);
             return;
         }
-        
-        // Skip handling via Lenis if the element doesn't exist or is standard logic trigger
-        if(targetId === '#') return;
 
-        // Close mobile menu if open
         if (window.innerWidth <= 1000) {
             const nav = document.getElementById('mainNav');
             const toggle = document.getElementById('menuToggle');
@@ -729,7 +726,6 @@ function showSlots(){
         s.onclick = (e) => {
             e.stopPropagation();
             if(window.syncBookingToCloud) {
-                // Cloud pipeline verification execution
                 window.syncBookingToCloud(time, selectedDate);
             } else {
                 const msg = `Hi Dillu, I'd like to inquire about a ${time} session on ${selectedDate}.`;
