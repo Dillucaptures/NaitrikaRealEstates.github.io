@@ -70,7 +70,7 @@
         }
 
         /* GATEWAY UI CONTROLS */
-        .btn-auth { display: inline-block; padding: 14px 30px; border-radius: 30px; background: var(--text); color: var(--bg); font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; border: none; cursor: pointer; transition: 0.3s; text-align: center; }
+        .btn-auth { display: inline-block; padding: 14px 30px; border-radius: 30px; background: var(--text); color: var(--bg); font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; border: none; cursor: pointer; transition: 0.3s; text-align: center; text-decoration: none; }
         .btn-auth:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
         .btn-outline { background: transparent; border: 1px solid var(--text); color: var(--text); }
         
@@ -78,22 +78,35 @@
         .input-field:focus { border-color: var(--accent); background: rgba(var(--glass-rgb), 0.15); }
 
         #auth-gate { position: fixed; inset: 0; display: flex; justify-content: center; align-items: center; background: var(--bg); z-index: 10000; overflow-y: auto; padding: 20px; }
-        .auth-container { width: 100%; max-width: 400px; padding: 40px; border-radius: 30px; box-shadow: 0 20px 60px rgba(0,0,0,0.05); text-align: center; }
-        .auth-container h1 { font-family: 'Cinzel'; font-size: 24px; margin-bottom: 30px; letter-spacing: 0.1em; }
+        .auth-container { width: 100%; max-width: 420px; padding: 40px; border-radius: 30px; box-shadow: 0 20px 60px rgba(0,0,0,0.05); text-align: center; }
+        .auth-container h1 { font-family: 'Cinzel'; font-size: 24px; margin-bottom: 25px; letter-spacing: 0.1em; }
         
         .divider { display: flex; align-items: center; margin: 25px 0; font-size: 12px; opacity: 0.5; text-transform: uppercase; }
         .divider::before, .divider::after { content: ""; flex: 1; height: 1px; background: var(--text); margin: 0 10px; }
 
-        .auth-modes { display: flex; justify-content: center; gap: 15px; margin-bottom: 20px; }
-        .mode-tab { font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.5; cursor: pointer; padding-bottom: 5px; }
-        .mode-tab.active { opacity: 1; border-bottom: 2px solid var(--text); font-weight: 600; }
+        .auth-modes { display: flex; justify-content: center; gap: 12px; margin-bottom: 25px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px; flex-wrap: wrap; }
+        .mode-tab { font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.5; cursor: pointer; padding: 5px 2px; transition: 0.3s; }
+        .mode-tab.active { opacity: 1; border-bottom: 2px solid var(--text); font-weight: 600; color: var(--accent); }
 
         .auth-form { display: none; }
         .auth-form.active { display: block; }
         #recaptcha-container { margin-bottom: 15px; display: flex; justify-content: center; }
 
-        #app-content { display: none; opacity: 0; transition: opacity 0.8s ease; }
+        #app-content { display: none; opacity: 0; transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1); }
         #app-content.visible { display: block; opacity: 1; }
+
+        /* INTRO OVERLAY ANIMATION GRAPHICS */
+        #intro { 
+            position: fixed; inset: 0; background: #ffffff; z-index: 99999; 
+            display: flex; justify-content: center; align-items: center; 
+            transition: opacity 1s cubic-bezier(0.645, 0.045, 0.355, 1), transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+            font-family: 'Cinzel'; font-size: clamp(1.5rem, 4vw, 2.5rem); letter-spacing: 0.3em; font-weight: 700;
+        }
+        #intro.animate-out {
+            opacity: 0;
+            transform: scale(1.05);
+            pointer-events: none;
+        }
 
         /* HEADER & UTILITIES */
         header {
@@ -122,23 +135,24 @@
         }
         body.dark .toggle-circle { left: 21px; background: #fff; color: #000; }
 
-        /* CONTROL ENVIRONMENT DASHBOARD PANEL */
+        /* CONTROL ENVIRONMENT DASHBOARD PANEL (SCROLL FIXED) */
         #dashboard-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.4); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); z-index: 10001; display: none; justify-content: center; align-items: center; }
-        .dash-card { width: 92%; max-width: 650px; height: 85vh; max-height: 700px; border-radius: 35px; position: relative; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.2); }
-        .dash-header-bar { padding: 30px 40px; border-bottom: 1px solid var(--glass-border); display: flex; justify-content: space-between; align-items: center; }
+        .dash-card { width: 92%; max-width: 650px; height: 85vh; max-height: 700px; border-radius: 35px; position: relative; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.2); background: rgba(var(--glass-rgb), 0.85); }
+        .dash-header-bar { padding: 25px 40px; border-bottom: 1px solid var(--glass-border); display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
         .close-dash { font-size: 28px; cursor: pointer; opacity: 0.6; transition: 0.3s; }
         .close-dash:hover { opacity: 1; }
         
-        .dash-nav-tabs { display: flex; gap: 20px; padding: 15px 40px; border-bottom: 1px solid var(--glass-border); background: rgba(var(--glass-rgb), 0.2); }
-        .dash-tab { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500; opacity: 0.5; cursor: pointer; padding: 5px 0; transition: 0.3s; }
-        .dash-tab.active { opacity: 1; border-bottom: 2px solid var(--text); font-weight: 700; }
+        .dash-nav-tabs { display: flex; gap: 20px; padding: 12px 40px; border-bottom: 1px solid var(--glass-border); background: rgba(var(--glass-rgb), 0.4); flex-shrink: 0; overflow-x: auto; }
+        .dash-tab { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500; opacity: 0.5; cursor: pointer; padding: 5px 0; transition: 0.3s; white-space: nowrap; }
+        .dash-tab.active { opacity: 1; border-bottom: 2px solid var(--text); font-weight: 700; color: var(--accent); }
         
-        .dash-body { flex: 1; overflow-y: auto; padding: 40px; }
+        /* SCROLL ENGINE FIXES FOR DESKTOP AND MOBILE */
+        .dash-body { flex: 1; overflow-y: auto; padding: 40px; -webkit-overflow-scrolling: touch; }
         .dash-view { display: none; }
         .dash-view.active { display: block; }
         
-        .profile-summary { display: flex; align-items: center; gap: 20px; margin-bottom: 35px; }
-        .dash-avatar { width: 64px; height: 64px; border-radius: 50%; background: var(--accent); color: white; display: flex; align-items: center; justify-content: center; font-size: 24px; font-family: 'Cinzel'; font-weight: 700; }
+        .profile-summary { display: flex; align-items: center; gap: 20px; margin-bottom: 35px; background: rgba(var(--glass-rgb), 0.2); padding: 20px; border-radius: 20px; border: 1px solid var(--glass-border); }
+        .dash-avatar { width: 64px; height: 64px; border-radius: 50%; background: var(--text); color: var(--bg); display: flex; align-items: center; justify-content: center; font-size: 24px; font-family: 'Cinzel'; font-weight: 700; }
 
         /* VIEWPORT CONFIGURATIONS */
         .hero { height: 100vh; display: flex; align-items: center; padding: 0 5%; position: relative; gap: 5vw; }
@@ -168,9 +182,9 @@
         #lightbox.active img { transform: scale(1); }
         .close-lightbox { position: absolute; top: 30px; right: 40px; color: white; font-size: 40px; cursor: pointer; font-family: 'Inter'; font-weight: 200; }
 
-        /* CALENDAR SUB-COMPONENT SYSTEM */
-        .calendar-card { max-width: 500px; margin: 20px auto; padding: 35px; border-radius: 35px; background: rgba(var(--glass-rgb), 0.4); }
-        .day { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; border-radius: 12px; font-size: 13px; cursor: pointer; transition: 0.2s; }
+        /* CALENDAR SUB-COMPONENT SCROLL FIXED SYSTEM */
+        .calendar-card { max-width: 500px; margin: 20px auto; padding: 35px; border-radius: 35px; background: rgba(var(--glass-rgb), 0.4); border: 1px solid var(--glass-border); }
+        .day { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; border-radius: 12px; font-size: 13px; cursor: pointer; transition: 0.2s; color: var(--text); }
         .day:hover:not(.disabled) { background: var(--text); color: var(--bg); }
         .day.selected { background: var(--accent); color: #fff; font-weight: 700; transform: scale(1.05); }
         .day.today { border: 2px solid var(--accent); }
@@ -198,27 +212,34 @@
             .calendar-card { width: 100%; padding: 20px 10px; }
             .section-title { font-size: 34px; margin-bottom: 40px; }
             section { padding: 60px 5%; }
+            .dash-body { padding: 20px; }
         }
     </style>
 </head>
 
 <body>
 
-<div class="intro" id="intro" style="position:fixed; inset:0; background:#fff; z-index:99999; display:flex; justify-content:center; align-items:center; transition: opacity 0.8s ease; font-family:'Cinzel'; font-size:24px; letter-spacing:0.3em; font-weight:700;">DILLU CAPTURES</div>
+<div id="intro">DILLU CAPTURES</div>
 
 <div id="auth-gate">
     <div class="auth-container glass">
         <h1>Dillu Captures</h1>
         
         <div class="auth-modes">
-            <span class="mode-tab active" onclick="switchAuthTab('email-form')">Credentials</span>
-            <span class="mode-tab" onclick="switchAuthTab('phone-form')">Phone Verification</span>
+            <span class="mode-tab active" id="tab-login" onclick="switchAuthTab('email-login-form')">Credentials</span>
+            <span class="mode-tab" id="tab-register" onclick="switchAuthTab('email-register-form')">Create Account</span>
+            <span class="mode-tab" id="tab-phone" onclick="switchAuthTab('phone-form')">Phone Verification</span>
         </div>
 
-        <div id="email-form" class="auth-form active">
+        <div id="email-login-form" class="auth-form active">
             <input type="email" id="email-input" class="input-field" placeholder="Email Address" required>
             <input type="password" id="password-input" class="input-field" placeholder="Password" required>
-            <button class="btn-auth" style="width: 100%; margin-bottom: 12px;" onclick="handleEmailLogin()">Sign In</button>
+            <button class="btn-auth" style="width: 100%;" onclick="handleEmailLogin()">Sign In</button>
+        </div>
+
+        <div id="email-register-form" class="auth-form">
+            <input type="email" id="reg-email-input" class="input-field" placeholder="Email Address" required>
+            <input type="password" id="reg-password-input" class="input-field" placeholder="Password (Min 6 Characters)" required>
             <button class="btn-auth btn-outline" style="width: 100%;" onclick="handleEmailSignUp()">Register Account</button>
         </div>
 
@@ -238,7 +259,7 @@
         <div class="divider">Federated Login</div>
         <button class="btn-auth glass" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 12px; color: var(--text);" onclick="handleGoogleLogin()">
             <svg width="16" height="16" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-            Google Identity
+            <span>Login with Gmail/Email</span>
         </button>
     </div>
 </div>
@@ -350,12 +371,13 @@
     <div class="dash-card glass" onclick="event.stopPropagation()">
         
         <div class="dash-header-bar">
-            <h2 style="font-family: 'Cinzel'; font-size: 18px; letter-spacing: 0.1em;">Client Workspace</h2>
+            <h2 style="font-family: 'Cinzel'; font-size: 17px; letter-spacing: 0.1em;">Client Workspace</h2>
             <span class="close-dash" onclick="closeDashboard(event)">&times;</span>
         </div>
 
         <div class="dash-nav-tabs">
-            <span id="tab-link-profile" class="dash-tab active" onclick="switchDashView('profile')">Account Profile</span>
+            <span id="tab-link-profile" class="dash-tab active" onclick="switchDashView('profile')">Overview</span>
+            <span id="tab-link-edit" class="dash-tab" onclick="switchDashView('edit')">Edit Profile</span>
             <span id="tab-link-booking" class="dash-tab" onclick="switchDashView('booking')">Booking Engine</span>
         </div>
 
@@ -368,8 +390,21 @@
                         <p id="dash-email" style="font-size: 13px; opacity: 0.6; margin-top: 3px;">account@domain.com</p>
                     </div>
                 </div>
+                
+                <div style="background: rgba(var(--glass-rgb), 0.1); padding: 25px; border-radius: 20px; margin-bottom: 25px; border: 1px solid var(--glass-border);">
+                    <h4 style="font-size: 12px; opacity: 0.5; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 0.05em;">Saved Parameters</h4>
+                    <p style="font-size: 14px; margin-bottom: 10px;"><strong>Phone:</strong> <span id="lbl-phone">None Provided</span></p>
+                    <p style="font-size: 14px;"><strong>Preferences:</strong> <span id="lbl-details">None Configured</span></p>
+                </div>
 
-                <div style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 30px;">
+                <button class="btn-auth btn-outline" style="width: 100%; border-color: #ff4444; color: #ff4444;" onclick="window.logoutUser()">Logout</button>
+            </div>
+
+            <div id="dash-view-edit" class="dash-view">
+                <h3 style="font-family: 'Playfair Display'; font-size: 22px; margin-bottom: 8px;">Modify Account Details</h3>
+                <p style="font-size: 13px; opacity: 0.6; margin-bottom: 25px;">Update your structural communication parameters below.</p>
+
+                <div style="display: flex; flex-direction: column; gap: 15px;">
                     <div>
                         <label style="font-size: 11px; opacity: 0.6; text-transform: uppercase; display: block; margin-bottom: 8px;">Modify Username</label>
                         <input type="text" id="update-name-input" class="input-field" style="margin: 0;" placeholder="Full Legal Name">
@@ -382,17 +417,15 @@
                         <label style="font-size: 11px; opacity: 0.6; text-transform: uppercase; display: block; margin-bottom: 8px;">Photography Request Preferences</label>
                         <input type="text" id="update-details-input" class="input-field" style="margin: 0;" placeholder="e.g. Minimalist, Golden Hour, Editorial Styles">
                     </div>
-                    <button class="btn-auth" style="align-self: flex-start; margin-top: 10px;" onclick="updateUserDetails()">Commit Details</button>
+                    <button class="btn-auth" style="align-self: flex-start; margin-top: 10px;" onclick="window.updateUserDetails()">Commit Details</button>
                 </div>
-
-                <button class="btn-auth btn-outline" style="width: 100%; border-color: #ff4444; color: #ff4444;" onclick="logoutUser()">Terminate Session</button>
             </div>
 
             <div id="dash-view-booking" class="dash-view">
                 <h3 style="font-family: 'Playfair Display'; font-size: 22px; margin-bottom: 15px;">Schedule Strategy Session</h3>
                 <p style="font-size: 13px; opacity: 0.6; margin-bottom: 25px;">Reserve dedicated production blocks directly into standard operating pipelines.</p>
                 
-                <div class="calendar-card glass" style="max-width: 100%; margin: 0; background: rgba(var(--glass-rgb), 0.05);">
+                <div class="calendar-card glass" style="max-width: 100%; margin: 0; background: rgba(var(--glass-rgb), 0.05); padding: 25px;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
                         <button onclick="prevMonth();" style="background:none; border:none; color:var(--text); cursor:pointer; font-size:20px;">‹</button>
                         <h4 id="dash-monthYear" style="font-family:'Playfair Display'"></h4>
@@ -476,16 +509,13 @@
         document.getElementById("icon").textContent = isDark ? "☀️" : "🌙";
     };
 
-    /* RENDERING NOTICES AND LIFE CYCLE EXECUTION */
-    window.addEventListener('load', () => {
-        setTimeout(() => {
-            const introDiv = document.getElementById("intro");
-            if(introDiv) {
-                introDiv.style.opacity = "0";
-                setTimeout(() => introDiv.style.display = "none", 800);
-            }
-        }, 1200);
-    });
+    /* TIMED INTRO OPENING ANIMATION ENGINE */
+    window.triggerIntroAnimation = function() {
+        const introDiv = document.getElementById("intro");
+        if(introDiv) {
+            introDiv.classList.add("animate-out");
+        }
+    };
 
     const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
     const observer = new IntersectionObserver((entries) => {
@@ -615,7 +645,9 @@
     window.switchAuthTab = (tabId) => {
         document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
         document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
-        event.target.classList.add('active');
+        if (event && event.target) {
+            event.target.classList.add('active');
+        }
         document.getElementById(tabId).classList.add('active');
     };
 
@@ -631,10 +663,10 @@
         catch (error) { alert("Login Error: " + error.message); }
     };
 
-    /* ACCOUNT PROFILE PROVISIONING BLOCK (FIXED) */
+    /* ACCOUNT PROFILE PROVISIONING BLOCK */
     window.handleEmailSignUp = async () => {
-        const email = document.getElementById('email-input').value.trim();
-        const pass = document.getElementById('password-input').value;
+        const email = document.getElementById('reg-email-input').value.trim();
+        const pass = document.getElementById('reg-password-input').value;
         if(!runValidation(email)) return alert("Invalid Email Construction.");
         if(pass.length < 6) return alert("Password fails minimum validation length (6 chars).");
         try {
@@ -647,9 +679,9 @@
                     notesProfile: ""
                 }); 
             } catch(firestoreFailure) {
-                console.warn("Firestore collection layer initialization bypassed.", firestoreFailure);
+                console.warn("Firestore initialization bypassed.", firestoreFailure);
             }
-            alert("Account configured and logged in successfully!");
+            alert("Account configured successfully!");
         } catch (error) { alert("Registration Process Failed: " + error.message); }
     };
 
@@ -671,7 +703,7 @@
             document.getElementById('phone-step-1').style.display = 'none';
             document.getElementById('phone-step-2').style.display = 'block';
         } catch (error) {
-            alert("Telephony initialization layer failure: " + error.message);
+            alert("Telephony layer failure: " + error.message);
             if(window.recaptchaVerifier) window.recaptchaVerifier.clear();
         }
     };
@@ -689,7 +721,7 @@
         const targetedPhone = document.getElementById('update-phone-input').value.trim();
         const targetedDetails = document.getElementById('update-details-input').value.trim();
         
-        if(!targetedName) return alert("Username parameter configuration field cannot remain null.");
+        if(!targetedName) return alert("Username configuration field cannot remain empty.");
         
         if(auth.currentUser) {
             try {
@@ -708,13 +740,21 @@
                     }));
                 }
                 
-                alert("Data matrix profile properties successfully updated!");
+                alert("Profile metrics updated successfully!");
                 updateDynamicUIElements(auth.currentUser);
-            } catch (error) { alert("Identity runtime modification failed: " + error.message); }
+                window.switchDashView('profile');
+            } catch (error) { alert("Identity modification failed: " + error.message); }
         }
     };
 
-    window.logoutUser = () => { signOut(auth); };
+    /* EXPLICIT LOGOUT METHOD ATTACHMENT */
+    window.logoutUser = () => { 
+        signOut(auth).then(() => {
+            window.closeDashboard();
+        }).catch((err) => {
+            alert("Logout error: " + err.message);
+        });
+    };
 
     /* RUNTIME UI PARSER ENGINE */
     const updateDynamicUIElements = async (user) => {
@@ -747,24 +787,40 @@
 
         document.getElementById('update-phone-input').value = secondaryPhone;
         document.getElementById('update-details-input').value = secondaryDetails;
+        
+        document.getElementById('lbl-phone').innerText = secondaryPhone || "None Provided";
+        document.getElementById('lbl-details').innerText = secondaryDetails || "None Configured";
     };
 
-    /* AUTH STATE LIFECYCLE CONTROLLER (FIXED PAGE MOUNT LOADING APPARATUS) */
+    /* AUTH STATE LIFECYCLE CONTROLLER WITH ANIMATION DELAY MATRIX */
     onAuthStateChanged(auth, (user) => {
         const gatewayCanvas = document.getElementById('auth-gate');
         const productionCanvas = document.getElementById('app-content');
 
         if (user) {
             gatewayCanvas.style.display = 'none';
-            productionCanvas.style.display = 'block'; // Direct display override block execution
+            productionCanvas.style.display = 'block'; 
+            
+            // Fires the scale & fade text animation smoothly 
             setTimeout(() => {
-                productionCanvas.classList.add('visible');
-            }, 50);
+                window.triggerIntroAnimation();
+                setTimeout(() => {
+                    productionCanvas.classList.add('visible');
+                }, 400);
+            }, 600);
+            
             updateDynamicUIElements(user);
         } else {
+            // Reset opening intro structural overlay classes
+            const introDiv = document.getElementById("intro");
+            if(introDiv) {
+                introDiv.classList.remove("animate-out");
+                introDiv.style.display = "flex";
+            }
+            
             gatewayCanvas.style.display = 'flex';
             productionCanvas.classList.remove('visible');
-            setTimeout(() => { productionCanvas.style.display = 'none'; }, 800);
+            productionCanvas.style.display = 'none';
             
             document.getElementById('phone-step-1').style.display = 'block';
             document.getElementById('phone-step-2').style.display = 'none';
