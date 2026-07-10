@@ -1,2341 +1,2268 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Dillu Captures | Photography Portfolio</title>
+    <title>Dillu Captures | Photography Portfolio</title>
 
-<meta name="description" content="Dillu Captures - Professional Photography Portfolio with Apple Liquid Glass UI">
-<meta name="theme-color" content="#ffffff">
+    <meta name="description" content="Dillu Captures - Professional Photography Portfolio with Apple Liquid Glass UI">
+    <meta name="theme-color" content="#ffffff">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
 
-<style>
-body{
-opacity:0;
-transition:opacity .8s ease;
-}
-/* ===========================
+    <style>
+        body {
+            opacity: 0;
+            transition: opacity .8s ease;
+        }
+
+        /* ===========================
    ROOT VARIABLES
 =========================== */
 
-:root{
+        :root {
 
---bg:#f5f5f7;
---bg-secondary:#ffffff;
+            --bg: #f5f5f7;
+            --bg-secondary: #ffffff;
 
---text:#111111;
---text-secondary:#6e6e73;
+            --text: #111111;
+            --text-secondary: #6e6e73;
 
---glass-bg:
-rgba(255,255,255,0.22);
+            --glass-bg:
+                rgba(255, 255, 255, 0.22);
 
---glass-border:
-rgba(255,255,255,0.35);
+            --glass-border:
+                rgba(255, 255, 255, 0.35);
 
---shadow:
-0 8px 32px rgba(0,0,0,.08);
+            --shadow:
+                0 8px 32px rgba(0, 0, 0, .08);
 
---accent:#0071e3;
+            --accent: #0071e3;
 
---hero-gradient:
-linear-gradient(
-135deg,
-#89f7fe,
-#66a6ff
-);
+            --hero-gradient:
+                linear-gradient(135deg,
+                    #89f7fe,
+                    #66a6ff);
 
-}
+        }
 
-/* DARK MODE */
+        /* DARK MODE */
 
-[data-theme="dark"]{
+        [data-theme="dark"] {
 
---bg:#0a0a0f;
---bg-secondary:#111118;
+            --bg: #0a0a0f;
+            --bg-secondary: #111118;
 
---text:#ffffff;
---text-secondary:#a1a1aa;
+            --text: #ffffff;
+            --text-secondary: #a1a1aa;
 
---glass-bg:
-rgba(255,255,255,0.08);
+            --glass-bg:
+                rgba(255, 255, 255, 0.08);
 
---glass-border:
-rgba(255,255,255,0.15);
+            --glass-border:
+                rgba(255, 255, 255, 0.15);
 
---shadow:
-0 8px 40px rgba(0,0,0,.35);
+            --shadow:
+                0 8px 40px rgba(0, 0, 0, .35);
 
---accent:#0a84ff;
+            --accent: #0a84ff;
 
---hero-gradient:
-linear-gradient(
-135deg,
-#1f1f35,
-#0a84ff
-);
+            --hero-gradient:
+                linear-gradient(135deg,
+                    #1f1f35,
+                    #0a84ff);
 
-}
+        }
 
-/* ===========================
+        /* ===========================
    RESET
 =========================== */
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-html{
-scroll-behavior:smooth;
-}
+        html {
+            scroll-behavior: smooth;
+        }
 
-body{
-font-family:'Inter',sans-serif;
-background:var(--bg);
-color:var(--text);
-overflow-x:hidden;
-transition:.4s ease;
-}
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            transition: .4s ease;
+        }
 
-/* ===========================
+        /* ===========================
    LIQUID GLASS
 =========================== */
 
-.glass{
-background:var(--glass-bg);
+        .glass {
+            background: var(--glass-bg);
 
-backdrop-filter:
-blur(30px)
-saturate(180%);
+            backdrop-filter:
+                blur(30px) saturate(180%);
 
--webkit-backdrop-filter:
-blur(30px)
-saturate(180%);
+            -webkit-backdrop-filter:
+                blur(30px) saturate(180%);
 
-border:1px solid var(--glass-border);
+            border: 1px solid var(--glass-border);
 
-box-shadow:var(--shadow);
-}
+            box-shadow: var(--shadow);
+        }
 
-/* ===========================
+        /* ===========================
    LIVE CLOCK
 =========================== */
 
-.live-clock{
+        .live-clock {
 
-position:fixed;
+            position: fixed;
 
-top:20px;
-right:20px;
+            top: 20px;
+            right: 20px;
 
-z-index:9999;
+            z-index: 9999;
 
-padding:12px 20px;
+            padding: 12px 20px;
 
-border-radius:20px;
+            border-radius: 20px;
 
-font-size:.9rem;
-font-weight:600;
+            font-size: .9rem;
+            font-weight: 600;
 
-}
+        }
 
-/* ===========================
+        /* ===========================
    NAVBAR
 =========================== */
 
-.navbar{
+        .navbar {
 
-position:fixed;
+            position: fixed;
 
-top:20px;
-left:50%;
+            top: 20px;
+            left: 50%;
 
-transform:translateX(-50%);
+            transform: translateX(-50%);
 
-width:min(1200px,95%);
+            width: min(1200px, 95%);
 
-z-index:999;
+            z-index: 999;
 
-padding:14px 24px;
+            padding: 14px 24px;
 
-border-radius:30px;
+            border-radius: 30px;
 
-display:flex;
-justify-content:space-between;
-align-items:center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
 
-}
+        }
 
-.logo{
+        .logo {
 
-font-size:1.2rem;
-font-weight:800;
+            font-size: 1.2rem;
+            font-weight: 800;
 
-letter-spacing:-0.5px;
+            letter-spacing: -0.5px;
 
-}
+        }
 
-.logo span{
-color:var(--accent);
-}
+        .logo span {
+            color: var(--accent);
+        }
 
-.nav-links{
+        .nav-links {
 
-display:flex;
-align-items:center;
-gap:24px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
 
-}
+        }
 
-.nav-links a{
+        .nav-links a {
 
-text-decoration:none;
-color:var(--text);
+            text-decoration: none;
+            color: var(--text);
 
-font-weight:600;
+            font-weight: 600;
 
-transition:.3s ease;
+            transition: .3s ease;
 
-}
+        }
 
-.nav-links a:hover{
-color:var(--accent);
-}
+        .nav-links a:hover {
+            color: var(--accent);
+        }
 
-.theme-btn{
+        .theme-btn {
 
-border:none;
-outline:none;
+            border: none;
+            outline: none;
 
-cursor:pointer;
+            cursor: pointer;
 
-padding:10px 18px;
+            padding: 10px 18px;
 
-border-radius:16px;
+            border-radius: 16px;
 
-background:var(--glass-bg);
+            background: var(--glass-bg);
 
-color:var(--text);
+            color: var(--text);
 
-font-weight:600;
+            font-weight: 600;
 
-}
+        }
 
-/* ===========================
+        /* ===========================
    HERO SECTION
 =========================== */
 
-.hero{
+        .hero {
 
-min-height:100vh;
+            min-height: 100vh;
 
-display:flex;
-align-items:center;
-justify-content:center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-position:relative;
+            position: relative;
 
-overflow:hidden;
+            overflow: hidden;
 
-}
+        }
 
-.hero::before{
+        .hero::before {
 
-content:"";
+            content: "";
 
-position:absolute;
+            position: absolute;
 
-inset:0;
+            inset: 0;
 
-background:
-url("https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=2000&q=80")
-center center/cover;
+            background:
+                url("https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=2000&q=80") center center/cover;
 
-z-index:-2;
+            z-index: -2;
 
-}
+        }
 
-.hero::after{
+        .hero::after {
 
-content:"";
+            content: "";
 
-position:absolute;
+            position: absolute;
 
-inset:0;
+            inset: 0;
 
-background:
-linear-gradient(
-180deg,
-rgba(0,0,0,.35),
-rgba(0,0,0,.65)
-);
+            background:
+                linear-gradient(180deg,
+                    rgba(0, 0, 0, .35),
+                    rgba(0, 0, 0, .65));
 
-z-index:-1;
+            z-index: -1;
 
-}
+        }
 
-.hero-content{
+        .hero-content {
 
-max-width:900px;
+            max-width: 900px;
 
-padding:20px;
+            padding: 20px;
 
-text-align:center;
+            text-align: center;
 
-color:white;
+            color: white;
 
-}
+        }
 
-.hero-badge{
+        .hero-badge {
 
-display:inline-block;
+            display: inline-block;
 
-padding:10px 18px;
+            padding: 10px 18px;
 
-border-radius:30px;
+            border-radius: 30px;
 
-margin-bottom:24px;
+            margin-bottom: 24px;
 
-font-size:.9rem;
+            font-size: .9rem;
 
-font-weight:600;
+            font-weight: 600;
 
-background:
-rgba(255,255,255,.12);
+            background:
+                rgba(255, 255, 255, .12);
 
-backdrop-filter:blur(20px);
+            backdrop-filter: blur(20px);
 
-}
+        }
 
-.hero h1{
+        .hero h1 {
 
-font-size:clamp(3rem,8vw,7rem);
+            font-size: clamp(3rem, 8vw, 7rem);
 
-font-weight:900;
+            font-weight: 900;
 
-line-height:1;
+            line-height: 1;
 
-margin-bottom:20px;
+            margin-bottom: 20px;
 
-}
+        }
 
-.hero p{
+        .hero p {
 
-font-size:1.15rem;
+            font-size: 1.15rem;
 
-line-height:1.8;
+            line-height: 1.8;
 
-max-width:700px;
+            max-width: 700px;
 
-margin:auto;
+            margin: auto;
 
-opacity:.95;
+            opacity: .95;
 
-}
+        }
 
-.hero-buttons{
+        .hero-buttons {
 
-margin-top:40px;
+            margin-top: 40px;
 
-display:flex;
-justify-content:center;
-gap:20px;
-flex-wrap:wrap;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
 
-}
+        }
 
-.btn-primary{
+        .btn-primary {
 
-background:white;
+            background: white;
 
-color:black;
+            color: black;
 
-padding:14px 28px;
+            padding: 14px 28px;
 
-border-radius:18px;
+            border-radius: 18px;
 
-font-weight:700;
+            font-weight: 700;
 
-text-decoration:none;
+            text-decoration: none;
 
-}
+        }
 
-.btn-secondary{
+        .btn-secondary {
 
-background:
-rgba(255,255,255,.12);
+            background:
+                rgba(255, 255, 255, .12);
 
-backdrop-filter:blur(20px);
+            backdrop-filter: blur(20px);
 
-border:1px solid rgba(255,255,255,.25);
+            border: 1px solid rgba(255, 255, 255, .25);
 
-color:white;
+            color: white;
 
-padding:14px 28px;
+            padding: 14px 28px;
 
-border-radius:18px;
+            border-radius: 18px;
 
-text-decoration:none;
+            text-decoration: none;
 
-font-weight:700;
+            font-weight: 700;
 
-}
+        }
 
-/* ===========================
+        /* ===========================
    RESPONSIVE
 =========================== */
 
-@media(max-width:768px){
+        @media(max-width:768px) {
 
-.nav-links{
-display:none;
-}
+            .nav-links {
+                display: none;
+            }
 
-.hero h1{
-font-size:3.5rem;
-}
+            .hero h1 {
+                font-size: 3.5rem;
+            }
 
-.hero p{
-font-size:1rem;
-}
+            .hero p {
+                font-size: 1rem;
+            }
 
-}
-  
-/* ===========================
+        }
+
+        /* ===========================
    GALLERY
 =========================== */
 
-.gallery-section{
+        .gallery-section {
 
-padding:120px 5%;
-max-width:1400px;
-margin:auto;
+            padding: 120px 5%;
+            max-width: 1400px;
+            margin: auto;
 
-}
+        }
 
-.section-header{
+        .section-header {
 
-text-align:center;
-margin-bottom:60px;
+            text-align: center;
+            margin-bottom: 60px;
 
-}
+        }
 
-.section-header h2{
+        .section-header h2 {
 
-font-size:3rem;
-font-weight:800;
+            font-size: 3rem;
+            font-weight: 800;
 
-margin-top:20px;
-margin-bottom:20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
 
-}
+        }
 
-.section-header p{
+        .section-header p {
 
-max-width:700px;
-margin:auto;
+            max-width: 700px;
+            margin: auto;
 
-color:var(--text-secondary);
-line-height:1.8;
+            color: var(--text-secondary);
+            line-height: 1.8;
 
-}
+        }
 
-.section-badge{
+        .section-badge {
 
-padding:10px 18px;
-border-radius:999px;
+            padding: 10px 18px;
+            border-radius: 999px;
 
-display:inline-block;
+            display: inline-block;
 
-}
+        }
 
-.gallery-grid{
+        .gallery-grid {
 
-display:grid;
+            display: grid;
 
-grid-template-columns:
-repeat(auto-fit,minmax(300px,1fr));
+            grid-template-columns:
+                repeat(auto-fit, minmax(300px, 1fr));
 
-gap:24px;
+            gap: 24px;
 
-}
+        }
 
-.gallery-item{
+        .gallery-item {
 
-overflow:hidden;
-border-radius:28px;
+            overflow: hidden;
+            border-radius: 28px;
 
-cursor:pointer;
+            cursor: pointer;
 
-position:relative;
+            position: relative;
 
-}
+        }
 
-.gallery-item img{
+        .gallery-item img {
 
-width:100%;
-height:320px;
+            width: 100%;
+            height: 320px;
 
-object-fit:cover;
+            object-fit: cover;
 
-display:block;
+            display: block;
 
-transition:
-transform .6s ease;
+            transition:
+                transform .6s ease;
 
-}
+        }
 
-.gallery-item:hover img{
+        .gallery-item:hover img {
 
-transform:scale(1.08);
+            transform: scale(1.08);
 
-}
+        }
 
-/* ===========================
+        /* ===========================
    LIGHTBOX
 =========================== */
 
-#lightbox{
+        #lightbox {
 
-position:fixed;
+            position: fixed;
 
-top:0;
-left:0;
+            top: 0;
+            left: 0;
 
-width:100%;
-height:100%;
+            width: 100%;
+            height: 100%;
 
-display:none;
+            display: none;
 
-justify-content:center;
-align-items:center;
+            justify-content: center;
+            align-items: center;
 
-background:
-rgba(0,0,0,.92);
+            background:
+                rgba(0, 0, 0, .92);
 
-z-index:10000;
+            z-index: 10000;
 
-padding:30px;
+            padding: 30px;
 
-}
+        }
 
-#lightbox.active{
+        #lightbox.active {
 
-display:flex;
+            display: flex;
 
-}
+        }
 
-#lightbox img{
+        #lightbox img {
 
-max-width:90%;
-max-height:90%;
+            max-width: 90%;
+            max-height: 90%;
 
-border-radius:24px;
+            border-radius: 24px;
 
-box-shadow:
-0 20px 80px rgba(0,0,0,.4);
+            box-shadow:
+                0 20px 80px rgba(0, 0, 0, .4);
 
-}
+        }
 
-#closeLightbox{
+        #closeLightbox {
 
-position:absolute;
+            position: absolute;
 
-top:30px;
-right:30px;
+            top: 30px;
+            right: 30px;
 
-font-size:2rem;
+            font-size: 2rem;
 
-cursor:pointer;
+            cursor: pointer;
 
-color:white;
+            color: white;
 
-width:60px;
-height:60px;
+            width: 60px;
+            height: 60px;
 
-display:flex;
-align-items:center;
-justify-content:center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-border-radius:50%;
+            border-radius: 50%;
 
-background:
-rgba(255,255,255,.1);
+            background:
+                rgba(255, 255, 255, .1);
 
-backdrop-filter:blur(20px);
+            backdrop-filter: blur(20px);
 
-}
-  /* ===========================
+        }
+
+        /* ===========================
    ABOUT
 =========================== */
 
-.about-section{
+        .about-section {
 
-padding:120px 5%;
+            padding: 120px 5%;
 
-}
+        }
 
-.about-card{
+        .about-card {
 
-max-width:1100px;
-margin:auto;
+            max-width: 1100px;
+            margin: auto;
 
-padding:60px;
+            padding: 60px;
 
-border-radius:40px;
+            border-radius: 40px;
 
-}
+        }
 
-.about-content h2{
+        .about-content h2 {
 
-font-size:3rem;
+            font-size: 3rem;
 
-margin-top:20px;
-margin-bottom:24px;
+            margin-top: 20px;
+            margin-bottom: 24px;
 
-}
+        }
 
-.about-content p{
+        .about-content p {
 
-line-height:1.9;
+            line-height: 1.9;
 
-font-size:1.05rem;
+            font-size: 1.05rem;
 
-margin-bottom:20px;
+            margin-bottom: 20px;
 
-color:var(--text-secondary);
+            color: var(--text-secondary);
 
-}
+        }
 
-/* ===========================
+        /* ===========================
    BOOKING
 =========================== */
 
-.booking-section{
+        .booking-section {
 
-padding:120px 5%;
+            padding: 120px 5%;
 
-}
+        }
 
-.booking-card{
+        .booking-card {
 
-max-width:1000px;
+            max-width: 1000px;
 
-margin:auto;
+            margin: auto;
 
-padding:60px;
+            padding: 60px;
 
-border-radius:40px;
+            border-radius: 40px;
 
-}
+        }
 
-.booking-header{
+        .booking-header {
 
-text-align:center;
+            text-align: center;
 
-margin-bottom:50px;
+            margin-bottom: 50px;
 
-}
+        }
 
-.booking-header h2{
+        .booking-header h2 {
 
-font-size:3rem;
+            font-size: 3rem;
 
-margin-top:20px;
+            margin-top: 20px;
 
-}
+        }
 
-.booking-header p{
+        .booking-header p {
 
-margin-top:10px;
+            margin-top: 10px;
 
-color:var(--text-secondary);
+            color: var(--text-secondary);
 
-}
+        }
 
-.form-grid{
+        .form-grid {
 
-display:grid;
+            display: grid;
 
-grid-template-columns:
-repeat(auto-fit,minmax(280px,1fr));
+            grid-template-columns:
+                repeat(auto-fit, minmax(280px, 1fr));
 
-gap:20px;
+            gap: 20px;
 
-}
+        }
 
-.input-group{
+        .input-group {
 
-display:flex;
+            display: flex;
 
-flex-direction:column;
+            flex-direction: column;
 
-margin-bottom:22px;
+            margin-bottom: 22px;
 
-}
+        }
 
-.input-group label{
+        .input-group label {
 
-margin-bottom:10px;
+            margin-bottom: 10px;
 
-font-weight:600;
+            font-weight: 600;
 
-}
+        }
 
-.input-group input,
-.input-group select{
+        .input-group input,
+        .input-group select {
 
-height:60px;
+            height: 60px;
 
-padding:0 20px;
+            padding: 0 20px;
 
-border:none;
+            border: none;
 
-outline:none;
+            outline: none;
 
-border-radius:18px;
+            border-radius: 18px;
 
-background:
-rgba(255,255,255,.15);
+            background:
+                rgba(255, 255, 255, .15);
 
-backdrop-filter:
-blur(20px);
+            backdrop-filter:
+                blur(20px);
 
-color:var(--text);
+            color: var(--text);
 
-font-size:1rem;
+            font-size: 1rem;
 
-}
+        }
 
-.book-btn{
+        .book-btn {
 
-width:100%;
+            width: 100%;
 
-height:60px;
+            height: 60px;
 
-border:none;
+            border: none;
 
-border-radius:18px;
+            border-radius: 18px;
 
-background:var(--accent);
+            background: var(--accent);
 
-color:white;
+            color: white;
 
-font-weight:700;
+            font-weight: 700;
 
-font-size:1rem;
+            font-size: 1rem;
 
-cursor:pointer;
+            cursor: pointer;
 
-transition:.3s;
+            transition: .3s;
 
-}
+        }
 
-.book-btn:hover{
+        .book-btn:hover {
 
-transform:translateY(-2px);
+            transform: translateY(-2px);
 
-}
+        }
 
-/* ===========================
+        /* ===========================
    CONTACT
 =========================== */
 
-.contact-section{
+        .contact-section {
 
-padding:120px 5%;
+            padding: 120px 5%;
 
-}
+        }
 
-.contact-card{
+        .contact-card {
 
-max-width:1100px;
+            max-width: 1100px;
 
-margin:auto;
+            margin: auto;
 
-padding:60px;
+            padding: 60px;
 
-border-radius:40px;
+            border-radius: 40px;
 
-text-align:center;
+            text-align: center;
 
-}
+        }
 
-.contact-card h2{
+        .contact-card h2 {
 
-font-size:3rem;
+            font-size: 3rem;
 
-margin-top:20px;
+            margin-top: 20px;
 
-}
+        }
 
-.contact-card p{
+        .contact-card p {
 
-color:var(--text-secondary);
+            color: var(--text-secondary);
 
-margin-top:15px;
+            margin-top: 15px;
 
-}
+        }
 
-.contact-grid{
+        .contact-grid {
 
-display:grid;
+            display: grid;
 
-grid-template-columns:
-repeat(auto-fit,minmax(250px,1fr));
+            grid-template-columns:
+                repeat(auto-fit, minmax(250px, 1fr));
 
-gap:24px;
+            gap: 24px;
 
-margin-top:50px;
+            margin-top: 50px;
 
-}
+        }
 
-.contact-item{
+        .contact-item {
 
-text-decoration:none;
+            text-decoration: none;
 
-color:var(--text);
+            color: var(--text);
 
-padding:30px;
+            padding: 30px;
 
-border-radius:28px;
+            border-radius: 28px;
 
-transition:.35s ease;
+            transition: .35s ease;
 
-}
+        }
 
-.contact-item:hover{
+        .contact-item:hover {
 
-transform:translateY(-6px);
+            transform: translateY(-6px);
 
-}
+        }
 
-.contact-item h3{
+        .contact-item h3 {
 
-margin-bottom:12px;
+            margin-bottom: 12px;
 
-font-size:1.3rem;
+            font-size: 1.3rem;
 
-}
-  /* ==================================================
+        }
+
+        /* ==================================================
    APPLE LIQUID GLASS PREMIUM EFFECTS
 ================================================== */
 
-/* Background */
-<footer class="footer">
+        /* Background */
+        <footer class="footer"><div class="glass" style="
+ max-width:1200px;
+        margin:auto;
+        padding:30px;
+        border-radius:30px;
+        ">
 
-<div class="glass" style="
-max-width:1200px;
-margin:auto;
-padding:30px;
-border-radius:30px;">
+        <h3>Dillu Captures <p style="margin-top:10px;">Capturing moments. Creating memories. <p style="margin-top:20px;">&copy;
 
-<h3>Dillu Captures</h3>
+        2026 Dillu Captures. All Rights Reserved. body {
 
-<p style="margin-top:10px;">
-Capturing moments. Creating memories.
-</p>
+            background:
+                radial-gradient(circle at top left,
+                    rgba(0, 113, 227, .15),
+                    transparent 40%),
 
-<p style="margin-top:20px;">
-© 2026 Dillu Captures. All Rights Reserved.
-</p>
+                radial-gradient(circle at bottom right,
+                    rgba(137, 247, 254, .15),
+                    transparent 40%),
 
-</div>
+                var(--bg);
 
-</footer>
-body{
+        }
 
-background:
-radial-gradient(
-circle at top left,
-rgba(0,113,227,.15),
-transparent 40%
-),
+        <div class="blur-orb orb-1"><div class="blur-orb orb-2"><div class="blur-orb orb-3">
+        /* Floating Blur Orbs */
 
-radial-gradient(
-circle at bottom right,
-rgba(137,247,254,.15),
-transparent 40%
-),
+        .blur-orb {
 
-var(--bg);
+            position: fixed;
 
-}
-<div class="blur-orb orb-1"></div>
-<div class="blur-orb orb-2"></div>
-<div class="blur-orb orb-3"></div>
-/* Floating Blur Orbs */
+            border-radius: 50%;
 
-.blur-orb{
+            filter: blur(120px);
 
-position:fixed;
+            pointer-events: none;
 
-border-radius:50%;
+            z-index: -1;
 
-filter:blur(120px);
+            opacity: .55;
 
-pointer-events:none;
+            animation:
+                floatOrb 18s ease-in-out infinite;
 
-z-index:-1;
+        }
 
-opacity:.55;
+        .orb-1 {
 
-animation:
-floatOrb 18s ease-in-out infinite;
+            width: 320px;
+            height: 320px;
 
-}
+            top: -100px;
+            left: -100px;
 
-.orb-1{
+            background: #0a84ff;
 
-width:320px;
-height:320px;
+        }
 
-top:-100px;
-left:-100px;
+        .orb-2 {
 
-background:#0a84ff;
+            width: 280px;
+            height: 280px;
 
-}
+            bottom: -120px;
+            right: -80px;
 
-.orb-2{
+            background: #89f7fe;
 
-width:280px;
-height:280px;
+            animation-delay: 4s;
 
-bottom:-120px;
-right:-80px;
+        }
 
-background:#89f7fe;
+        .orb-3 {
 
-animation-delay:4s;
+            width: 240px;
+            height: 240px;
 
-}
+            top: 40%;
+            left: 50%;
 
-.orb-3{
+            background: #7b61ff;
 
-width:240px;
-height:240px;
+            animation-delay: 8s;
 
-top:40%;
-left:50%;
+        }
 
-background:#7b61ff;
+        @keyframes floatOrb {
 
-animation-delay:8s;
+            0% {
+                transform:
+                    translateY(0px) translateX(0px);
+            }
 
-}
+            25% {
+                transform:
+                    translateY(-40px) translateX(20px);
+            }
 
-@keyframes floatOrb{
+            50% {
+                transform:
+                    translateY(10px) translateX(-30px);
+            }
 
-0%{
-transform:
-translateY(0px)
-translateX(0px);
-}
+            75% {
+                transform:
+                    translateY(-30px) translateX(10px);
+            }
 
-25%{
-transform:
-translateY(-40px)
-translateX(20px);
-}
+            100% {
+                transform:
+                    translateY(0px) translateX(0px);
+            }
 
-50%{
-transform:
-translateY(10px)
-translateX(-30px);
-}
+        }
 
-75%{
-transform:
-translateY(-30px)
-translateX(10px);
-}
-
-100%{
-transform:
-translateY(0px)
-translateX(0px);
-}
-
-}
-
-/* ==================================================
+        /* ==================================================
    GLASS REFINEMENT
 ================================================== */
 
-.glass{
+        .glass {
 
-background:
-linear-gradient(
-135deg,
-rgba(255,255,255,.28),
-rgba(255,255,255,.10)
-);
+            background:
+                linear-gradient(135deg,
+                    rgba(255, 255, 255, .28),
+                    rgba(255, 255, 255, .10));
 
-backdrop-filter:
-blur(32px)
-saturate(220%);
+            backdrop-filter:
+                blur(32px) saturate(220%);
 
--webkit-backdrop-filter:
-blur(32px)
-saturate(220%);
+            -webkit-backdrop-filter:
+                blur(32px) saturate(220%);
 
-border:
-1px solid
-rgba(255,255,255,.25);
+            border:
+                1px solid rgba(255, 255, 255, .25);
 
-box-shadow:
+            box-shadow:
 
-0 8px 32px rgba(0,0,0,.08),
+                0 8px 32px rgba(0, 0, 0, .08),
 
-inset 0 1px 0 rgba(255,255,255,.65),
+                inset 0 1px 0 rgba(255, 255, 255, .65),
 
-inset 0 -1px 0 rgba(255,255,255,.05);
+                inset 0 -1px 0 rgba(255, 255, 255, .05);
 
-}
+        }
 
-/* Dark Mode Glass */
+        /* Dark Mode Glass */
 
-[data-theme="dark"] .glass{
+        [data-theme="dark"] .glass {
 
-background:
-linear-gradient(
-135deg,
-rgba(255,255,255,.08),
-rgba(255,255,255,.03)
-);
+            background:
+                linear-gradient(135deg,
+                    rgba(255, 255, 255, .08),
+                    rgba(255, 255, 255, .03));
 
-border:
-1px solid
-rgba(255,255,255,.12);
+            border:
+                1px solid rgba(255, 255, 255, .12);
 
-box-shadow:
+            box-shadow:
 
-0 8px 40px rgba(0,0,0,.35),
+                0 8px 40px rgba(0, 0, 0, .35),
 
-inset 0 1px 0 rgba(255,255,255,.08);
+                inset 0 1px 0 rgba(255, 255, 255, .08);
 
-}
+        }
 
-/* ==================================================
+        /* ==================================================
    NAVBAR UPGRADE
 ================================================== */
 
-.navbar{
+        .navbar {
 
-backdrop-filter:
-blur(40px)
-saturate(220%);
+            backdrop-filter:
+                blur(40px) saturate(220%);
 
--webkit-backdrop-filter:
-blur(40px)
-saturate(220%);
+            -webkit-backdrop-filter:
+                blur(40px) saturate(220%);
 
-transition:
-all .35s ease;
+            transition:
+                all .35s ease;
 
-}
+        }
 
-.navbar:hover{
+        .navbar:hover {
 
-transform:
-translateX(-50%)
-translateY(-2px);
+            transform:
+                translateX(-50%) translateY(-2px);
 
-}
+        }
 
-/* ==================================================
+        /* ==================================================
    HERO ENHANCEMENTS
 ================================================== */
 
-.hero-content{
+        .hero-content {
 
-animation:
-heroFade 1.3s ease forwards;
+            animation:
+                heroFade 1.3s ease forwards;
 
-}
+        }
 
-@keyframes heroFade{
+        @keyframes heroFade {
 
-from{
+            from {
 
-opacity:0;
+                opacity: 0;
 
-transform:
-translateY(40px);
+                transform:
+                    translateY(40px);
 
-}
+            }
 
-to{
+            to {
 
-opacity:1;
+                opacity: 1;
 
-transform:
-translateY(0);
+                transform:
+                    translateY(0);
 
-}
+            }
 
-}
+        }
 
-.hero h1{
+        .hero h1 {
 
-text-shadow:
-0 10px 30px rgba(0,0,0,.35);
+            text-shadow:
+                0 10px 30px rgba(0, 0, 0, .35);
 
-}
+        }
 
-.hero-buttons a{
+        .hero-buttons a {
 
-transition:
-all .3s ease;
+            transition:
+                all .3s ease;
 
-}
+        }
 
-.hero-buttons a:hover{
+        .hero-buttons a:hover {
 
-transform:
-translateY(-4px);
+            transform:
+                translateY(-4px);
 
-}
+        }
 
-/* ==================================================
+        /* ==================================================
    SECTION SPACING
 ================================================== */
 
-section{
+        section {
 
-position:relative;
+            position: relative;
 
-z-index:2;
+            z-index: 2;
 
-}
+        }
 
-/* ==================================================
+        /* ==================================================
    GALLERY PREMIUM
 ================================================== */
 
-.gallery-item{
+        .gallery-item {
 
-position:relative;
+            position: relative;
 
-overflow:hidden;
+            overflow: hidden;
 
-}
+        }
 
-.gallery-item::after{
+        .gallery-item::after {
 
-content:"";
+            content: "";
 
-position:absolute;
+            position: absolute;
 
-inset:0;
+            inset: 0;
 
-background:
-linear-gradient(
-180deg,
-transparent,
-rgba(0,0,0,.12)
-);
+            background:
+                linear-gradient(180deg,
+                    transparent,
+                    rgba(0, 0, 0, .12));
 
-opacity:0;
+            opacity: 0;
 
-transition:.4s;
+            transition: .4s;
 
-}
+        }
 
-.gallery-item:hover::after{
+        .gallery-item:hover::after {
 
-opacity:1;
+            opacity: 1;
 
-}
+        }
 
-.gallery-item:hover{
+        .gallery-item:hover {
 
-transform:
-translateY(-6px);
+            transform:
+                translateY(-6px);
 
-}
+        }
 
-.gallery-item{
+        .gallery-item {
 
-transition:
-all .4s ease;
+            transition:
+                all .4s ease;
 
-}
+        }
 
-/* ==================================================
+        /* ==================================================
    CONTACT CARDS
 ================================================== */
 
-.contact-item{
+        .contact-item {
 
-transition:
-all .35s ease;
+            transition:
+                all .35s ease;
 
-}
+        }
 
-.contact-item:hover{
+        .contact-item:hover {
 
-transform:
-translateY(-8px);
+            transform:
+                translateY(-8px);
 
-box-shadow:
-0 15px 40px rgba(0,0,0,.15);
+            box-shadow:
+                0 15px 40px rgba(0, 0, 0, .15);
 
-}
+        }
 
-/* ==================================================
+        /* ==================================================
    FORM IMPROVEMENTS
 ================================================== */
 
-input,
-select{
+        input,
+        select {
 
-transition:
-all .25s ease;
+            transition:
+                all .25s ease;
 
-}
+        }
 
-input:focus,
-select:focus{
+        input:focus,
+        select:focus {
 
-box-shadow:
-0 0 0 3px
-rgba(0,113,227,.18);
+            box-shadow:
+                0 0 0 3px rgba(0, 113, 227, .18);
 
-transform:
-translateY(-2px);
+            transform:
+                translateY(-2px);
 
-}
+        }
 
-/* ==================================================
+        /* ==================================================
    LIVE CLOCK
 ================================================== */
 
-.live-clock{
+        .live-clock {
 
-font-weight:700;
+            font-weight: 700;
 
-letter-spacing:.5px;
+            letter-spacing: .5px;
 
-min-width:180px;
+            min-width: 180px;
 
-text-align:center;
+            text-align: center;
 
-}
+        }
 
-/* ==================================================
+        /* ==================================================
    CUSTOM SCROLLBAR
 ================================================== */
 
-::-webkit-scrollbar{
+        ::-webkit-scrollbar {
 
-width:10px;
+            width: 10px;
 
-}
+        }
 
-::-webkit-scrollbar-track{
+        ::-webkit-scrollbar-track {
 
-background:
-transparent;
+            background:
+                transparent;
 
-}
+        }
 
-::-webkit-scrollbar-thumb{
+        ::-webkit-scrollbar-thumb {
 
-background:
-rgba(120,120,120,.35);
+            background:
+                rgba(120, 120, 120, .35);
 
-border-radius:999px;
+            border-radius: 999px;
 
-}
+        }
 
-::-webkit-scrollbar-thumb:hover{
+        ::-webkit-scrollbar-thumb:hover {
 
-background:
-rgba(120,120,120,.6);
+            background:
+                rgba(120, 120, 120, .6);
 
-}
+        }
 
-/* ==================================================
+        /* ==================================================
    SCROLL REVEAL
 ================================================== */
 
-.reveal{
+        .reveal {
 
-opacity:0;
+            opacity: 0;
 
-transform:
-translateY(60px);
+            transform:
+                translateY(60px);
 
-transition:
-all 1s ease;
+            transition:
+                all 1s ease;
 
-}
+        }
 
-.reveal.active{
+        .reveal.active {
 
-opacity:1;
+            opacity: 1;
 
-transform:
-translateY(0);
+            transform:
+                translateY(0);
 
-}
+        }
 
-/* ==================================================
+        /* ==================================================
    FOOTER
 ================================================== */
 
-.footer{
+        .footer {
 
-padding:60px 20px;
+            padding: 60px 20px;
 
-text-align:center;
+            text-align: center;
 
-margin-top:80px;
+            margin-top: 80px;
 
-}
+        }
 
-.footer p{
+        .footer p {
 
-color:var(--text-secondary);
+            color: var(--text-secondary);
 
-}
+        }
 
-/* ==================================================
+        /* ==================================================
    MOBILE OPTIMIZATION
 ================================================== */
 
-@media(max-width:768px){
+        @media(max-width:768px) {
 
-.live-clock{
+            .live-clock {
 
-right:10px;
-top:10px;
+                right: 10px;
+                top: 10px;
 
-font-size:.75rem;
+                font-size: .75rem;
 
-padding:10px 14px;
+                padding: 10px 14px;
 
-}
+            }
 
-.navbar{
+            .navbar {
 
-padding:12px 18px;
+                padding: 12px 18px;
 
-}
+            }
 
-.about-card,
-.booking-card,
-.contact-card{
+            .about-card,
+            .booking-card,
+            .contact-card {
 
-padding:32px;
+                padding: 32px;
 
-}
+            }
 
-.section-header h2,
-.about-content h2,
-.contact-card h2,
-.booking-header h2{
+            .section-header h2,
+            .about-content h2,
+            .contact-card h2,
+            .booking-header h2 {
 
-font-size:2.2rem;
+                font-size: 2.2rem;
 
-}
+            }
 
-.gallery-grid{
+            .gallery-grid {
 
-grid-template-columns:1fr;
+                grid-template-columns: 1fr;
 
-}
+            }
 
-}
+        }
 
-/* ==================================================
+        /* ==================================================
    SMOOTH PAGE TRANSITIONS
 ================================================== */
 
-html{
+        html {
 
-scroll-behavior:smooth;
+            scroll-behavior: smooth;
 
-}
+        }
 
-body{
+        body {
 
-transition:
-background .35s ease,
-color .35s ease;
+            transition:
+                background .35s ease,
+                color .35s ease;
 
-}
-</style>
-  
+        }
+    </style>
+
 </head>
 <script>
-
-/* ===========================
+    /* ===========================
    LIGHTBOX
 =========================== */
 
-const galleryImages =
-document.querySelectorAll(
-'.gallery-item img'
-);
+    const galleryImages =
+        document.querySelectorAll(
+            '.gallery-item img'
+        );
 
-const lightbox =
-document.getElementById(
-'lightbox'
-);
+    const lightbox =
+        document.getElementById(
+            'lightbox'
+        );
 
-const lightboxImage =
-document.getElementById(
-'lightboxImage'
-);
+    const lightboxImage =
+        document.getElementById(
+            'lightboxImage'
+        );
 
-const closeLightbox =
-document.getElementById(
-'closeLightbox'
-);
+    const closeLightbox =
+        document.getElementById(
+            'closeLightbox'
+        );
 
-galleryImages.forEach(image=>{
+    galleryImages.forEach(image => {
 
-image.addEventListener(
-'click',
-()=>{
+        image.addEventListener(
+            'click',
+            () => {
 
-lightbox.classList.add(
-'active'
-);
+                lightbox.classList.add(
+                    'active'
+                );
 
-lightboxImage.src =
-image.src;
+                lightboxImage.src =
+                    image.src;
 
-}
-);
+            }
+        );
 
-});
+    });
 
-closeLightbox.addEventListener(
-'click',
-()=>{
+    closeLightbox.addEventListener(
+        'click',
+        () => {
 
-lightbox.classList.remove(
-'active'
-);
+            lightbox.classList.remove(
+                'active'
+            );
 
-}
-);
+        }
+    );
 
-lightbox.addEventListener(
-'click',
-(e)=>{
+    lightbox.addEventListener(
+        'click',
+        (e) => {
 
-if(e.target===lightbox){
+            if (e.target === lightbox) {
 
-lightbox.classList.remove(
-'active'
-);
+                lightbox.classList.remove(
+                    'active'
+                );
 
-}
+            }
 
-}
-);
-
+        }
+    );
 </script>
-  <script>
-
-/* ===========================
+<script>
+    /* ===========================
    BOOKING FORM
 =========================== */
 
-const bookingForm =
-document.getElementById(
-'bookingForm'
-);
+    const bookingForm =
+        document.getElementById(
+            'bookingForm'
+        );
 
-bookingForm.addEventListener(
-'submit',
-function(e){
+    bookingForm.addEventListener(
+        'submit',
+        function(e) {
 
-e.preventDefault();
+            e.preventDefault();
 
-alert(
-'Thank you for booking with Dillu Captures! We will contact you shortly.'
-);
+            alert(
+                'Thank you for booking with Dillu Captures! We will contact you shortly.'
+            );
 
-bookingForm.reset();
+            bookingForm.reset();
 
-}
-);
-
+        }
+    );
 </script>
-  <script>
-
-/* ==================================================
+<script>
+    /* ==================================================
    LIVE CLOCK
 ================================================== */
 
-function updateClock(){
+    function updateClock() {
 
-const now = new Date();
+        const now = new Date();
 
-const options = {
+        const options = {
 
-weekday:"short",
-day:"numeric",
-month:"short",
-year:"numeric"
+            weekday: "short",
+            day: "numeric",
+            month: "short",
+            year: "numeric"
 
-};
+        };
 
-const date =
-now.toLocaleDateString(
-"en-IN",
-options
-);
+        const date =
+            now.toLocaleDateString(
+                "en-IN",
+                options
+            );
 
-const time =
-now.toLocaleTimeString(
-"en-IN"
-);
+        const time =
+            now.toLocaleTimeString(
+                "en-IN"
+            );
 
-document.getElementById(
-"clock"
-).innerHTML =
+        document.getElementById(
+                "clock"
+            ).innerHTML =
 
-`${date} • ${time}`;
+            `${date} &bull; ${time}`;
 
-}
+    }
 
-updateClock();
+    updateClock();
 
-setInterval(
-updateClock,
-1000
-);
+    setInterval(
+        updateClock,
+        1000
+    );
 
-/* ==================================================
-   DARK / LIGHT THEME
-================================================== */
+    /* ==================================================
+       DARK / LIGHT THEME
+    ================================================== */
 
-const themeToggle =
-document.getElementById(
-"themeToggle"
-);
+    const themeToggle =
+        document.getElementById(
+            "themeToggle"
+        );
 
-const savedTheme =
-localStorage.getItem(
-"theme"
-);
+    const savedTheme =
+        localStorage.getItem(
+            "theme"
+        );
 
-if(savedTheme){
+    if (savedTheme) {
 
-document.documentElement.setAttribute(
-"data-theme",
-savedTheme
-);
+        document.documentElement.setAttribute(
+            "data-theme",
+            savedTheme
+        );
 
-updateThemeIcon();
+        updateThemeIcon();
 
-}
+    }
 
-themeToggle.addEventListener(
-"click",
-()=>{
+    themeToggle.addEventListener(
+        "click",
+        () => {
 
-const currentTheme =
-document.documentElement.getAttribute(
-"data-theme"
-);
+            const currentTheme =
+                document.documentElement.getAttribute(
+                    "data-theme"
+                );
 
-const newTheme =
-currentTheme === "dark"
-? "light"
-: "dark";
+            const newTheme =
+                currentTheme === "dark" ?
+                "light" :
+                "dark";
 
-document.documentElement.setAttribute(
-"data-theme",
-newTheme
-);
+            document.documentElement.setAttribute(
+                "data-theme",
+                newTheme
+            );
 
-localStorage.setItem(
-"theme",
-newTheme
-);
+            localStorage.setItem(
+                "theme",
+                newTheme
+            );
 
-updateThemeIcon();
+            updateThemeIcon();
 
-}
-);
+        }
+    );
 
-function updateThemeIcon(){
+    function updateThemeIcon() {
 
-const theme =
-document.documentElement.getAttribute(
-"data-theme"
-);
+        const theme =
+            document.documentElement.getAttribute(
+                "data-theme"
+            );
 
-themeToggle.textContent =
-theme === "dark"
-? "☀️"
-: "🌙";
+        themeToggle.textContent =
+            theme === "dark" ?
+            "&#9728;&#65039;" :
+            "&#127769;";
 
-}
+    }
 
-/* ==================================================
-   LIGHTBOX
-================================================== */
+    /* ==================================================
+       LIGHTBOX
+    ================================================== */
 
-const galleryImages =
-document.querySelectorAll(
-".gallery-item img"
-);
+    const galleryImages =
+        document.querySelectorAll(
+            ".gallery-item img"
+        );
 
-const lightbox =
-document.getElementById(
-"lightbox"
-);
+    const lightbox =
+        document.getElementById(
+            "lightbox"
+        );
 
-const lightboxImage =
-document.getElementById(
-"lightboxImage"
-);
+    const lightboxImage =
+        document.getElementById(
+            "lightboxImage"
+        );
 
-const closeLightbox =
-document.getElementById(
-"closeLightbox"
-);
+    const closeLightbox =
+        document.getElementById(
+            "closeLightbox"
+        );
 
-galleryImages.forEach(
-(image)=>{
+    galleryImages.forEach(
+        (image) => {
 
-image.addEventListener(
-"click",
-()=>{
+            image.addEventListener(
+                "click",
+                () => {
 
-lightbox.classList.add(
-"active"
-);
+                    lightbox.classList.add(
+                        "active"
+                    );
 
-lightboxImage.src =
-image.src;
+                    lightboxImage.src =
+                        image.src;
 
-}
-);
+                }
+            );
 
-}
-);
+        }
+    );
 
-closeLightbox.addEventListener(
-"click",
-()=>{
+    closeLightbox.addEventListener(
+        "click",
+        () => {
 
-lightbox.classList.remove(
-"active"
-);
+            lightbox.classList.remove(
+                "active"
+            );
 
-}
-);
+        }
+    );
 
-lightbox.addEventListener(
-"click",
-(e)=>{
+    lightbox.addEventListener(
+        "click",
+        (e) => {
 
-if(
-e.target === lightbox
-){
+            if (
+                e.target === lightbox
+            ) {
 
-lightbox.classList.remove(
-"active"
-);
+                lightbox.classList.remove(
+                    "active"
+                );
 
-}
+            }
 
-}
-);
+        }
+    );
 
-/* ==================================================
-   ESC KEY CLOSE LIGHTBOX
-================================================== */
+    /* ==================================================
+       ESC KEY CLOSE LIGHTBOX
+    ================================================== */
 
-document.addEventListener(
-"keydown",
-(e)=>{
+    document.addEventListener(
+        "keydown",
+        (e) => {
 
-if(
-e.key === "Escape"
-){
+            if (
+                e.key === "Escape"
+            ) {
 
-lightbox.classList.remove(
-"active"
-);
+                lightbox.classList.remove(
+                    "active"
+                );
 
-}
+            }
 
-}
-);
+        }
+    );
 
-/* ==================================================
-   SCROLL REVEAL
-================================================== */
+    /* ==================================================
+       SCROLL REVEAL
+    ================================================== */
 
-const reveals =
-document.querySelectorAll(
-".reveal"
-);
+    const reveals =
+        document.querySelectorAll(
+            ".reveal"
+        );
 
-function revealOnScroll(){
+    function revealOnScroll() {
 
-reveals.forEach(
-(element)=>{
+        reveals.forEach(
+            (element) => {
 
-const windowHeight =
-window.innerHeight;
+                const windowHeight =
+                    window.innerHeight;
 
-const elementTop =
-element.getBoundingClientRect().top;
+                const elementTop =
+                    element.getBoundingClientRect().top;
 
-const revealPoint =
-120;
+                const revealPoint =
+                    120;
 
-if(
-elementTop <
-windowHeight -
-revealPoint
-){
+                if (
+                    elementTop <
+                    windowHeight -
+                    revealPoint
+                ) {
 
-element.classList.add(
-"active"
-);
+                    element.classList.add(
+                        "active"
+                    );
 
-}
+                }
 
-}
-);
+            }
+        );
 
-}
+    }
 
-window.addEventListener(
-"scroll",
-revealOnScroll
-);
+    window.addEventListener(
+        "scroll",
+        revealOnScroll
+    );
 
-revealOnScroll();
+    revealOnScroll();
 
-/* ==================================================
-   NAVBAR BACKGROUND EFFECT
-================================================== */
+    /* ==================================================
+       NAVBAR BACKGROUND EFFECT
+    ================================================== */
 
-const navbar =
-document.querySelector(
-".navbar"
-);
+    const navbar =
+        document.querySelector(
+            ".navbar"
+        );
 
-window.addEventListener(
-"scroll",
-()=>{
+    window.addEventListener(
+        "scroll",
+        () => {
 
-if(
-window.scrollY > 50
-){
+            if (
+                window.scrollY > 50
+            ) {
 
-navbar.style.backdropFilter =
-"blur(50px) saturate(240%)";
+                navbar.style.backdropFilter =
+                    "blur(50px) saturate(240%)";
 
-navbar.style.boxShadow =
-"0 12px 40px rgba(0,0,0,.15)";
+                navbar.style.boxShadow =
+                    "0 12px 40px rgba(0,0,0,.15)";
 
-}
-else{
+            } else {
 
-navbar.style.backdropFilter =
-"blur(40px) saturate(220%)";
+                navbar.style.backdropFilter =
+                    "blur(40px) saturate(220%)";
 
-navbar.style.boxShadow =
-"none";
+                navbar.style.boxShadow =
+                    "none";
 
-}
+            }
 
-}
-);
+        }
+    );
 
-/* ==================================================
-   BOOKING FORM
-================================================== */
+    /* ==================================================
+       BOOKING FORM
+    ================================================== */
 
-const bookingForm =
-document.getElementById(
-"bookingForm"
-);
+    const bookingForm =
+        document.getElementById(
+            "bookingForm"
+        );
 
-if(bookingForm){
+    if (bookingForm) {
 
-bookingForm.addEventListener(
-"submit",
-(e)=>{
+        bookingForm.addEventListener(
+            "submit",
+            (e) => {
 
-e.preventDefault();
+                e.preventDefault();
 
-alert(
-"📸 Booking request received! Dillu Captures will contact you shortly."
-);
+                alert(
+                    "&#128248; Booking request received! Dillu Captures will contact you shortly."
+                );
 
-bookingForm.reset();
+                bookingForm.reset();
 
-}
-);
+            }
+        );
 
-}
+    }
 
-/* ==================================================
-   SET MINIMUM DATE
-================================================== */
+    /* ==================================================
+       SET MINIMUM DATE
+    ================================================== */
 
-const dateField =
-document.querySelector(
-'input[type="date"]'
-);
+    const dateField =
+        document.querySelector(
+            'input[type="date"]'
+        );
 
-if(dateField){
+    if (dateField) {
 
-const today =
-new Date()
-.toISOString()
-.split("T")[0];
+        const today =
+            new Date()
+            .toISOString()
+            .split("T")[0];
 
-dateField.min =
-today;
+        dateField.min =
+            today;
 
-}
+    }
 
-/* ==================================================
-   SMOOTH ANCHOR SCROLL
-================================================== */
+    /* ==================================================
+       SMOOTH ANCHOR SCROLL
+    ================================================== */
 
-document
-.querySelectorAll(
-'a[href^="#"]'
-)
-.forEach(anchor=>{
+    document
+        .querySelectorAll(
+            'a[href^="#"]'
+        )
+        .forEach(anchor => {
 
-anchor.addEventListener(
-"click",
-function(e){
+            anchor.addEventListener(
+                "click",
+                function(e) {
 
-e.preventDefault();
+                    e.preventDefault();
 
-const target =
-document.querySelector(
-this.getAttribute(
-"href"
-)
-);
+                    const target =
+                        document.querySelector(
+                            this.getAttribute(
+                                "href"
+                            )
+                        );
 
-if(target){
+                    if (target) {
 
-target.scrollIntoView({
+                        target.scrollIntoView({
 
-behavior:"smooth",
-block:"start"
+                            behavior: "smooth",
+                            block: "start"
 
-});
+                        });
 
-}
+                    }
 
-}
-);
+                }
+            );
 
-});
+        });
 
-/* ==================================================
-   IMAGE PRELOAD
-================================================== */
+    /* ==================================================
+       IMAGE PRELOAD
+    ================================================== */
 
-galleryImages.forEach(
-(img)=>{
+    galleryImages.forEach(
+        (img) => {
 
-const preload =
-new Image();
+            const preload =
+                new Image();
 
-preload.src =
-img.src;
+            preload.src =
+                img.src;
 
-}
-);
+        }
+    );
 
-/* ==================================================
-   PAGE LOADER FADE-IN
-================================================== */
+    /* ==================================================
+       PAGE LOADER FADE-IN
+    ================================================== */
 
-window.addEventListener(
-"load",
-()=>{
+    window.addEventListener(
+        "load",
+        () => {
 
-document.body.style.opacity =
-"1";
+            document.body.style.opacity =
+                "1";
 
-}
-);
+        }
+    );
 
-/* ==================================================
-   CONSOLE BRANDING
-================================================== */
+    /* ==================================================
+       CONSOLE BRANDING
+    ================================================== */
 
-console.log(
-"%cDillu Captures",
-"font-size:20px;font-weight:bold;color:#0a84ff;"
-);
+    console.log(
+        "%cDillu Captures",
+        "font-size:20px;font-weight:bold;color:#0a84ff;"
+    );
 
-console.log(
-"Photography Portfolio Loaded Successfully"
-);
-
+    console.log(
+        "Photography Portfolio Loaded Successfully"
+    );
 </script>
+
 <body>
 
-<!-- LIVE CLOCK -->
+    <!-- LIVE CLOCK -->
 
-<div class="live-clock glass">
-    <span id="clock"></span>
-</div>
+    <div class="live-clock glass">
+        <span id="clock"></span>
+    </div>
 
-<!-- NAVBAR -->
+    <!-- NAVBAR -->
 
-<nav class="navbar glass">
+    <nav class="navbar glass">
 
-<div class="logo">
-Dillu <span>Captures</span>
-</div>
+        <div class="logo">
+            Dillu <span>Captures</span>
+        </div>
 
-<div class="nav-links">
+        <div class="nav-links">
 
-<a href="#home">Home</a>
-<a href="#about">About</a>
-<a href="#gallery">Gallery</a>
-<a href="#contact">Contact</a>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#contact">Contact</a>
 
-</div>
+        </div>
 
-<button
-id="themeToggle"
-class="theme-btn">
-🌙
-</button>
+        <button id="themeToggle" class="theme-btn">
+            &#127769;
+        </button>
 
-</nav>
+    </nav>
 
-<!-- HERO SECTION -->
+    <!-- HERO SECTION -->
 
-<section
-id="home"
-class="hero">
+    <section id="home" class="hero">
 
-<div class="hero-content">
+        <div class="hero-content">
 
-<div class="hero-badge">
-📸 Professional Photography
-</div>
+            <div class="hero-badge">
+                &#128248; Professional Photography
+            </div>
 
-<h1>
-Capturing Moments.<br>
-Creating Memories.
-</h1>
+            <h1>
+                Capturing Moments.<br>
+                Creating Memories.
+            </h1>
 
-<p>
+            <p>
 
-Welcome to Dillu Captures —
-where every frame tells a story.
-From weddings and portraits to cinematic outdoor photography,
-we transform moments into timeless memories.
+                Welcome to Dillu Captures &mdash;
+                where every frame tells a story.
+                From weddings and portraits to cinematic outdoor photography,
+                we transform moments into timeless memories.
 
-</p>
+            </p>
 
-<div class="hero-buttons">
+            <div class="hero-buttons">
 
-<a href="#gallery"
-class="btn-primary">
-View Gallery
-</a>
+                <a href="#gallery" class="btn-primary">
+                    View Gallery
+                </a>
 
-<a href="#contact"
-class="btn-secondary">
-Book Photoshoot
-</a>
+                <a href="#contact" class="btn-secondary">
+                    Book Photoshoot
+                </a>
 
-</div>
+            </div>
 
-</div>
+        </div>
 
-</section>
-<!-- ===========================
+    </section>
+    <!-- ===========================
      GALLERY SECTION
 =========================== -->
 
-<section id="gallery" class="gallery-section">
+    <section id="gallery" class="gallery-section">
 
-    <div class="section-header">
+        <div class="section-header">
 
-        <span class="section-badge glass">
-            Portfolio
-        </span>
+            <span class="section-badge glass">
+                Portfolio
+            </span>
 
-        <h2>Featured Gallery</h2>
+            <h2>Featured Gallery</h2>
 
-        <p>
-            A collection of weddings, portraits, travel,
-            nature and cinematic photography captured by
-            Dillu Captures.
-        </p>
+            <p>
+                A collection of weddings, portraits, travel,
+                nature and cinematic photography captured by
+                Dillu Captures.
+            </p>
 
-    </div>
-
-    <div class="gallery-grid">
-
-        <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80" alt="">
         </div>
 
-        <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80" alt="">
+        <div class="gallery-grid">
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="">
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="">
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="">
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1504208434309-cb69f4fe52b0?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="">
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1452587925148-ce544e77e70d?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="">
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="">
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="">
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="">
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="">
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="">
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="">
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="">
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="">
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="">
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="">
+            </div>
+
         </div>
 
-        <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1200&q=80" alt="">
-        </div>
+    </section>
 
-        <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1504208434309-cb69f4fe52b0?auto=format&fit=crop&w=1200&q=80" alt="">
-        </div>
-
-        <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1452587925148-ce544e77e70d?auto=format&fit=crop&w=1200&q=80" alt="">
-        </div>
-
-        <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1200&q=80" alt="">
-        </div>
-
-        <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1200&q=80" alt="">
-        </div>
-
-        <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=1200&q=80" alt="">
-        </div>
-
-        <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1200&q=80" alt="">
-        </div>
-
-        <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=80" alt="">
-        </div>
-
-        <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=1200&q=80" alt="">
-        </div>
-
-        <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80" alt="">
-        </div>
-
-        <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=80" alt="">
-        </div>
-
-        <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=1200&q=80" alt="">
-        </div>
-
-        <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=1200&q=80" alt="">
-        </div>
-
-    </div>
-
-</section>
-
-<!-- ===========================
+    <!-- ===========================
      LIGHTBOX
 =========================== -->
 
-<div id="lightbox">
+    <div id="lightbox">
 
-    <span id="closeLightbox">
-        ✕
-    </span>
+        <span id="closeLightbox">
+            &#10005;
+        </span>
 
-    <img
-        id="lightboxImage"
-        src=""
-        alt="Preview">
+        <img id="lightboxImage" src="" alt="Preview">
 
-</div>
-<!-- ===========================
+    </div>
+    <!-- ===========================
      ABOUT SECTION
 =========================== -->
 
-<section id="about" class="about-section">
+    <section id="about" class="about-section">
 
-    <div class="about-card glass">
+        <div class="about-card glass">
 
-        <div class="about-content">
+            <div class="about-content">
 
-            <span class="section-badge glass">
-                About Dillu Captures
-            </span>
+                <span class="section-badge glass">
+                    About Dillu Captures
+                </span>
 
-            <h2>
-                Turning Moments Into
-                Timeless Memories
-            </h2>
+                <h2>
+                    Turning Moments Into
+                    Timeless Memories
+                </h2>
 
-            <p>
-                Dillu Captures specializes in wedding,
-                portrait, pre-wedding, event, travel,
-                and cinematic photography.
+                <p>
+                    Dillu Captures specializes in wedding,
+                    portrait, pre-wedding, event, travel,
+                    and cinematic photography.
 
-                Our goal is to capture authentic emotions,
-                natural expressions, and unforgettable
-                moments through creative storytelling
-                and professional editing.
-            </p>
+                    Our goal is to capture authentic emotions,
+                    natural expressions, and unforgettable
+                    moments through creative storytelling
+                    and professional editing.
+                </p>
 
-            <p>
-                Every photograph is crafted with
-                attention to detail, ensuring that your
-                memories remain beautiful for years
-                to come.
-            </p>
+                <p>
+                    Every photograph is crafted with
+                    attention to detail, ensuring that your
+                    memories remain beautiful for years
+                    to come.
+                </p>
+
+            </div>
 
         </div>
 
-    </div>
+    </section>
 
-</section>
-
-<!-- ===========================
+    <!-- ===========================
      BOOKING SECTION
 =========================== -->
 
-<section id="booking" class="booking-section">
+    <section id="booking" class="booking-section">
 
-    <div class="booking-card glass">
+        <div class="booking-card glass">
 
-        <div class="booking-header">
+            <div class="booking-header">
 
-            <span class="section-badge glass">
-                Book a Photoshoot
-            </span>
+                <span class="section-badge glass">
+                    Book a Photoshoot
+                </span>
 
-            <h2>
-                Schedule Your Session
-            </h2>
+                <h2>
+                    Schedule Your Session
+                </h2>
 
-            <p>
-                Select a preferred date and time slot.
-            </p>
+                <p>
+                    Select a preferred date and time slot.
+                </p>
+
+            </div>
+
+            <form id="bookingForm">
+
+                <div class="form-grid">
+
+                    <div class="input-group">
+
+                        <label>Full Name</label>
+
+                        <input type="text" placeholder="Enter your name" required>
+
+                    </div>
+
+                    <div class="input-group">
+
+                        <label>Phone Number</label>
+
+                        <input type="tel" placeholder="Enter mobile number" required>
+
+                    </div>
+
+                </div>
+
+                <div class="input-group">
+
+                    <label>Email Address</label>
+
+                    <input type="email" placeholder="Enter email" required>
+
+                </div>
+
+                <div class="input-group">
+
+                    <label>Select Date</label>
+
+                    <input type="date" required>
+
+                </div>
+
+                <div class="input-group">
+
+                    <label>Select Slot</label>
+
+                    <select required>
+
+                        <option value="">
+                            Choose a Time Slot
+                        </option>
+
+                        <option>
+                            08:00 AM
+                        </option>
+
+                        <option>
+                            10:00 AM
+                        </option>
+
+                        <option>
+                            12:00 PM
+                        </option>
+
+                        <option>
+                            02:00 PM
+                        </option>
+
+                        <option>
+                            04:00 PM
+                        </option>
+
+                        <option>
+                            06:00 PM
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="input-group">
+
+                    <label>Photoshoot Type</label>
+
+                    <select>
+
+                        <option>
+                            Wedding Photography
+                        </option>
+
+                        <option>
+                            Portrait Photography
+                        </option>
+
+                        <option>
+                            Event Photography
+                        </option>
+
+                        <option>
+                            Outdoor Photography
+                        </option>
+
+                        <option>
+                            Travel Photography
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <button type="submit" class="book-btn">
+
+                    Book Now
+
+                </button>
+
+            </form>
 
         </div>
 
-        <form id="bookingForm">
+    </section>
 
-            <div class="form-grid">
-
-                <div class="input-group">
-
-                    <label>Full Name</label>
-
-                    <input
-                        type="text"
-                        placeholder="Enter your name"
-                        required>
-
-                </div>
-
-                <div class="input-group">
-
-                    <label>Phone Number</label>
-
-                    <input
-                        type="tel"
-                        placeholder="Enter mobile number"
-                        required>
-
-                </div>
-
-            </div>
-
-            <div class="input-group">
-
-                <label>Email Address</label>
-
-                <input
-                    type="email"
-                    placeholder="Enter email"
-                    required>
-
-            </div>
-
-            <div class="input-group">
-
-                <label>Select Date</label>
-
-                <input
-                    type="date"
-                    required>
-
-            </div>
-
-            <div class="input-group">
-
-                <label>Select Slot</label>
-
-                <select required>
-
-                    <option value="">
-                        Choose a Time Slot
-                    </option>
-
-                    <option>
-                        08:00 AM
-                    </option>
-
-                    <option>
-                        10:00 AM
-                    </option>
-
-                    <option>
-                        12:00 PM
-                    </option>
-
-                    <option>
-                        02:00 PM
-                    </option>
-
-                    <option>
-                        04:00 PM
-                    </option>
-
-                    <option>
-                        06:00 PM
-                    </option>
-
-                </select>
-
-            </div>
-
-            <div class="input-group">
-
-                <label>Photoshoot Type</label>
-
-                <select>
-
-                    <option>
-                        Wedding Photography
-                    </option>
-
-                    <option>
-                        Portrait Photography
-                    </option>
-
-                    <option>
-                        Event Photography
-                    </option>
-
-                    <option>
-                        Outdoor Photography
-                    </option>
-
-                    <option>
-                        Travel Photography
-                    </option>
-
-                </select>
-
-            </div>
-
-            <button
-                type="submit"
-                class="book-btn">
-
-                Book Now
-
-            </button>
-
-        </form>
-
-    </div>
-
-</section>
-
-<!-- ===========================
+    <!-- ===========================
      CONTACT SECTION
 =========================== -->
 
-<section id="contact" class="contact-section">
+    <section id="contact" class="contact-section">
 
-    <div class="contact-card glass">
+        <div class="contact-card glass">
 
-        <span class="section-badge glass">
-            Contact Information
-        </span>
+            <span class="section-badge glass">
+                Contact Information
+            </span>
 
-        <h2>
-            Let's Create Something Amazing
-        </h2>
+            <h2>
+                Let's Create Something Amazing
+            </h2>
 
-        <p>
-            Reach out for bookings,
-            collaborations, and inquiries.
-        </p>
+            <p>
+                Reach out for bookings,
+                collaborations, and inquiries.
+            </p>
 
-        <div class="contact-grid">
+            <div class="contact-grid">
 
-            <a
-            href="tel:+919700034138"
-            class="contact-item glass">
+                <a href="tel:+919700034138" class="contact-item glass">
 
-                <h3>📞 Call</h3>
+                    <h3>&#128222; Call</h3>
 
-                <p>
-                    9700034138
-                </p>
+                    <p>
+                        9700034138
+                    </p>
 
-            </a>
+                </a>
 
-            <a
-            href="https://wa.me/919700034138"
-            target="_blank"
-            class="contact-item glass">
+                <a href="https://wa.me/919700034138" target="_blank" class="contact-item glass">
 
-                <h3>💬 WhatsApp</h3>
+                    <h3>&#128172; WhatsApp</h3>
 
-                <p>
-                    9700034138
-                </p>
+                    <p>
+                        9700034138
+                    </p>
 
-            </a>
+                </a>
 
-            <a
-            href="mailto:dillucpsture@gmail.com"
-            class="contact-item glass">
+                <a href="mailto:dillucpsture@gmail.com" class="contact-item glass">
 
-                <h3>📧 Email</h3>
+                    <h3>&#128231; Email</h3>
 
-                <p>
-                    dillucpsture@gmail.com
-                </p>
+                    <p>
+                        dillucpsture@gmail.com
+                    </p>
 
-            </a>
+                </a>
+
+            </div>
 
         </div>
 
-    </div>
+    </section>
+</body>
 
-</section>
+</html>
