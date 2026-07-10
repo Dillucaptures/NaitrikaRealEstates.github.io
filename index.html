@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Dillu Captures</title>
+  <title>Dillu Captures | Photography</title>
   <meta
     name="description"
-    content="A liquid glass photography portfolio for Dillu Captures."
+    content="Dillu Captures - Liquid glass photography portfolio and booking."
   />
   <link rel="preconnect" href="https://images.unsplash.com" />
   <script>
@@ -81,788 +81,327 @@
       color-scheme: dark;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 104px;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 104px; }
 
     body {
-      margin: 0;
       min-height: 100vh;
       color: var(--ink);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.5;
       background:
-        radial-gradient(circle at 12% 8%, rgba(242, 184, 75, 0.2), transparent 28%),
-        radial-gradient(circle at 82% 16%, rgba(43, 183, 169, 0.22), transparent 30%),
+        radial-gradient(circle at 12% 8%, rgba(242, 184, 75, 0.15), transparent 28%),
+        radial-gradient(circle at 82% 16%, rgba(43, 183, 169, 0.15), transparent 30%),
         linear-gradient(180deg, var(--body-gradient-start), var(--body-gradient-end) 720px),
-        url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2400&q=88") center top / cover fixed,
         var(--paper);
       overflow-x: hidden;
       transition: background-color 420ms ease, color 420ms ease;
     }
 
     body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-      pointer-events: none;
-      background:
-        linear-gradient(120deg, rgba(43, 183, 169, 0.22), transparent 28%),
-        linear-gradient(290deg, rgba(239, 107, 85, 0.2), transparent 32%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.12), var(--bg-vignette));
-      transition: background 420ms ease;
+      content: ""; position: fixed; inset: 0; z-index: -2; pointer-events: none;
+      background: linear-gradient(120deg, rgba(43, 183, 169, 0.1), transparent 28%),
+                  linear-gradient(290deg, rgba(239, 107, 85, 0.1), transparent 32%);
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-      -webkit-tap-highlight-color: transparent;
-    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    button, input, textarea { font: inherit; border: 0; outline: none; }
+    button { cursor: pointer; background: transparent; }
 
-    img {
-      display: block;
-      max-width: 100%;
-    }
-
-    button, input, textarea {
-      font: inherit;
-    }
-
-    button {
-      border: 0;
-      cursor: pointer;
-    }
-
-    .page-shell {
-      position: relative;
-      min-height: 100vh;
-    }
-
-    /* iOS Liquid Glass Effect */
     .liquid-glass {
       position: relative;
       border: 1px solid rgba(255, 255, 255, 0.58);
       background:
-        radial-gradient(circle at var(--mx, 18%) var(--my, 0%), rgba(255, 255, 255, 0.96), transparent 30%),
         linear-gradient(135deg, var(--glass-strong), var(--glass-soft)),
-        linear-gradient(225deg, rgba(156, 231, 255, 0.22), transparent 42%, rgba(239, 107, 85, 0.12)),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.54), rgba(255, 255, 255, 0.12));
-      box-shadow:
-        var(--shadow-soft),
-        inset 0 1px 0 var(--glass-edge),
-        inset 0 -1px 0 rgba(255, 255, 255, 0.24),
-        inset 0 0 34px var(--glass-depth);
-      backdrop-filter: blur(34px) saturate(190%) contrast(1.04);
-      -webkit-backdrop-filter: blur(34px) saturate(190%) contrast(1.04);
-      overflow: hidden;
-      isolation: isolate;
-      transition: transform 520ms var(--spring), background 420ms ease, border-color 420ms ease, box-shadow 520ms var(--spring), color 420ms ease;
+        linear-gradient(180deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.05));
+      box-shadow: var(--shadow-soft), inset 0 1px 0 var(--glass-edge), inset 0 0 34px var(--glass-depth);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border-radius: var(--radius);
+      transition: all 420ms ease;
     }
+    :root[data-theme="dark"] .liquid-glass { border-color: rgba(255, 255, 255, 0.15); }
 
-    .liquid-glass::before {
-      content: "";
-      position: absolute;
-      inset: -2px;
-      z-index: -1;
-      opacity: 0.7;
-      background:
-        radial-gradient(circle at var(--mx, 16%) var(--my, 0%), rgba(255, 255, 255, 0.84), transparent 30%),
-        linear-gradient(130deg, rgba(255, 255, 255, 0.82), transparent 34%, rgba(255, 255, 255, 0.16) 72%, rgba(255, 255, 255, 0.7)),
-        linear-gradient(90deg, transparent, var(--glass-chrome), transparent);
-      transition: opacity 320ms ease;
-    }
+    .container { width: min(1160px, calc(100% - 36px)); margin: 0 auto; }
 
-    :root[data-theme="dark"] .liquid-glass::before {
-      opacity: 0.42;
-    }
-
-    .glass-bounce {
-      transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(0) scale(1);
-      transition: transform 520ms var(--spring), box-shadow 520ms var(--spring), border-color 420ms ease;
-    }
-
-    .glass-bounce:hover {
-      transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(-8px) scale(1.015);
-      box-shadow: var(--shadow), inset 0 1px 0 rgba(255, 255, 255, 0.86);
-      border-color: rgba(255, 255, 255, 0.88);
-    }
-
-    .container {
-      width: min(1160px, calc(100% - 36px));
-      margin: 0 auto;
-    }
-
+    /* Navigation */
     .site-header {
-      position: fixed;
-      top: 18px;
-      left: 50%;
-      z-index: 20;
-      width: min(1160px, calc(100% - 28px));
-      transform: translateX(-50%);
+      position: fixed; top: 18px; left: 50%; z-index: 50;
+      width: min(1160px, calc(100% - 28px)); transform: translateX(-50%);
     }
-
     .nav {
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      gap: 20px;
-      align-items: center;
-      min-height: 64px;
-      padding: 10px 12px 10px 18px;
-      border-radius: 999px;
-      animation: dockFloat 5.8s ease-in-out infinite;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 10px 18px; border-radius: 999px;
     }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 800;
-      white-space: nowrap;
+    .brand { font-weight: 800; font-size: 1.1rem; }
+    .nav-links { display: flex; gap: 8px; }
+    .nav-links a {
+      padding: 8px 16px; border-radius: 999px; font-weight: 500;
+      transition: background 0.3s;
     }
-
-    .brand-mark {
-      display: grid;
-      width: 34px;
-      height: 34px;
-      place-items: center;
-      border-radius: 50%;
-      color: white;
-      background: conic-gradient(from 180deg, var(--coral), var(--gold), var(--teal), var(--iris), var(--coral));
-      box-shadow: inset 0 1px 8px rgba(255, 255, 255, 0.55), 0 10px 24px rgba(0, 0, 0, 0.18);
-    }
-
-    .nav-links {
-      display: flex;
-      justify-content: center;
-      gap: 4px;
-    }
-
-    .nav-links a, .theme-toggle, .filter-btn, .primary-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 40px;
-      padding: 0 16px;
-      border-radius: 999px;
-      color: var(--nav-link);
-      transition: transform 420ms var(--spring), background 280ms ease, color 280ms ease;
-      white-space: nowrap;
-      font-weight: 500;
-    }
-
-    .nav-links a:hover, .theme-toggle:hover {
-      transform: translateY(-2px) scale(1.02);
-      background: rgba(255, 255, 255, 0.48);
-    }
-
-    .theme-toggle {
-      border: 1px solid rgba(255, 255, 255, 0.56);
-      background: rgba(255, 255, 255, 0.28);
-      gap: 8px;
-    }
-
-    .theme-icon {
-      display: grid;
-      width: 24px;
-      height: 24px;
-      place-items: center;
-      border-radius: 50%;
-      color: white;
-      background: linear-gradient(135deg, var(--gold), var(--coral));
-      transition: background 320ms ease, transform 420ms var(--spring);
-    }
-
-    :root[data-theme="dark"] .theme-icon {
-      background: linear-gradient(135deg, var(--teal), var(--iris));
-      transform: rotate(-18deg);
-    }
-
-    .menu-toggle {
-      display: none;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: var(--field-bg);
-    }
-
-    .menu-toggle span {
-      display: block;
-      width: 18px;
-      height: 2px;
-      margin: 4px auto;
-      background: currentColor;
-    }
-
-    .hero {
-      position: relative;
-      display: grid;
-      min-height: 88svh;
-      padding: 132px 0 44px;
-      overflow: hidden;
-    }
-
-    .hero-media {
-      position: absolute;
-      inset: 0;
-      z-index: -2;
-    }
-
-    .hero-media img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      animation: heroDrift 18s ease-in-out infinite alternate;
-    }
-
-    .hero-media::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0.1), var(--hero-fade) 94%);
-    }
-
-    .hero-content {
-      display: grid;
-      align-content: center;
-      gap: 28px;
-      width: min(760px, 100%);
-      color: var(--hero-text);
-    }
-
-    h1 {
-      font-size: 5.2rem;
-      line-height: 0.95;
-      font-weight: 900;
-      margin: 0;
-    }
-
-    .hero-copy {
-      max-width: 620px;
-      color: var(--hero-muted);
-      font-size: 1.12rem;
-    }
-
-    section {
-      padding: 76px 0;
-      scroll-margin-top: 104px;
-    }
-
-    h2 {
-      font-size: 2.85rem;
-      line-height: 1.04;
-      font-weight: 900;
-      margin: 0;
-    }
-
-    .section-head {
-      margin-bottom: 36px;
-    }
-
-    .section-kicker {
-      display: inline-block;
-      margin-bottom: 10px;
-      color: var(--coral);
-      font-size: 0.86rem;
-      font-weight: 900;
-      text-transform: uppercase;
-    }
-
-    /* Gallery 15 Images Grid */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 16px;
-    }
-
-    .photo-card {
-      grid-column: span 4;
-      min-height: 360px;
-      border-radius: var(--radius);
-      color: white;
-      background: rgba(255, 255, 255, 0.22);
-      overflow: hidden;
-    }
+    .nav-links a:hover { background: var(--soft-surface-hover); }
     
-    .photo-card.wide { grid-column: span 8; }
-    .photo-card.tall { min-height: 520px; }
-
-    .photo-card button {
-      position: relative;
-      display: grid;
-      width: 100%;
-      height: 100%;
-      min-height: inherit;
-      padding: 0;
-      text-align: left;
-      background: transparent;
+    .nav-controls { display: flex; align-items: center; gap: 12px; }
+    .live-clock {
+      font-variant-numeric: tabular-nums; font-weight: 600;
+      padding: 8px 16px; border-radius: 999px;
+      background: var(--soft-surface); border: 1px solid rgba(255,255,255,0.3);
+    }
+    .theme-toggle {
+      width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center;
+      background: var(--soft-surface); border: 1px solid rgba(255,255,255,0.3);
     }
 
+    /* Hero */
+    .hero {
+      position: relative; min-height: 100vh; display: grid; align-items: center; padding-top: 80px;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: -1; object-fit: cover; width: 100%; height: 100%;
+      filter: brightness(0.7);
+    }
+    .hero-content {
+      color: white; text-align: center; max-width: 800px; margin: 0 auto;
+    }
+    .hero-content h1 { font-size: 4.5rem; font-weight: 900; line-height: 1.1; margin-bottom: 20px; }
+    .hero-content p { font-size: 1.25rem; opacity: 0.9; margin-bottom: 30px; }
+    
+    .btn {
+      display: inline-block; padding: 14px 28px; border-radius: 999px; font-weight: 600;
+      background: white; color: black; transition: transform 0.3s;
+    }
+    .btn:hover { transform: scale(1.05); }
+    
+    section { padding: 100px 0; }
+    .section-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 40px; text-align: center; }
+
+    /* Gallery (15 Images) */
+    .gallery-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;
+    }
+    .photo-card {
+      position: relative; height: 400px; border-radius: var(--radius); overflow: hidden;
+      cursor: pointer;
+    }
     .photo-card img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 760ms var(--spring), filter 500ms ease;
+      width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;
     }
-
-    .photo-card:hover img {
-      transform: scale(1.07);
-      filter: saturate(1.08) contrast(1.04);
+    .photo-card:hover img { transform: scale(1.08); }
+    .photo-card::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.6), transparent 50%); opacity: 0; transition: opacity 0.3s;
     }
+    .photo-card:hover::after { opacity: 1; }
 
-    .photo-card button::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, transparent 42%, rgba(0, 0, 0, 0.66));
+    /* iOS Calendar Booking */
+    .booking-container {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+      padding: 40px; border-radius: 24px;
     }
-
-    .photo-info {
-      position: relative;
-      z-index: 2;
-      align-self: end;
-      margin: 14px;
-      padding: 16px;
-      border-radius: var(--radius);
-      color: white;
-      background: rgba(255, 255, 255, 0.18);
-      backdrop-filter: blur(18px);
-      transform: translateY(6px);
-      transition: transform 500ms var(--spring);
+    .calendar-ui { display: flex; flex-direction: column; gap: 20px; }
+    .cal-header { display: flex; justify-content: space-between; align-items: center; font-weight: bold; font-size: 1.2rem; }
+    .cal-header button { padding: 8px 16px; background: var(--soft-surface); border-radius: 8px; font-weight: bold; color: var(--ink); }
+    .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; text-align: center; }
+    .cal-day-name { font-size: 0.8rem; color: var(--muted); font-weight: bold; text-transform: uppercase; margin-bottom: 10px; }
+    .cal-date {
+      aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%; font-weight: 600;
+      transition: all 0.2s; cursor: pointer;
     }
+    .cal-date:hover { background: var(--soft-surface-hover); }
+    .cal-date.active { background: var(--coral); color: white; box-shadow: 0 4px 12px rgba(239, 107, 85, 0.4); }
+    .cal-date.disabled { opacity: 0.3; pointer-events: none; }
 
-    .photo-card:hover .photo-info { transform: translateY(0); }
-
-    .photo-info h3 { margin: 0; font-size: 1.38rem; }
-
-    /* About Section */
-    .about-layout {
-      display: grid;
-      grid-template-columns: minmax(280px, 0.86fr) minmax(0, 1fr);
-      gap: 18px;
+    .slots-ui { display: flex; flex-direction: column; gap: 16px; }
+    .slots-ui h3 { font-size: 1.2rem; margin-bottom: 10px; }
+    .slot-btn {
+      padding: 16px; border-radius: 12px; font-weight: 600; text-align: left;
+      background: var(--soft-surface); border: 1px solid rgba(255,255,255,0.2);
+      display: flex; justify-content: space-between; transition: all 0.3s;
     }
-
-    .about-frame {
-      min-height: 500px;
-      padding: 12px;
-    }
-
-    .about-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 8px;
-    }
-
-    .about-copy {
-      padding: 32px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    /* Contact Details */
+    .slot-btn:hover { background: var(--soft-surface-hover); transform: translateX(5px); }
+    
+    /* Contact */
+    .contact-wrapper { text-align: center; max-width: 600px; margin: 0 auto; }
+    .contact-links { display: flex; flex-direction: column; gap: 16px; margin-top: 30px; }
     .contact-card {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(320px, 1fr);
-      gap: 26px;
-      padding: 36px;
+      padding: 20px; border-radius: 16px; font-size: 1.2rem; font-weight: bold;
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+      transition: transform 0.3s;
     }
+    .contact-card:hover { transform: scale(1.02); background: var(--soft-surface-hover); }
 
-    .contact-list {
-      display: grid;
-      gap: 12px;
-      margin-top: 30px;
-    }
-
-    .contact-list a {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      min-height: 64px;
-      padding: 0 20px;
-      border-radius: var(--radius);
-      background: var(--soft-surface);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
-      transition: transform 420ms var(--spring), background 260ms ease;
-      font-weight: 600;
-    }
-
-    .contact-list a:hover {
-      transform: translateY(-3px);
-      background: var(--soft-surface-hover);
-    }
-
-    /* Lightbox */
-    .lightbox {
-      position: fixed;
-      inset: 0;
-      z-index: 40;
-      display: none;
-      padding: 28px;
-      background: rgba(10, 11, 13, 0.58);
-      backdrop-filter: blur(22px);
-    }
-    .lightbox.is-open { display: grid; place-items: center; }
-    .lightbox-panel {
-      position: relative;
-      display: grid;
-      width: min(1040px, 100%);
-      max-height: calc(100svh - 56px);
-      grid-template-columns: minmax(0, 1fr) 290px;
-      border-radius: var(--radius);
-      background: rgba(255, 255, 255, 0.16);
-      overflow: hidden;
-    }
-    .lightbox-image { width: 100%; height: 100%; object-fit: cover; }
-    .lightbox-close, .lightbox-nav {
-      position: absolute; z-index: 2;
-      width: 44px; height: 44px; border-radius: 50%;
-      background: rgba(255, 255, 255, 0.18);
-      color: white; font-size: 1.5rem;
-    }
-    .lightbox-close { top: 18px; right: 18px; }
-    .lightbox-nav { top: 50%; transform: translateY(-50%); }
-    .lightbox-prev { left: 20px; }
-    .lightbox-next { right: 20px; }
-    .lightbox-info { padding: 24px; color: white; display: flex; flex-direction: column; justify-content: flex-end;}
-
-    @keyframes dockFloat {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(4px); }
-    }
-
-    @keyframes heroDrift {
-      from { transform: scale(1.02) translate3d(0, 0, 0); }
-      to { transform: scale(1.07) translate3d(-1.2%, -0.8%, 0); }
-    }
-
-    @media (max-width: 980px) {
-      .nav { grid-template-columns: auto auto auto; justify-content: space-between; }
-      .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--glass-strong); padding: 20px; border-radius: 20px; flex-direction: column;}
-      .nav.is-open .nav-links { display: flex; }
-      .menu-toggle { display: block; }
-      .gallery-grid { grid-template-columns: repeat(6, 1fr); }
-      .photo-card, .photo-card.wide { grid-column: span 3; }
-      .about-layout, .contact-card, .lightbox-panel { grid-template-columns: 1fr; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; } /* Simplified for mobile */
+      .hero-content h1 { font-size: 3rem; }
+      .booking-container { grid-template-columns: 1fr; padding: 20px; }
     }
   </style>
 </head>
 <body>
-  <div class="page-shell">
-    <header class="site-header">
-      <nav class="nav liquid-glass" aria-label="Primary navigation">
-        <a class="brand" href="#home" aria-label="Dillu Captures home">
-          <span class="brand-mark" aria-hidden="true"></span>
-          <span class="brand-name">Dillu Captures</span>
-        </a>
-        <div class="nav-links" id="navLinks">
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#gallery">Gallery</a>
-          <a href="#contact">Contact</a>
-        </div>
-        <button class="theme-toggle" type="button" aria-label="Switch Theme">
-          <span class="theme-icon">◐</span>
-          <span class="theme-label">Theme</span>
-        </button>
-        <button class="menu-toggle" type="button" aria-label="Open menu">
-          <span></span><span></span><span></span>
-        </button>
-      </nav>
-    </header>
 
-    <main>
-      <!-- HEAD / HOME PAGE -->
-      <section class="hero" id="home">
-        <div class="hero-media" aria-hidden="true">
-          <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=2400&q=88" alt="Hero Background" />
-        </div>
-        <div class="container">
-          <div class="hero-content">
-            <h1>Dillu Captures</h1>
-            <p class="hero-copy">
-              Cinematic portraits, luminous events, and breathtaking moments. Capturing your best memories with clean composition and professional elegance.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- ABOUT SECTION -->
-      <section id="about">
-        <div class="container">
-          <div class="about-layout">
-            <div class="about-frame liquid-glass glass-bounce">
-              <img src="https://images.unsplash.com/photo-1452587925148-ce544e77e70d?auto=format&fit=crop&w=1200&q=86" alt="Photographer" />
-            </div>
-            <div class="about-copy liquid-glass">
-              <div>
-                <span class="section-kicker">Behind the lens</span>
-                <h2>Meet the photographer behind Dillu Captures.</h2>
-              </div>
-              <p style="margin-top: 20px; color: var(--muted); font-size: 1.1rem;">
-                With an eye for candid emotion and striking compositions, Dillu Captures focuses on telling authentic stories. Whether it's the quiet anticipation of a wedding morning or the vibrant energy of a portrait session, I strive to make every frame feel alive.
-              </p>
-              <p style="margin-top: 15px; color: var(--muted); font-size: 1.1rem;">
-                My process is collaborative, making sure you feel completely comfortable in front of the camera, delivering heirloom-quality photographs you'll cherish forever.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- GALLERY SECTION WITH 15 IMAGES -->
-      <section id="gallery">
-        <div class="container">
-          <div class="section-head">
-            <span class="section-kicker">Portfolio</span>
-            <h2>A Collection of 15 Unforgettable Frames.</h2>
-          </div>
-
-          <div class="gallery-grid">
-            <!-- Row 1 -->
-            <article class="photo-card wide liquid-glass glass-bounce">
-              <button type="button" data-title="Golden Hour" data-full="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=1800&q=90">
-                <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=1400&q=84" alt="Image 1" />
-                <span class="photo-info"><h3>Golden Hour</h3></span>
-              </button>
-            </article>
-            <article class="photo-card liquid-glass glass-bounce">
-              <button type="button" data-title="City Lights" data-full="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=1400&q=90">
-                <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=900&q=84" alt="Image 2" />
-                <span class="photo-info"><h3>City Lights</h3></span>
-              </button>
-            </article>
-            
-            <!-- Row 2 -->
-            <article class="photo-card tall liquid-glass glass-bounce">
-              <button type="button" data-title="Morning Mist" data-full="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=90">
-                <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=84" alt="Image 3" />
-                <span class="photo-info"><h3>Morning Mist</h3></span>
-              </button>
-            </article>
-            <article class="photo-card liquid-glass glass-bounce">
-              <button type="button" data-title="Coffee Still Life" data-full="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1400&q=90">
-                <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=84" alt="Image 4" />
-                <span class="photo-info"><h3>Coffee Still Life</h3></span>
-              </button>
-            </article>
-            <article class="photo-card liquid-glass glass-bounce">
-              <button type="button" data-title="Serenity" data-full="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1400&q=90">
-                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=84" alt="Image 5" />
-                <span class="photo-info"><h3>Serenity</h3></span>
-              </button>
-            </article>
-
-            <!-- Row 3 -->
-            <article class="photo-card liquid-glass glass-bounce">
-              <button type="button" data-title="Urban Shadows" data-full="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1400&q=90">
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=84" alt="Image 6" />
-                <span class="photo-info"><h3>Urban Shadows</h3></span>
-              </button>
-            </article>
-            <article class="photo-card wide liquid-glass glass-bounce">
-              <button type="button" data-title="Neon Solitude" data-full="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1800&q=90">
-                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1400&q=84" alt="Image 7" />
-                <span class="photo-info"><h3>Neon Solitude</h3></span>
-              </button>
-            </article>
-
-            <!-- Row 4 -->
-            <article class="photo-card liquid-glass glass-bounce">
-              <button type="button" data-title="Wilderness" data-full="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=1400&q=90">
-                <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=900&q=84" alt="Image 8" />
-                <span class="photo-info"><h3>Wilderness</h3></span>
-              </button>
-            </article>
-            <article class="photo-card liquid-glass glass-bounce">
-              <button type="button" data-title="Bridal Details" data-full="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1400&q=90">
-                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=84" alt="Image 9" />
-                <span class="photo-info"><h3>Bridal Details</h3></span>
-              </button>
-            </article>
-            <article class="photo-card liquid-glass glass-bounce">
-              <button type="button" data-title="Architecture" data-full="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1400&q=90">
-                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=84" alt="Image 10" />
-                <span class="photo-info"><h3>Architecture</h3></span>
-              </button>
-            </article>
-
-            <!-- Row 5 -->
-            <article class="photo-card wide liquid-glass glass-bounce">
-              <button type="button" data-title="Ocean Waves" data-full="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=90">
-                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=84" alt="Image 11" />
-                <span class="photo-info"><h3>Ocean Waves</h3></span>
-              </button>
-            </article>
-            <article class="photo-card liquid-glass glass-bounce">
-              <button type="button" data-title="Studio Flash" data-full="https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?auto=format&fit=crop&w=1400&q=90">
-                <img src="https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?auto=format&fit=crop&w=900&q=84" alt="Image 12" />
-                <span class="photo-info"><h3>Studio Flash</h3></span>
-              </button>
-            </article>
-
-            <!-- Row 6 -->
-            <article class="photo-card liquid-glass glass-bounce">
-              <button type="button" data-title="Candid Smiles" data-full="https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=1400&q=90">
-                <img src="https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=900&q=84" alt="Image 13" />
-                <span class="photo-info"><h3>Candid Smiles</h3></span>
-              </button>
-            </article>
-            <article class="photo-card liquid-glass glass-bounce">
-              <button type="button" data-title="Monochrome" data-full="https://images.unsplash.com/photo-1493225457124-a1a2a5f25977?auto=format&fit=crop&w=1400&q=90">
-                <img src="https://images.unsplash.com/photo-1493225457124-a1a2a5f25977?auto=format&fit=crop&w=900&q=84" alt="Image 14" />
-                <span class="photo-info"><h3>Monochrome</h3></span>
-              </button>
-            </article>
-            <article class="photo-card liquid-glass glass-bounce">
-              <button type="button" data-title="Autumn Hues" data-full="https://images.unsplash.com/photo-1476231682828-37e571bc172f?auto=format&fit=crop&w=1400&q=90">
-                <img src="https://images.unsplash.com/photo-1476231682828-37e571bc172f?auto=format&fit=crop&w=900&q=84" alt="Image 15" />
-                <span class="photo-info"><h3>Autumn Hues</h3></span>
-              </button>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- CONTACT SECTION -->
-      <section id="contact">
-        <div class="container">
-          <div class="contact-card liquid-glass">
-            <div>
-              <span class="section-kicker">Booking</span>
-              <h2>Let's create something beautiful together.</h2>
-              <p style="margin-top: 10px; color: var(--muted);">
-                Ready to book a shoot? Reach out through any of the channels below to discuss availability, concepts, and rates.
-              </p>
-            </div>
-            <div class="contact-list">
-              <!-- WhatsApp / Call -->
-              <a href="https://wa.me/919700034138" target="_blank" rel="noreferrer">
-                <span>+91 9700034138</span>
-                <strong>WhatsApp</strong>
-              </a>
-              <a href="tel:+919700034138">
-                <span>+91 9700034138</span>
-                <strong>Call</strong>
-              </a>
-              <!-- Gmail -->
-              <a href="mailto:dillucpsture@gmail.com">
-                <span>dillucpsture@gmail.com</span>
-                <strong>Gmail</strong>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-  </div>
-
-  <!-- LIGHTBOX MODAL -->
-  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Photo preview">
-    <div class="lightbox-panel">
-      <button class="lightbox-close" type="button" aria-label="Close preview">&times;</button>
-      <button class="lightbox-nav lightbox-prev" type="button" aria-label="Previous image">&lsaquo;</button>
-      <img class="lightbox-image" id="lightboxImage" alt="" />
-      <div class="lightbox-info">
-        <h3 id="lightboxTitle"></h3>
+  <!-- Navigation -->
+  <header class="site-header">
+    <nav class="nav liquid-glass">
+      <a class="brand" href="#top">Dillu Captures</a>
+      <div class="nav-links">
+        <a href="#top">Home</a>
+        <a href="#about">About</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
       </div>
-      <button class="lightbox-nav lightbox-next" type="button" aria-label="Next image">&rsaquo;</button>
+      <div class="nav-controls">
+        <div class="live-clock" id="liveClock">00:00:00</div>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Theme">◐</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="top" class="hero">
+    <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=2400&q=80" alt="Hero Background" class="hero-bg">
+    <div class="container hero-content">
+      <h1>Dillu Captures</h1>
+      <p>Cinematic portraits, luminous weddings, and quiet travel frames shaped with clean composition and a calm editorial rhythm.</p>
+      <a href="#gallery" class="btn">View Gallery</a>
     </div>
-  </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">About the Studio</h2>
+      <div class="liquid-glass" style="padding: 40px; text-align: center; max-width: 800px; margin: 0 auto;">
+        <p style="font-size: 1.2rem; color: var(--text-medium); line-height: 1.8;">
+          I create photographs that feel polished but never stiff. My process is quiet, collaborative, and detail-led, with an eye for color, gesture, and the little pauses that make a frame feel alive. From intimate weddings to brand shoots, the goal is the same: make people feel comfortable, shape beautiful light, and deliver images that still feel fresh years later.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section (15 Images) -->
+  <section id="gallery">
+    <div class="container">
+      <h2 class="section-title">Portfolio</h2>
+      <div class="gallery-grid">
+        <!-- 15 Placeholder Images for Gallery -->
+        <div class="photo-card liquid-glass"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80" alt="Gallery Image 1"></div>
+        <div class="photo-card liquid-glass"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80" alt="Gallery Image 2"></div>
+        <div class="photo-card liquid-glass"><img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=600&q=80" alt="Gallery Image 3"></div>
+        <div class="photo-card liquid-glass"><img src="https://images.unsplash.com/photo-1532712938736-59c79cdf07a6?auto=format&fit=crop&w=600&q=80" alt="Gallery Image 4"></div>
+        <div class="photo-card liquid-glass"><img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=600&q=80" alt="Gallery Image 5"></div>
+        <div class="photo-card liquid-glass"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80" alt="Gallery Image 6"></div>
+        <div class="photo-card liquid-glass"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Gallery Image 7"></div>
+        <div class="photo-card liquid-glass"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=600&q=80" alt="Gallery Image 8"></div>
+        <div class="photo-card liquid-glass"><img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=600&q=80" alt="Gallery Image 9"></div>
+        <div class="photo-card liquid-glass"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=600&q=80" alt="Gallery Image 10"></div>
+        <div class="photo-card liquid-glass"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80" alt="Gallery Image 11"></div>
+        <div class="photo-card liquid-glass"><img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600&q=80" alt="Gallery Image 12"></div>
+        <div class="photo-card liquid-glass"><img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&w=600&q=80" alt="Gallery Image 13"></div>
+        <div class="photo-card liquid-glass"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" alt="Gallery Image 14"></div>
+        <div class="photo-card liquid-glass"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80" alt="Gallery Image 15"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- iOS Calendar Booking Section -->
+  <section id="booking">
+    <div class="container">
+      <h2 class="section-title">Book a Shoot</h2>
+      <div class="booking-container liquid-glass">
+        <!-- Calendar UI -->
+        <div class="calendar-ui">
+          <div class="cal-header">
+            <button>&lt;</button>
+            <span>October 2026</span>
+            <button>&gt;</button>
+          </div>
+          <div class="cal-grid">
+            <div class="cal-day-name">Su</div><div class="cal-day-name">Mo</div><div class="cal-day-name">Tu</div>
+            <div class="cal-day-name">We</div><div class="cal-day-name">Th</div><div class="cal-day-name">Fr</div><div class="cal-day-name">Sa</div>
+            <!-- Empty slots for alignment -->
+            <div></div><div></div><div></div><div></div>
+            <!-- Days -->
+            <div class="cal-date disabled">1</div><div class="cal-date disabled">2</div><div class="cal-date disabled">3</div>
+            <div class="cal-date">4</div><div class="cal-date">5</div><div class="cal-date">6</div>
+            <div class="cal-date">7</div><div class="cal-date active">8</div><div class="cal-date">9</div>
+            <div class="cal-date">10</div><div class="cal-date">11</div><div class="cal-date">12</div>
+            <div class="cal-date">13</div><div class="cal-date">14</div><div class="cal-date">15</div>
+            <div class="cal-date">16</div><div class="cal-date">17</div><div class="cal-date">18</div>
+            <div class="cal-date">19</div><div class="cal-date">20</div><div class="cal-date">21</div>
+            <div class="cal-date">22</div><div class="cal-date">23</div><div class="cal-date">24</div>
+            <div class="cal-date">25</div><div class="cal-date">26</div><div class="cal-date">27</div>
+            <div class="cal-date">28</div><div class="cal-date">29</div><div class="cal-date">30</div>
+            <div class="cal-date">31</div>
+          </div>
+        </div>
+
+        <!-- Available Slots -->
+        <div class="slots-ui">
+          <h3>Available on Oct 8</h3>
+          <button class="slot-btn">
+            <span>Morning Light Portrait</span>
+            <span>08:00 AM</span>
+          </button>
+          <button class="slot-btn">
+            <span>Midday Studio Session</span>
+            <span>01:00 PM</span>
+          </button>
+          <button class="slot-btn">
+            <span>Golden Hour Shoot</span>
+            <span>04:30 PM</span>
+          </button>
+          <button class="slot-btn" style="background: var(--ink); color: var(--paper); text-align: center; justify-content: center; margin-top: 10px;">
+            Confirm Booking
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container contact-wrapper">
+      <h2 class="section-title">Get in Touch</h2>
+      <p style="color: var(--text-medium); font-size: 1.1rem;">Ready to frame your story? Reach out directly via WhatsApp or Email.</p>
+      
+      <div class="contact-links">
+        <a href="tel:+919700034138" class="contact-card liquid-glass">
+          📞 WhatsApp / Call: 9700034138
+        </a>
+        <a href="mailto:dillucpsture@gmail.com" class="contact-card liquid-glass">
+          ✉️ dillucpsture@gmail.com
+        </a>
+      </div>
+    </div>
+  </section>
 
   <script>
-    // Theme Toggle Logic
-    const themeToggle = document.querySelector(".theme-toggle");
-    const themeLabel = document.querySelector(".theme-label");
+    // Live Clock Logic
+    function updateClock() {
+      const clockElement = document.getElementById('liveClock');
+      const now = new Date();
+      clockElement.textContent = now.toLocaleTimeString('en-US', { hour12: true });
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
 
-    themeToggle.addEventListener("click", () => {
-      const currentTheme = document.documentElement.dataset.theme;
-      const newTheme = currentTheme === "dark" ? "light" : "dark";
-      document.documentElement.dataset.theme = newTheme;
-      localStorage.setItem("dillu-captures-theme", newTheme);
-      themeLabel.textContent = newTheme.charAt(0).toUpperCase() + newTheme.slice(1);
-    });
+    // Theme Switcher Logic
+    function toggleTheme() {
+      const html = document.documentElement;
+      const currentTheme = html.dataset.theme;
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      html.dataset.theme = newTheme;
+      localStorage.setItem('dillu-captures-theme', newTheme);
+    }
 
-    // Mobile Menu Toggle
-    const nav = document.querySelector(".nav");
-    const menuToggle = document.querySelector(".menu-toggle");
-    const navLinks = document.querySelectorAll(".nav-links a");
-    menuToggle.addEventListener("click", () => nav.classList.toggle("is-open"));
-    navLinks.forEach(link => link.addEventListener("click", () => nav.classList.remove("is-open")));
-
-    // Glass Interaction
-    document.querySelectorAll(".glass-bounce, .liquid-glass").forEach((card) => {
-      card.addEventListener("mousemove", (event) => {
-        const rect = card.getBoundingClientRect();
-        const x = event.clientX - rect.left;
-        const y = event.clientY - rect.top;
-        const rx = ((y / rect.height) - 0.5) * -8;
-        const ry = ((x / rect.width) - 0.5) * 8;
-        card.style.setProperty("--rx", `${rx.toFixed(2)}deg`);
-        card.style.setProperty("--ry", `${ry.toFixed(2)}deg`);
-        card.style.setProperty("--mx", `${((x / rect.width) * 100).toFixed(1)}%`);
-        card.style.setProperty("--my", `${((y / rect.height) * 100).toFixed(1)}%`);
+    // Calendar basic interactivity
+    document.querySelectorAll('.cal-date:not(.disabled)').forEach(date => {
+      date.addEventListener('click', function() {
+        document.querySelectorAll('.cal-date').forEach(d => d.classList.remove('active'));
+        this.classList.add('active');
+        document.querySelector('.slots-ui h3').textContent = `Available on Oct ${this.textContent}`;
       });
-      card.addEventListener("mouseleave", () => {
-        card.style.setProperty("--rx", "0deg");
-        card.style.setProperty("--ry", "0deg");
-        card.style.setProperty("--mx", "16%");
-        card.style.setProperty("--my", "0%");
-      });
-    });
-
-    // Lightbox Logic
-    const photoCards = [...document.querySelectorAll(".photo-card")];
-    const lightbox = document.querySelector("#lightbox");
-    const lightboxImage = document.querySelector("#lightboxImage");
-    const lightboxTitle = document.querySelector("#lightboxTitle");
-    const lightboxClose = document.querySelector(".lightbox-close");
-    const lightboxPrev = document.querySelector(".lightbox-prev");
-    const lightboxNext = document.querySelector(".lightbox-next");
-    let activeIndex = 0;
-
-    function openLightbox(button) {
-      activeIndex = photoCards.map(c => c.querySelector("button")).indexOf(button);
-      lightboxImage.src = button.dataset.full;
-      lightboxTitle.textContent = button.dataset.title;
-      lightbox.classList.add("is-open");
-    }
-
-    function showLightboxImage(direction) {
-      const visibleBtns = photoCards.map(c => c.querySelector("button"));
-      activeIndex = (activeIndex + direction + visibleBtns.length) % visibleBtns.length;
-      const button = visibleBtns[activeIndex];
-      lightboxImage.src = button.dataset.full;
-      lightboxTitle.textContent = button.dataset.title;
-    }
-
-    function closeLightbox() {
-      lightbox.classList.remove("is-open");
-    }
-
-    photoCards.forEach((card) => {
-      card.querySelector("button").addEventListener("click", (e) => openLightbox(e.currentTarget));
-    });
-
-    lightboxClose.addEventListener("click", closeLightbox);
-    lightboxPrev.addEventListener("click", () => showLightboxImage(-1));
-    lightboxNext.addEventListener("click", () => showLightboxImage(1));
-    lightbox.addEventListener("click", (e) => { if (e.target === lightbox) closeLightbox(); });
-
-    window.addEventListener("keydown", (e) => {
-      if (!lightbox.classList.contains("is-open")) return;
-      if (e.key === "Escape") closeLightbox();
-      if (e.key === "ArrowLeft") showLightboxImage(-1);
-      if (e.key === "ArrowRight") showLightboxImage(1);
     });
   </script>
 </body>
