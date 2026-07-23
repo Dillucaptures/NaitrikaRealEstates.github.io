@@ -1,19 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="A cinematic photographer portfolio website template with featured work, about, services, testimonials, and contact sections." />
-  <meta property="og:title" content="Photographer Portfolio" />
-  <meta property="og:description" content="A refined HTML portfolio template for photographers ready to publish." />
-  <meta property="og:type" content="website" />
-  <title>Photographer Portfolio</title>
-  <link rel="preconnect" href="https://api.fontshare.com" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=boska@400,500,700&display=swap" rel="stylesheet" />
+  <title>Dillu Captures — Liquid Glass Portfolio</title>
+  <meta name="description" content="Liquid glass photography portfolio with transparent Apple-inspired UI." />
+  //api.fontshare.com" />
+  //api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=boska@400,500,700&display=swap" rel="stylesheet" />
   <style>
-    :root, [data-theme="light"] {
+    :root,
+    [data-theme="light"] {
       --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
       --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
       --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
@@ -23,9 +19,9 @@
       --text-3xl: clamp(2.5rem, 1rem + 4vw, 5rem);
       --text-hero: clamp(3rem, 0.5rem + 7vw, 7rem);
 
-      --space-1: 0.25rem;
-      --space-2: 0.5rem;
-      --space-3: 0.75rem;
+      --space-1: .25rem;
+      --space-2: .5rem;
+      --space-3: .75rem;
       --space-4: 1rem;
       --space-5: 1.25rem;
       --space-6: 1.5rem;
@@ -37,315 +33,707 @@
       --space-24: 6rem;
       --space-32: 8rem;
 
-      --color-bg: #f6f1eb;
-      --color-surface: #fbf8f3;
-      --color-surface-2: #fffdf9;
-      --color-surface-offset: #ece4da;
-      --color-surface-dynamic: #ddd2c4;
-      --color-border: rgba(40, 32, 24, 0.14);
-      --color-divider: rgba(40, 32, 24, 0.09);
-      --color-text: #241b14;
-      --color-text-muted: #6f655d;
-      --color-text-faint: #9f958c;
-      --color-text-inverse: #fcfaf7;
-      --color-primary: #7a4a2b;
-      --color-primary-hover: #5f381d;
-      --color-primary-highlight: #ead8c9;
-      --shadow-sm: 0 1px 2px rgba(36, 27, 20, 0.08);
-      --shadow-md: 0 10px 30px rgba(36, 27, 20, 0.1);
-      --shadow-lg: 0 22px 70px rgba(36, 27, 20, 0.16);
-      --radius-sm: 0.5rem;
-      --radius-md: 0.85rem;
-      --radius-lg: 1.25rem;
-      --radius-xl: 1.75rem;
-      --radius-full: 9999px;
-      --content-default: 1120px;
-      --content-wide: 1280px;
-      --transition-interactive: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+      --color-bg: #eef3f8;
+      --color-bg-2: #f8fbff;
+      --color-surface: rgba(255,255,255,0.34);
+      --color-surface-strong: rgba(255,255,255,0.56);
+      --color-surface-soft: rgba(255,255,255,0.22);
+      --color-border: rgba(255,255,255,0.52);
+      --color-border-soft: rgba(255,255,255,0.26);
+      --color-text: #16202a;
+      --color-text-muted: #596776;
+      --color-text-faint: #8793a0;
+      --color-primary: #4a7cff;
+      --color-primary-2: #82b6ff;
+      --color-primary-soft: rgba(74,124,255,0.16);
+      --color-shadow: rgba(24, 38, 56, 0.14);
+      --color-shadow-strong: rgba(24, 38, 56, 0.2);
       --font-display: 'Boska', Georgia, serif;
       --font-body: 'Satoshi', Inter, sans-serif;
+      --radius-sm: .7rem;
+      --radius-md: 1rem;
+      --radius-lg: 1.5rem;
+      --radius-xl: 2rem;
+      --radius-pill: 999px;
+      --content: 1180px;
+      --blur-lg: 28px;
+      --blur-md: 18px;
+      --transition: 260ms cubic-bezier(.2,.8,.2,1);
     }
 
     [data-theme="dark"] {
-      --color-bg: #14110f;
-      --color-surface: #1b1714;
-      --color-surface-2: #221d19;
-      --color-surface-offset: #2a231d;
-      --color-surface-dynamic: #342b24;
-      --color-border: rgba(255, 246, 234, 0.12);
-      --color-divider: rgba(255, 246, 234, 0.08);
-      --color-text: #f3ece4;
-      --color-text-muted: #b6aa9d;
-      --color-text-faint: #8a7d71;
-      --color-text-inverse: #171310;
-      --color-primary: #d3a179;
-      --color-primary-hover: #e2b58f;
-      --color-primary-highlight: rgba(211, 161, 121, 0.14);
-      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.28);
-      --shadow-md: 0 12px 34px rgba(0, 0, 0, 0.34);
-      --shadow-lg: 0 24px 80px rgba(0, 0, 0, 0.45);
+      --color-bg: #0b1118;
+      --color-bg-2: #131c26;
+      --color-surface: rgba(20,30,42,0.42);
+      --color-surface-strong: rgba(28,39,52,0.66);
+      --color-surface-soft: rgba(255,255,255,0.08);
+      --color-border: rgba(255,255,255,0.16);
+      --color-border-soft: rgba(255,255,255,0.1);
+      --color-text: #edf4ff;
+      --color-text-muted: #b6c2cf;
+      --color-text-faint: #8392a2;
+      --color-primary: #86b5ff;
+      --color-primary-2: #b9d6ff;
+      --color-primary-soft: rgba(134,181,255,0.14);
+      --color-shadow: rgba(0,0,0,0.28);
+      --color-shadow-strong: rgba(0,0,0,0.42);
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; -webkit-text-size-adjust: none; text-size-adjust: none; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
-      min-height: 100dvh;
+      min-height: 100vh;
       font-family: var(--font-body);
       font-size: var(--text-base);
-      line-height: 1.6;
       color: var(--color-text);
       background:
-        radial-gradient(circle at top left, rgba(211, 161, 121, 0.14), transparent 28%),
-        radial-gradient(circle at bottom right, rgba(211, 161, 121, 0.08), transparent 24%),
-        var(--color-bg);
+        radial-gradient(circle at 15% 20%, rgba(130,182,255,0.30), transparent 28%),
+        radial-gradient(circle at 85% 12%, rgba(255,255,255,0.7), transparent 22%),
+        radial-gradient(circle at 80% 78%, rgba(74,124,255,0.18), transparent 24%),
+        linear-gradient(180deg, var(--color-bg-2), var(--color-bg));
+      overflow-x: hidden;
     }
-    img, svg { display: block; max-width: 100%; height: auto; }
-    a { color: inherit; text-decoration: none; }
-    button, input, textarea { font: inherit; color: inherit; }
-    button { cursor: pointer; border: 0; background: none; }
-    :focus-visible { outline: 2px solid var(--color-primary); outline-offset: 4px; border-radius: var(--radius-sm); }
-    ::selection { background: rgba(211, 161, 121, 0.22); }
 
-    .sr-only {
-      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
-      overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.18), transparent 30%),
+        radial-gradient(circle at top, rgba(255,255,255,0.22), transparent 35%);
+      mix-blend-mode: screen;
+      opacity: .7;
     }
+
+    img, svg { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    button, input, textarea { font: inherit; color: inherit; }
+    button { border: 0; background: none; cursor: pointer; }
 
     .container {
-      width: min(calc(100% - 2rem), var(--content-default));
+      width: min(calc(100% - 2rem), var(--content));
       margin-inline: auto;
     }
 
-    .skip-link {
-      position: absolute; left: 1rem; top: -3rem; background: var(--color-primary);
-      color: var(--color-text-inverse); padding: 0.75rem 1rem; border-radius: var(--radius-full); z-index: 100;
+    .glass {
+      background: linear-gradient(180deg, rgba(255,255,255,0.34), rgba(255,255,255,0.18));
+      border: 1px solid var(--color-border);
+      box-shadow:
+        0 10px 30px var(--color-shadow),
+        inset 0 1px 0 rgba(255,255,255,0.65),
+        inset 0 -1px 0 rgba(255,255,255,0.08);
+      backdrop-filter: blur(var(--blur-lg)) saturate(160%);
+      -webkit-backdrop-filter: blur(var(--blur-lg)) saturate(160%);
     }
+
+    .glass-soft {
+      background: linear-gradient(180deg, rgba(255,255,255,0.22), rgba(255,255,255,0.12));
+      border: 1px solid var(--color-border-soft);
+      box-shadow:
+        0 8px 24px var(--color-shadow),
+        inset 0 1px 0 rgba(255,255,255,0.45);
+      backdrop-filter: blur(var(--blur-md)) saturate(150%);
+      -webkit-backdrop-filter: blur(var(--blur-md)) saturate(150%);
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: -3rem;
+      background: var(--color-primary);
+      color: white;
+      padding: .75rem 1rem;
+      border-radius: var(--radius-pill);
+      z-index: 999;
+    }
+
     .skip-link:focus { top: 1rem; }
 
     .site-header {
-      position: sticky; top: 0; z-index: 20;
-      backdrop-filter: blur(16px);
-      background: color-mix(in srgb, var(--color-bg) 78%, transparent);
-      border-bottom: 1px solid var(--color-divider);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding-top: .9rem;
     }
-    .site-header .container {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: var(--space-4); padding: var(--space-4) 0;
+
+    .nav-shell {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      padding: .9rem 1rem;
+      border-radius: calc(var(--radius-xl) + .4rem);
     }
-    .brand { display: inline-flex; align-items: center; gap: var(--space-3); }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: .9rem;
+      min-width: 0;
+    }
+
     .brand-mark {
-      width: 2.5rem; height: 2.5rem; padding: 0.45rem; border-radius: 50%;
-      border: 1px solid var(--color-border); background: var(--color-surface);
-      box-shadow: var(--shadow-sm);
+      width: 3rem;
+      height: 3rem;
+      border-radius: 1rem;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
     }
-    .brand-text strong {
-      display: block; font-family: var(--font-display); font-size: var(--text-lg); font-weight: 500; line-height: 1;
+
+    .brand-mark svg { width: 1.8rem; height: 1.8rem; }
+
+    .brand-copy strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      line-height: 1;
+      font-weight: 500;
     }
-    .brand-text span { font-size: var(--text-xs); color: var(--color-text-muted); letter-spacing: 0.12em; text-transform: uppercase; }
+
+    .brand-copy span {
+      display: block;
+      margin-top: .2rem;
+      color: var(--color-text-muted);
+      font-size: var(--text-xs);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
 
     .nav-links {
-      display: flex; align-items: center; gap: var(--space-5); font-size: var(--text-sm);
+      display: flex;
+      align-items: center;
+      gap: .55rem;
+      padding: .35rem;
+      border-radius: var(--radius-pill);
     }
-    .nav-links a { color: var(--color-text-muted); }
-    .nav-links a:hover, .nav-links a:focus-visible { color: var(--color-text); }
+
+    .nav-links a {
+      padding: .8rem 1rem;
+      border-radius: var(--radius-pill);
+      color: var(--color-text-muted);
+      transition: background var(--transition), color var(--transition), transform var(--transition);
+    }
+
+    .nav-links a:hover {
+      background: rgba(255,255,255,0.28);
+      color: var(--color-text);
+      transform: translateY(-1px);
+    }
 
     .theme-toggle {
-      width: 2.75rem; height: 2.75rem; display: inline-grid; place-items: center;
-      border-radius: 50%; border: 1px solid var(--color-border); background: var(--color-surface);
+      position: relative;
+      width: 5.2rem;
+      height: 3rem;
+      border-radius: 999px;
+      padding: .25rem;
+      isolation: isolate;
+      overflow: hidden;
     }
+
+    .theme-toggle::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.68), rgba(255,255,255,.14)),
+        radial-gradient(circle at 30% 25%, rgba(255,255,255,.72), transparent 36%);
+      opacity: .9;
+      z-index: 0;
+    }
+
+    .theme-toggle-track {
+      position: absolute;
+      inset: .2rem;
+      border-radius: 999px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.42), rgba(255,255,255,0.08)),
+        rgba(255,255,255,0.12);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.6),
+        inset 0 -1px 0 rgba(255,255,255,.12);
+    }
+
+    .theme-toggle-thumb {
+      position: absolute;
+      top: .26rem;
+      left: .28rem;
+      width: 2.35rem;
+      height: 2.35rem;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at 30% 28%, rgba(255,255,255,.95), rgba(255,255,255,.65) 38%, rgba(255,255,255,.22) 72%),
+        linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.38));
+      border: 1px solid rgba(255,255,255,.72);
+      box-shadow:
+        0 8px 20px rgba(36,53,80,.18),
+        inset 0 1px 0 rgba(255,255,255,.95),
+        inset 0 -1px 0 rgba(255,255,255,.22);
+      backdrop-filter: blur(16px) saturate(180%);
+      transition: transform var(--transition), background var(--transition);
+      z-index: 2;
+    }
+
+    [data-theme="dark"] .theme-toggle-thumb {
+      transform: translateX(2.05rem);
+    }
+
+    .theme-icon {
+      width: 1rem;
+      height: 1rem;
+      opacity: .85;
+    }
+
+    main { padding-bottom: var(--space-24); }
 
     .hero {
-      padding: clamp(var(--space-16), 10vw, var(--space-32)) 0 var(--space-16);
+      padding: clamp(4rem, 10vw, 8rem) 0 var(--space-20);
     }
+
     .hero-grid {
-      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(var(--space-8), 5vw, var(--space-16)); align-items: center;
+      display: grid;
+      grid-template-columns: 1.02fr .98fr;
+      gap: clamp(2rem, 5vw, 5rem);
+      align-items: center;
     }
+
     .eyebrow {
-      display: inline-flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-5);
-      padding: 0.4rem 0.85rem; border-radius: var(--radius-full); background: var(--color-primary-highlight);
-      color: var(--color-primary); font-size: var(--text-xs); letter-spacing: 0.14em; text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .55rem .9rem;
+      border-radius: 999px;
+      color: var(--color-primary);
+      background: var(--color-primary-soft);
+      border: 1px solid rgba(255,255,255,.35);
+      font-size: var(--text-xs);
+      letter-spacing: .14em;
+      text-transform: uppercase;
     }
-    h1, h2 { font-family: var(--font-display); font-weight: 500; line-height: 0.96; }
-    h1 { font-size: var(--text-hero); max-width: 9ch; }
+
+    h1, h2, h3 {
+      font-family: var(--font-display);
+      font-weight: 500;
+      line-height: .98;
+    }
+
+    h1 {
+      margin-top: var(--space-5);
+      font-size: var(--text-hero);
+      max-width: 8ch;
+    }
+
     .hero-copy p {
-      margin-top: var(--space-6); max-width: 52ch; color: var(--color-text-muted);
+      margin-top: var(--space-6);
+      max-width: 54ch;
+      color: var(--color-text-muted);
     }
+
     .hero-actions {
-      display: flex; flex-wrap: wrap; gap: var(--space-4); margin-top: var(--space-8);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: var(--space-8);
     }
+
     .btn {
-      display: inline-flex; align-items: center; justify-content: center; min-height: 3rem;
-      padding: 0.9rem 1.3rem; border-radius: var(--radius-full); font-size: var(--text-sm);
-      transition: transform var(--transition-interactive), background var(--transition-interactive), color var(--transition-interactive), border-color var(--transition-interactive);
+      min-height: 3.2rem;
+      padding: .92rem 1.3rem;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
     }
+
     .btn:hover { transform: translateY(-1px); }
-    .btn-primary { background: var(--color-primary); color: var(--color-text-inverse); }
-    .btn-primary:hover { background: var(--color-primary-hover); }
-    .btn-secondary { border: 1px solid var(--color-border); background: var(--color-surface); }
 
-    .hero-card {
-      position: relative; min-height: 36rem; border-radius: var(--radius-xl); overflow: hidden;
-      background: linear-gradient(180deg, rgba(0,0,0,0.04), rgba(0,0,0,0.42)),
-      url('https://picsum.photos/seed/photographer-hero/900/1200') center/cover;
-      box-shadow: var(--shadow-lg);
+    .btn-primary {
+      color: white;
+      background:
+        linear-gradient(180deg, rgba(140,185,255,.95), rgba(74,124,255,.94));
+      box-shadow:
+        0 10px 24px rgba(74,124,255,.28),
+        inset 0 1px 0 rgba(255,255,255,.38);
     }
-    .hero-card::after {
-      content: ''; position: absolute; inset: auto 1.25rem 1.25rem auto; width: 10rem; height: 10rem;
-      border-radius: 50%; border: 1px solid rgba(255,255,255,0.22);
-      background: radial-gradient(circle, rgba(255,255,255,0.16), transparent 65%);
-    }
-    .hero-card-caption {
-      position: absolute; left: 1.25rem; right: 1.25rem; bottom: 1.25rem;
-      display: flex; justify-content: space-between; gap: var(--space-4); align-items: end;
-      padding: var(--space-5); border-radius: calc(var(--radius-xl) - var(--space-5));
-      background: rgba(16, 13, 10, 0.55); backdrop-filter: blur(10px); color: #f8f2ea;
-    }
-    .hero-card-caption strong { display: block; font-size: var(--text-lg); }
-    .hero-card-caption span { font-size: var(--text-xs); letter-spacing: 0.08em; text-transform: uppercase; color: rgba(248,242,234,0.76); }
 
-    section { padding: clamp(var(--space-12), 8vw, var(--space-24)) 0; }
+    .btn-secondary {
+      color: var(--color-text);
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 42rem;
+      border-radius: 2.3rem;
+      overflow: hidden;
+      box-shadow: 0 30px 80px var(--color-shadow-strong);
+    }
+
+    .hero-visual > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-float {
+      position: absolute;
+      backdrop-filter: blur(22px) saturate(160%);
+      -webkit-backdrop-filter: blur(22px) saturate(160%);
+      border: 1px solid rgba(255,255,255,.48);
+      background: linear-gradient(180deg, rgba(255,255,255,.3), rgba(255,255,255,.12));
+      box-shadow:
+        0 14px 36px rgba(17,31,46,.16),
+        inset 0 1px 0 rgba(255,255,255,.72);
+    }
+
+    .hero-meta {
+      left: 1.2rem;
+      bottom: 1.2rem;
+      right: 1.2rem;
+      position: absolute;
+      padding: 1rem 1.1rem;
+      border-radius: 1.4rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: end;
+      color: white;
+      background: linear-gradient(180deg, rgba(22,30,40,.22), rgba(22,30,40,.4));
+      border: 1px solid rgba(255,255,255,.24);
+    }
+
+    .hero-bubble {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      width: 11rem;
+      padding: 1rem;
+      border-radius: 1.4rem;
+      color: var(--color-text);
+    }
+
+    .hero-bubble strong {
+      display: block;
+      font-size: var(--text-lg);
+      margin-bottom: .25rem;
+    }
+
+    section {
+      padding: clamp(3rem, 8vw, 6rem) 0;
+    }
+
     .section-head {
-      display: grid; grid-template-columns: 0.7fr 1fr; gap: var(--space-8); align-items: end; margin-bottom: var(--space-10);
+      display: grid;
+      grid-template-columns: .75fr 1fr;
+      gap: 2rem;
+      align-items: end;
+      margin-bottom: 2rem;
     }
+
     h2 { font-size: var(--text-3xl); }
-    .section-head p { color: var(--color-text-muted); max-width: 56ch; }
+    .section-head p { color: var(--color-text-muted); }
 
     .gallery {
-      display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--space-4);
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1rem;
     }
+
     .gallery figure {
-      position: relative; overflow: hidden; border-radius: var(--radius-lg); min-height: 17rem;
-      background: var(--color-surface); box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+      min-height: 18rem;
+      border-radius: 1.7rem;
     }
+
     .gallery img {
-      width: 100%; height: 100%; object-fit: cover; transition: transform 500ms ease;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .8s cubic-bezier(.2,.8,.2,1);
     }
+
     .gallery figure:hover img { transform: scale(1.04); }
+
     .gallery figcaption {
-      position: absolute; left: 1rem; right: 1rem; bottom: 1rem; padding: 0.9rem 1rem;
-      border-radius: var(--radius-md); background: rgba(20, 17, 15, 0.55); color: #fff7ef; backdrop-filter: blur(8px);
-      font-size: var(--text-sm);
+      position: absolute;
+      left: 1rem;
+      right: 1rem;
+      bottom: 1rem;
+      padding: .9rem 1rem;
+      border-radius: 1.1rem;
+      color: white;
+      background: linear-gradient(180deg, rgba(18,25,35,.18), rgba(18,25,35,.45));
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255,255,255,.18);
     }
+
     .span-5 { grid-column: span 5; }
     .span-7 { grid-column: span 7; }
     .span-4 { grid-column: span 4; }
     .span-8 { grid-column: span 8; }
 
-    .about-grid, .services-grid, .contact-grid {
-      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(var(--space-6), 4vw, var(--space-12));
+    .about-grid,
+    .services-grid,
+    .contact-grid {
+      display: grid;
+      gap: 1.2rem;
     }
+
+    .about-grid,
+    .contact-grid {
+      grid-template-columns: repeat(2, minmax(0,1fr));
+    }
+
+    .services-grid {
+      grid-template-columns: repeat(3, minmax(0,1fr));
+    }
+
     .panel {
-      padding: clamp(var(--space-6), 4vw, var(--space-10)); border-radius: var(--radius-xl);
-      background: var(--color-surface); border: 1px solid var(--color-border); box-shadow: var(--shadow-sm);
+      padding: clamp(1.35rem, 3vw, 2rem);
+      border-radius: 1.8rem;
+      position: relative;
     }
-    .panel h3 { font-size: var(--text-xl); margin-bottom: var(--space-4); font-family: var(--font-display); font-weight: 500; }
-    .panel p { color: var(--color-text-muted); }
+
+    .panel::before {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      border-radius: inherit;
+      background: linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,.06));
+      pointer-events: none;
+      opacity: .65;
+    }
+
+    .panel > * { position: relative; z-index: 1; }
+
+    .panel h3 {
+      font-size: var(--text-xl);
+      margin-bottom: 1rem;
+    }
+
+    .panel p {
+      color: var(--color-text-muted);
+    }
 
     .stats {
-      display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-4); margin-top: var(--space-8);
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 1rem;
+      margin-top: 1.4rem;
     }
+
     .stat {
-      padding: var(--space-5); border-radius: var(--radius-lg); background: var(--color-surface-2); border: 1px solid var(--color-divider);
+      padding: 1rem;
+      border-radius: 1.2rem;
     }
-    .stat strong { display: block; font-size: var(--text-xl); font-family: var(--font-display); font-weight: 500; }
-    .stat span { color: var(--color-text-muted); font-size: var(--text-sm); }
 
-    .services-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .stat strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      line-height: 1;
+      margin-bottom: .35rem;
+    }
+
+    .stat span {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+
     .service-card small {
-      display: inline-block; margin-bottom: var(--space-3); color: var(--color-primary);
-      font-size: var(--text-xs); letter-spacing: 0.14em; text-transform: uppercase;
+      display: inline-flex;
+      margin-bottom: .9rem;
+      padding: .4rem .7rem;
+      border-radius: 999px;
+      background: var(--color-primary-soft);
+      color: var(--color-primary);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-size: var(--text-xs);
     }
 
-    .quote {
-      padding: clamp(var(--space-10), 5vw, var(--space-16)); border-radius: var(--radius-xl);
-      background: linear-gradient(135deg, var(--color-surface), var(--color-surface-offset));
-      border: 1px solid var(--color-border); box-shadow: var(--shadow-md);
+    .quote p {
+      font-size: var(--text-2xl);
+      max-width: 16ch;
     }
-    .quote p { font-family: var(--font-display); font-size: var(--text-2xl); line-height: 1.1; max-width: 18ch; }
-    .quote footer { margin-top: var(--space-5); color: var(--color-text-muted); font-size: var(--text-sm); }
+
+    .quote footer {
+      margin-top: 1rem;
+      color: var(--color-text-muted);
+    }
 
     .contact-list {
-      list-style: none; display: grid; gap: var(--space-4); margin-top: var(--space-6);
+      list-style: none;
+      display: grid;
+      gap: .9rem;
+      margin-top: 1.2rem;
     }
-    .contact-list a {
-      display: flex; align-items: center; justify-content: space-between; gap: var(--space-4);
-      padding: var(--space-4) var(--space-5); border-radius: var(--radius-lg); background: var(--color-surface-2); border: 1px solid var(--color-divider);
-    }
-    .contact-form {
-      display: grid; gap: var(--space-4);
-    }
-    label { display: grid; gap: var(--space-2); font-size: var(--text-sm); }
-    input, textarea {
-      width: 100%; padding: 0.95rem 1rem; border-radius: var(--radius-md);
-      background: var(--color-surface-2); border: 1px solid var(--color-border);
-    }
-    textarea { min-height: 9rem; resize: vertical; }
 
-    .site-footer {
-      padding: var(--space-8) 0 var(--space-10); border-top: 1px solid var(--color-divider); color: var(--color-text-muted);
+    .contact-list a {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+      padding: 1rem 1.1rem;
+      border-radius: 1.2rem;
     }
-    .site-footer .container {
-      display: flex; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap;
+
+    .contact-form {
+      display: grid;
+      gap: 1rem;
+    }
+
+    label {
+      display: grid;
+      gap: .45rem;
       font-size: var(--text-sm);
     }
 
-    [data-reveal] {
-      opacity: 0; transform: translateY(24px); transition: opacity 700ms ease, transform 700ms ease;
+    input, textarea {
+      width: 100%;
+      padding: 1rem 1rem;
+      border-radius: 1rem;
+      border: 1px solid rgba(255,255,255,.26);
+      background: rgba(255,255,255,.18);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      outline: none;
     }
-    [data-reveal].revealed { opacity: 1; transform: translateY(0); }
 
-    @media (max-width: 920px) {
-      .hero-grid, .section-head, .about-grid, .contact-grid, .services-grid { grid-template-columns: 1fr; }
+    input:focus, textarea:focus {
+      border-color: rgba(130,182,255,.75);
+      box-shadow: 0 0 0 4px rgba(130,182,255,.18);
+    }
+
+    textarea {
+      min-height: 9rem;
+      resize: vertical;
+    }
+
+    .site-footer {
+      padding: 2rem 0 4rem;
+      color: var(--color-text-muted);
+    }
+
+    .site-footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      padding: 1rem 1.2rem;
+      border-radius: 1.4rem;
+    }
+
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(28px) scale(.985);
+      transition:
+        opacity .8s cubic-bezier(.2,.8,.2,1),
+        transform .8s cubic-bezier(.2,.8,.2,1);
+    }
+
+    [data-reveal].revealed {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .section-head,
+      .about-grid,
+      .contact-grid,
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
       .nav-links { display: none; }
-      .hero-card { min-height: 28rem; }
+      .hero-visual { min-height: 30rem; }
       .stats { grid-template-columns: 1fr; }
       .gallery { grid-template-columns: 1fr; }
       .span-4, .span-5, .span-7, .span-8 { grid-column: auto; }
     }
 
     @media (max-width: 640px) {
-      .site-header .container { align-items: flex-start; }
-      .hero { padding-top: var(--space-12); }
-      h1 { max-width: 8ch; }
-      .hero-actions, .site-footer .container { flex-direction: column; align-items: flex-start; }
-      .hero-card-caption { flex-direction: column; align-items: flex-start; }
+      .nav-shell {
+        align-items: flex-start;
+        flex-wrap: wrap;
+      }
+
+      .hero-actions,
+      .site-footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-meta {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .theme-toggle {
+        width: 4.8rem;
+        height: 2.8rem;
+      }
+
+      [data-theme="dark"] .theme-toggle-thumb {
+        transform: translateX(1.85rem);
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-      [data-reveal] { opacity: 1; transform: none; }
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+      [data-reveal] {
+        opacity: 1;
+        transform: none;
+      }
     }
   </style>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
+  <a href="#main" class="skip-link">Skip to content</a>
 
   <header class="site-header">
     <div class="container">
-      <a class="brand" href="#home" aria-label="Photographer Portfolio home">
-        <svg class="brand-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-          <circle cx="24" cy="24" r="17" stroke="currentColor" stroke-width="1.5"></circle>
-          <path d="M17 28.5c4.4-10.5 10.1-16 17-16-3.7 3.4-5.5 7.8-5.5 13.1 0 4.2 1.3 7.5 3.8 9.9-5.9-.2-11-2.5-15.3-7z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path>
-        </svg>
-        <span class="brand-text">
-          <strong>Dillu Captures</strong>
-          <span>Portrait & Travel Photographer</span>
-        </span>
-      </a>
+      <div class="nav-shell glass">
+        <a href="#home" class="brand" aria-label="Dillu Captures home">
+          <span class="brand-mark glass-soft" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none">
+              ircle cx="24" cy="24" r="17" stroke="currentColor" stroke-width="1.5"></circle>
+              <path d="M17 28.5c4.4-10.5 10.1-16 17-16-3.7 3.4-5.5 7.8-5.5 13.1 0 4.2 1.3 7.5 3.8 9.9-5.9-.2-11-2.5-15.3-7z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </span>
+          <span class="brand-copy">
+            <strong>Dillu Captures</strong>
+            <span>Liquid Glass Portfolio</span>
+          </span>
+        </a>
 
-      <nav class="nav-links" aria-label="Primary navigation">
-        <a href="#work">Work</a>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
-      </nav>
+        <nav class="nav-links glass-soft" aria-label="Primary navigation">
+          <a href="#work">Work</a>
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#contact">Contact</a>
+        </nav>
 
-      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch theme">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-        </svg>
-      </button>
+        <button class="theme-toggle glass-soft" type="button" data-theme-toggle aria-label="Switch to dark mode">
+          <span class="theme-toggle-track"></span>
+          <span class="theme-toggle-thumb">
+            <svg class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              ircle cx="12" cy="12" r="4.2"></circle>
+              <path d="M12 2v2.2M12 19.8V22M4.93 4.93l1.56 1.56M17.51 17.51l1.56 1.56M2 12h2.2M19.8 12H22M4.93 19.07l1.56-1.56M17.51 6.49l1.56-1.56"></path>
+            </svg>
+          </span>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -353,26 +741,31 @@
     <section class="hero" id="home">
       <div class="container hero-grid">
         <div class="hero-copy" data-reveal>
-          <span class="eyebrow">Available for commissions</span>
-          <h1>Frames that feel lived in.</h1>
+          <span class="eyebrow glass-soft">Available for commissions</span>
+          <h1>Photography through liquid light.</h1>
           <p>
-            This portfolio template is built for photographers who want a cinematic, modern website to showcase signature work, introduce their story, and convert visitors into enquiries.
+            A transparent, Apple-inspired portfolio where interface chrome melts into the background and the images stay in focus.
           </p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#work">View portfolio</a>
-            <a class="btn btn-secondary" href="#contact">Book a session</a>
+            <a href="#work" class="btn btn-primary">View portfolio</a>
+            <a href="#contact" class="btn btn-secondary glass-soft">Book a session</a>
           </div>
         </div>
 
-        <article class="hero-card" data-reveal aria-label="Featured hero photograph">
-          <div class="hero-card-caption">
-            <div>
-              <span>Featured series</span>
-              <strong>Afterlight Stories</strong>
-            </div>
-            <span>Editorial • Portraits • 2026</span>
+        <div class="hero-visual" data-reveal>
+          <img src="https://picsum.photos/seed/liquid-portfolio-hero/1000/1300" alt="Editorial portrait in natural light" width="1000" height="1300" loading="eager" />
+          <div class="hero-bubble hero-float">
+            <strong>Afterlight Stories</strong>
+            <span>Portrait • Editorial • Travel</span>
           </div>
-        </article>
+          <div class="hero-meta">
+            <div>
+              <strong>Selected frame</strong>
+              <div>Warm highlights, natural skin tones, cinematic composition</div>
+            </div>
+            <span>Hyderabad • 2026</span>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -381,26 +774,26 @@
         <div class="section-head" data-reveal>
           <h2>Selected work</h2>
           <p>
-            Mix large statement images with supporting frames so the homepage feels editorial instead of template-driven. Replace these demo images and captions with your own shoots.
+            The gallery uses floating captions and edge-to-edge image emphasis so the interface supports the work instead of covering it.
           </p>
         </div>
 
         <div class="gallery">
-          <figure class="span-5" data-reveal>
-            <img src="https://picsum.photos/seed/portfolio-1/900/1200" alt="Portrait session in warm evening light" width="900" height="1200" loading="lazy" />
-            <figcaption>Golden hour portraits — Hyderabad rooftop session</figcaption>
+          <figure class="span-5 glass-soft" data-reveal>
+            <img src="https://picsum.photos/seed/glass-1/900/1200" alt="Portrait session in soft daylight" width="900" height="1200" loading="lazy" />
+            <figcaption>Portraits — natural direction and quiet mood</figcaption>
           </figure>
-          <figure class="span-7" data-reveal>
-            <img src="https://picsum.photos/seed/portfolio-2/1400/900" alt="Couple walking through an urban street scene" width="1400" height="900" loading="lazy" />
-            <figcaption>City narratives — engagement story with movement and texture</figcaption>
+          <figure class="span-7 glass-soft" data-reveal>
+            <img src="https://picsum.photos/seed/glass-2/1400/900" alt="Couple photography in city light" width="1400" height="900" loading="lazy" />
+            <figcaption>Couples — cinematic city narratives</figcaption>
           </figure>
-          <figure class="span-8" data-reveal>
-            <img src="https://picsum.photos/seed/portfolio-3/1400/920" alt="Documentary-style travel photograph of a market street" width="1400" height="920" loading="lazy" />
-            <figcaption>Travel documentary — layered street moments and local color</figcaption>
+          <figure class="span-8 glass-soft" data-reveal>
+            <img src="https://picsum.photos/seed/glass-3/1400/920" alt="Travel documentary frame in a street market" width="1400" height="920" loading="lazy" />
+            <figcaption>Travel — layered documentary moments</figcaption>
           </figure>
-          <figure class="span-4" data-reveal>
-            <img src="https://picsum.photos/seed/portfolio-4/800/920" alt="Studio portrait with dramatic side lighting" width="800" height="920" loading="lazy" />
-            <figcaption>Studio light study — monochrome portrait session</figcaption>
+          <figure class="span-4 glass-soft" data-reveal>
+            <img src="https://picsum.photos/seed/glass-4/800/920" alt="Studio portrait with side lighting" width="800" height="920" loading="lazy" />
+            <figcaption>Studio — controlled light and texture</figcaption>
           </figure>
         </div>
       </div>
@@ -408,30 +801,30 @@
 
     <section id="about">
       <div class="container about-grid">
-        <div class="panel" data-reveal>
-          <h3>About the photographer</h3>
+        <article class="panel glass" data-reveal>
+          <h3>About</h3>
           <p>
-            Use this area to write a short personal statement: what you photograph, how you approach a session, and what clients can expect. Keep it human, direct, and specific to your style.
+            I photograph people, places, and stories with a calm editorial approach. The goal is simple: images that feel honest, atmospheric, and lasting.
           </p>
-          <div class="stats" aria-label="Highlights">
-            <div class="stat">
+          <div class="stats">
+            <div class="stat glass-soft">
               <strong>120+</strong>
               <span>Shoots delivered</span>
             </div>
-            <div class="stat">
+            <div class="stat glass-soft">
               <strong>18</strong>
               <span>Editorial features</span>
             </div>
-            <div class="stat">
+            <div class="stat glass-soft">
               <strong>7</strong>
               <span>Years behind the lens</span>
             </div>
           </div>
-        </div>
+        </article>
 
-        <aside class="quote" data-reveal>
-          <p>“The best images feel honest before they feel polished.”</p>
-          <footer>Signature note or client quote</footer>
+        <aside class="panel glass quote" data-reveal>
+          <p>“The interface should disappear. The image should stay with you.”</p>
+          <footer>Dillu Captures</footer>
         </aside>
       </div>
     </section>
@@ -441,25 +834,25 @@
         <div class="section-head" data-reveal>
           <h2>Services</h2>
           <p>
-            Structure this section around the work you actually sell. Three clear offers usually perform better than a long list of overlapping packages.
+            Each service card uses soft translucency, rounded geometry, and restrained highlights to keep the page smooth and premium.
           </p>
         </div>
 
         <div class="services-grid">
-          <article class="panel service-card" data-reveal>
+          <article class="panel glass service-card" data-reveal>
             <small>01</small>
             <h3>Portrait sessions</h3>
             <p>Personal branding, editorial portraits, and artist profiles with natural direction and polished delivery.</p>
           </article>
-          <article class="panel service-card" data-reveal>
+          <article class="panel glass service-card" data-reveal>
             <small>02</small>
             <h3>Weddings & couples</h3>
             <p>Story-led coverage for intimate weddings, engagement sessions, and destination celebrations.</p>
           </article>
-          <article class="panel service-card" data-reveal>
+          <article class="panel glass service-card" data-reveal>
             <small>03</small>
             <h3>Commercial campaigns</h3>
-            <p>Lookbooks, hospitality imagery, and campaign photography for brands that need atmosphere and clarity.</p>
+            <p>Campaign, hospitality, and lookbook photography with mood, clarity, and elevated visual identity.</p>
           </article>
         </div>
       </div>
@@ -467,30 +860,30 @@
 
     <section id="contact">
       <div class="container contact-grid">
-        <div class="panel" data-reveal>
+        <div class="panel glass" data-reveal>
           <h3>Contact</h3>
           <p>
-            Add your real email, phone number, Instagram, and booking details here. A simple contact path converts better than a long questionnaire.
+            Keep the path simple so visitors move from inspiration to enquiry without friction.
           </p>
-          <ul class="contact-list" role="list">
-            <li><a href="mailto:dillucapture@gmail.com"><span>Email</span><strong>hello@dillucaptures.com</strong></a></li>
-            <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><span>Instagram</span><strong>@Dillu_Captures</strong></a></li>
-            <li><a href="https://wa.me/919700034138" target="_blank" rel="noopener noreferrer"><span>WhatsApp</span><strong>Start a conversation</strong></a></li>
+          <ul class="contact-listst">
+            ><a class="glass-soft" href="mailto:dillucapture@gmail.com"><span>Email</span><strong>dillucapture@gmail.com</strong></a></l/li>
+            ><a class="glass-soft" href="https://instagram.com" target="_blank" rel="noopener noreferrer"><span>Instagram</span><strong>@Dillu_Captures</strong></a></l/li>
+            ><a class="glass-soft" href="https://wa.me/919700034138" target="_blank" rel="noopener noreferrer"><span>WhatsApp</span><strong>Start a conversation</strong></a></li>
           </ul>
         </div>
 
-        <div class="panel" data-reveal>
-          <h3>Enquiry form</h3>
+        <div class="panel glass" data-reveal>
+          quiry</h3>
           <form class="contact-form">
-            <label>
+            abel>
               Name
               <input type="text" name="name" placeholder="Your name" />
             </label>
-            <label>
+            abel>
               Email
               <input type="email" name="email" placeholder="you@example.com" />
             </label>
-            <label>
+            abel>
               Project details
               <textarea name="message" placeholder="Tell me about your shoot, date, and location."></textarea>
             </label>
@@ -503,8 +896,10 @@
 
   <footer class="site-footer">
     <div class="container">
-      <p>© 2018 Dillu Captures Photography.</p>
-      <p></p>
+      <div class="site-footer-inner glass-soft">
+        <p>© 2026 Dillu Captures Photography</p>
+        <p>Liquid Glass inspired portfolio experience</p>
+      </div>
     </div>
   </footer>
 
@@ -512,42 +907,44 @@
     (function () {
       const root = document.documentElement;
       const toggle = document.querySelector('[data-theme-toggle]');
-      let theme = root.getAttribute('data-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      const thumb = document.querySelector('.theme-toggle-thumb');
 
-      function icon(mode) {
-        return mode === 'dark'
-          ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>'
-          : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="4.5"></circle><path d="M12 2v2.2M12 19.8V22M4.93 4.93l1.56 1.56M17.51 17.51l1.56 1.56M2 12h2.2M19.8 12H22M4.93 19.07l1.56-1.56M17.51 6.49l1.56-1.56"></path></svg>';
+      function setIcon(theme) {
+        thumb.innerHTML = theme === 'dark'
+          ? '<svg class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"></path></svg>'
+          : '<svg class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">ircle cx="12" cy="12" r="4.2"></circle><path d="M12 2v2.2M12 19.8V22M4.93 4.93l1.56 1.56M17.51 17.51l1.56 1.56M2 12h2.2M19.8 12H22M4.93 19.07l1.56-1.56M17.51 6.49l1.56-1.56"></path></svg>';
+        toggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
       }
 
-      function apply(mode) {
-        theme = mode;
-        root.setAttribute('data-theme', mode);
-        if (toggle) {
-          toggle.innerHTML = icon(mode);
-          toggle.setAttribute('aria-label', mode === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
-        }
+      function applyTheme(theme) {
+        root.setAttribute('data-theme', theme);
+        setIcon(theme);
       }
 
-      apply(theme);
-      toggle?.addEventListener('click', () => apply(theme === 'dark' ? 'light' : 'dark'));
+      applyTheme(root.getAttribute('data-theme') || 'light');
+
+      toggle?.addEventListener('click', function () {
+        const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        applyTheme(next);
+      });
 
       if ('IntersectionObserver' in window) {
         const observer = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) entry.target.classList.add('revealed');
           });
-        }, { threshold: 0.18 });
+        }, { threshold: 0.14 });
+
         document.querySelectorAll('[data-reveal]').forEach((el) => observer.observe(el));
       } else {
         document.querySelectorAll('[data-reveal]').forEach((el) => el.classList.add('revealed'));
       }
 
-      document.querySelector('.contact-form')?.addEventListener('submit', function (event) {
-        event.preventDefault();
-        const button = this.querySelector('button[type="submit"]');
-        button.textContent = 'Enquiry drafted';
-        button.disabled = true;
+      document.querySelector('.contact-form')?.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const btn = this.querySelector('button[type="submit"]');
+        btn.textContent = 'Enquiry drafted';
+        btn.disabled = true;
       });
     })();
   </script>
