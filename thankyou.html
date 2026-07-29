@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Thank You | Dillu Captures</title>
+<title>Enquiry Received | Dillu Captures</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
@@ -18,126 +18,120 @@ box-sizing:border-box;
 
 body{
 font-family:'Inter',sans-serif;
-min-height:100vh;
+height:100vh;
+overflow:hidden;
 display:flex;
 justify-content:center;
 align-items:center;
-padding:20px;
-overflow:hidden;
-background:linear-gradient(
-135deg,
-#0f172a,
-#1e293b,
-#0f172a
-);
+background:
+radial-gradient(circle at top left,#4f7cff22,transparent 30%),
+radial-gradient(circle at bottom right,#8b5cf622,transparent 30%),
+linear-gradient(135deg,#070b14,#0f172a,#111827);
 }
 
-.background-glow{
+.bg-orb{
 position:absolute;
-width:500px;
-height:500px;
 border-radius:50%;
-background:rgba(79,124,255,.15);
-filter:blur(120px);
-animation:float 8s ease-in-out infinite;
+filter:blur(100px);
+opacity:.5;
+animation:float 12s ease-in-out infinite;
 }
 
-.background-glow:nth-child(2){
-width:400px;
-height:400px;
-right:-100px;
+.orb1{
+width:450px;
+height:450px;
+background:#4f7cff;
+top:-120px;
+left:-120px;
+}
+
+.orb2{
+width:350px;
+height:350px;
+background:#8b5cf6;
 bottom:-100px;
-animation-delay:2s;
+right:-100px;
+animation-delay:3s;
 }
 
 @keyframes float{
-0%,100%{
-transform:translateY(0px);
-}
-50%{
-transform:translateY(-40px);
-}
+0%,100%{transform:translateY(0px);}
+50%{transform:translateY(-40px);}
 }
 
-.card{
+.glass-card{
 position:relative;
-z-index:2;
-width:100%;
-max-width:700px;
-padding:60px 40px;
-text-align:center;
+z-index:5;
 
-background:rgba(255,255,255,0.08);
-backdrop-filter:blur(25px);
+width:min(90%,760px);
 
-border:1px solid rgba(255,255,255,0.12);
+padding:60px 50px;
 
-border-radius:32px;
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(35px);
+-webkit-backdrop-filter:blur(35px);
+
+border:1px solid rgba(255,255,255,.12);
+
+border-radius:36px;
 
 box-shadow:
-0 25px 60px rgba(0,0,0,.35);
+0 25px 80px rgba(0,0,0,.45),
+inset 0 1px 1px rgba(255,255,255,.15);
 
-animation:fadeUp 1s ease;
+text-align:center;
+
+animation:appear 1s ease;
 }
 
-@keyframes fadeUp{
+@keyframes appear{
 from{
 opacity:0;
-transform:translateY(40px);
+transform:translateY(40px) scale(.96);
 }
 to{
 opacity:1;
-transform:translateY(0);
+transform:translateY(0) scale(1);
 }
 }
 
 .logo{
 font-family:'Playfair Display',serif;
-font-size:3rem;
+font-size:3.5rem;
 font-weight:700;
 color:white;
-margin-bottom:20px;
-letter-spacing:1px;
-animation:pulse 3s infinite;
-}
-
-@keyframes pulse{
-0%,100%{
-transform:scale(1);
-}
-50%{
-transform:scale(1.04);
-}
-}
-
-.camera-icon{
-font-size:4rem;
 margin-bottom:15px;
-animation:bounce 2.5s infinite;
+letter-spacing:.5px;
+}
+
+.camera{
+font-size:4.5rem;
+margin-bottom:10px;
+animation:bounce 3s infinite;
 }
 
 @keyframes bounce{
-0%,100%{
-transform:translateY(0);
-}
-50%{
-transform:translateY(-12px);
-}
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-12px);}
 }
 
-.success{
-font-size:5rem;
-margin-bottom:15px;
-animation:pop 1s ease;
-}
+.check{
+width:90px;
+height:90px;
+margin:20px auto;
 
-@keyframes pop{
-0%{
-transform:scale(0);
-}
-100%{
-transform:scale(1);
-}
+border-radius:50%;
+
+background:rgba(34,197,94,.15);
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-size:2.8rem;
+
+border:1px solid rgba(34,197,94,.35);
 }
 
 h1{
@@ -147,11 +141,12 @@ color:white;
 margin-bottom:15px;
 }
 
-p{
-font-size:1.05rem;
-color:#cbd5e1;
+.subtitle{
+font-size:1.15rem;
+color:#d1d5db;
 line-height:1.8;
-margin-bottom:12px;
+max-width:600px;
+margin:auto;
 }
 
 .highlight{
@@ -159,32 +154,59 @@ color:#6ea8ff;
 font-weight:600;
 }
 
-.buttons{
-display:flex;
-justify-content:center;
-gap:15px;
-margin-top:35px;
-flex-wrap:wrap;
+.progress-wrap{
+margin-top:40px;
 }
 
-.btn{
-text-decoration:none;
-padding:14px 28px;
+.progress-label{
+color:#cbd5e1;
+font-size:.95rem;
+margin-bottom:12px;
+}
+
+.progress{
+height:8px;
+background:rgba(255,255,255,.08);
 border-radius:999px;
+overflow:hidden;
+}
+
+.progress-bar{
+height:100%;
+width:0;
+border-radius:999px;
+background:linear-gradient(90deg,#4f7cff,#8b5cf6);
+animation:load 8s linear forwards;
+}
+
+@keyframes load{
+from{width:0;}
+to{width:100%;}
+}
+
+.redirect{
+margin-top:25px;
+color:#94a3b8;
+font-size:.95rem;
+}
+
+.social{
+margin-top:35px;
+}
+
+.instagram-btn{
+display:inline-flex;
+align-items:center;
+gap:10px;
+
+padding:14px 28px;
+
+border-radius:999px;
+
+text-decoration:none;
 font-weight:600;
-transition:.3s;
-}
-
-.home-btn{
-background:#4f7cff;
 color:white;
-}
 
-.home-btn:hover{
-transform:translateY(-3px);
-}
-
-.insta-btn{
 background:linear-gradient(
 45deg,
 #f58529,
@@ -192,35 +214,42 @@ background:linear-gradient(
 #8134af,
 #515bd4
 );
-color:white;
+
+transition:.3s;
 }
 
-.insta-btn:hover{
+.instagram-btn:hover{
 transform:translateY(-3px);
 }
 
-.footer{
-margin-top:35px;
+.badge{
+margin-top:30px;
+display:inline-block;
+
+padding:10px 18px;
+
+border-radius:999px;
+
+background:rgba(255,255,255,.06);
+
+border:1px solid rgba(255,255,255,.08);
+
+color:#cbd5e1;
 font-size:.9rem;
-color:#94a3b8;
 }
 
 @media(max-width:768px){
 
 .logo{
-font-size:2.2rem;
+font-size:2.5rem;
 }
 
 h1{
-font-size:2.2rem;
+font-size:2.1rem;
 }
 
-.card{
+.glass-card{
 padding:40px 25px;
-}
-
-.success{
-font-size:4rem;
 }
 
 }
@@ -230,55 +259,65 @@ font-size:4rem;
 
 <body>
 
-<div class="background-glow"></div>
-<div class="background-glow"></div>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
 
-<div class="card">
+<div class="glass-card">
 
-<div class="camera-icon">📸</div>
+<div class="camera">📸</div>
 
 <div class="logo">
 Dillu Captures
 </div>
 
-<div class="success">
-✅
-</div>
+<div class="check">✓</div>
 
-<h1>Thank You!</h1>
+<h1>Enquiry Received</h1>
 
-<p>
-Your enquiry has been submitted successfully.
-</p>
-
-<p>
-Thank you for choosing
+<p class="subtitle">
+Thank you for reaching out to
 <span class="highlight">Dillu Captures</span>.
+Your enquiry has been successfully delivered.
+Our team will review your requirements and contact you shortly.
 </p>
 
-<p>
-We have received your message and will contact you shortly regarding your photography requirements.
-</p>
+<div class="progress-wrap">
 
-<div class="buttons">
+<div class="progress-label">
+Preparing your premium experience...
+</div>
 
-<a href="index.html" class="btn home-btn">
-🏠 Return Home
+<div class="progress">
+<div class="progress-bar"></div>
+</div>
+
+</div>
+
+<div class="redirect">
+Redirecting to Instagram in 8 seconds...
+</div>
+
+<div class="social">
+<a
+class="instagram-btn"
+href="https://www.instagram.com/dillu_captures/"
+target="_blank">
+📷 Visit Instagram
 </a>
-
-<a href="https://instagram.com/dillu_captures"
-target="_blank"
-class="btn insta-btn">
-📷 Follow on Instagram
-</a>
-
 </div>
 
-<div class="footer">
-© 2026 Dillu Captures Photography
+<div class="badge">
+Premium Photography • Weddings • Portraits • Commercial Campaigns
 </div>
 
 </div>
+
+<script>
+setTimeout(function(){
+window.location.href =
+"https://www.instagram.com/dillu_captures/";
+},8000);
+</script>
 
 </body>
 </html>
