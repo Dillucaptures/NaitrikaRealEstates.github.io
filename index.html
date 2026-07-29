@@ -1,972 +1,555 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dillu Captures</title>
-  <meta name="description" content="Dillu_Captures" />
- <link rel="preconnect" href="https://api.fontshare.com" />
-<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=boska@400,500,700&display=swap" rel="stylesheet" />
-  <style>
-    :root,
-    [data-theme="light"] {
-      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
-      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
-      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
-      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
-      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
-      --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
-      --text-3xl: clamp(2.5rem, 1rem + 4vw, 5rem);
-      --text-hero: clamp(3rem, 0.5rem + 7vw, 7rem);
-
-      --space-1: .25rem;
-      --space-2: .5rem;
-      --space-3: .75rem;
-      --space-4: 1rem;
-      --space-5: 1.25rem;
-      --space-6: 1.5rem;
-      --space-8: 2rem;
-      --space-10: 2.5rem;
-      --space-12: 3rem;
-      --space-16: 4rem;
-      --space-20: 5rem;
-      --space-24: 6rem;
-      --space-32: 8rem;
-
-      --color-bg: #eef3f8;
-      --color-bg-2: #f8fbff;
-      --color-surface: rgba(255,255,255,0.34);
-      --color-surface-strong: rgba(255,255,255,0.56);
-      --color-surface-soft: rgba(255,255,255,0.22);
-      --color-border: rgba(255,255,255,0.52);
-      --color-border-soft: rgba(255,255,255,0.26);
-      --color-text: #16202a;
-      --color-text-muted: #596776;
-      --color-text-faint: #8793a0;
-      --color-primary: #4a7cff;
-      --color-primary-2: #82b6ff;
-      --color-primary-soft: rgba(74,124,255,0.16);
-      --color-shadow: rgba(24, 38, 56, 0.14);
-      --color-shadow-strong: rgba(24, 38, 56, 0.2);
-      --font-display: 'Boska', Georgia, serif;
-      --font-body: 'Satoshi', Inter, sans-serif;
-      --radius-sm: .7rem;
-      --radius-md: 1rem;
-      --radius-lg: 1.5rem;
-      --radius-xl: 2rem;
-      --radius-pill: 999px;
-      --content: 1180px;
-      --blur-lg: 28px;
-      --blur-md: 18px;
-      --transition: 260ms cubic-bezier(.2,.8,.2,1);
-    }
-
-    [data-theme="dark"] {
-      --color-bg: #0b1118;
-      --color-bg-2: #131c26;
-      --color-surface: rgba(20,30,42,0.42);
-      --color-surface-strong: rgba(28,39,52,0.66);
-      --color-surface-soft: rgba(255,255,255,0.08);
-      --color-border: rgba(255,255,255,0.16);
-      --color-border-soft: rgba(255,255,255,0.1);
-      --color-text: #edf4ff;
-      --color-text-muted: #b6c2cf;
-      --color-text-faint: #8392a2;
-      --color-primary: #86b5ff;
-      --color-primary-2: #b9d6ff;
-      --color-primary-soft: rgba(134,181,255,0.14);
-      --color-shadow: rgba(0,0,0,0.28);
-      --color-shadow-strong: rgba(0,0,0,0.42);
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      min-height: 100vh;
-      font-family: var(--font-body);
-      font-size: var(--text-base);
-      color: var(--color-text);
-      background:
-        radial-gradient(circle at 15% 20%, rgba(130,182,255,0.30), transparent 28%),
-        radial-gradient(circle at 85% 12%, rgba(255,255,255,0.7), transparent 22%),
-        radial-gradient(circle at 80% 78%, rgba(74,124,255,0.18), transparent 24%),
-        linear-gradient(180deg, var(--color-bg-2), var(--color-bg));
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.18), transparent 30%),
-        radial-gradient(circle at top, rgba(255,255,255,0.22), transparent 35%);
-      mix-blend-mode: screen;
-      opacity: .7;
-    }
-
-    img, svg { display: block; max-width: 100%; }
-    a { text-decoration: none; color: inherit; }
-    button, input, textarea { font: inherit; color: inherit; }
-    button { border: 0; background: none; cursor: pointer; }
-
-    .container {
-      width: min(calc(100% - 2rem), var(--content));
-      margin-inline: auto;
-    }
-
-    .glass {
-      background: linear-gradient(180deg, rgba(255,255,255,0.34), rgba(255,255,255,0.18));
-      border: 1px solid var(--color-border);
-      box-shadow:
-        0 10px 30px var(--color-shadow),
-        inset 0 1px 0 rgba(255,255,255,0.65),
-        inset 0 -1px 0 rgba(255,255,255,0.08);
-      backdrop-filter: blur(var(--blur-lg)) saturate(160%);
-      -webkit-backdrop-filter: blur(var(--blur-lg)) saturate(160%);
-    }
-
-    .glass-soft {
-      background: linear-gradient(180deg, rgba(255,255,255,0.22), rgba(255,255,255,0.12));
-      border: 1px solid var(--color-border-soft);
-      box-shadow:
-        0 8px 24px var(--color-shadow),
-        inset 0 1px 0 rgba(255,255,255,0.45);
-      backdrop-filter: blur(var(--blur-md)) saturate(150%);
-      -webkit-backdrop-filter: blur(var(--blur-md)) saturate(150%);
-    }
-
-    .skip-link {
-      position: absolute;
-      left: 1rem;
-      top: -3rem;
-      background: var(--color-primary);
-      color: white;
-      padding: .75rem 1rem;
-      border-radius: var(--radius-pill);
-      z-index: 999;
-    }
-
-    .skip-link:focus { top: 1rem; }
-
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      padding-top: .9rem;
-    }
-
-    .nav-shell {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: var(--space-4);
-      padding: .9rem 1rem;
-      border-radius: calc(var(--radius-xl) + .4rem);
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: .9rem;
-      min-width: 0;
-    }
-
-    .brand-mark {
-      width: 3rem;
-      height: 3rem;
-      border-radius: 1rem;
-      display: grid;
-      place-items: center;
-      flex-shrink: 0;
-    }
-
-    .brand-mark svg { width: 1.8rem; height: 1.8rem; }
-
-    .brand-copy strong {
-      display: block;
-      font-family: var(--font-display);
-      font-size: var(--text-lg);
-      line-height: 1;
-      font-weight: 500;
-    }
-
-    .brand-copy span {
-      display: block;
-      margin-top: .2rem;
-      color: var(--color-text-muted);
-      font-size: var(--text-xs);
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: .55rem;
-      padding: .35rem;
-      border-radius: var(--radius-pill);
-    }
-
-    .nav-links a {
-      padding: .8rem 1rem;
-      border-radius: var(--radius-pill);
-      color: var(--color-text-muted);
-      transition: background var(--transition), color var(--transition), transform var(--transition);
-    }
-
-    .nav-links a:hover {
-      background: rgba(255,255,255,0.28);
-      color: var(--color-text);
-      transform: translateY(-1px);
-    }
-
-    .theme-toggle {
-      position: relative;
-      width: 5.2rem;
-      height: 3rem;
-      border-radius: 999px;
-      padding: .25rem;
-      isolation: isolate;
-      overflow: hidden;
-    }
-
-    .theme-toggle::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.68), rgba(255,255,255,.14)),
-        radial-gradient(circle at 30% 25%, rgba(255,255,255,.72), transparent 36%);
-      opacity: .9;
-      z-index: 0;
-    }
-
-    .theme-toggle-track {
-      position: absolute;
-      inset: .2rem;
-      border-radius: 999px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.42), rgba(255,255,255,0.08)),
-        rgba(255,255,255,0.12);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.6),
-        inset 0 -1px 0 rgba(255,255,255,.12);
-    }
-
-    .theme-toggle-thumb {
-      position: absolute;
-      top: .26rem;
-      left: .28rem;
-      width: 2.35rem;
-      height: 2.35rem;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      background:
-        radial-gradient(circle at 30% 28%, rgba(255,255,255,.95), rgba(255,255,255,.65) 38%, rgba(255,255,255,.22) 72%),
-        linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.38));
-      border: 1px solid rgba(255,255,255,.72);
-      box-shadow:
-        0 8px 20px rgba(36,53,80,.18),
-        inset 0 1px 0 rgba(255,255,255,.95),
-        inset 0 -1px 0 rgba(255,255,255,.22);
-      backdrop-filter: blur(16px) saturate(180%);
-      transition: transform var(--transition), background var(--transition);
-      z-index: 2;
-    }
-
-    [data-theme="dark"] .theme-toggle-thumb {
-      transform: translateX(2.05rem);
-    }
-
-    .theme-icon {
-      width: 1rem;
-      height: 1rem;
-      opacity: .85;
-    }
-
-    main { padding-bottom: var(--space-24); }
-
-    .hero {
-      padding: clamp(4rem, 10vw, 8rem) 0 var(--space-20);
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.02fr .98fr;
-      gap: clamp(2rem, 5vw, 5rem);
-      align-items: center;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: .5rem;
-      padding: .55rem .9rem;
-      border-radius: 999px;
-      color: var(--color-primary);
-      background: var(--color-primary-soft);
-      border: 1px solid rgba(255,255,255,.35);
-      font-size: var(--text-xs);
-      letter-spacing: .14em;
-      text-transform: uppercase;
-    }
-
-    h1, h2, h3 {
-      font-family: var(--font-display);
-      font-weight: 500;
-      line-height: .98;
-    }
-
-    h1 {
-      margin-top: var(--space-5);
-      font-size: var(--text-hero);
-      max-width: 8ch;
-    }
-
-    .hero-copy p {
-      margin-top: var(--space-6);
-      max-width: 54ch;
-      color: var(--color-text-muted);
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-top: var(--space-8);
-    }
-
-    .btn {
-      min-height: 3.2rem;
-      padding: .92rem 1.3rem;
-      border-radius: 999px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
-    }
-
-    .btn:hover { transform: translateY(-1px); }
-
-    .btn-primary {
-      color: white;
-      background:
-        linear-gradient(180deg, rgba(140,185,255,.95), rgba(74,124,255,.94));
-      box-shadow:
-        0 10px 24px rgba(74,124,255,.28),
-        inset 0 1px 0 rgba(255,255,255,.38);
-    }
-
-    .btn-secondary {
-      color: var(--color-text);
-    }
-
-    .hero-visual {
-      position: relative;
-      min-height: 42rem;
-      border-radius: 2.3rem;
-      overflow: hidden;
-      box-shadow: 0 30px 80px var(--color-shadow-strong);
-    }
-
-    .hero-visual > img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .hero-float {
-      position: absolute;
-      backdrop-filter: blur(22px) saturate(160%);
-      -webkit-backdrop-filter: blur(22px) saturate(160%);
-      border: 1px solid rgba(255,255,255,.48);
-      background: linear-gradient(180deg, rgba(255,255,255,.3), rgba(255,255,255,.12));
-      box-shadow:
-        0 14px 36px rgba(17,31,46,.16),
-        inset 0 1px 0 rgba(255,255,255,.72);
-    }
-
-    .hero-meta {
-      left: 1.2rem;
-      bottom: 1.2rem;
-      right: 1.2rem;
-      position: absolute;
-      padding: 1rem 1.1rem;
-      border-radius: 1.4rem;
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      align-items: end;
-      color: white;
-      background: linear-gradient(180deg, rgba(22,30,40,.22), rgba(22,30,40,.4));
-      border: 1px solid rgba(255,255,255,.24);
-    }
-
-    .hero-bubble {
-      position: absolute;
-      top: 1.2rem;
-      right: 1.2rem;
-      width: 11rem;
-      padding: 1rem;
-      border-radius: 1.4rem;
-      color: var(--color-text);
-    }
-
-    .hero-bubble strong {
-      display: block;
-      font-size: var(--text-lg);
-      margin-bottom: .25rem;
-    }
-
-    section {
-      padding: clamp(3rem, 8vw, 6rem) 0;
-    }
-
-    .section-head {
-      display: grid;
-      grid-template-columns: .75fr 1fr;
-      gap: 2rem;
-      align-items: end;
-      margin-bottom: 2rem;
-    }
-
-    h2 { font-size: var(--text-3xl); }
-    .section-head p { color: var(--color-text-muted); }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 1rem;
-    }
-
-    .gallery figure {
-      position: relative;
-      overflow: hidden;
-      min-height: 18rem;
-      border-radius: 1.7rem;
-    }
-
-    .gallery img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .8s cubic-bezier(.2,.8,.2,1);
-    }
-
-    .gallery figure:hover img { transform: scale(1.04); }
-
-    .gallery figcaption {
-      position: absolute;
-      left: 1rem;
-      right: 1rem;
-      bottom: 1rem;
-      padding: .9rem 1rem;
-      border-radius: 1.1rem;
-      color: white;
-      background: linear-gradient(180deg, rgba(18,25,35,.18), rgba(18,25,35,.45));
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border: 1px solid rgba(255,255,255,.18);
-    }
-
-    .span-5 { grid-column: span 5; }
-    .span-7 { grid-column: span 7; }
-    .span-4 { grid-column: span 4; }
-    .span-8 { grid-column: span 8; }
-
-    .about-grid,
-    .services-grid,
-    .contact-grid {
-      display: grid;
-      gap: 1.2rem;
-    }
-
-    .about-grid,
-    .contact-grid {
-      grid-template-columns: repeat(2, minmax(0,1fr));
-    }
-
-    .services-grid {
-      grid-template-columns: repeat(3, minmax(0,1fr));
-    }
-
-    .panel {
-      padding: clamp(1.35rem, 3vw, 2rem);
-      border-radius: 1.8rem;
-      position: relative;
-    }
-
-    .panel::before {
-      content: "";
-      position: absolute;
-      inset: 1px;
-      border-radius: inherit;
-      background: linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,.06));
-      pointer-events: none;
-      opacity: .65;
-    }
-
-    .panel > * { position: relative; z-index: 1; }
-
-    .panel h3 {
-      font-size: var(--text-xl);
-      margin-bottom: 1rem;
-    }
-
-    .panel p {
-      color: var(--color-text-muted);
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap: 1rem;
-      margin-top: 1.4rem;
-    }
-
-    .stat {
-      padding: 1rem;
-      border-radius: 1.2rem;
-    }
-
-    .stat strong {
-      display: block;
-      font-family: var(--font-display);
-      font-size: var(--text-xl);
-      line-height: 1;
-      margin-bottom: .35rem;
-    }
-
-    .stat span {
-      font-size: var(--text-sm);
-      color: var(--color-text-muted);
-    }
-
-    .service-card small {
-      display: inline-flex;
-      margin-bottom: .9rem;
-      padding: .4rem .7rem;
-      border-radius: 999px;
-      background: var(--color-primary-soft);
-      color: var(--color-primary);
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      font-size: var(--text-xs);
-    }
-
-    .quote p {
-      font-size: var(--text-2xl);
-      max-width: 16ch;
-    }
-
-    .quote footer {
-      margin-top: 1rem;
-      color: var(--color-text-muted);
-    }
-
-    .contact-list {
-      list-style: none;
-      display: grid;
-      gap: .9rem;
-      margin-top: 1.2rem;
-    }
-
-    .contact-list a {
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      align-items: center;
-      padding: 1rem 1.1rem;
-      border-radius: 1.2rem;
-    }
-
-    .contact-form {
-      display: grid;
-      gap: 1rem;
-    }
-
-    label {
-      display: grid;
-      gap: .45rem;
-      font-size: var(--text-sm);
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 1rem 1rem;
-      border-radius: 1rem;
-      border: 1px solid rgba(255,255,255,.26);
-      background: rgba(255,255,255,.18);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      outline: none;
-    }
-
-    input:focus, textarea:focus {
-      border-color: rgba(130,182,255,.75);
-      box-shadow: 0 0 0 4px rgba(130,182,255,.18);
-    }
-
-    textarea {
-      min-height: 9rem;
-      resize: vertical;
-    }
-
-    .site-footer {
-      padding: 2rem 0 4rem;
-      color: var(--color-text-muted);
-    }
-
-    .site-footer-inner {
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
-      padding: 1rem 1.2rem;
-      border-radius: 1.4rem;
-    }
-
-    [data-reveal] {
-      opacity: 0;
-      transform: translateY(28px) scale(.985);
-      transition:
-        opacity .8s cubic-bezier(.2,.8,.2,1),
-        transform .8s cubic-bezier(.2,.8,.2,1);
-    }
-
-    [data-reveal].revealed {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-
-    @media (max-width: 980px) {
-      .hero-grid,
-      .section-head,
-      .about-grid,
-      .contact-grid,
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .nav-links { display: none; }
-      .hero-visual { min-height: 30rem; }
-      .stats { grid-template-columns: 1fr; }
-      .gallery { grid-template-columns: 1fr; }
-      .span-4, .span-5, .span-7, .span-8 { grid-column: auto; }
-    }
-
-    @media (max-width: 640px) {
-      .nav-shell {
-        align-items: flex-start;
-        flex-wrap: wrap;
-      }
-
-      .hero-actions,
-      .site-footer-inner {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .hero-meta {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .theme-toggle {
-        width: 4.8rem;
-        height: 2.8rem;
-      }
-
-      [data-theme="dark"] .theme-toggle-thumb {
-        transform: translateX(1.85rem);
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after {
-        animation-duration: .01ms !important;
-        transition-duration: .01ms !important;
-      }
-      [data-reveal] {
-        opacity: 1;
-        transform: none;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dillu Captures | Photography Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --bg:#f4f7fb;
+    --card:rgba(255,255,255,.25);
+    --border:rgba(255,255,255,.4);
+    --text:#111827;
+    --muted:#6b7280;
+    --primary:#4f7cff;
+    --shadow:0 10px 30px rgba(0,0,0,.12);
+}
+
+[data-theme="dark"]{
+    --bg:#0d1117;
+    --card:rgba(255,255,255,.08);
+    --border:rgba(255,255,255,.1);
+    --text:#f8fafc;
+    --muted:#94a3b8;
+    --primary:#6ea8ff;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:linear-gradient(135deg,#eef5ff,#f8fbff);
+    color:var(--text);
+    overflow-x:hidden;
+    transition:.3s;
+}
+
+[data-theme="dark"] body{
+    background:#0d1117;
+}
+
+.container{
+    width:min(1200px,92%);
+    margin:auto;
+}
+
+.glass{
+    background:var(--card);
+    backdrop-filter:blur(18px);
+    border:1px solid var(--border);
+    box-shadow:var(--shadow);
+}
+
+header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    padding:15px 0;
+}
+
+.navbar{
+    padding:15px 25px;
+    border-radius:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-family:'Playfair Display',serif;
+    font-size:1.7rem;
+    font-weight:700;
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:var(--text);
+    font-weight:500;
+}
+
+.theme-btn{
+    border:none;
+    padding:10px 16px;
+    border-radius:999px;
+    background:var(--primary);
+    color:white;
+    cursor:pointer;
+}
+
+.hero{
+    min-height:90vh;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+}
+
+.hero h1{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(3rem,6vw,5.5rem);
+    line-height:1;
+    margin-bottom:20px;
+}
+
+.hero p{
+    color:var(--muted);
+    margin-bottom:30px;
+    font-size:1.1rem;
+}
+
+.btn{
+    display:inline-block;
+    padding:14px 28px;
+    border-radius:999px;
+    text-decoration:none;
+    background:var(--primary);
+    color:white;
+    font-weight:600;
+}
+
+.hero-image{
+    border-radius:30px;
+    overflow:hidden;
+}
+
+.hero-image img{
+    width:100%;
+    display:block;
+}
+
+section{
+    padding:100px 0;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.section-title h2{
+    font-family:'Playfair Display',serif;
+    font-size:3rem;
+}
+
+.section-title p{
+    color:var(--muted);
+    margin-top:10px;
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:20px;
+}
+
+.gallery-item{
+    border-radius:25px;
+    overflow:hidden;
+}
+
+.gallery-item img{
+    width:100%;
+    height:350px;
+    object-fit:cover;
+    transition:.5s;
+}
+
+.gallery-item:hover img{
+    transform:scale(1.05);
+}
+
+.about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+}
+
+.card{
+    padding:30px;
+    border-radius:25px;
+}
+
+.card h3{
+    margin-bottom:15px;
+}
+
+.card p{
+    color:var(--muted);
+    line-height:1.7;
+}
+
+.services{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+.service{
+    padding:30px;
+    border-radius:25px;
+}
+
+.service h3{
+    margin-bottom:10px;
+}
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.contact-info,
+.contact-form{
+    padding:30px;
+    border-radius:25px;
+}
+
+.contact-info ul{
+    list-style:none;
+    margin-top:20px;
+}
+
+.contact-info li{
+    margin-bottom:15px;
+}
+
+.contact-info a{
+    color:var(--text);
+    text-decoration:none;
+}
+
+form{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+input,
+textarea{
+    padding:15px;
+    border-radius:15px;
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.1);
+    color:var(--text);
+}
+
+textarea{
+    min-height:140px;
+}
+
+button[type="submit"]{
+    border:none;
+    padding:15px;
+    border-radius:15px;
+    background:var(--primary);
+    color:white;
+    cursor:pointer;
+    font-weight:600;
+}
+
+footer{
+    padding:40px 0;
+    text-align:center;
+    color:var(--muted);
+}
+
+@media(max-width:900px){
+
+.hero,
+.about-grid,
+.contact-grid{
+    grid-template-columns:1fr;
+}
+
+.nav-links{
+    display:none;
+}
+}
+</style>
 </head>
+
 <body>
-  <a href="#main" class="skip-link">Skip to content</a>
 
-  <header class="site-header">
-    <div class="container">
-      <div class="nav-shell glass">
-        <a href="#home" class="brand" aria-label="Dillu Captures home">
-          <span class="brand-mark glass-soft" aria-hidden="true">
-            <svg viewBox="0 0 48 48" fill="none">
-              ircle cx="24" cy="24" r="17" stroke="currentColor" stroke-width="1.5"></circle>
-              <path d="M17 28.5c4.4-10.5 10.1-16 17-16-3.7 3.4-5.5 7.8-5.5 13.1 0 4.2 1.3 7.5 3.8 9.9-5.9-.2-11-2.5-15.3-7z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>
-          </span>
-          <span class="brand-copy">
-            <strong>Dillu Captures</strong>
-            <span>Liquid Glass Portfolio</span>
-          </span>
-        </a>
+<header>
+<div class="container">
+<div class="navbar glass">
 
-        <nav class="nav-links glass-soft" aria-label="Primary navigation">
-          <a href="#work">Work</a>
-          <a href="#about">About</a>
-          <a href="#services">Services</a>
-          <a href="#contact">Contact</a>
-        </nav>
+<div class="logo">Dillu Captures</div>
 
-        <button class="theme-toggle glass-soft" type="button" data-theme-toggle aria-label="Switch to dark mode">
-          <span class="theme-toggle-track"></span>
-          <span class="theme-toggle-thumb">
-            <svg class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-              ircle cx="12" cy="12" r="4.2"></circle>
-              <path d="M12 2v2.2M12 19.8V22M4.93 4.93l1.56 1.56M17.51 17.51l1.56 1.56M2 12h2.2M19.8 12H22M4.93 19.07l1.56-1.56M17.51 6.49l1.56-1.56"></path>
-            </svg>
-          </span>
-        </button>
-      </div>
-    </div>
-  </header>
+<div class="nav-links">
+<a href="#work">Work</a>
+<a href="#about">About</a>
+<a href="#services">Services</a>
+<a href="#contact">Contact</a>
+</div>
 
-  <main id="main">
-    <section class="hero" id="home">
-      <div class="container hero-grid">
-        <div class="hero-copy" data-reveal>
-          <span class="eyebrow glass-soft">Available for commissions</span>
-          <h1>Photography through liquid light.</h1>
-          <p>
-            A transparent, Apple-inspired portfolio where interface chrome melts into the background and the images stay in focus.
-          </p>
-          <div class="hero-actions">
-            <a href="#work" class="btn btn-primary">View portfolio</a>
-            <a href="#contact" class="btn btn-secondary glass-soft">Book a session</a>
-          </div>
-        </div>
+<button class="theme-btn" id="themeToggle">Theme</button>
 
-        <div class="hero-visual" data-reveal>
-          <img src="https://picsum.photos/seed/liquid-portfolio-hero/1000/1300" alt="Editorial portrait in natural light" width="1000" height="1300" loading="eager" />
-          <div class="hero-bubble hero-float">
-            <strong>Afterlight Stories</strong>
-            <span>Portrait • Editorial • Travel</span>
-          </div>
-          <div class="hero-meta">
-            <div>
-              <strong>Selected frame</strong>
-              <div>Warm highlights, natural skin tones, cinematic composition</div>
-            </div>
-            <span>Hyderabad • 2026</span>
-          </div>
-        </div>
-      </div>
-    </section>
+</div>
+</div>
+</header>
 
-    <section id="work">
-      <div class="container">
-        <div class="section-head" data-reveal>
-          <h2>Selected work</h2>
-          <p>
-            The gallery uses floating captions and edge-to-edge image emphasis so the interface supports the work instead of covering it.
-          </p>
-        </div>
+<section class="hero container">
 
-        <div class="gallery">
-          <figure class="span-5 glass-soft" data-reveal>
-            <img src="https://picsum.photos/seed/glass-1/900/1200" alt="Portrait session in soft daylight" width="900" height="1200" loading="lazy" />
-            <figcaption>Portraits — natural direction and quiet mood</figcaption>
-          </figure>
-          <figure class="span-7 glass-soft" data-reveal>
-            <img src="https://picsum.photos/seed/glass-2/1400/900" alt="Couple photography in city light" width="1400" height="900" loading="lazy" />
-            <figcaption>Couples — cinematic city narratives</figcaption>
-          </figure>
-          <figure class="span-8 glass-soft" data-reveal>
-            <img src="https://picsum.photos/seed/glass-3/1400/920" alt="Travel documentary frame in a street market" width="1400" height="920" loading="lazy" />
-            <figcaption>Travel — layered documentary moments</figcaption>
-          </figure>
-          <figure class="span-4 glass-soft" data-reveal>
-            <img src="https://picsum.photos/seed/glass-4/800/920" alt="Studio portrait with side lighting" width="800" height="920" loading="lazy" />
-            <figcaption>Studio — controlled light and texture</figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
+<div>
+<h1>Photography Through Light & Emotion</h1>
 
-    <section id="about">
-      <div class="container about-grid">
-        <article class="panel glass" data-reveal>
-          <h3>About</h3>
-          <p>
-            I photograph people, places, and stories with a calm editorial approach. The goal is simple: images that feel honest, atmospheric, and lasting.
-          </p>
-          <div class="stats">
-            <div class="stat glass-soft">
-              <strong>120+</strong>
-              <span>Shoots delivered</span>
-            </div>
-            <div class="stat glass-soft">
-              <strong>18</strong>
-              <span>Editorial features</span>
-            </div>
-            <div class="stat glass-soft">
-              <strong>7</strong>
-              <span>Years behind the lens</span>
-            </div>
-          </div>
-        </article>
+<p>
+Capturing timeless portraits, weddings, travel stories, and commercial campaigns with a cinematic and editorial touch.
+</p>
 
-        <aside class="panel glass quote" data-reveal>
-          <p>“The interface should disappear. The image should stay with you.”</p>
-          <footer>Dillu Captures</footer>
-        </aside>
-      </div>
-    </section>
+<a href="#work" class="btn">View Portfolio</a>
+</div>
 
-    <section id="services">
-      <div class="container">
-        <div class="section-head" data-reveal>
-          <h2>Services</h2>
-          <p>
-            Each service card uses soft translucency, rounded geometry, and restrained highlights to keep the page smooth and premium.
-          </p>
-        </div>
+<div class="hero-image glass">
+<img src="https://picsum.photos/1000/1200?random=1" alt="Photography Portfolio">
+</div>
 
-        <div class="services-grid">
-          <article class="panel glass service-card" data-reveal>
-            <small>01</small>
-            <h3>Portrait sessions</h3>
-            <p>Personal branding, editorial portraits, and artist profiles with natural direction and polished delivery.</p>
-          </article>
-          <article class="panel glass service-card" data-reveal>
-            <small>02</small>
-            <h3>Weddings & couples</h3>
-            <p>Story-led coverage for intimate weddings, engagement sessions, and destination celebrations.</p>
-          </article>
-          <article class="panel glass service-card" data-reveal>
-            <small>03</small>
-            <h3>Commercial campaigns</h3>
-            <p>Campaign, hospitality, and lookbook photography with mood, clarity, and elevated visual identity.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-  <div class="container contact-grid">
-    <div class="panel glass" data-reveal>
-      <h3>Contact</h3>
-      <p>
-        Keep the path simple so visitors move from inspiration to enquiry without friction.
-      </p>
-
-      <ul class="contact-list">
-        <li>
-          <a class="glass-soft" href="mailto:dillucapture@gmail.com">
-            <span>Email</span>
-            <strong>dillucapture@gmail.com</strong>
-          </a>
-        </li>
-        <li>
-          <a class="glass-soft" href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-            <span>Instagram</span>
-            <strong>@Dillu_Captures</strong>
-          </a>
-        </li>
-        <li>
-          <a class="glass-soft" href="https://wa.me/919700034138" target="_blank" rel="noopener noreferrer">
-            <span>WhatsApp</span>
-            <strong>Start a conversation</strong>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
 </section>
 
-      <div class="panel glass" data-reveal>
-  <h3>Enquiry</h3>
-  <form class="contact-form">
-    <label>
-      Name
-      <input type="text" name="name" placeholder="Your name" />
-    </label>
+<section id="work">
 
-    <label>
-      Email
-      <input type="email" name="email" placeholder="you@example.com" />
-    </label>
+<div class="container">
 
-    <label>
-      Project details
-      <textarea name="message" placeholder="Tell me about your shoot, date, and location."></textarea>
-    </label>
-
-    <button class="btn btn-primary" type="submit">Send enquiry</button>
-  </form>
+<div class="section-title">
+<h2>Selected Work</h2>
+<p>A curated collection of recent photography projects.</p>
 </div>
-      </div>
-    </section>
-  </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <div class="site-footer-inner glass-soft">
-        <p>© 2026 Dillu Captures Photography</p>
-      </div>
-    </div>
-  </footer>
+<div class="gallery">
 
-  <script>
-    (function () {
-      const root = document.documentElement;
-      const toggle = document.querySelector('[data-theme-toggle]');
-      const thumb = document.querySelector('.theme-toggle-thumb');
+<div class="gallery-item glass">
+<img src="https://picsum.photos/800/1000?random=2">
+</div>
 
-      function setIcon(theme) {
-        thumb.innerHTML = theme === 'dark'
-          ? '<svg class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"></path></svg>'
-          : '<svg class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">ircle cx="12" cy="12" r="4.2"></circle><path d="M12 2v2.2M12 19.8V22M4.93 4.93l1.56 1.56M17.51 17.51l1.56 1.56M2 12h2.2M19.8 12H22M4.93 19.07l1.56-1.56M17.51 6.49l1.56-1.56"></path></svg>';
-        toggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
-      }
+<div class="gallery-item glass">
+<img src="https://picsum.photos/800/1000?random=3">
+</div>
 
-      function applyTheme(theme) {
-        root.setAttribute('data-theme', theme);
-        setIcon(theme);
-      }
+<div class="gallery-item glass">
+<img src="https://picsum.photos/800/1000?random=4">
+</div>
 
-      applyTheme(root.getAttribute('data-theme') || 'light');
+<div class="gallery-item glass">
+<img src="https://picsum.photos/800/1000?random=5">
+</div>
 
-      toggle?.addEventListener('click', function () {
-        const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-        applyTheme(next);
-      });
+</div>
 
-      if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) entry.target.classList.add('revealed');
-          });
-        }, { threshold: 0.14 });
+</div>
+</section>
 
-        document.querySelectorAll('[data-reveal]').forEach((el) => observer.observe(el));
-      } else {
-        document.querySelectorAll('[data-reveal]').forEach((el) => el.classList.add('revealed'));
-      }
+<section id="about">
 
-      document.querySelector('.contact-form')?.addEventListener('submit', function (e) {
-        e.preventDefault();
-        const btn = this.querySelector('button[type="submit"]');
-        btn.textContent = 'Enquiry drafted';
-        btn.disabled = true;
-      });
-    })();
-  </script>
+<div class="container">
+
+<div class="section-title">
+<h2>About</h2>
+</div>
+
+<div class="about-grid">
+
+<div class="card glass">
+<h3>Dillu Captures</h3>
+<p>
+I create photographs that feel natural, cinematic, and emotionally rich. Every frame is designed to tell a story that lasts beyond the moment.
+</p>
+</div>
+
+<div class="card glass">
+<h3>Experience</h3>
+<p>
+120+ shoots delivered, weddings, portraits, travel stories, commercial projects, and creative campaigns across multiple locations.
+</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section id="services">
+
+<div class="container">
+
+<div class="section-title">
+<h2>Services</h2>
+</div>
+
+<div class="services">
+
+<div class="service glass">
+<h3>Portrait Photography</h3>
+<p>Personal branding, editorial portraits, and creative sessions.</p>
+</div>
+
+<div class="service glass">
+<h3>Weddings & Couples</h3>
+<p>Story-driven wedding and engagement photography.</p>
+</div>
+
+<div class="service glass">
+<h3>Commercial Campaigns</h3>
+<p>Brand campaigns, hospitality, fashion, and advertising shoots.</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section id="contact">
+
+<div class="container">
+
+<div class="section-title">
+<h2>Contact</h2>
+</div>
+
+<div class="contact-grid">
+
+<div class="contact-info glass">
+
+<h3>Get In Touch</h3>
+
+<ul>
+<li>Email: <a href="mailto:dillucapture@gmail.com">dillucapture@gmail.com</a></li>
+
+<li>Instagram:
+<a href="https://instagram.com" target="_blank">
+@Dillu_Captures
+</a>
+</li>
+
+<li>WhatsApp:
+<a href="https://wa.me/919700034138" target="_blank">
++91 97000 34138
+</a>
+</li>
+</ul>
+
+</div>
+
+<div class="contact-form glass">
+
+<form
+  action="https://formsubmit.co/dillucapture@gmail.com"
+  method="POST"
+  class="contact-form"
+>
+
+  <input type="hidden" name="_subject" value="New Enquiry from Dillu Captures Website">
+
+  <input type="hidden" name="_captcha" value="false">
+
+  <input type="hidden" name="_template" value="table">
+
+  <label>
+    Name
+    <input
+      type="text"
+      name="name"
+      placeholder="Your Name"
+      required
+    >
+  </label>
+
+  <label>
+    Email
+    <input
+      type="email"
+      name="email"
+      placeholder="Your Email"
+      required
+    >
+  </label>
+
+  <label>
+    Phone
+    <input
+      type="tel"
+      name="phone"
+      placeholder="Phone Number"
+    >
+  </label>
+
+  <label>
+    Project Details
+    <textarea
+      name="message"
+      placeholder="Tell me about your project..."
+      required
+    ></textarea>
+  </label>
+
+  <button type="submit" class="btn btn-primary">
+    Send Enquiry
+  </button>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+<footer>
+<div class="container">
+© 2026 Dillu Captures Photography. All Rights Reserved.
+</div>
+</footer>
+
+<script>
+const toggle = document.getElementById("themeToggle");
+
+const savedTheme = localStorage.getItem("theme");
+if(savedTheme){
+document.documentElement.setAttribute("data-theme", savedTheme);
+}
+
+toggle.addEventListener("click", () => {
+
+const current =
+document.documentElement.getAttribute("data-theme");
+
+const next =
+current === "dark" ? "light" : "dark";
+
+document.documentElement.setAttribute("data-theme", next);
+
+localStorage.setItem("theme", next);
+});
+
+</script>
+
 </body>
 </html>
