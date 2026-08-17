@@ -2,550 +2,3966 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dillu Captures | Photography Portfolio</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<meta name="description"
+      content="Dillu Captures - Professional photography portfolio, weddings, portraits, couples and commercial photography.">
+
+<meta name="keywords"
+      content="Dillu Captures, photography, photographer, wedding photography, portrait photography, Hyderabad photographer">
+
+<meta name="author"
+      content="Dillu Captures">
+
+<meta name="theme-color"
+      content="#111111">
+
+<title>Dillu Captures | Photography</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+rel="stylesheet">
+
 
 <style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
 :root{
-    --bg:#f4f7fb;
-    --card:rgba(255,255,255,.25);
-    --border:rgba(255,255,255,.4);
-    --text:#111827;
-    --muted:#6b7280;
-    --primary:#4f7cff;
-    --shadow:0 10px 30px rgba(0,0,0,.12);
+
+    --bg:#f5f5f7;
+
+    --bg-secondary:#ffffff;
+
+    --text:#111111;
+
+    --text-secondary:#666666;
+
+    --primary:#111111;
+
+    --accent:#b08d57;
+
+    --glass:rgba(255,255,255,.58);
+
+    --glass-border:rgba(255,255,255,.7);
+
+    --shadow:
+        0 20px 60px rgba(0,0,0,.08);
+
+    --radius:26px;
+
+    --nav-height:82px;
 }
+
+
+/* DARK */
 
 [data-theme="dark"]{
-    --bg:#0d1117;
-    --card:rgba(255,255,255,.08);
-    --border:rgba(255,255,255,.1);
-    --text:#f8fafc;
-    --muted:#94a3b8;
-    --primary:#6ea8ff;
+
+    --bg:#090909;
+
+    --bg-secondary:#111111;
+
+    --text:#ffffff;
+
+    --text-secondary:#a1a1a1;
+
+    --primary:#ffffff;
+
+    --accent:#d5b276;
+
+    --glass:rgba(255,255,255,.075);
+
+    --glass-border:rgba(255,255,255,.13);
+
+    --shadow:
+        0 20px 60px rgba(0,0,0,.45);
 }
 
+
+/* =========================================================
+   RESET
+========================================================= */
+
 *{
+
     margin:0;
+
     padding:0;
+
     box-sizing:border-box;
 }
 
+
 html{
+
     scroll-behavior:smooth;
+
 }
+
 
 body{
+
     font-family:'Inter',sans-serif;
-    background:linear-gradient(135deg,#eef5ff,#f8fbff);
+
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(176,141,87,.08),
+            transparent 30%
+        ),
+        var(--bg);
+
     color:var(--text);
+
     overflow-x:hidden;
-    transition:.3s;
+
+    transition:
+        background .35s ease,
+        color .35s ease;
 }
 
-[data-theme="dark"] body{
-    background:#0d1117;
-}
 
-.container{
-    width:min(1200px,92%);
-    margin:auto;
-}
+img{
 
-.glass{
-    background:var(--card);
-    backdrop-filter:blur(18px);
-    border:1px solid var(--border);
-    box-shadow:var(--shadow);
-}
+    max-width:100%;
 
-header{
-    position:sticky;
-    top:0;
-    z-index:100;
-    padding:15px 0;
-}
-
-.navbar{
-    padding:15px 25px;
-    border-radius:20px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-.logo{
-    font-family:'Playfair Display',serif;
-    font-size:1.7rem;
-    font-weight:700;
-}
-
-.nav-links{
-    display:flex;
-    gap:25px;
-}
-
-.nav-links a{
-    text-decoration:none;
-    color:var(--text);
-    font-weight:500;
-}
-
-.theme-btn{
-    border:none;
-    padding:10px 16px;
-    border-radius:999px;
-    background:var(--primary);
-    color:white;
-    cursor:pointer;
-}
-
-.hero{
-    min-height:90vh;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:60px;
-    align-items:center;
-}
-
-.hero h1{
-    font-family:'Playfair Display',serif;
-    font-size:clamp(3rem,6vw,5.5rem);
-    line-height:1;
-    margin-bottom:20px;
-}
-
-.hero p{
-    color:var(--muted);
-    margin-bottom:30px;
-    font-size:1.1rem;
-}
-
-.btn{
-    display:inline-block;
-    padding:14px 28px;
-    border-radius:999px;
-    text-decoration:none;
-    background:var(--primary);
-    color:white;
-    font-weight:600;
-}
-
-.hero-image{
-    border-radius:30px;
-    overflow:hidden;
-}
-
-.hero-image img{
-    width:100%;
     display:block;
 }
 
-section{
-    padding:100px 0;
+
+a{
+
+    color:inherit;
+
 }
 
-.section-title{
-    text-align:center;
-    margin-bottom:50px;
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.container{
+
+    width:min(1180px,92%);
+
+    margin:auto;
 }
 
-.section-title h2{
-    font-family:'Playfair Display',serif;
-    font-size:3rem;
+
+/* =========================================================
+   GLASS
+========================================================= */
+
+.glass{
+
+    background:var(--glass);
+
+    backdrop-filter:
+        blur(22px)
+        saturate(160%);
+
+    -webkit-backdrop-filter:
+        blur(22px)
+        saturate(160%);
+
+    border:
+        1px solid
+        var(--glass-border);
+
+    box-shadow:var(--shadow);
 }
 
-.section-title p{
-    color:var(--muted);
-    margin-top:10px;
-}
 
-.gallery{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:20px;
-}
+/* =========================================================
+   HEADER
+========================================================= */
 
-.gallery-item{
-    border-radius:25px;
-    overflow:hidden;
-}
+header{
 
-.gallery-item img{
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
     width:100%;
-    height:350px;
-    object-fit:cover;
-    transition:.5s;
+
+    z-index:999;
+
+    padding:15px 0;
 }
 
-.gallery-item:hover img{
-    transform:scale(1.05);
+
+.navbar{
+
+    height:64px;
+
+    padding:
+        0 20px
+        0 25px;
+
+    border-radius:20px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
 }
 
-.about-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
+
+.logo{
+
+    font-family:
+        'Playfair Display',
+        serif;
+
+    font-size:1.55rem;
+
+    font-weight:700;
+
+    text-decoration:none;
+
+    letter-spacing:-.5px;
+}
+
+
+.logo span{
+
+    color:var(--accent);
+}
+
+
+.nav-links{
+
+    display:flex;
+
+    align-items:center;
+
     gap:30px;
 }
 
-.card{
-    padding:30px;
-    border-radius:25px;
+
+.nav-links a{
+
+    text-decoration:none;
+
+    font-size:.9rem;
+
+    color:var(--text);
+
+    transition:.25s;
 }
 
-.card h3{
-    margin-bottom:15px;
+
+.nav-links a:hover{
+
+    color:var(--accent);
 }
 
-.card p{
-    color:var(--muted);
-    line-height:1.7;
+
+/* THEME */
+
+.theme-toggle{
+
+    width:43px;
+
+    height:43px;
+
+    border-radius:50%;
+
+    border:
+        1px solid
+        var(--glass-border);
+
+    background:var(--glass);
+
+    color:var(--text);
+
+    cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:18px;
+
+    margin-left:12px;
+
+    transition:.3s;
 }
 
-.services{
+
+.theme-toggle:hover{
+
+    transform:rotate(15deg) scale(1.05);
+}
+
+
+/* MOBILE BUTTON */
+
+.menu-btn{
+
+    display:none;
+
+    width:43px;
+
+    height:43px;
+
+    border-radius:50%;
+
+    border:
+        1px solid
+        var(--glass-border);
+
+    background:var(--glass);
+
+    color:var(--text);
+
+    cursor:pointer;
+
+    font-size:20px;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+
+    min-height:100vh;
+
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:25px;
+
+    grid-template-columns:
+        1.05fr
+        .95fr;
+
+    align-items:center;
+
+    gap:70px;
+
+    padding-top:120px;
 }
 
-.service{
-    padding:30px;
-    border-radius:25px;
+
+.hero-content{
+
+    animation:
+        heroIn .8s ease both;
 }
 
-.service h3{
+
+@keyframes heroIn{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(30px);
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+.hero-tag{
+
+    display:inline-flex;
+
+    padding:
+        9px
+        16px;
+
+    border-radius:999px;
+
+    font-size:.78rem;
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+
+    margin-bottom:22px;
+
+    color:var(--accent);
+}
+
+
+.hero h1{
+
+    font-family:
+        'Playfair Display',
+        serif;
+
+    font-size:
+        clamp(
+            3.2rem,
+            7vw,
+            6.7rem
+        );
+
+    line-height:.94;
+
+    letter-spacing:-3px;
+
+    margin-bottom:28px;
+}
+
+
+.hero h1 span{
+
+    color:var(--accent);
+
+    font-style:italic;
+}
+
+
+.hero p{
+
+    max-width:600px;
+
+    color:var(--text-secondary);
+
+    line-height:1.8;
+
+    font-size:1.05rem;
+
+    margin-bottom:34px;
+}
+
+
+.hero-buttons{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:14px;
+}
+
+
+/* BUTTON */
+
+.btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:9px;
+
+    padding:
+        15px
+        24px;
+
+    border-radius:999px;
+
+    text-decoration:none;
+
+    font-size:.9rem;
+
+    font-weight:600;
+
+    border:1px solid transparent;
+
+    transition:.3s;
+
+    cursor:pointer;
+}
+
+
+.btn-primary{
+
+    background:var(--text);
+
+    color:var(--bg);
+
+}
+
+
+.btn-primary:hover{
+
+    transform:translateY(-3px);
+
+}
+
+
+.btn-outline{
+
+    border:
+        1px solid
+        var(--glass-border);
+
+    background:var(--glass);
+
+    color:var(--text);
+}
+
+
+.btn-outline:hover{
+
+    border-color:var(--accent);
+
+    color:var(--accent);
+}
+
+
+/* HERO IMAGE */
+
+.hero-photo{
+
+    position:relative;
+
+    border-radius:
+        40px
+        40px
+        40px
+        120px;
+
+    overflow:hidden;
+
+    min-height:650px;
+}
+
+
+.hero-photo img{
+
+    width:100%;
+
+    height:650px;
+
+    object-fit:cover;
+}
+
+
+.hero-photo::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent 60%,
+            rgba(0,0,0,.45)
+        );
+
+    pointer-events:none;
+}
+
+
+.hero-badge{
+
+    position:absolute;
+
+    bottom:25px;
+
+    left:25px;
+
+    z-index:2;
+
+    padding:18px 22px;
+
+    border-radius:18px;
+
+    color:white;
+
+    background:
+        rgba(0,0,0,.35);
+
+    backdrop-filter:blur(15px);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+}
+
+
+.hero-badge strong{
+
+    display:block;
+
+    font-family:
+        'Playfair Display',
+        serif;
+
+    font-size:1.2rem;
+}
+
+
+.hero-badge small{
+
+    opacity:.75;
+
+}
+
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+section{
+
+    padding:110px 0;
+}
+
+
+.section-heading{
+
+    display:flex;
+
+    align-items:end;
+
+    justify-content:space-between;
+
+    gap:30px;
+
+    margin-bottom:50px;
+}
+
+
+.section-heading .eyebrow{
+
+    color:var(--accent);
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+
+    font-size:.75rem;
+
     margin-bottom:10px;
 }
 
-.contact-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:25px;
+
+.section-heading h2{
+
+    font-family:
+        'Playfair Display',
+        serif;
+
+    font-size:
+        clamp(
+            2.4rem,
+            5vw,
+            4rem
+        );
+
+    line-height:1;
 }
 
-.contact-info,
-.contact-form{
+
+.section-heading p{
+
+    max-width:430px;
+
+    color:var(--text-secondary);
+
+    line-height:1.7;
+}
+
+
+/* =========================================================
+   GALLERY
+========================================================= */
+
+.filter-buttons{
+
+    display:flex;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+
+    margin-bottom:30px;
+}
+
+
+.filter-btn{
+
+    border:
+        1px solid
+        var(--glass-border);
+
+    background:var(--glass);
+
+    color:var(--text);
+
+    padding:
+        10px
+        18px;
+
+    border-radius:999px;
+
+    cursor:pointer;
+
+    font-size:.8rem;
+
+    transition:.3s;
+}
+
+
+.filter-btn.active,
+.filter-btn:hover{
+
+    background:var(--text);
+
+    color:var(--bg);
+
+}
+
+
+.gallery{
+
+    columns:3 280px;
+
+    column-gap:20px;
+}
+
+
+.gallery-item{
+
+    break-inside:avoid;
+
+    margin-bottom:20px;
+
+    border-radius:24px;
+
+    overflow:hidden;
+
+    position:relative;
+
+    cursor:pointer;
+}
+
+
+.gallery-item img{
+
+    width:100%;
+
+    height:auto;
+
+    transition:
+        transform .6s ease,
+        filter .6s ease;
+}
+
+
+.gallery-item:hover img{
+
+    transform:scale(1.045);
+
+    filter:brightness(.78);
+}
+
+
+.gallery-overlay{
+
+    position:absolute;
+
+    inset:auto 0 0 0;
+
+    padding:25px;
+
+    color:white;
+
+    opacity:0;
+
+    transform:translateY(10px);
+
+    transition:.3s;
+
+    background:
+        linear-gradient(
+            transparent,
+            rgba(0,0,0,.7)
+        );
+}
+
+
+.gallery-item:hover .gallery-overlay{
+
+    opacity:1;
+
+    transform:translateY(0);
+}
+
+
+.gallery-overlay span{
+
+    font-size:.75rem;
+
+    opacity:.8;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+}
+
+
+/* =========================================================
+   LIGHTBOX
+========================================================= */
+
+.lightbox{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:2000;
+
+    background:
+        rgba(0,0,0,.92);
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
     padding:30px;
-    border-radius:25px;
 }
 
-.contact-info ul{
-    list-style:none;
-    margin-top:20px;
+
+.lightbox.show{
+
+    display:flex;
 }
 
-.contact-info li{
+
+.lightbox img{
+
+    max-width:95%;
+
+    max-height:90vh;
+
+    object-fit:contain;
+
+    border-radius:12px;
+}
+
+
+.lightbox-close{
+
+    position:absolute;
+
+    top:25px;
+
+    right:30px;
+
+    width:48px;
+
+    height:48px;
+
+    border-radius:50%;
+
+    border:none;
+
+    background:rgba(255,255,255,.12);
+
+    color:white;
+
+    font-size:25px;
+
+    cursor:pointer;
+}
+
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        .9fr
+        1.1fr;
+
+    gap:70px;
+
+    align-items:center;
+}
+
+
+.about-photo{
+
+    border-radius:
+        30px
+        30px
+        120px
+        30px;
+
+    overflow:hidden;
+
+    position:relative;
+}
+
+
+.about-photo img{
+
+    width:100%;
+
+    height:600px;
+
+    object-fit:cover;
+}
+
+
+.about-content h2{
+
+    font-family:
+        'Playfair Display',
+        serif;
+
+    font-size:
+        clamp(
+            2.5rem,
+            5vw,
+            4.5rem
+        );
+
+    line-height:1;
+
+    margin-bottom:25px;
+}
+
+
+.about-content h2 span{
+
+    color:var(--accent);
+}
+
+
+.about-content p{
+
+    color:var(--text-secondary);
+
+    line-height:1.9;
+
+    margin-bottom:20px;
+}
+
+
+.stats{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:15px;
+
+    margin-top:35px;
+}
+
+
+.stat{
+
+    padding:22px;
+
+    border-radius:20px;
+}
+
+
+.stat strong{
+
+    display:block;
+
+    font-family:
+        'Playfair Display',
+        serif;
+
+    font-size:2rem;
+
+    color:var(--accent);
+}
+
+
+.stat span{
+
+    color:var(--text-secondary);
+
+    font-size:.8rem;
+}
+
+
+/* =========================================================
+   SERVICES
+========================================================= */
+
+.services{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            1fr
+        );
+
+    gap:20px;
+}
+
+
+.service{
+
+    padding:35px;
+
+    border-radius:28px;
+
+    transition:.35s;
+}
+
+
+.service:hover{
+
+    transform:
+        translateY(-8px);
+}
+
+
+.service-number{
+
+    color:var(--accent);
+
+    font-family:
+        'Playfair Display',
+        serif;
+
+    font-size:1.5rem;
+
+    margin-bottom:30px;
+}
+
+
+.service h3{
+
+    font-family:
+        'Playfair Display',
+        serif;
+
+    font-size:1.6rem;
+
     margin-bottom:15px;
 }
 
-.contact-info a{
-    color:var(--text);
-    text-decoration:none;
+
+.service p{
+
+    color:var(--text-secondary);
+
+    line-height:1.7;
 }
 
-form{
-    display:flex;
-    flex-direction:column;
-    gap:15px;
+
+/* =========================================================
+   BOOKING
+========================================================= */
+
+.booking-wrapper{
+
+    display:grid;
+
+    grid-template-columns:
+        .85fr
+        1.15fr;
+
+    gap:25px;
 }
+
+
+.booking-intro{
+
+    padding:40px;
+
+    border-radius:30px;
+}
+
+
+.booking-intro h2{
+
+    font-family:
+        'Playfair Display',
+        serif;
+
+    font-size:3rem;
+
+    margin-bottom:20px;
+}
+
+
+.booking-intro p{
+
+    color:var(--text-secondary);
+
+    line-height:1.8;
+
+    margin-bottom:25px;
+}
+
+
+.booking-points{
+
+    list-style:none;
+}
+
+
+.booking-points li{
+
+    margin-bottom:15px;
+
+    color:var(--text-secondary);
+}
+
+
+.booking-points li::before{
+
+    content:"✓";
+
+    color:var(--accent);
+
+    font-weight:bold;
+
+    margin-right:10px;
+}
+
+
+.booking-card{
+
+    padding:35px;
+
+    border-radius:30px;
+}
+
+
+.booking-card h3{
+
+    font-family:
+        'Playfair Display',
+        serif;
+
+    font-size:2rem;
+
+    margin-bottom:25px;
+}
+
+
+.form-group{
+
+    margin-bottom:20px;
+}
+
+
+.form-group label{
+
+    display:block;
+
+    font-size:.8rem;
+
+    font-weight:600;
+
+    margin-bottom:8px;
+
+    color:var(--text-secondary);
+}
+
 
 input,
-textarea{
+textarea,
+select{
+
+    width:100%;
+
+    border:
+        1px solid
+        var(--glass-border);
+
+    background:
+        rgba(255,255,255,.08);
+
+    color:var(--text);
+
     padding:15px;
+
     border-radius:15px;
-    border:1px solid var(--border);
-    background:rgba(255,255,255,.1);
+
+    outline:none;
+
+    font-family:inherit;
+
+    transition:.25s;
+}
+
+
+select option{
+
+    background:var(--bg-secondary);
+
     color:var(--text);
 }
 
-textarea{
-    min-height:140px;
+
+input:focus,
+textarea:focus,
+select:focus{
+
+    border-color:var(--accent);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(176,141,87,.12);
 }
 
-button[type="submit"]{
-    border:none;
-    padding:15px;
-    border-radius:15px;
-    background:var(--primary);
-    color:white;
+
+/* CALENDAR */
+
+.calendar-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:15px;
+}
+
+
+.calendar-header button{
+
+    width:38px;
+
+    height:38px;
+
+    border-radius:50%;
+
+    border:
+        1px solid
+        var(--glass-border);
+
+    background:var(--glass);
+
+    color:var(--text);
+
     cursor:pointer;
+}
+
+
+.calendar-title{
+
     font-weight:600;
 }
 
-footer{
-    padding:40px 0;
+
+.calendar-weekdays,
+.calendar-days{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(7,1fr);
+
+    gap:6px;
+}
+
+
+.calendar-weekdays div{
+
     text-align:center;
-    color:var(--muted);
+
+    font-size:.7rem;
+
+    color:var(--text-secondary);
+
+    padding:8px 0;
 }
 
-@media(max-width:900px){
 
-.hero,
-.about-grid,
+.calendar-days button{
+
+    border:
+        1px solid
+        transparent;
+
+    background:transparent;
+
+    color:var(--text);
+
+    min-height:43px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+
+.calendar-days button:hover{
+
+    border-color:var(--accent);
+
+}
+
+
+.calendar-days button.selected{
+
+    background:var(--accent);
+
+    color:#fff;
+
+}
+
+
+.calendar-days button.disabled{
+
+    opacity:.25;
+
+    cursor:not-allowed;
+}
+
+
+.calendar-days button.today{
+
+    border-color:var(--accent);
+}
+
+
+/* TIME */
+
+.time-title{
+
+    font-weight:600;
+
+    margin:
+        25px
+        0
+        12px;
+}
+
+
+.time-slots{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            1fr
+        );
+
+    gap:10px;
+}
+
+
+.time-slot{
+
+    padding:12px;
+
+    border-radius:12px;
+
+    border:
+        1px solid
+        var(--glass-border);
+
+    background:var(--glass);
+
+    color:var(--text);
+
+    cursor:pointer;
+
+    font-size:.8rem;
+
+    transition:.25s;
+}
+
+
+.time-slot:hover,
+.time-slot.selected{
+
+    background:var(--accent);
+
+    color:white;
+
+    border-color:var(--accent);
+}
+
+
+.booking-summary{
+
+    margin-top:20px;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:
+        rgba(176,141,87,.08);
+
+    border:
+        1px solid
+        rgba(176,141,87,.2);
+}
+
+
+.booking-summary strong{
+
+    display:block;
+
+    margin-bottom:5px;
+}
+
+
+.booking-summary span{
+
+    color:var(--text-secondary);
+
+    font-size:.85rem;
+}
+
+
+.booking-actions{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    gap:12px;
+
+    margin-top:20px;
+}
+
+
+.whatsapp-btn{
+
+    background:#25D366;
+
+    color:white;
+
+    border:none;
+}
+
+
+.instagram-btn{
+
+    background:
+        linear-gradient(
+            45deg,
+            #f09433,
+            #e6683c,
+            #dc2743,
+            #cc2366,
+            #bc1888
+        );
+
+    color:white;
+
+    border:none;
+}
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
 .contact-grid{
-    grid-template-columns:1fr;
+
+    display:grid;
+
+    grid-template-columns:
+        .8fr
+        1.2fr;
+
+    gap:25px;
 }
 
-.nav-links{
-    display:none;
+
+.contact-card{
+
+    padding:35px;
+
+    border-radius:30px;
 }
+
+
+.contact-card h3{
+
+    font-family:
+        'Playfair Display',
+        serif;
+
+    font-size:2rem;
+
+    margin-bottom:20px;
 }
+
+
+.contact-card p{
+
+    color:var(--text-secondary);
+
+    line-height:1.8;
+}
+
+
+.contact-list{
+
+    list-style:none;
+
+    margin-top:25px;
+}
+
+
+.contact-list li{
+
+    margin-bottom:18px;
+
+    color:var(--text-secondary);
+}
+
+
+.contact-list a{
+
+    text-decoration:none;
+
+    color:var(--text);
+
+}
+
+
+.contact-list a:hover{
+
+    color:var(--accent);
+}
+
+
+.contact-form{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    gap:15px;
+}
+
+
+.contact-form .full{
+
+    grid-column:
+        1 / -1;
+}
+
+
+textarea{
+
+    min-height:150px;
+
+    resize:vertical;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+
+    padding:
+        50px
+        0;
+
+    border-top:
+        1px solid
+        var(--glass-border);
+}
+
+
+.footer-content{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:20px;
+}
+
+
+.footer-logo{
+
+    font-family:
+        'Playfair Display',
+        serif;
+
+    font-size:1.5rem;
+}
+
+
+.footer-text{
+
+    color:var(--text-secondary);
+
+    font-size:.8rem;
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast{
+
+    position:fixed;
+
+    bottom:30px;
+
+    left:50%;
+
+    transform:
+        translateX(-50%)
+        translateY(100px);
+
+    background:#111;
+
+    color:white;
+
+    padding:
+        14px
+        22px;
+
+    border-radius:999px;
+
+    z-index:5000;
+
+    opacity:0;
+
+    transition:.4s;
+
+    font-size:.85rem;
+}
+
+
+.toast.show{
+
+    opacity:1;
+
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:950px){
+
+    .nav-links{
+
+        display:none;
+
+        position:absolute;
+
+        top:75px;
+
+        left:4%;
+
+        width:92%;
+
+        padding:20px;
+
+        border-radius:20px;
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:20px;
+    }
+
+
+    .nav-links.open{
+
+        display:flex;
+    }
+
+
+    .menu-btn{
+
+        display:block;
+    }
+
+
+    .hero{
+
+        grid-template-columns:1fr;
+
+        padding-top:130px;
+    }
+
+
+    .hero-photo{
+
+        min-height:500px;
+    }
+
+
+    .hero-photo img{
+
+        height:500px;
+    }
+
+
+    .about-grid{
+
+        grid-template-columns:1fr;
+    }
+
+
+    .services{
+
+        grid-template-columns:1fr 1fr;
+    }
+
+
+    .booking-wrapper{
+
+        grid-template-columns:1fr;
+    }
+
+
+    .contact-grid{
+
+        grid-template-columns:1fr;
+    }
+
+}
+
+
+@media(max-width:650px){
+
+    section{
+
+        padding:80px 0;
+    }
+
+
+    .hero h1{
+
+        letter-spacing:-2px;
+    }
+
+
+    .hero-photo{
+
+        border-radius:
+            30px
+            30px
+            30px
+            90px;
+    }
+
+
+    .hero-photo img{
+
+        height:450px;
+    }
+
+
+    .section-heading{
+
+        display:block;
+    }
+
+
+    .section-heading p{
+
+        margin-top:20px;
+    }
+
+
+    .about-photo img{
+
+        height:450px;
+    }
+
+
+    .stats{
+
+        grid-template-columns:1fr;
+    }
+
+
+    .services{
+
+        grid-template-columns:1fr;
+    }
+
+
+    .time-slots{
+
+        grid-template-columns:
+            repeat(
+                2,
+                1fr
+            );
+    }
+
+
+    .booking-actions{
+
+        grid-template-columns:1fr;
+    }
+
+
+    .contact-form{
+
+        grid-template-columns:1fr;
+    }
+
+
+    .contact-form .full{
+
+        grid-column:auto;
+    }
+
+
+    .footer-content{
+
+        flex-direction:column;
+
+        text-align:center;
+    }
+
+}
+
 </style>
 </head>
 
+
 <body>
 
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
 <header>
+
 <div class="container">
-<div class="navbar glass">
 
-<div class="logo">Dillu Captures</div>
+<nav class="navbar glass">
 
-<div class="nav-links">
-<a href="#work">Work</a>
-<a href="#about">About</a>
-<a href="#services">Services</a>
-<a href="#contact">Contact</a>
+<a href="#home"
+   class="logo">
+
+    Dillu <span>Captures</span>
+
+</a>
+
+
+<div class="nav-links glass"
+     id="navLinks">
+
+    <a href="#home">Home</a>
+
+    <a href="#work">Portfolio</a>
+
+    <a href="#about">About</a>
+
+    <a href="#services">Services</a>
+
+    <a href="#booking">Book</a>
+
+    <a href="#contact">Contact</a>
+
 </div>
 
-<button class="theme-btn" id="themeToggle">Theme</button>
+
+<div style="display:flex;align-items:center;">
+
+<button class="theme-toggle"
+        id="themeToggle"
+        aria-label="Toggle theme">
+
+    ☀
+
+</button>
+
+
+<button class="menu-btn"
+        id="menuBtn"
+        aria-label="Open menu">
+
+    ☰
+
+</button>
+
 </div>
+
+</nav>
+
 </div>
+
 </header>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<main id="home">
 
 <section class="hero container">
 
-<div>
-<h1>Photography Through Light & Emotion</h1>
+
+<div class="hero-content">
+
+<div class="hero-tag glass">
+
+    ✦ Professional Photography
+
+</div>
+
+
+<h1>
+
+    Stories captured
+
+    <span>beautifully.</span>
+
+</h1>
+
 
 <p>
-Capturing timeless portraits, weddings, travel stories, and commercial campaigns with a cinematic and editorial touch.
+
+    Welcome to Dillu Captures — a photography studio
+    focused on authentic emotions, cinematic portraits,
+    weddings, couples, travel and creative campaigns.
+
 </p>
 
-<a href="#work" class="btn">View Portfolio</a>
+
+<div class="hero-buttons">
+
+<a href="#work"
+   class="btn btn-primary">
+
+    Explore Portfolio →
+
+</a>
+
+
+<a href="#booking"
+   class="btn btn-outline">
+
+    Book a Session
+
+</a>
+
 </div>
 
-<div class="hero-image glass">
-<img src="https://picsum.photos/1000/1200?random=1" alt="Photography Portfolio">
 </div>
+
+
+
+<div class="hero-photo glass">
+
+<img src="images/hero.jpg"
+     alt="Dillu Captures Photography"
+     onerror="this.src='https://picsum.photos/900/1200?random=100';">
+
+
+<div class="hero-badge">
+
+<strong>Dillu Captures</strong>
+
+<small>Photography • Stories • Emotion</small>
+
+</div>
+
+</div>
+
 
 </section>
+
+
+
+<!-- =====================================================
+     PORTFOLIO
+===================================================== -->
 
 <section id="work">
 
 <div class="container">
 
-<div class="section-title">
-<h2>Selected Work</h2>
-<p>A curated collection of recent photography projects.</p>
-</div>
 
-<div class="gallery">
+<div class="section-heading">
 
-<div class="gallery-item glass">
-<img src="https://picsum.photos/800/1000?random=2">
-</div>
+<div>
 
-<div class="gallery-item glass">
-<img src="https://picsum.photos/800/1000?random=3">
-</div>
+<div class="eyebrow">
 
-<div class="gallery-item glass">
-<img src="https://picsum.photos/800/1000?random=4">
-</div>
-
-<div class="gallery-item glass">
-<img src="https://picsum.photos/800/1000?random=5">
-</div>
+Portfolio
 
 </div>
 
+<h2>
+
+Selected Work
+
+</h2>
+
 </div>
+
+
+<p>
+
+A collection of portraits, weddings,
+couples and creative stories captured
+through the Dillu Captures lens.
+
+</p>
+
+</div>
+
+
+
+<div class="filter-buttons">
+
+<button class="filter-btn active"
+        data-filter="all">
+
+    All
+
+</button>
+
+<button class="filter-btn"
+        data-filter="portrait">
+
+    Portraits
+
+</button>
+
+<button class="filter-btn"
+        data-filter="wedding">
+
+    Weddings
+
+</button>
+
+<button class="filter-btn"
+        data-filter="couple">
+
+    Couples
+
+</button>
+
+<button class="filter-btn"
+        data-filter="commercial">
+
+    Commercial
+
+</button>
+
+</div>
+
+
+
+<div class="gallery"
+     id="gallery">
+
+
+<!-- IMAGE 1 -->
+
+<div class="gallery-item glass"
+     data-category="portrait">
+
+<img src="images/gallery1.jpg"
+     alt="Portrait Photography"
+     onerror="this.src='https://picsum.photos/800/1000?random=1';">
+
+<div class="gallery-overlay">
+
+<span>Portrait</span>
+
+</div>
+
+</div>
+
+
+
+<!-- IMAGE 2 -->
+
+<div class="gallery-item glass"
+     data-category="wedding">
+
+<img src="images/gallery2.jpg"
+     alt="Wedding Photography"
+     onerror="this.src='https://picsum.photos/800/1000?random=2';">
+
+<div class="gallery-overlay">
+
+<span>Wedding</span>
+
+</div>
+
+</div>
+
+
+
+<!-- IMAGE 3 -->
+
+<div class="gallery-item glass"
+     data-category="couple">
+
+<img src="images/gallery3.jpg"
+     alt="Couple Photography"
+     onerror="this.src='https://picsum.photos/800/1000?random=3';">
+
+<div class="gallery-overlay">
+
+<span>Couples</span>
+
+</div>
+
+</div>
+
+
+
+<!-- IMAGE 4 -->
+
+<div class="gallery-item glass"
+     data-category="commercial">
+
+<img src="images/gallery4.jpg"
+     alt="Commercial Photography"
+     onerror="this.src='https://picsum.photos/800/1000?random=4';">
+
+<div class="gallery-overlay">
+
+<span>Commercial</span>
+
+</div>
+
+</div>
+
+
+
+<!-- IMAGE 5 -->
+
+<div class="gallery-item glass"
+     data-category="portrait">
+
+<img src="images/gallery5.jpg"
+     alt="Creative Portrait"
+     onerror="this.src='https://picsum.photos/800/1000?random=5';">
+
+<div class="gallery-overlay">
+
+<span>Portrait</span>
+
+</div>
+
+</div>
+
+
+
+<!-- IMAGE 6 -->
+
+<div class="gallery-item glass"
+     data-category="wedding">
+
+<img src="images/gallery6.jpg"
+     alt="Wedding Story"
+     onerror="this.src='https://picsum.photos/800/1000?random=6';">
+
+<div class="gallery-overlay">
+
+<span>Wedding</span>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
 </section>
+
+
+
+<!-- =====================================================
+     ABOUT
+===================================================== -->
 
 <section id="about">
 
 <div class="container">
 
-<div class="section-title">
-<h2>About</h2>
-</div>
 
 <div class="about-grid">
 
-<div class="card glass">
-<h3>Dillu Captures</h3>
+
+<div class="about-photo glass">
+
+<img src="images/photographer.jpg"
+     alt="Dillu Captures Photographer"
+     onerror="this.src='https://picsum.photos/700/900?random=20';">
+
+</div>
+
+
+
+<div class="about-content">
+
+<div class="eyebrow">
+
+About Dillu Captures
+
+</div>
+
+
+<h2>
+
+Photography that feels
+
+<span>alive.</span>
+
+</h2>
+
+
 <p>
-I create photographs that feel natural, cinematic, and emotionally rich. Every frame is designed to tell a story that lasts beyond the moment.
-</p>
-</div>
 
-<div class="card glass">
-<h3>Experience</h3>
+I'm the creative mind behind Dillu Captures.
+My approach is simple — create photographs
+that feel genuine, cinematic and timeless.
+
+</p>
+
+
 <p>
-120+ shoots delivered, weddings, portraits, travel stories, commercial projects, and creative campaigns across multiple locations.
+
+From intimate portraits and beautiful couples
+to weddings and commercial campaigns,
+every shoot is planned around your story,
+your personality and your moments.
+
 </p>
+
+
+<p>
+
+The goal isn't simply to take a photograph.
+It's to create something you'll want to
+look at years from now.
+
+</p>
+
+
+
+<div class="stats">
+
+
+<div class="stat glass">
+
+<strong>120+</strong>
+
+<span>Projects</span>
+
+</div>
+
+
+<div class="stat glass">
+
+<strong>100+</strong>
+
+<span>Happy Clients</span>
+
+</div>
+
+
+<div class="stat glass">
+
+<strong>4+</strong>
+
+<span>Years Experience</span>
+
+</div>
+
+
+</div>
+
 </div>
 
 </div>
 
 </div>
+
 </section>
+
+
+
+<!-- =====================================================
+     SERVICES
+===================================================== -->
 
 <section id="services">
 
 <div class="container">
 
-<div class="section-title">
-<h2>Services</h2>
+
+<div class="section-heading">
+
+<div>
+
+<div class="eyebrow">
+
+What I Do
+
 </div>
+
+<h2>Services</h2>
+
+</div>
+
+</div>
+
+
 
 <div class="services">
 
+
 <div class="service glass">
+
+<div class="service-number">01</div>
+
 <h3>Portrait Photography</h3>
-<p>Personal branding, editorial portraits, and creative sessions.</p>
+
+<p>
+
+Personal portraits, creative sessions,
+editorial photography and personal branding
+designed around your personality.
+
+</p>
+
 </div>
 
+
+
 <div class="service glass">
+
+<div class="service-number">02</div>
+
 <h3>Weddings & Couples</h3>
-<p>Story-driven wedding and engagement photography.</p>
+
+<p>
+
+Authentic wedding stories, engagements,
+pre-wedding sessions and romantic couple
+portraits.
+
+</p>
+
 </div>
+
+
 
 <div class="service glass">
-<h3>Commercial Campaigns</h3>
-<p>Brand campaigns, hospitality, fashion, and advertising shoots.</p>
+
+<div class="service-number">03</div>
+
+<h3>Commercial Photography</h3>
+
+<p>
+
+Professional photography for brands,
+products, fashion, hospitality and
+creative campaigns.
+
+</p>
+
 </div>
+
 
 </div>
 
 </div>
+
 </section>
+
+
+
+<!-- =====================================================
+     BOOKING
+===================================================== -->
+
+<section id="booking">
+
+<div class="container">
+
+
+<div class="booking-wrapper">
+
+
+<div class="booking-intro glass">
+
+<div class="eyebrow">
+
+Let's Create
+
+</div>
+
+
+<h2>
+
+Book your
+
+session.
+
+</h2>
+
+
+<p>
+
+Choose a date and available time below.
+After selecting your preferred slot,
+you can send the booking request directly
+through WhatsApp or Instagram.
+
+</p>
+
+
+<ul class="booking-points">
+
+<li>Select your preferred date</li>
+
+<li>Select an available time</li>
+
+<li>Enter your name and contact details</li>
+
+<li>Send your booking request</li>
+
+<li>I'll confirm your appointment personally</li>
+
+</ul>
+
+</div>
+
+
+
+<div class="booking-card glass">
+
+<h3>Schedule a Shoot</h3>
+
+
+<div class="form-group">
+
+<label for="clientName">
+
+Your Name
+
+</label>
+
+<input type="text"
+       id="clientName"
+       placeholder="Enter your name">
+
+</div>
+
+
+
+<div class="form-group">
+
+<label for="clientPhone">
+
+Phone / WhatsApp
+
+</label>
+
+<input type="tel"
+       id="clientPhone"
+       placeholder="Your phone number">
+
+</div>
+
+
+
+<div class="form-group">
+
+<label for="shootType">
+
+Photography Type
+
+</label>
+
+<select id="shootType">
+
+<option value="Portrait Photography">
+
+Portrait Photography
+
+</option>
+
+<option value="Wedding Photography">
+
+Wedding Photography
+
+</option>
+
+<option value="Couple Photography">
+
+Couple Photography
+
+</option>
+
+<option value="Commercial Photography">
+
+Commercial Photography
+
+</option>
+
+<option value="Other">
+
+Other
+
+</option>
+
+</select>
+
+</div>
+
+
+
+<!-- CALENDAR -->
+
+<div class="calendar-header">
+
+<button id="prevMonth">
+
+‹
+
+</button>
+
+
+<div class="calendar-title"
+     id="calendarTitle">
+
+</div>
+
+
+<button id="nextMonth">
+
+›
+
+</button>
+
+</div>
+
+
+
+<div class="calendar-weekdays">
+
+<div>Sun</div>
+
+<div>Mon</div>
+
+<div>Tue</div>
+
+<div>Wed</div>
+
+<div>Thu</div>
+
+<div>Fri</div>
+
+<div>Sat</div>
+
+</div>
+
+
+
+<div class="calendar-days"
+     id="calendarDays">
+
+</div>
+
+
+
+<div class="time-title">
+
+Choose a Time
+
+</div>
+
+
+<div class="time-slots"
+     id="timeSlots">
+
+
+<button class="time-slot"
+        data-time="09:00 AM">
+
+09:00 AM
+
+</button>
+
+
+<button class="time-slot"
+        data-time="10:30 AM">
+
+10:30 AM
+
+</button>
+
+
+<button class="time-slot"
+        data-time="12:00 PM">
+
+12:00 PM
+
+</button>
+
+
+<button class="time-slot"
+        data-time="02:00 PM">
+
+02:00 PM
+
+</button>
+
+
+<button class="time-slot"
+        data-time="04:00 PM">
+
+04:00 PM
+
+</button>
+
+
+<button class="time-slot"
+        data-time="06:00 PM">
+
+06:00 PM
+
+</button>
+
+
+</div>
+
+
+
+<div class="booking-summary">
+
+<strong>
+
+Selected Appointment
+
+</strong>
+
+
+<span id="bookingSummary">
+
+Please select a date and time.
+
+</span>
+
+</div>
+
+
+
+<div class="booking-actions">
+
+<button class="btn whatsapp-btn"
+        id="whatsappBooking">
+
+    WhatsApp Booking
+
+</button>
+
+
+<button class="btn instagram-btn"
+        id="instagramBooking">
+
+    Instagram Booking
+
+</button>
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONTACT
+===================================================== -->
 
 <section id="contact">
 
 <div class="container">
 
-<div class="section-title">
-<h2>Contact</h2>
+
+<div class="section-heading">
+
+<div>
+
+<div class="eyebrow">
+
+Contact
+
 </div>
+
+<h2>
+
+Let's work together.
+
+</h2>
+
+</div>
+
+</div>
+
+
 
 <div class="contact-grid">
 
-<div class="contact-info glass">
+
+<div class="contact-card glass">
 
 <h3>Get In Touch</h3>
 
-<ul>
+
+<p>
+
+Have a project, wedding or creative idea?
+Send me a message and let's create something
+beautiful together.
+
+</p>
+
+
+
+<ul class="contact-list">
+
 <li>
-  Email:
-  <a href="mailto:dillucapture@gmail.com">
-    dillucapture@gmail.com
-  </a>
-</li>
-<li>Instagram:
-<a href="https://instagram.com" target="_blank">
-@Dillu_Captures
+
+Email
+
+<br>
+
+<a href="mailto:dillucapture@gmail.com">
+
+dillucapture@gmail.com
+
 </a>
+
 </li>
 
-<li>WhatsApp:
-<a href="https://wa.me/919700034138" target="_blank">
+
+<li>
+
+WhatsApp
+
+<br>
+
+<a href="https://wa.me/919700034138"
+   target="_blank">
+
 +91 97000 34138
+
 </a>
+
 </li>
+
+
+<li>
+
+Instagram
+
+<br>
+
+<a href="https://instagram.com/Dillu_Captures"
+   target="_blank">
+
+@Dillu_Captures
+
+</a>
+
+</li>
+
 </ul>
 
 </div>
 
-<div class="contact-form glass">
 
-<form action="https://formsubmit.co/dillucapture@gmail.com" method="POST">
 
-    <input type="hidden" name="_subject" value="New Enquiry from Dillu Captures Website">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_template" value="table">
+<div class="contact-card glass">
 
-    <input type="hidden" name="_next" value="https://dillucaptures.github.io/thankyou.html">
-    <label>
-        Name
-        <input type="text"
-               name="name"
-               placeholder="Your Name"
-               required>
-    </label>
 
-    <label>
-        Email
-        <input type="email"
-               name="email"
-               placeholder="Your Email"
-               required>
-    </label>
+<form class="contact-form"
+      action="https://formsubmit.co/dillucapture@gmail.com"
+      method="POST">
 
-    <label>
-        Phone
-        <input type="tel"
-               name="phone"
-               placeholder="Phone Number">
-    </label>
 
-    <label>
-        Project Details
-        <textarea name="message"
-                  placeholder="Tell me about your project..."
-                  required></textarea>
-    </label>
+<input type="hidden"
+       name="_subject"
+       value="New Enquiry - Dillu Captures">
 
-    <button type="submit">
-        Send Enquiry
-    </button>
+
+<input type="hidden"
+       name="_captcha"
+       value="false">
+
+
+<input type="hidden"
+       name="_template"
+       value="table">
+
+
+<input type="hidden"
+       name="_next"
+       value="thankyou.html">
+
+
+
+<div>
+
+<label>Name</label>
+
+<input type="text"
+       name="name"
+       placeholder="Your Name"
+       required>
+
+</div>
+
+
+
+<div>
+
+<label>Email</label>
+
+<input type="email"
+       name="email"
+       placeholder="Your Email"
+       required>
+
+</div>
+
+
+
+<div>
+
+<label>Phone</label>
+
+<input type="tel"
+       name="phone"
+       placeholder="Phone Number">
+
+</div>
+
+
+
+<div>
+
+<label>Photography Type</label>
+
+<select name="service">
+
+<option>Portrait</option>
+
+<option>Wedding</option>
+
+<option>Couple</option>
+
+<option>Commercial</option>
+
+<option>Other</option>
+
+</select>
+
+</div>
+
+
+
+<div class="full">
+
+<label>Message</label>
+
+<textarea name="message"
+          placeholder="Tell me about your project..."
+          required></textarea>
+
+</div>
+
+
+
+<div class="full">
+
+<button type="submit"
+        class="btn btn-primary"
+        style="width:100%;">
+
+    Send Enquiry →
+
+</button>
+
+</div>
+
 
 </form>
 
-</div>
-</form>
-
-</div>
-</form>
 
 </div>
 
 </div>
 
 </div>
+
 </section>
 
-...
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
 <footer>
+
 <div class="container">
-© 2026 Dillu Captures Photography. All Rights Reserved.
+
+<div class="footer-content">
+
+
+<div class="footer-logo">
+
+Dillu Captures
+
 </div>
+
+
+<div class="footer-text">
+
+© 2026 Dillu Captures Photography.
+All Rights Reserved.
+
+</div>
+
+
+<div class="footer-text">
+
+Made with passion & light.
+
+</div>
+
+
+</div>
+
+</div>
+
 </footer>
 
-<script>
-const toggle = document.getElementById("themeToggle");
 
-const savedTheme = localStorage.getItem("theme");
+
+<!-- LIGHTBOX -->
+
+<div class="lightbox"
+     id="lightbox">
+
+<button class="lightbox-close"
+        id="lightboxClose">
+
+×
+
+</button>
+
+
+<img id="lightboxImage"
+     src=""
+     alt="Photography">
+
+</div>
+
+
+
+<!-- TOAST -->
+
+<div class="toast"
+     id="toast">
+
+Booking details copied.
+
+</div>
+
+
+
+<script>
+
+/* =========================================================
+   THEME
+========================================================= */
+
+const themeToggle =
+document.getElementById("themeToggle");
+
+
+const savedTheme =
+localStorage.getItem("dillu-theme");
+
+
 if(savedTheme){
-document.documentElement.setAttribute("data-theme", savedTheme);
+
+    document.documentElement
+        .setAttribute(
+            "data-theme",
+            savedTheme
+        );
+
+    updateThemeIcon(savedTheme);
+
 }
 
-toggle.addEventListener("click", () => {
 
-const current =
-document.documentElement.getAttribute("data-theme");
+function updateThemeIcon(theme){
 
-const next =
-current === "dark" ? "light" : "dark";
+    themeToggle.textContent =
+        theme === "dark"
+        ? "☾"
+        : "☀";
+}
 
-document.documentElement.setAttribute("data-theme", next);
 
-localStorage.setItem("theme", next);
+themeToggle.addEventListener(
+    "click",
+    () => {
+
+        const current =
+            document.documentElement
+            .getAttribute("data-theme");
+
+        const next =
+            current === "dark"
+            ? "light"
+            : "dark";
+
+        document.documentElement
+            .setAttribute(
+                "data-theme",
+                next
+            );
+
+        localStorage.setItem(
+            "dillu-theme",
+            next
+        );
+
+        updateThemeIcon(next);
+
+    }
+);
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+const menuBtn =
+document.getElementById("menuBtn");
+
+const navLinks =
+document.getElementById("navLinks");
+
+
+menuBtn.addEventListener(
+    "click",
+    () => {
+
+        navLinks.classList.toggle("open");
+
+    }
+);
+
+
+document.querySelectorAll(
+    ".nav-links a"
+).forEach(link => {
+
+    link.addEventListener(
+        "click",
+        () => {
+
+            navLinks.classList.remove(
+                "open"
+            );
+
+        }
+    );
+
 });
+
+
+/* =========================================================
+   GALLERY FILTER
+========================================================= */
+
+const filterButtons =
+document.querySelectorAll(
+    ".filter-btn"
+);
+
+
+const galleryItems =
+document.querySelectorAll(
+    ".gallery-item"
+);
+
+
+filterButtons.forEach(button => {
+
+    button.addEventListener(
+        "click",
+        () => {
+
+            filterButtons.forEach(
+                b =>
+                b.classList.remove(
+                    "active"
+                )
+            );
+
+            button.classList.add(
+                "active"
+            );
+
+
+            const filter =
+                button.dataset.filter;
+
+
+            galleryItems.forEach(item => {
+
+                if(
+                    filter === "all" ||
+                    item.dataset.category === filter
+                ){
+
+                    item.style.display =
+                        "block";
+
+                }
+                else{
+
+                    item.style.display =
+                        "none";
+
+                }
+
+            });
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   LIGHTBOX
+========================================================= */
+
+const lightbox =
+document.getElementById("lightbox");
+
+const lightboxImage =
+document.getElementById("lightboxImage");
+
+const lightboxClose =
+document.getElementById("lightboxClose");
+
+
+galleryItems.forEach(item => {
+
+    item.addEventListener(
+        "click",
+        () => {
+
+            const img =
+                item.querySelector("img");
+
+            lightboxImage.src =
+                img.src;
+
+            lightbox.classList.add(
+                "show"
+            );
+
+        }
+    );
+
+});
+
+
+function closeLightbox(){
+
+    lightbox.classList.remove(
+        "show"
+    );
+
+}
+
+
+lightboxClose.addEventListener(
+    "click",
+    closeLightbox
+);
+
+
+lightbox.addEventListener(
+    "click",
+    event => {
+
+        if(event.target === lightbox){
+
+            closeLightbox();
+
+        }
+
+    }
+);
+
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if(event.key === "Escape"){
+
+            closeLightbox();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   BOOKING CALENDAR
+========================================================= */
+
+const calendarDays =
+document.getElementById(
+    "calendarDays"
+);
+
+
+const calendarTitle =
+document.getElementById(
+    "calendarTitle"
+);
+
+
+const prevMonth =
+document.getElementById(
+    "prevMonth"
+);
+
+
+const nextMonth =
+document.getElementById(
+    "nextMonth"
+);
+
+
+let currentDate =
+new Date();
+
+
+let selectedDate =
+null;
+
+
+let selectedTime =
+null;
+
+
+const today =
+new Date();
+
+today.setHours(
+    0,
+    0,
+    0,
+    0
+);
+
+
+/* MONTHS */
+
+const monthNames = [
+
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+
+];
+
+
+/* RENDER */
+
+function renderCalendar(){
+
+    const year =
+        currentDate.getFullYear();
+
+    const month =
+        currentDate.getMonth();
+
+
+    calendarTitle.textContent =
+        `${monthNames[month]} ${year}`;
+
+
+    calendarDays.innerHTML =
+        "";
+
+
+    const firstDay =
+        new Date(
+            year,
+            month,
+            1
+        ).getDay();
+
+
+    const daysInMonth =
+        new Date(
+            year,
+            month + 1,
+            0
+        ).getDate();
+
+
+    for(
+        let i = 0;
+        i < firstDay;
+        i++
+    ){
+
+        const empty =
+            document.createElement(
+                "div"
+            );
+
+        calendarDays.appendChild(
+            empty
+        );
+
+    }
+
+
+    for(
+        let day = 1;
+        day <= daysInMonth;
+        day++
+    ){
+
+        const button =
+            document.createElement(
+                "button"
+            );
+
+
+        button.textContent =
+            day;
+
+
+        const date =
+            new Date(
+                year,
+                month,
+                day
+            );
+
+
+        date.setHours(
+            0,
+            0,
+            0,
+            0
+        );
+
+
+        if(
+            date < today
+        ){
+
+            button.classList.add(
+                "disabled"
+            );
+
+            button.disabled =
+                true;
+
+        }
+
+
+        if(
+            date.getTime() ===
+            today.getTime()
+        ){
+
+            button.classList.add(
+                "today"
+            );
+
+        }
+
+
+        if(
+            selectedDate &&
+            date.getTime() ===
+            selectedDate.getTime()
+        ){
+
+            button.classList.add(
+                "selected"
+            );
+
+        }
+
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                selectedDate =
+                    date;
+
+                selectedTime =
+                    null;
+
+
+                document
+                    .querySelectorAll(
+                        ".time-slot"
+                    )
+                    .forEach(
+                        slot =>
+                        slot.classList
+                            .remove(
+                                "selected"
+                            )
+                    );
+
+
+                renderCalendar();
+
+                updateBookingSummary();
+
+            }
+        );
+
+
+        calendarDays.appendChild(
+            button
+        );
+
+    }
+
+}
+
+
+/* MONTH NAVIGATION */
+
+prevMonth.addEventListener(
+    "click",
+    () => {
+
+        const now =
+            new Date();
+
+        const currentMonth =
+            new Date(
+                now.getFullYear(),
+                now.getMonth(),
+                1
+            );
+
+
+        const previous =
+            new Date(
+                currentDate.getFullYear(),
+                currentDate.getMonth() - 1,
+                1
+            );
+
+
+        if(
+            previous >= currentMonth
+        ){
+
+            currentDate =
+                previous;
+
+            renderCalendar();
+
+        }
+
+    }
+);
+
+
+nextMonth.addEventListener(
+    "click",
+    () => {
+
+        currentDate.setMonth(
+            currentDate.getMonth() + 1
+        );
+
+        renderCalendar();
+
+    }
+);
+
+
+/* =========================================================
+   TIME SLOTS
+========================================================= */
+
+const timeSlots =
+document.querySelectorAll(
+    ".time-slot"
+);
+
+
+timeSlots.forEach(slot => {
+
+    slot.addEventListener(
+        "click",
+        () => {
+
+            if(!selectedDate){
+
+                showToast(
+                    "Please select a date first."
+                );
+
+                return;
+
+            }
+
+
+            timeSlots.forEach(
+                s =>
+                s.classList.remove(
+                    "selected"
+                )
+            );
+
+
+            slot.classList.add(
+                "selected"
+            );
+
+
+            selectedTime =
+                slot.dataset.time;
+
+
+            updateBookingSummary();
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   BOOKING SUMMARY
+========================================================= */
+
+function formatDate(date){
+
+    return date.toLocaleDateString(
+        "en-IN",
+        {
+            weekday:"long",
+            day:"numeric",
+            month:"long",
+            year:"numeric"
+        }
+    );
+
+}
+
+
+function updateBookingSummary(){
+
+    const summary =
+        document.getElementById(
+            "bookingSummary"
+        );
+
+
+    if(
+        !selectedDate
+    ){
+
+        summary.textContent =
+            "Please select a date and time.";
+
+        return;
+
+    }
+
+
+    if(
+        !selectedTime
+    ){
+
+        summary.textContent =
+            `${formatDate(selectedDate)} — Select a time.`;
+
+        return;
+
+    }
+
+
+    summary.textContent =
+        `${formatDate(selectedDate)} at ${selectedTime}`;
+
+}
+
+
+/* =========================================================
+   WHATSAPP BOOKING
+========================================================= */
+
+const whatsappBooking =
+document.getElementById(
+    "whatsappBooking"
+);
+
+
+whatsappBooking.addEventListener(
+    "click",
+    () => {
+
+        const name =
+            document.getElementById(
+                "clientName"
+            ).value.trim();
+
+
+        const phone =
+            document.getElementById(
+                "clientPhone"
+            ).value.trim();
+
+
+        const type =
+            document.getElementById(
+                "shootType"
+            ).value;
+
+
+        if(!name){
+
+            showToast(
+                "Please enter your name."
+            );
+
+            return;
+
+        }
+
+
+        if(!selectedDate){
+
+            showToast(
+                "Please select a date."
+            );
+
+            return;
+
+        }
+
+
+        if(!selectedTime){
+
+            showToast(
+                "Please select a time."
+            );
+
+            return;
+
+        }
+
+
+        const date =
+            formatDate(
+                selectedDate
+            );
+
+
+        const message =
+
+`Hello Dillu Captures! 📸
+
+I would like to book a photography session.
+
+Name: ${name}
+
+Phone: ${phone || "Not provided"}
+
+Photography Type: ${type}
+
+Preferred Date: ${date}
+
+Preferred Time: ${selectedTime}
+
+Please let me know if the slot is available.
+
+Thank you!`;
+
+
+        const whatsappURL =
+            "https://wa.me/919700034138?text="
+            +
+            encodeURIComponent(
+                message
+            );
+
+
+        window.open(
+            whatsappURL,
+            "_blank"
+        );
+
+    }
+);
+
+
+/* =========================================================
+   INSTAGRAM BOOKING
+========================================================= */
+
+const instagramBooking =
+document.getElementById(
+    "instagramBooking"
+);
+
+
+instagramBooking.addEventListener(
+    "click",
+    async () => {
+
+        const name =
+            document.getElementById(
+                "clientName"
+            ).value.trim();
+
+
+        if(!name){
+
+            showToast(
+                "Please enter your name."
+            );
+
+            return;
+
+        }
+
+
+        if(!selectedDate){
+
+            showToast(
+                "Please select a date."
+            );
+
+            return;
+
+        }
+
+
+        if(!selectedTime){
+
+            showToast(
+                "Please select a time."
+            );
+
+            return;
+
+        }
+
+
+        const type =
+            document.getElementById(
+                "shootType"
+            ).value;
+
+
+        const message =
+
+`Hello Dillu Captures! 📸
+
+I would like to book a ${type}.
+
+Name: ${name}
+
+Date: ${formatDate(selectedDate)}
+
+Time: ${selectedTime}
+
+Please confirm availability.`;
+
+
+
+        try{
+
+            await navigator.clipboard.writeText(
+                message
+            );
+
+            showToast(
+                "Booking message copied. Opening Instagram..."
+            );
+
+        }
+        catch(error){
+
+            showToast(
+                "Opening Instagram..."
+            );
+
+        }
+
+
+        setTimeout(
+            () => {
+
+                window.open(
+                    "https://instagram.com/Dillu_Captures",
+                    "_blank"
+                );
+
+            },
+            700
+        );
+
+    }
+);
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+const toast =
+document.getElementById(
+    "toast"
+);
+
+
+function showToast(message){
+
+    toast.textContent =
+        message;
+
+    toast.classList.add(
+        "show"
+    );
+
+
+    setTimeout(
+        () => {
+
+            toast.classList.remove(
+                "show"
+            );
+
+        },
+        3000
+    );
+
+}
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+renderCalendar();
+
+
+/* =========================================================
+   PREVENT PAST MONTH NAVIGATION
+========================================================= */
+
+currentDate =
+new Date(
+    today.getFullYear(),
+    today.getMonth(),
+    1
+);
+
+
+renderCalendar();
+
 </script>
 
 </body>
