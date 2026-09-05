@@ -1,453 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+<title>Dillu Captures — Cinematic Photography</title>
 
 <meta name="description"
-      content="Dillu Captures — Professional photography for weddings, portraits, couples, events and commercial stories.">
+      content="Dillu Captures — cinematic wedding, portrait, couple and event photography. Stories, framed beautifully.">
 
-<meta name="author"
-      content="Dillu Captures">
-
-<title>Dillu Captures | Photography</title>
-
+<meta name="theme-color" content="#080808">
 
 <!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link rel="preconnect"
-      href="https://fonts.googleapis.com">
-
-<link rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
       rel="stylesheet">
-
 
 <style>
 
 /* =========================================================
-   VARIABLES
+   DILLU CAPTURES
+   LUXURY GLASS PHOTOGRAPHY PORTFOLIO
 ========================================================= */
 
 :root {
+    --black: #080808;
+    --black-2: #0d0d0d;
+    --card: rgba(255,255,255,.055);
+    --border: rgba(255,255,255,.13);
+    --white: #f4f2ed;
+    --gray: #9b9b9b;
+    --gold: #c9a96e;
+    --gold-light: #e0c58e;
 
-    --background: #eef3f8;
+    --serif: "Cormorant Garamond", Georgia, serif;
+    --sans: "Inter", Arial, sans-serif;
 
-    --background2: #f8fbff;
-
-    --text: #111827;
-
-    --muted: #64748b;
-
-    --accent: #9b7a4d;
-
-    --accent-light: #c9aa7a;
-
-    --glass: rgba(255,255,255,0.32);
-
-    --glass-strong: rgba(255,255,255,0.48);
-
-    --border: rgba(255,255,255,0.65);
-
-    --shadow:
-        0 20px 60px rgba(15,23,42,0.12);
-
-    --shadow-small:
-        0 10px 30px rgba(15,23,42,0.08);
-
-    --radius: 28px;
-
+    --radius: 24px;
+    --max: 1400px;
 }
 
 
-[data-theme="dark"] {
-
-    --background: #070a0f;
-
-    --background2: #0d1117;
-
-    --text: #f8fafc;
-
-    --muted: #94a3b8;
-
-    --accent: #d5b277;
-
-    --accent-light: #e6ca9b;
-
-    --glass: rgba(255,255,255,0.07);
-
-    --glass-strong: rgba(255,255,255,0.11);
-
-    --border: rgba(255,255,255,0.14);
-
-    --shadow:
-        0 25px 70px rgba(0,0,0,0.45);
-
-    --shadow-small:
-        0 10px 30px rgba(0,0,0,0.3);
-
-}
-
-
-/* =========================================================
-   RESET
-========================================================= */
+/* RESET */
 
 * {
-
     margin: 0;
-
     padding: 0;
-
     box-sizing: border-box;
-
 }
-
 
 html {
-
     scroll-behavior: smooth;
-
 }
-
 
 body {
-
-    font-family: 'Inter', sans-serif;
-
-    color: var(--text);
-
-    background:
-
-        radial-gradient(
-            circle at 10% 10%,
-            rgba(157,125,78,0.13),
-            transparent 28%
-        ),
-
-        radial-gradient(
-            circle at 90% 20%,
-            rgba(90,140,255,0.10),
-            transparent 30%
-        ),
-
-        linear-gradient(
-            135deg,
-            var(--background),
-            var(--background2)
-        );
-
-    min-height: 100vh;
-
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--sans);
     overflow-x: hidden;
-
-    transition:
-        background .4s ease,
-        color .4s ease;
-
 }
 
-
-body::before {
-
-    content: "";
-
-    position: fixed;
-
-    width: 350px;
-
-    height: 350px;
-
-    border-radius: 50%;
-
-    background:
-        rgba(155,122,77,.10);
-
-    filter: blur(80px);
-
-    top: 20%;
-
-    left: -120px;
-
-    pointer-events: none;
-
-    z-index: -1;
-
+body.menu-open {
+    overflow: hidden;
 }
-
-
-body::after {
-
-    content: "";
-
-    position: fixed;
-
-    width: 400px;
-
-    height: 400px;
-
-    border-radius: 50%;
-
-    background:
-        rgba(80,130,255,.08);
-
-    filter: blur(100px);
-
-    right: -150px;
-
-    bottom: 10%;
-
-    pointer-events: none;
-
-    z-index: -1;
-
-}
-
 
 img {
-
-    max-width: 100%;
-
+    width: 100%;
     display: block;
-
 }
-
 
 a {
-
     color: inherit;
+    text-decoration: none;
+}
 
+button {
+    font: inherit;
 }
 
 
-/* =========================================================
-   CONTAINER
-========================================================= */
+/* CUSTOM SCROLLBAR */
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-track {
+    background: #080808;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 20px;
+}
+
+
+/* PAGE GLOW */
+
+body::before {
+    content: "";
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    top: -250px;
+    right: -200px;
+    background: rgba(201,169,110,.08);
+    filter: blur(120px);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+
+/* CONTAINER */
 
 .container {
-
-    width: min(1200px, 92%);
-
+    width: min(var(--max), calc(100% - 50px));
     margin: auto;
-
 }
 
 
 /* =========================================================
-   GLASS
+   NAVIGATION
 ========================================================= */
 
-.glass {
-
-    background: var(--glass);
-
-    border: 1px solid var(--border);
-
-    backdrop-filter:
-        blur(25px)
-        saturate(150%);
-
-    -webkit-backdrop-filter:
-        blur(25px)
-        saturate(150%);
-
-    box-shadow: var(--shadow-small);
-
-}
-
-
-.glass-strong {
-
-    background: var(--glass-strong);
-
-    border: 1px solid var(--border);
-
-    backdrop-filter:
-        blur(30px)
-        saturate(170%);
-
-    -webkit-backdrop-filter:
-        blur(30px)
-        saturate(170%);
-
-    box-shadow: var(--shadow);
-
-}
-
-
-/* =========================================================
-   HEADER
-========================================================= */
-
-header {
-
+.nav {
     position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(1250px, calc(100% - 35px));
 
-    top: 0;
+    height: 70px;
 
-    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-    width: 100%;
+    padding: 0 22px;
 
-    padding: 16px 0;
+    background: rgba(12,12,12,.52);
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+
+    border: 1px solid var(--border);
+    border-radius: 100px;
 
     z-index: 1000;
 
+    box-shadow:
+        0 20px 70px rgba(0,0,0,.25);
 }
 
 
-.navbar {
-
-    min-height: 68px;
-
-    padding: 10px 14px 10px 24px;
-
-    border-radius: 22px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-}
-
+/* LOGO */
 
 .logo {
-
-    text-decoration: none;
-
-    font-family:
-        'Playfair Display',
-        serif;
-
-    font-size: 1.65rem;
-
-    font-weight: 700;
-
-    letter-spacing: -0.5px;
-
-    white-space: nowrap;
-
-}
-
-
-.logo span {
-
-    color: var(--accent);
-
-}
-
-
-.nav-right {
-
     display: flex;
-
     align-items: center;
-
-    gap: 10px;
-
+    gap: 12px;
 }
 
+.logo img {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.logo-text {
+    font-family: var(--serif);
+    font-size: 25px;
+    letter-spacing: .02em;
+    white-space: nowrap;
+}
+
+.logo-text span {
+    color: var(--gold);
+}
+
+
+/* NAV LINKS */
 
 .nav-links {
-
     display: flex;
-
     align-items: center;
-
-    gap: 26px;
-
+    gap: 30px;
 }
-
 
 .nav-links a {
-
-    text-decoration: none;
-
-    font-size: .88rem;
-
-    font-weight: 500;
-
-    transition: .3s;
-
+    font-size: 12px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #d4d4d4;
+    transition: .3s ease;
 }
-
 
 .nav-links a:hover {
-
-    color: var(--accent);
-
+    color: var(--gold-light);
 }
 
 
-/* =========================================================
-   THEME BUTTON
-========================================================= */
+/* NAV CTA */
 
-.theme-btn {
+.nav-cta {
+    padding: 11px 19px;
+    border-radius: 100px;
 
-    width: 44px;
-
-    height: 44px;
-
-    border-radius: 50%;
-
+    background: rgba(255,255,255,.09);
     border: 1px solid var(--border);
 
-    background: var(--glass);
+    font-size: 11px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
 
-    color: var(--text);
+    transition: .3s ease;
+}
 
-    cursor: pointer;
-
-    font-size: 18px;
-
-    transition: .3s;
-
+.nav-cta:hover {
+    background: var(--gold);
+    color: #111;
+    border-color: var(--gold);
 }
 
 
-.theme-btn:hover {
-
-    transform:
-        rotate(15deg)
-        scale(1.06);
-
-}
-
-
-/* =========================================================
-   MOBILE MENU
-========================================================= */
+/* MOBILE MENU BUTTON */
 
 .menu-btn {
-
     display: none;
 
-    width: 44px;
-
-    height: 44px;
+    width: 45px;
+    height: 45px;
 
     border-radius: 50%;
-
     border: 1px solid var(--border);
 
-    background: var(--glass);
-
-    color: var(--text);
-
-    font-size: 20px;
+    background: rgba(255,255,255,.06);
+    color: white;
 
     cursor: pointer;
-
 }
 
 
@@ -456,630 +249,316 @@ header {
 ========================================================= */
 
 .hero {
-
+    position: relative;
     min-height: 100vh;
 
-    display: grid;
-
-    grid-template-columns:
-        1fr
-        .9fr;
-
-    gap: 70px;
-
+    display: flex;
     align-items: center;
 
-    padding-top: 120px;
-
+    overflow: hidden;
 }
 
 
-.hero-content {
+/* HERO IMAGE */
 
-    animation:
-        fadeUp .9s ease forwards;
-
+.hero-image {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
 }
 
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 
-@keyframes fadeUp {
+    filter: brightness(.55) saturate(.85);
 
+    animation: heroZoom 12s ease-out forwards;
+}
+
+@keyframes heroZoom {
     from {
-
-        opacity: 0;
-
-        transform:
-            translateY(35px);
-
+        transform: scale(1.08);
     }
 
     to {
-
-        opacity: 1;
-
-        transform:
-            translateY(0);
-
+        transform: scale(1);
     }
-
 }
 
 
-.eyebrow {
+/* HERO GRADIENT */
 
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 8px;
-
-    color: var(--accent);
-
-    text-transform: uppercase;
-
-    letter-spacing: 2px;
-
-    font-size: .72rem;
-
-    font-weight: 600;
-
-    margin-bottom: 18px;
-
-}
-
-
-.eyebrow::before {
-
-    content: "";
-
-    width: 28px;
-
-    height: 1px;
-
-    background: var(--accent);
-
-}
-
-
-.hero h1 {
-
-    font-family:
-        'Playfair Display',
-        serif;
-
-    font-size:
-        clamp(
-            3.5rem,
-            7vw,
-            7rem
-        );
-
-    line-height: .92;
-
-    letter-spacing: -4px;
-
-    margin-bottom: 28px;
-
-}
-
-
-.hero h1 span {
-
-    color: var(--accent);
-
-    font-style: italic;
-
-}
-
-
-.hero-description {
-
-    max-width: 590px;
-
-    color: var(--muted);
-
-    font-size: 1.04rem;
-
-    line-height: 1.85;
-
-    margin-bottom: 34px;
-
-}
-
-
-.hero-buttons {
-
-    display: flex;
-
-    gap: 14px;
-
-    flex-wrap: wrap;
-
-}
-
-
-/* =========================================================
-   BUTTONS
-========================================================= */
-
-.btn {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 8px;
-
-    padding:
-        15px
-        24px;
-
-    border-radius: 999px;
-
-    text-decoration: none;
-
-    border: 1px solid transparent;
-
-    font-size: .88rem;
-
-    font-weight: 600;
-
-    cursor: pointer;
-
-    transition:
-        transform .3s,
-        box-shadow .3s,
-        background .3s;
-
-}
-
-
-.btn:hover {
-
-    transform:
-        translateY(-3px);
-
-}
-
-
-.btn-dark {
-
-    background: var(--text);
-
-    color: var(--background);
-
-}
-
-
-.btn-glass {
-
-    background: var(--glass);
-
-    color: var(--text);
-
-    border-color: var(--border);
-
-}
-
-
-.btn-gold {
-
-    background: var(--accent);
-
-    color: white;
-
-}
-
-
-.btn-whatsapp {
-
-    background: #25D366;
-
-    color: white;
-
-}
-
-
-.btn-instagram {
-
-    background:
-        linear-gradient(
-            45deg,
-            #f09433,
-            #e6683c,
-            #dc2743,
-            #cc2366,
-            #bc1888
-        );
-
-    color: white;
-
-}
-
-
-/* =========================================================
-   HERO IMAGE
-========================================================= */
-
-.hero-image {
-
-    position: relative;
-
-    overflow: hidden;
-
-    border-radius:
-        40px
-        40px
-        40px
-        130px;
-
-}
-
-
-.hero-image img {
-
-    width: 100%;
-
-    height: 680px;
-
-    object-fit: cover;
-
-}
-
-
-.hero-image::after {
-
+.hero::after {
     content: "";
 
     position: absolute;
-
     inset: 0;
 
+    z-index: -1;
+
     background:
         linear-gradient(
-            to top,
-            rgba(0,0,0,.55),
+            90deg,
+            rgba(0,0,0,.78) 0%,
+            rgba(0,0,0,.42) 48%,
+            rgba(0,0,0,.2) 100%
+        ),
+        linear-gradient(
+            0deg,
+            rgba(0,0,0,.8),
             transparent 50%
         );
-
-    pointer-events: none;
-
 }
 
 
-.hero-card {
+/* HERO CONTENT */
 
+.hero-content {
+    width: min(850px, 90%);
+    padding-top: 90px;
+}
+
+.eyebrow {
+    color: var(--gold-light);
+    font-size: 11px;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+}
+
+.hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(70px, 9vw, 145px);
+    font-weight: 500;
+    line-height: .82;
+    letter-spacing: -.045em;
+}
+
+.hero h1 em {
+    color: var(--gold-light);
+    font-style: italic;
+}
+
+.hero-description {
+    margin-top: 35px;
+    max-width: 540px;
+
+    color: #d0d0d0;
+    line-height: 1.8;
+    font-size: 15px;
+    font-weight: 300;
+}
+
+
+/* HERO BUTTONS */
+
+.hero-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 35px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 15px 23px;
+    border-radius: 100px;
+
+    font-size: 11px;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+
+    border: 1px solid var(--border);
+
+    transition: .3s ease;
+}
+
+.btn-primary {
+    background: var(--white);
+    color: #111;
+}
+
+.btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+}
+
+.btn-glass {
+    background: rgba(255,255,255,.06);
+    backdrop-filter: blur(10px);
+}
+
+.btn-glass:hover {
+    border-color: var(--gold);
+    color: var(--gold-light);
+}
+
+
+/* HERO SCROLL */
+
+.scroll-indicator {
     position: absolute;
+    bottom: 30px;
+    right: 40px;
 
-    bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 
-    left: 25px;
+    color: #aaa;
 
-    right: 25px;
-
-    padding: 18px 20px;
-
-    border-radius: 20px;
-
-    color: white;
-
-    z-index: 2;
-
-    background:
-        rgba(0,0,0,.25);
-
-    border:
-        1px solid
-        rgba(255,255,255,.2);
-
-    backdrop-filter:
-        blur(20px);
-
+    font-size: 9px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
 }
 
-
-.hero-card strong {
-
-    display: block;
-
-    font-family:
-        'Playfair Display',
-        serif;
-
-    font-size: 1.35rem;
-
-}
-
-
-.hero-card span {
-
-    font-size: .75rem;
-
-    opacity: .75;
-
+.scroll-line {
+    width: 50px;
+    height: 1px;
+    background: #777;
 }
 
 
 /* =========================================================
-   SECTIONS
+   GENERAL SECTIONS
 ========================================================= */
 
 section {
-
-    padding: 120px 0;
-
+    padding: 130px 0;
 }
 
-
-.section-heading {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: end;
-
-    gap: 30px;
-
-    margin-bottom: 50px;
-
+.section-label {
+    color: var(--gold);
+    font-size: 10px;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    margin-bottom: 17px;
 }
 
-
-.section-heading h2 {
-
-    font-family:
-        'Playfair Display',
-        serif;
-
-    font-size:
-        clamp(
-            2.7rem,
-            5vw,
-            4.5rem
-        );
-
-    line-height: 1;
-
+.section-title {
+    font-family: var(--serif);
+    font-size: clamp(48px, 6vw, 85px);
+    font-weight: 500;
+    line-height: .95;
 }
 
-
-.section-heading p {
-
-    max-width: 450px;
-
-    color: var(--muted);
-
+.section-description {
+    color: var(--gray);
     line-height: 1.8;
-
+    max-width: 550px;
+    margin-top: 25px;
 }
 
 
 /* =========================================================
-   GALLERY
+   SELECTED WORK
 ========================================================= */
 
-.filter-bar {
-
+.work-header {
     display: flex;
-
-    gap: 10px;
-
-    flex-wrap: wrap;
-
-    margin-bottom: 30px;
-
+    justify-content: space-between;
+    align-items: end;
+    gap: 30px;
+    margin-bottom: 55px;
 }
 
 
-.filter {
-
-    padding:
-        10px
-        18px;
-
-    border-radius: 999px;
-
-    border:
-        1px solid
-        var(--border);
-
-    background:
-        var(--glass);
-
-    color: var(--text);
-
-    cursor: pointer;
-
-    transition: .3s;
-
-}
-
-
-.filter.active,
-.filter:hover {
-
-    background:
-        var(--text);
-
-    color:
-        var(--background);
-
-}
-
+/* GALLERY */
 
 .gallery {
-
-    columns: 3 280px;
-
-    column-gap: 20px;
-
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 16px;
 }
-
 
 .gallery-item {
-
     position: relative;
-
-    break-inside: avoid;
-
-    margin-bottom: 20px;
-
-    border-radius: 25px;
-
     overflow: hidden;
-
+    border-radius: var(--radius);
+    min-height: 430px;
     cursor: pointer;
-
 }
 
+.gallery-item:nth-child(1) {
+    grid-column: span 7;
+    height: 650px;
+}
+
+.gallery-item:nth-child(2) {
+    grid-column: span 5;
+    height: 650px;
+}
+
+.gallery-item:nth-child(3),
+.gallery-item:nth-child(4),
+.gallery-item:nth-child(5) {
+    grid-column: span 4;
+    height: 500px;
+}
+
+.gallery-item:nth-child(6) {
+    grid-column: span 8;
+    height: 600px;
+}
+
+.gallery-item:nth-child(7),
+.gallery-item:nth-child(8) {
+    grid-column: span 6;
+    height: 600px;
+}
 
 .gallery-item img {
-
-    width: 100%;
+    height: 100%;
+    object-fit: cover;
 
     transition:
-        transform .6s ease,
-        filter .6s ease;
-
+        transform .8s cubic-bezier(.2,.7,.2,1),
+        filter .5s ease;
 }
-
 
 .gallery-item:hover img {
-
-    transform: scale(1.05);
-
-    filter: brightness(.72);
-
+    transform: scale(1.06);
+    filter: brightness(.65);
 }
 
 
-.gallery-info {
+/* GALLERY OVERLAY */
 
+.gallery-overlay {
     position: absolute;
+    inset: 0;
 
-    left: 0;
-
-    right: 0;
-
-    bottom: 0;
+    display: flex;
+    align-items: end;
 
     padding: 25px;
-
-    color: white;
-
-    opacity: 0;
-
-    transform:
-        translateY(15px);
-
-    transition: .35s;
 
     background:
         linear-gradient(
-            transparent,
-            rgba(0,0,0,.75)
+            transparent 40%,
+            rgba(0,0,0,.8)
         );
 
+    opacity: .9;
 }
 
-
-.gallery-item:hover
 .gallery-info {
-
-    opacity: 1;
-
-    transform:
-        translateY(0);
-
+    width: 100%;
 }
 
-
-.gallery-info small {
-
-    text-transform:
-        uppercase;
-
-    letter-spacing: 1.5px;
-
-    opacity: .7;
-
+.gallery-category {
+    color: var(--gold-light);
+    font-size: 9px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
 }
 
+.gallery-title {
+    margin-top: 6px;
 
-/* =========================================================
-   LIGHTBOX
-========================================================= */
-
-.lightbox {
-
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 3000;
-
-    display: none;
-
-    align-items: center;
-
-    justify-content: center;
-
-    background:
-        rgba(0,0,0,.92);
-
-    padding: 25px;
-
-}
-
-
-.lightbox.active {
-
-    display: flex;
-
-}
-
-
-.lightbox img {
-
-    max-width: 94vw;
-
-    max-height: 90vh;
-
-    object-fit: contain;
-
-    border-radius: 15px;
-
-}
-
-
-.lightbox-close {
-
-    position: absolute;
-
-    top: 25px;
-
-    right: 30px;
-
-    width: 48px;
-
-    height: 48px;
-
-    border-radius: 50%;
-
-    border: 1px solid rgba(255,255,255,.2);
-
-    background:
-        rgba(255,255,255,.1);
-
-    color: white;
-
-    font-size: 25px;
-
-    cursor: pointer;
-
+    font-family: var(--serif);
+    font-size: 30px;
 }
 
 
@@ -1087,144 +566,86 @@ section {
    ABOUT
 ========================================================= */
 
-.about-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        .85fr
-        1.15fr;
-
-    gap: 70px;
-
-    align-items: center;
-
+.about {
+    background:
+        radial-gradient(
+            circle at 10% 50%,
+            rgba(201,169,110,.06),
+            transparent 35%
+        );
 }
 
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 90px;
+    align-items: center;
+}
+
+
+/* ABOUT IMAGE */
 
 .about-image {
-
-    border-radius:
-        30px
-        100px
-        30px
-        30px;
-
-    overflow: hidden;
-
+    position: relative;
 }
-
 
 .about-image img {
-
-    width: 100%;
-
-    height: 620px;
-
+    height: 720px;
     object-fit: cover;
+    border-radius: 30px;
+}
 
+.about-image::after {
+    content: "DILLU CAPTURES";
+
+    position: absolute;
+
+    right: -35px;
+    bottom: 35px;
+
+    padding: 14px 20px;
+
+    background: rgba(10,10,10,.6);
+    backdrop-filter: blur(18px);
+
+    border: 1px solid var(--border);
+    border-radius: 100px;
+
+    color: #ccc;
+
+    font-size: 9px;
+    letter-spacing: .22em;
 }
 
 
-.about-content h2 {
+/* ABOUT TEXT */
 
-    font-family:
-        'Playfair Display',
-        serif;
-
-    font-size:
-        clamp(
-            2.8rem,
-            5vw,
-            5rem
-        );
-
-    line-height: 1;
-
-    margin-bottom: 28px;
-
+.about-copy h2 {
+    font-family: var(--serif);
+    font-size: clamp(55px, 6vw, 90px);
+    font-weight: 500;
+    line-height: .9;
 }
 
-
-.about-content h2 span {
-
-    color: var(--accent);
-
+.about-copy h2 span {
+    color: var(--gold);
+    font-style: italic;
 }
 
-
-.about-content p {
-
-    color: var(--muted);
-
+.about-copy p {
+    color: #aaa;
     line-height: 1.9;
-
-    margin-bottom: 20px;
-
+    margin-top: 28px;
+    max-width: 560px;
 }
-
 
 .signature {
-
-    font-family:
-        'Playfair Display',
-        serif;
-
-    color: var(--accent);
-
-    font-style: italic;
-
-    font-size: 1.7rem;
-
-    margin-top: 25px;
-
-}
-
-
-.stats {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap: 15px;
-
     margin-top: 40px;
 
-}
-
-
-.stat {
-
-    padding: 24px;
-
-    border-radius: 20px;
-
-}
-
-
-.stat strong {
-
-    display: block;
-
-    color: var(--accent);
-
-    font-family:
-        'Playfair Display',
-        serif;
-
-    font-size: 2rem;
-
-}
-
-
-.stat span {
-
-    color: var(--muted);
-
-    font-size: .78rem;
-
+    font-family: var(--serif);
+    font-size: 32px;
+    color: var(--gold-light);
+    font-style: italic;
 }
 
 
@@ -1233,506 +654,84 @@ section {
 ========================================================= */
 
 .services {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap: 20px;
-
+    padding-top: 80px;
 }
 
+.service-list {
+    margin-top: 65px;
+    border-top: 1px solid var(--border);
+}
 
 .service {
-
-    padding: 35px;
-
-    border-radius: 28px;
-
-    transition:
-        transform .35s;
-
-}
-
-
-.service:hover {
-
-    transform:
-        translateY(-8px);
-
-}
-
-
-.service-number {
-
-    color: var(--accent);
-
-    font-family:
-        'Playfair Display',
-        serif;
-
-    font-size: 1.5rem;
-
-    margin-bottom: 35px;
-
-}
-
-
-.service h3 {
-
-    font-family:
-        'Playfair Display',
-        serif;
-
-    font-size: 1.65rem;
-
-    margin-bottom: 15px;
-
-}
-
-
-.service p {
-
-    color: var(--muted);
-
-    line-height: 1.75;
-
-}
-
-
-/* =========================================================
-   BOOKING
-========================================================= */
-
-.booking {
-
     display: grid;
-
-    grid-template-columns:
-        .8fr
-        1.2fr;
-
-    gap: 25px;
-
-}
-
-
-.booking-info {
-
-    padding: 40px;
-
-    border-radius: 30px;
-
-}
-
-
-.booking-info h2 {
-
-    font-family:
-        'Playfair Display',
-        serif;
-
-    font-size: 3.5rem;
-
-    line-height: 1;
-
-    margin-bottom: 22px;
-
-}
-
-
-.booking-info p {
-
-    color: var(--muted);
-
-    line-height: 1.8;
-
-}
-
-
-.booking-list {
-
-    list-style: none;
-
-    margin-top: 30px;
-
-}
-
-
-.booking-list li {
-
-    margin-bottom: 16px;
-
-    color: var(--muted);
-
-}
-
-
-.booking-list li::before {
-
-    content: "✓";
-
-    color: var(--accent);
-
-    font-weight: bold;
-
-    margin-right: 10px;
-
-}
-
-
-.booking-card {
-
-    padding: 35px;
-
-    border-radius: 30px;
-
-}
-
-
-.booking-card h3 {
-
-    font-family:
-        'Playfair Display',
-        serif;
-
-    font-size: 2rem;
-
-    margin-bottom: 25px;
-
-}
-
-
-.field {
-
-    margin-bottom: 20px;
-
-}
-
-
-.field label {
-
-    display: block;
-
-    color: var(--muted);
-
-    font-size: .78rem;
-
-    margin-bottom: 8px;
-
-}
-
-
-input,
-select,
-textarea {
-
-    width: 100%;
-
-    padding: 15px;
-
-    border-radius: 15px;
-
-    border:
-        1px solid
-        var(--border);
-
-    background:
-        rgba(255,255,255,.08);
-
-    color: var(--text);
-
-    outline: none;
-
-    font-family:
-        'Inter',
-        sans-serif;
-
-}
-
-
-select option {
-
-    background:
-        var(--background2);
-
-    color:
-        var(--text);
-
-}
-
-
-input:focus,
-select:focus,
-textarea:focus {
-
-    border-color:
-        var(--accent);
-
-}
-
-
-/* =========================================================
-   CALENDAR
-========================================================= */
-
-.calendar-top {
-
-    display: flex;
-
+    grid-template-columns: 80px 1fr auto;
     align-items: center;
 
-    justify-content: space-between;
+    padding: 32px 0;
 
-    margin-top: 25px;
+    border-bottom: 1px solid var(--border);
 
-    margin-bottom: 15px;
-
+    transition: .3s ease;
 }
 
+.service:hover {
+    padding-left: 15px;
+}
 
-.calendar-top button {
+.service-number {
+    color: var(--gold);
+    font-size: 11px;
+}
 
-    width: 38px;
+.service-name {
+    font-family: var(--serif);
+    font-size: 42px;
+}
 
-    height: 38px;
+.service-description {
+    color: #777;
+    font-size: 12px;
+    max-width: 250px;
+}
 
-    border-radius: 50%;
-
-    border:
-        1px solid
-        var(--border);
-
-    background:
-        var(--glass);
-
-    color:
-        var(--text);
-
-    cursor: pointer;
-
+.service-arrow {
+    color: var(--gold);
     font-size: 20px;
-
 }
 
 
-.month-name {
+/* =========================================================
+   QUOTE
+========================================================= */
 
-    font-weight: 600;
-
-}
-
-
-.weekdays,
-.days {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(7,1fr);
-
-    gap: 5px;
-
-}
-
-
-.weekdays div {
-
+.quote-section {
     text-align: center;
-
-    padding: 8px 0;
-
-    color: var(--muted);
-
-    font-size: .7rem;
-
+    padding: 180px 20px;
 }
 
-
-.days button {
-
-    min-height: 42px;
-
-    border-radius: 12px;
-
-    border:
-        1px solid transparent;
-
-    background:
-        transparent;
-
-    color:
-        var(--text);
-
-    cursor: pointer;
-
+.quote-mark {
+    color: var(--gold);
+    font-family: var(--serif);
+    font-size: 70px;
 }
 
+.quote {
+    max-width: 1000px;
+    margin: auto;
 
-.days button:hover {
-
-    border-color:
-        var(--accent);
-
+    font-family: var(--serif);
+    font-size: clamp(42px, 6vw, 82px);
+    line-height: 1;
 }
 
+.quote-author {
+    margin-top: 30px;
 
-.days button.selected {
+    color: var(--gray);
 
-    background:
-        var(--accent);
-
-    color:
-        white;
-
-}
-
-
-.days button.disabled {
-
-    opacity: .22;
-
-    cursor: not-allowed;
-
-}
-
-
-.days button.today {
-
-    border-color:
-        var(--accent);
-
-}
-
-
-/* =========================================================
-   TIME SLOTS
-========================================================= */
-
-.time-title {
-
-    font-size: .85rem;
-
-    font-weight: 600;
-
-    margin:
-        25px 0
-        12px;
-
-}
-
-
-.time-slots {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap: 10px;
-
-}
-
-
-.time-slot {
-
-    padding: 12px 8px;
-
-    border-radius: 12px;
-
-    border:
-        1px solid
-        var(--border);
-
-    background:
-        var(--glass);
-
-    color:
-        var(--text);
-
-    cursor: pointer;
-
-    font-size: .78rem;
-
-}
-
-
-.time-slot:hover,
-.time-slot.selected {
-
-    background:
-        var(--accent);
-
-    border-color:
-        var(--accent);
-
-    color:
-        white;
-
-}
-
-
-/* =========================================================
-   BOOKING SUMMARY
-========================================================= */
-
-.summary {
-
-    margin-top: 20px;
-
-    padding: 18px;
-
-    border-radius: 18px;
-
-    background:
-        rgba(155,122,77,.09);
-
-    border:
-        1px solid
-        rgba(155,122,77,.22);
-
-}
-
-
-.summary strong {
-
-    display: block;
-
-    margin-bottom: 5px;
-
-}
-
-
-.summary span {
-
-    color:
-        var(--muted);
-
-    font-size: .82rem;
-
-}
-
-
-.booking-actions {
-
-    display: grid;
-
-    grid-template-columns:
-        1fr
-        1fr;
-
-    gap: 12px;
-
-    margin-top: 18px;
-
-}
-
-
-.booking-actions button {
-
-    border: none;
-
+    font-size: 10px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
 }
 
 
@@ -1740,129 +739,76 @@ textarea:focus {
    CONTACT
 ========================================================= */
 
-.contact-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        .8fr
-        1.2fr;
-
-    gap: 25px;
-
+.contact {
+    padding-bottom: 70px;
 }
 
+.contact-box {
+    position: relative;
+    overflow: hidden;
 
-.contact-card {
+    padding: 90px 70px;
 
-    padding: 35px;
+    border-radius: 35px;
 
-    border-radius: 30px;
+    background:
+        linear-gradient(
+            120deg,
+            rgba(255,255,255,.08),
+            rgba(255,255,255,.025)
+        );
 
+    border: 1px solid var(--border);
+
+    backdrop-filter: blur(20px);
 }
 
+.contact-box::before {
+    content: "";
 
-.contact-card h3 {
+    position: absolute;
 
-    font-family:
-        'Playfair Display',
-        serif;
+    width: 400px;
+    height: 400px;
 
-    font-size: 2rem;
+    right: -150px;
+    top: -200px;
 
-    margin-bottom: 18px;
-
+    background: rgba(201,169,110,.1);
+    filter: blur(90px);
+    border-radius: 50%;
 }
 
+.contact-box h2 {
+    position: relative;
 
-.contact-card p {
+    font-family: var(--serif);
+    font-size: clamp(55px, 7vw, 100px);
+    line-height: .9;
+    font-weight: 500;
+}
 
-    color:
-        var(--muted);
+.contact-box h2 span {
+    color: var(--gold-light);
+    font-style: italic;
+}
 
+.contact-box p {
+    position: relative;
+
+    margin-top: 25px;
+    color: #aaa;
+    max-width: 500px;
     line-height: 1.8;
-
 }
 
+.contact-actions {
+    position: relative;
 
-.contact-list {
-
-    list-style: none;
-
-    margin-top: 30px;
-
-}
-
-
-.contact-list li {
-
-    margin-bottom: 20px;
-
-    color:
-        var(--muted);
-
-}
-
-
-.contact-list a {
-
-    text-decoration: none;
-
-    color:
-        var(--text);
-
-}
-
-
-.contact-list a:hover {
-
-    color:
-        var(--accent);
-
-}
-
-
-.contact-form {
-
-    display: grid;
-
-    grid-template-columns:
-        1fr
-        1fr;
-
-    gap: 15px;
-
-}
-
-
-.contact-form .full {
-
-    grid-column:
-        1 / -1;
-
-}
-
-
-.contact-form label {
-
-    display: block;
-
-    font-size: .78rem;
-
-    color:
-        var(--muted);
-
-    margin-bottom: 7px;
-
-}
-
-
-textarea {
-
-    min-height: 150px;
-
-    resize: vertical;
-
+    display: flex;
+    gap: 12px;
+    margin-top: 35px;
+    flex-wrap: wrap;
 }
 
 
@@ -1871,99 +817,124 @@ textarea {
 ========================================================= */
 
 footer {
-
-    padding:
-        45px 0;
-
-    border-top:
-        1px solid
-        var(--border);
-
+    padding: 30px 0 40px;
 }
 
+.footer-inner {
+    border-top: 1px solid var(--border);
 
-.footer {
+    padding-top: 25px;
 
     display: flex;
-
+    align-items: center;
     justify-content: space-between;
 
-    align-items: center;
+    color: #777;
 
+    font-size: 10px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+.footer-brand {
+    font-family: var(--serif);
+    color: #ccc;
+    font-size: 22px;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+.footer-socials {
+    display: flex;
     gap: 20px;
-
 }
 
-
-.footer-logo {
-
-    font-family:
-        'Playfair Display',
-        serif;
-
-    font-size: 1.4rem;
-
+.footer-socials a {
+    transition: .3s ease;
 }
 
-
-.footer-text {
-
-    color:
-        var(--muted);
-
-    font-size: .75rem;
-
+.footer-socials a:hover {
+    color: var(--gold);
 }
 
 
 /* =========================================================
-   TOAST
+   LIGHTBOX
 ========================================================= */
 
-.toast {
-
+.lightbox {
     position: fixed;
+    inset: 0;
 
-    left: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    bottom: 30px;
+    padding: 40px;
 
-    transform:
-        translate(-50%,120px);
+    background: rgba(0,0,0,.94);
 
-    padding:
-        14px
-        22px;
-
-    background:
-        #111;
-
-    color:
-        white;
-
-    border-radius:
-        999px;
-
-    z-index:
-        5000;
+    backdrop-filter: blur(20px);
 
     opacity: 0;
+    visibility: hidden;
 
-    transition:
-        .4s;
+    transition: .3s ease;
 
-    font-size: .82rem;
+    z-index: 3000;
+}
 
+.lightbox.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox img {
+    width: auto;
+    max-width: 92vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.lightbox-close {
+    position: absolute;
+
+    top: 25px;
+    right: 30px;
+
+    width: 48px;
+    height: 48px;
+
+    border-radius: 50%;
+
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,.07);
+
+    color: white;
+
+    font-size: 22px;
+
+    cursor: pointer;
 }
 
 
-.toast.show {
+/* =========================================================
+   REVEAL ANIMATION
+========================================================= */
 
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+
+    transition:
+        opacity .9s ease,
+        transform .9s ease;
+}
+
+.reveal.visible {
     opacity: 1;
-
-    transform:
-        translate(-50%,0);
-
+    transform: translateY(0);
 }
 
 
@@ -1971,1425 +942,849 @@ footer {
    RESPONSIVE
 ========================================================= */
 
-@media(max-width:1000px) {
+@media (max-width: 900px) {
 
-    .hero {
-
-        grid-template-columns: 1fr;
-
-    }
-
-
-    .hero-image {
-
-        max-width: 700px;
-
-        width: 100%;
-
-        margin: auto;
-
-    }
-
-
-    .about-grid {
-
-        grid-template-columns: 1fr;
-
-    }
-
-
-    .booking {
-
-        grid-template-columns: 1fr;
-
-    }
-
-
-    .contact-grid {
-
-        grid-template-columns: 1fr;
-
-    }
-
-
-    .services {
-
-        grid-template-columns:
-            1fr
-            1fr;
-
-    }
-
-}
-
-
-@media(max-width:750px) {
-
-    .nav-links {
-
+    .nav-links,
+    .nav-cta {
         display: none;
-
-        position: absolute;
-
-        top: 82px;
-
-        left: 4%;
-
-        width: 92%;
-
-        padding: 22px;
-
-        flex-direction: column;
-
-        align-items: flex-start;
-
-        gap: 20px;
-
-        border-radius: 20px;
-
     }
-
-
-    .nav-links.open {
-
-        display: flex;
-
-    }
-
 
     .menu-btn {
-
         display: block;
-
     }
 
+    .nav.mobile-active {
+        border-radius: 28px;
+    }
+
+    .nav.mobile-active .nav-links {
+        display: flex;
+
+        position: fixed;
+
+        top: 80px;
+        left: 0;
+        right: 0;
+
+        padding: 30px;
+
+        flex-direction: column;
+        align-items: flex-start;
+
+        background: rgba(12,12,12,.94);
+        backdrop-filter: blur(25px);
+
+        border: 1px solid var(--border);
+        border-radius: 25px;
+    }
+
+    .hero-content {
+        padding-top: 80px;
+    }
 
     .hero h1 {
-
-        letter-spacing:
-            -2px;
-
+        font-size: clamp(65px, 17vw, 120px);
     }
 
-
-    .hero-image img {
-
-        height: 500px;
-
+    .gallery {
+        grid-template-columns: 1fr 1fr;
     }
 
-
-    .section-heading {
-
-        display: block;
-
+    .gallery-item,
+    .gallery-item:nth-child(n) {
+        grid-column: span 1;
+        height: 480px;
     }
 
-
-    .section-heading p {
-
-        margin-top: 20px;
-
+    .gallery-item:first-child {
+        grid-column: span 2;
+        height: 580px;
     }
 
-
-    .services {
-
-        grid-template-columns:
-            1fr;
-
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
     }
 
-
-    .stats {
-
-        grid-template-columns:
-            1fr;
-
+    .about-image img {
+        height: 600px;
     }
 
-
-    .booking-actions {
-
-        grid-template-columns:
-            1fr;
-
+    .service {
+        grid-template-columns: 50px 1fr auto;
     }
 
-
-    .contact-form {
-
-        grid-template-columns:
-            1fr;
-
+    .service-description {
+        display: none;
     }
 
-
-    .contact-form .full {
-
-        grid-column:
-            auto;
-
+    .service-name {
+        font-size: 34px;
     }
 
-
-    .footer {
-
-        flex-direction:
-            column;
-
-        text-align:
-            center;
-
+    .contact-box {
+        padding: 60px 35px;
     }
-
 }
 
 
-@media(max-width:500px) {
+@media (max-width: 600px) {
+
+    .container {
+        width: min(100% - 30px, var(--max));
+    }
+
+    .nav {
+        top: 12px;
+        width: calc(100% - 24px);
+        height: 62px;
+    }
+
+    .logo img {
+        width: 36px;
+        height: 36px;
+    }
+
+    .logo-text {
+        font-size: 22px;
+    }
 
     section {
-
-        padding:
-            85px 0;
-
+        padding: 90px 0;
     }
-
 
     .hero {
-
-        padding-top:
-            120px;
-
+        min-height: 850px;
     }
 
-
-    .hero h1 {
-
-        font-size:
-            3.3rem;
-
+    .hero-description {
+        font-size: 14px;
     }
 
-
-    .hero-image img {
-
-        height:
-            430px;
-
+    .scroll-indicator {
+        display: none;
     }
 
+    .work-header {
+        display: block;
+    }
+
+    .gallery {
+        display: block;
+    }
+
+    .gallery-item,
+    .gallery-item:nth-child(n),
+    .gallery-item:first-child {
+        height: 500px;
+        margin-bottom: 14px;
+        border-radius: 20px;
+    }
 
     .about-image img {
-
-        height:
-            450px;
-
+        height: 500px;
+        border-radius: 22px;
     }
 
-
-    .booking-card,
-    .booking-info,
-    .contact-card {
-
-        padding:
-            24px;
-
+    .about-image::after {
+        right: 15px;
+        bottom: 15px;
     }
 
-
-    .time-slots {
-
-        grid-template-columns:
-            1fr
-            1fr;
-
+    .service {
+        grid-template-columns: 45px 1fr auto;
+        padding: 25px 0;
     }
 
+    .service-name {
+        font-size: 30px;
+    }
+
+    .quote-section {
+        padding: 120px 20px;
+    }
+
+    .contact-box {
+        padding: 55px 25px;
+        border-radius: 25px;
+    }
+
+    .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .lightbox {
+        padding: 15px;
+    }
 }
 
 </style>
-
 </head>
 
 
 <body>
 
 
-<!-- =========================================================
+<!-- ======================================================
      NAVIGATION
-========================================================= -->
+====================================================== -->
 
-<header>
+<header class="nav" id="navbar">
 
-<div class="container">
+    <a href="#home" class="logo">
 
-<nav class="navbar glass">
+        <!-- Replace logo.png with your actual logo -->
+        <img
+            src="images/logo.png"
+            alt="Dillu Captures Logo"
+            onerror="this.style.display='none'"
+        >
 
-<a href="#home"
-   class="logo">
+        <div class="logo-text">
+            dillu <span>Captures</span>
+        </div>
 
-    Dillu <span>Captures</span>
-
-</a>
-
-
-<div class="nav-right">
-
-<div class="nav-links glass"
-     id="navLinks">
-
-<a href="#home">
-    Home
-</a>
-
-<a href="#portfolio">
-    Portfolio
-</a>
-
-<a href="#about">
-    About
-</a>
-
-<a href="#services">
-    Services
-</a>
-
-<a href="#booking">
-    Book
-</a>
-
-<a href="#contact">
-    Contact
-</a>
-
-</div>
+    </a>
 
 
-<button class="theme-btn"
-        id="themeBtn"
-        aria-label="Change theme">
+    <nav class="nav-links">
 
-    ☀
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
 
-</button>
+    </nav>
 
 
-<button class="menu-btn"
+    <a href="#contact" class="nav-cta">
+        Let's Talk
+    </a>
+
+
+    <button
+        class="menu-btn"
         id="menuBtn"
-        aria-label="Open menu">
-
-    ☰
-
-</button>
-
-</div>
-
-</nav>
-
-</div>
+        aria-label="Open Menu"
+    >
+        ☰
+    </button>
 
 </header>
 
 
 
-<!-- =========================================================
+<!-- ======================================================
      HERO
-========================================================= -->
+====================================================== -->
 
-<main id="home">
+<main>
 
-<section class="hero container">
+<section class="hero" id="home">
 
+    <div class="hero-image">
 
-<div class="hero-content">
+        <img
+            src="images/hero.jpg"
+            alt="Dillu Captures cinematic photography"
+        >
 
-<div class="eyebrow">
-
-    Dillu Captures
-
-</div>
-
-
-<h1>
-
-    Moments
-
-    <span>made timeless.</span>
-
-</h1>
+    </div>
 
 
-<p class="hero-description">
+    <div class="container">
 
-    Professional photography with a cinematic,
-    editorial and emotional approach.
-    Weddings, portraits, couples, events and
-    commercial stories — beautifully captured.
+        <div class="hero-content reveal">
 
-</p>
-
-
-<div class="hero-buttons">
-
-<a href="#portfolio"
-   class="btn btn-dark">
-
-    Explore Portfolio →
-
-</a>
+            <div class="eyebrow">
+                Photography · Stories · Emotion
+            </div>
 
 
-<a href="#booking"
-   class="btn btn-glass">
-
-    Book a Session
-
-</a>
-
-</div>
-
-</div>
+            <h1>
+                Stories,<br>
+                <em>framed</em><br>
+                beautifully.
+            </h1>
 
 
+            <p class="hero-description">
+                Cinematic photography created to preserve
+                the emotions, people and little moments
+                that become your greatest memories.
+            </p>
 
-<div class="hero-image glass">
 
-<img src="images/hero.jpg"
-     alt="Dillu Captures Photography"
-     onerror="this.src='https://picsum.photos/900/1200?random=101';">
+            <div class="hero-actions">
+
+                <a
+                    href="#work"
+                    class="btn btn-primary"
+                >
+                    Explore My Work
+                </a>
+
+                <a
+                    href="#contact"
+                    class="btn btn-glass"
+                >
+                    Book a Session
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
 
 
-<div class="hero-card">
+    <div class="scroll-indicator">
 
-<strong>Dillu Captures</strong>
+        <span>Scroll to explore</span>
 
-<span>
-Photography • Weddings • Portraits • Stories
-</span>
+        <div class="scroll-line"></div>
 
-</div>
-
-</div>
-
+    </div>
 
 </section>
 
 
 
-<!-- =========================================================
-     PORTFOLIO
-========================================================= -->
+<!-- ======================================================
+     SELECTED WORK
+====================================================== -->
 
-<section id="portfolio">
+<section id="work">
 
-<div class="container">
+    <div class="container">
 
+        <div class="work-header reveal">
 
-<div class="section-heading">
+            <div>
 
-<div>
+                <div class="section-label">
+                    Selected Work
+                </div>
 
-<div class="eyebrow">
-    Selected Work
-</div>
+                <h2 class="section-title">
+                    Moments<br>
+                    that matter.
+                </h2>
 
-<h2>
-    Portfolio
-</h2>
+            </div>
 
-</div>
 
+            <p class="section-description">
+                A collection of stories captured with
+                a cinematic eye and an honest approach.
+            </p>
 
-<p>
+        </div>
 
-    A carefully selected collection of
-    photographs created through light,
-    emotion and storytelling.
 
-</p>
+        <div class="gallery">
 
-</div>
 
+            <div class="gallery-item reveal"
+                 data-image="images/gallery1.jpg">
 
+                <img
+                    src="images/gallery1.jpg"
+                    alt="Wedding photography"
+                    loading="lazy"
+                >
 
-<div class="filter-bar">
+                <div class="gallery-overlay">
 
-<button class="filter active"
-        data-filter="all">
+                    <div class="gallery-info">
 
-    All
+                        <div class="gallery-category">
+                            Wedding
+                        </div>
 
-</button>
+                        <div class="gallery-title">
+                            Forever Begins
+                        </div>
 
-<button class="filter"
-        data-filter="portrait">
+                    </div>
 
-    Portraits
+                </div>
 
-</button>
+            </div>
 
-<button class="filter"
-        data-filter="wedding">
 
-    Weddings
 
-</button>
+            <div class="gallery-item reveal"
+                 data-image="images/gallery2.jpg">
 
-<button class="filter"
-        data-filter="couple">
+                <img
+                    src="images/gallery2.jpg"
+                    alt="Couple photography"
+                    loading="lazy"
+                >
 
-    Couples
+                <div class="gallery-overlay">
 
-</button>
+                    <div class="gallery-info">
 
-<button class="filter"
-        data-filter="commercial">
+                        <div class="gallery-category">
+                            Couples
+                        </div>
 
-    Commercial
+                        <div class="gallery-title">
+                            Two Souls
+                        </div>
 
-</button>
+                    </div>
 
-</div>
+                </div>
 
+            </div>
 
 
-<div class="gallery">
 
+            <div class="gallery-item reveal"
+                 data-image="images/gallery3.jpg">
 
-<div class="gallery-item glass"
-     data-category="portrait">
+                <img
+                    src="images/gallery3.jpg"
+                    alt="Portrait photography"
+                    loading="lazy"
+                >
 
-<img src="images/gallery1.jpg"
-     alt="Portrait Photography"
-     onerror="this.src='https://picsum.photos/700/900?random=1';">
+                <div class="gallery-overlay">
 
+                    <div class="gallery-info">
 
-<div class="gallery-info">
+                        <div class="gallery-category">
+                            Portraits
+                        </div>
 
-<small>Portrait</small>
+                        <div class="gallery-title">
+                            In Your Element
+                        </div>
 
-</div>
+                    </div>
 
-</div>
+                </div>
 
+            </div>
 
 
-<div class="gallery-item glass"
-     data-category="wedding">
 
-<img src="images/gallery2.jpg"
-     alt="Wedding Photography"
-     onerror="this.src='https://picsum.photos/700/1000?random=2';">
+            <div class="gallery-item reveal"
+                 data-image="images/gallery4.jpg">
 
+                <img
+                    src="images/gallery4.jpg"
+                    alt="Event photography"
+                    loading="lazy"
+                >
 
-<div class="gallery-info">
+                <div class="gallery-overlay">
 
-<small>Wedding</small>
+                    <div class="gallery-info">
 
-</div>
+                        <div class="gallery-category">
+                            Events
+                        </div>
 
-</div>
+                        <div class="gallery-title">
+                            The Celebration
+                        </div>
 
+                    </div>
 
+                </div>
 
-<div class="gallery-item glass"
-     data-category="couple">
+            </div>
 
-<img src="images/gallery3.jpg"
-     alt="Couple Photography"
-     onerror="this.src='https://picsum.photos/700/850?random=3';">
 
 
-<div class="gallery-info">
+            <div class="gallery-item reveal"
+                 data-image="images/gallery5.jpg">
 
-<small>Couples</small>
+                <img
+                    src="images/gallery5.jpg"
+                    alt="Wedding portrait"
+                    loading="lazy"
+                >
 
-</div>
+                <div class="gallery-overlay">
 
-</div>
+                    <div class="gallery-info">
 
+                        <div class="gallery-category">
+                            Wedding
+                        </div>
 
+                        <div class="gallery-title">
+                            Golden Hours
+                        </div>
 
-<div class="gallery-item glass"
-     data-category="commercial">
+                    </div>
 
-<img src="images/gallery4.jpg"
-     alt="Commercial Photography"
-     onerror="this.src='https://picsum.photos/700/1000?random=4';">
+                </div>
 
+            </div>
 
-<div class="gallery-info">
 
-<small>Commercial</small>
 
-</div>
+            <div class="gallery-item reveal"
+                 data-image="images/gallery6.jpg">
 
-</div>
+                <img
+                    src="images/gallery6.jpg"
+                    alt="Cinematic photography"
+                    loading="lazy"
+                >
 
+                <div class="gallery-overlay">
 
+                    <div class="gallery-info">
 
-<div class="gallery-item glass"
-     data-category="portrait">
+                        <div class="gallery-category">
+                            Stories
+                        </div>
 
-<img src="images/gallery5.jpg"
-     alt="Creative Portrait"
-     onerror="this.src='https://picsum.photos/700/850?random=5';">
+                        <div class="gallery-title">
+                            Between Moments
+                        </div>
 
+                    </div>
 
-<div class="gallery-info">
+                </div>
 
-<small>Creative Portrait</small>
+            </div>
 
-</div>
 
-</div>
 
+            <div class="gallery-item reveal"
+                 data-image="images/gallery7.jpg">
 
+                <img
+                    src="images/gallery7.jpg"
+                    alt="Lifestyle photography"
+                    loading="lazy"
+                >
 
-<div class="gallery-item glass"
-     data-category="wedding">
+                <div class="gallery-overlay">
 
-<img src="images/gallery6.jpg"
-     alt="Wedding Story"
-     onerror="this.src='https://picsum.photos/700/950?random=6';">
+                    <div class="gallery-info">
 
+                        <div class="gallery-category">
+                            Lifestyle
+                        </div>
 
-<div class="gallery-info">
+                        <div class="gallery-title">
+                            Simply You
+                        </div>
 
-<small>Wedding Story</small>
+                    </div>
 
-</div>
+                </div>
 
-</div>
+            </div>
 
 
 
-<div class="gallery-item glass"
-     data-category="couple">
+            <div class="gallery-item reveal"
+                 data-image="images/gallery8.jpg">
 
-<img src="images/gallery7.jpg"
-     alt="Couple Session"
-     onerror="this.src='https://picsum.photos/700/900?random=7';">
+                <img
+                    src="images/gallery8.jpg"
+                    alt="Portrait story"
+                    loading="lazy"
+                >
 
+                <div class="gallery-overlay">
 
-<div class="gallery-info">
+                    <div class="gallery-info">
 
-<small>Couples</small>
+                        <div class="gallery-category">
+                            Portraits
+                        </div>
 
-</div>
+                        <div class="gallery-title">
+                            Your Story
+                        </div>
 
-</div>
+                    </div>
 
+                </div>
 
+            </div>
 
-<div class="gallery-item glass"
-     data-category="commercial">
 
-<img src="images/gallery8.jpg"
-     alt="Brand Photography"
-     onerror="this.src='https://picsum.photos/700/1000?random=8';">
+        </div>
 
-
-<div class="gallery-info">
-
-<small>Commercial</small>
-
-</div>
-
-</div>
-
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
 
 
-<!-- =========================================================
+<!-- ======================================================
      ABOUT
-========================================================= -->
+====================================================== -->
 
-<section id="about">
+<section class="about" id="about">
 
-<div class="container">
+    <div class="container">
 
-
-<div class="about-grid">
-
-
-<div class="about-image glass">
-
-<img src="images/photographer.jpg"
-     alt="Dillu Captures Photographer"
-     onerror="this.src='https://picsum.photos/700/900?random=20';">
-
-</div>
+        <div class="about-grid">
 
 
+            <div class="about-image reveal">
 
-<div class="about-content">
+                <img
+                    src="images/photographer.jpg"
+                    alt="Dillu Captures photographer"
+                    loading="lazy"
+                >
 
-<div class="eyebrow">
-    Behind the Lens
-</div>
-
-
-<h2>
-
-    Hello, I'm the person
-
-    <span>behind Dillu Captures.</span>
-
-</h2>
+            </div>
 
 
-<p>
+            <div class="about-copy reveal">
 
-    Photography for me is more than simply
-    pressing a shutter. It's about noticing
-    the little moments, genuine expressions
-    and emotions that make a story unique.
-
-</p>
+                <div class="section-label">
+                    Behind the Camera
+                </div>
 
 
-<p>
-
-    I create photographs with a cinematic,
-    natural and timeless visual style.
-    Whether it's your wedding day, a portrait
-    session, a couple shoot or a commercial
-    project, my goal is to make every frame
-    feel meaningful.
-
-</p>
+                <h2>
+                    More than<br>
+                    <span>a photograph.</span>
+                </h2>
 
 
-<p>
-
-    Your memories deserve more than ordinary
-    photographs. They deserve photographs
-    you'll want to return to.
-
-</p>
+                <p>
+                    I'm the photographer behind Dillu Captures.
+                    I believe the best photographs aren't simply
+                    posed — they're felt.
+                </p>
 
 
-<div class="signature">
-
-Dillu Captures
-
-</div>
-
-
-<div class="stats">
+                <p>
+                    My approach combines cinematic composition,
+                    natural light and genuine emotion to create
+                    photographs that still feel meaningful years
+                    after they were taken.
+                </p>
 
 
-<div class="stat glass">
+                <div class="signature">
+                    Dillu Captures
+                </div>
 
-<strong>120+</strong>
-
-<span>
-    Projects
-</span>
-
-</div>
+            </div>
 
 
-<div class="stat glass">
+        </div>
 
-<strong>100+</strong>
-
-<span>
-    Clients
-</span>
-
-</div>
-
-
-<div class="stat glass">
-
-<strong>4+</strong>
-
-<span>
-    Years
-</span>
-
-</div>
-
-
-</div>
-
-</div>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
 
 
-<!-- =========================================================
+<!-- ======================================================
      SERVICES
-========================================================= -->
+====================================================== -->
 
-<section id="services">
+<section class="services" id="services">
 
-<div class="container">
+    <div class="container">
 
+        <div class="section-label reveal">
+            What I Capture
+        </div>
 
-<div class="section-heading">
-
-<div>
-
-<div class="eyebrow">
-    What I Photograph
-</div>
-
-<h2>
-    Services
-</h2>
-
-</div>
-
-</div>
+        <h2 class="section-title reveal">
+            Your moments.<br>
+            My perspective.
+        </h2>
 
 
-
-<div class="services">
-
-
-<div class="service glass">
-
-<div class="service-number">
-    01
-</div>
-
-<h3>
-    Portrait Photography
-</h3>
-
-<p>
-
-    Personal portraits, creative portraits,
-    editorial sessions and professional
-    personal branding photography.
-
-</p>
-
-</div>
+        <div class="service-list">
 
 
+            <div class="service reveal">
 
-<div class="service glass">
+                <div class="service-number">
+                    01
+                </div>
 
-<div class="service-number">
-    02
-</div>
+                <div class="service-name">
+                    Weddings
+                </div>
 
-<h3>
-    Weddings & Couples
-</h3>
+                <div class="service-description">
+                    Honest emotions and timeless
+                    wedding stories.
+                </div>
 
-<p>
+                <div class="service-arrow">
+                    ↗
+                </div>
 
-    Weddings, engagements, pre-wedding
-    sessions and natural couple photography
-    focused on real emotions.
-
-</p>
-
-</div>
-
-
-
-<div class="service glass">
-
-<div class="service-number">
-    03
-</div>
-
-<h3>
-    Commercial Photography
-</h3>
-
-<p>
-
-    Professional photography for brands,
-    products, fashion, hospitality,
-    campaigns and businesses.
-
-</p>
-
-</div>
+            </div>
 
 
-</div>
+            <div class="service reveal">
 
-</div>
+                <div class="service-number">
+                    02
+                </div>
+
+                <div class="service-name">
+                    Portraits
+                </div>
+
+                <div class="service-description">
+                    Personal portraits with
+                    cinematic character.
+                </div>
+
+                <div class="service-arrow">
+                    ↗
+                </div>
+
+            </div>
+
+
+            <div class="service reveal">
+
+                <div class="service-number">
+                    03
+                </div>
+
+                <div class="service-name">
+                    Couples
+                </div>
+
+                <div class="service-description">
+                    Natural connection,
+                    beautifully documented.
+                </div>
+
+                <div class="service-arrow">
+                    ↗
+                </div>
+
+            </div>
+
+
+            <div class="service reveal">
+
+                <div class="service-number">
+                    04
+                </div>
+
+                <div class="service-name">
+                    Events
+                </div>
+
+                <div class="service-description">
+                    The people, energy and
+                    details of your celebration.
+                </div>
+
+                <div class="service-arrow">
+                    ↗
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
 
 </section>
 
 
 
-<!-- =========================================================
-     BOOKING
-========================================================= -->
+<!-- ======================================================
+     QUOTE
+====================================================== -->
 
-<section id="booking">
+<section class="quote-section">
 
-<div class="container">
+    <div class="quote-mark">
+        “
+    </div>
 
 
-<div class="booking">
+    <div class="quote reveal">
 
+        The photographs we keep
+        become the memories
+        we can return to.
 
-<div class="booking-info glass">
+    </div>
 
-<div class="eyebrow">
-    Let's Create
-</div>
 
-
-<h2>
-    Book your shoot.
-</h2>
-
-
-<p>
-
-    Choose your preferred date and time.
-    Send the booking request directly through
-    WhatsApp or Instagram and I'll personally
-    confirm your appointment.
-
-</p>
-
-
-<ul class="booking-list">
-
-<li>
-    Choose your preferred date
-</li>
-
-<li>
-    Choose an available time
-</li>
-
-<li>
-    Enter your details
-</li>
-
-<li>
-    Select your photography service
-</li>
-
-<li>
-    Send the booking request
-</li>
-
-</ul>
-
-</div>
-
-
-
-<div class="booking-card glass">
-
-<h3>
-    Schedule a Session
-</h3>
-
-
-<div class="field">
-
-<label>
-    Your Name
-</label>
-
-<input type="text"
-       id="clientName"
-       placeholder="Enter your name">
-
-</div>
-
-
-
-<div class="field">
-
-<label>
-    Phone / WhatsApp
-</label>
-
-<input type="tel"
-       id="clientPhone"
-       placeholder="Your phone number">
-
-</div>
-
-
-
-<div class="field">
-
-<label>
-    Service
-</label>
-
-<select id="serviceType">
-
-<option>
-    Portrait Photography
-</option>
-
-<option>
-    Wedding Photography
-</option>
-
-<option>
-    Couple Photography
-</option>
-
-<option>
-    Commercial Photography
-</option>
-
-<option>
-    Event Photography
-</option>
-
-</select>
-
-</div>
-
-
-
-<!-- CALENDAR -->
-
-<div class="calendar-top">
-
-<button id="previousMonth">
-    ‹
-</button>
-
-
-<div class="month-name"
-     id="monthName">
-
-</div>
-
-
-<button id="nextMonth">
-    ›
-</button>
-
-</div>
-
-
-
-<div class="weekdays">
-
-<div>Sun</div>
-
-<div>Mon</div>
-
-<div>Tue</div>
-
-<div>Wed</div>
-
-<div>Thu</div>
-
-<div>Fri</div>
-
-<div>Sat</div>
-
-</div>
-
-
-
-<div class="days"
-     id="calendarDays">
-
-</div>
-
-
-
-<div class="time-title">
-
-Choose a Time
-
-</div>
-
-
-<div class="time-slots">
-
-
-<button class="time-slot"
-        data-time="09:00 AM">
-
-09:00 AM
-
-</button>
-
-
-<button class="time-slot"
-        data-time="10:30 AM">
-
-10:30 AM
-
-</button>
-
-
-<button class="time-slot"
-        data-time="12:00 PM">
-
-12:00 PM
-
-</button>
-
-
-<button class="time-slot"
-        data-time="02:00 PM">
-
-02:00 PM
-
-</button>
-
-
-<button class="time-slot"
-        data-time="04:00 PM">
-
-04:00 PM
-
-</button>
-
-
-<button class="time-slot"
-        data-time="06:00 PM">
-
-06:00 PM
-
-</button>
-
-
-</div>
-
-
-
-<div class="summary">
-
-<strong>
-    Selected Appointment
-</strong>
-
-<span id="summaryText">
-
-Please select a date and time.
-
-</span>
-
-</div>
-
-
-
-<div class="booking-actions">
-
-<button class="btn btn-whatsapp"
-        id="whatsappButton">
-
-    WhatsApp
-
-</button>
-
-
-<button class="btn btn-instagram"
-        id="instagramButton">
-
-    Instagram
-
-</button>
-
-</div>
-
-
-</div>
-
-</div>
-
-</div>
+    <div class="quote-author">
+        Dillu Captures
+    </div>
 
 </section>
 
 
 
-<!-- =========================================================
+<!-- ======================================================
      CONTACT
-========================================================= -->
+====================================================== -->
 
-<section id="contact">
+<section class="contact" id="contact">
 
-<div class="container">
+    <div class="container">
 
+        <div class="contact-box reveal">
 
-<div class="section-heading">
+            <h2>
+                Let's create<br>
+                <span>something timeless.</span>
+            </h2>
 
-<div>
 
-<div class="eyebrow">
-    Contact
-</div>
+            <p>
+                Planning a wedding, portrait session,
+                couple shoot or special event?
+                Tell me your story and let's create
+                something meaningful together.
+            </p>
 
-<h2>
-    Let's work together.
-</h2>
 
-</div>
+            <div class="contact-actions">
 
+                <!-- CHANGE THIS NUMBER -->
+                <a
+                    href="https://wa.me/919999999999"
+                    class="btn btn-primary"
+                    target="_blank"
+                >
+                    WhatsApp Me
+                </a>
 
-<p>
 
-    Have a wedding, portrait session,
-    event or creative project in mind?
-    I'd love to hear about it.
+                <!-- CHANGE THIS EMAIL -->
+                <a
+                    href="mailto:hello@dillucaptures.com"
+                    class="btn btn-glass"
+                >
+                    Send an Email
+                </a>
 
-</p>
+            </div>
 
-</div>
+        </div>
 
-
-
-<div class="contact-grid">
-
-
-<div class="contact-card glass">
-
-<h3>
-    Get In Touch
-</h3>
-
-
-<p>
-
-    For bookings, collaborations and
-    photography enquiries, contact me
-    through WhatsApp, Instagram or email.
-
-</p>
-
-
-<ul class="contact-list">
-
-<li>
-
-    Email
-
-    <br>
-
-    <a href="mailto:dillucapture@gmail.com">
-
-        dillucapture@gmail.com
-
-    </a>
-
-</li>
-
-
-<li>
-
-    WhatsApp
-
-    <br>
-
-    <a href="https://wa.me/919700034138"
-       target="_blank">
-
-        +91 97000 34138
-
-    </a>
-
-</li>
-
-
-<li>
-
-    Instagram
-
-    <br>
-
-    <a href="https://instagram.com/Dillu_Captures"
-       target="_blank">
-
-        @Dillu_Captures
-
-    </a>
-
-</li>
-
-</ul>
-
-
-<div class="hero-buttons">
-
-<a href="https://wa.me/919700034138"
-   target="_blank"
-   class="btn btn-whatsapp">
-
-    WhatsApp Me
-
-</a>
-
-
-<a href="https://instagram.com/Dillu_Captures"
-   target="_blank"
-   class="btn btn-instagram">
-
-    Instagram
-
-</a>
-
-</div>
-
-</div>
-
-
-
-<div class="contact-card glass">
-
-
-<form class="contact-form"
-      action="https://formsubmit.co/dillucapture@gmail.com"
-      method="POST">
-
-
-<input type="hidden"
-       name="_subject"
-       value="New Enquiry - Dillu Captures">
-
-
-<input type="hidden"
-       name="_captcha"
-       value="false">
-
-
-<input type="hidden"
-       name="_template"
-       value="table">
-
-
-<div>
-
-<label>
-    Name
-</label>
-
-<input type="text"
-       name="name"
-       placeholder="Your Name"
-       required>
-
-</div>
-
-
-
-<div>
-
-<label>
-    Email
-</label>
-
-<input type="email"
-       name="email"
-       placeholder="Your Email"
-       required>
-
-</div>
-
-
-
-<div>
-
-<label>
-    Phone
-</label>
-
-<input type="tel"
-       name="phone"
-       placeholder="Phone Number">
-
-</div>
-
-
-
-<div>
-
-<label>
-    Service
-</label>
-
-<select name="service">
-
-<option>
-    Portrait Photography
-</option>
-
-<option>
-    Wedding Photography
-</option>
-
-<option>
-    Couple Photography
-</option>
-
-<option>
-    Commercial Photography
-</option>
-
-<option>
-    Event Photography
-</option>
-
-</select>
-
-</div>
-
-
-
-<div class="full">
-
-<label>
-    Message
-</label>
-
-<textarea name="message"
-          placeholder="Tell me about your photography project..."
-          required></textarea>
-
-</div>
-
-
-
-<div class="full">
-
-<button type="submit"
-        class="btn btn-dark"
-        style="width:100%;">
-
-    Send Enquiry →
-
-</button>
-
-</div>
-
-
-</form>
-
-</div>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
@@ -3397,332 +1792,209 @@ Please select a date and time.
 
 
 
-<!-- =========================================================
+<!-- ======================================================
      FOOTER
-========================================================= -->
+====================================================== -->
 
 <footer>
 
-<div class="container">
+    <div class="container">
 
-<div class="footer">
+        <div class="footer-inner">
 
-
-<div class="footer-logo">
-
-Dillu Captures
-
-</div>
+            <div class="footer-brand">
+                dillu Captures
+            </div>
 
 
-<div class="footer-text">
-
-© 2026 Dillu Captures Photography.
-All Rights Reserved.
-
-</div>
+            <div>
+                © <span id="year"></span>
+                Dillu Captures
+            </div>
 
 
-<div class="footer-text">
+            <div class="footer-socials">
 
-Photography • Stories • Emotion
+                <!-- CHANGE INSTAGRAM LINK -->
+                <a
+                    href="https://instagram.com/"
+                    target="_blank"
+                >
+                    Instagram
+                </a>
 
-</div>
+                <a href="#home">
+                    Back to top ↑
+                </a>
 
+            </div>
 
-</div>
+        </div>
 
-</div>
+    </div>
 
 </footer>
 
 
 
-<!-- =========================================================
+<!-- ======================================================
      LIGHTBOX
-========================================================= -->
+====================================================== -->
 
-<div class="lightbox"
-     id="lightbox">
+<div class="lightbox" id="lightbox">
 
-<button class="lightbox-close"
-        id="lightboxClose">
-
-    ×
-
-</button>
-
-
-<img id="lightboxImage"
-     src=""
-     alt="Photography">
-
-</div>
+    <button
+        class="lightbox-close"
+        id="lightboxClose"
+        aria-label="Close image"
+    >
+        ×
+    </button>
 
 
-
-<!-- TOAST -->
-
-<div class="toast"
-     id="toast">
+    <img
+        id="lightboxImage"
+        src=""
+        alt="Expanded photograph"
+    >
 
 </div>
 
 
+
+<!-- ======================================================
+     JAVASCRIPT
+====================================================== -->
 
 <script>
 
-/* =========================================================
-   THEME
-========================================================= */
 
-const themeBtn =
-    document.getElementById(
-        "themeBtn"
-    );
+/* ======================================================
+   YEAR
+====================================================== */
 
-
-const storedTheme =
-    localStorage.getItem(
-        "dilluTheme"
-    );
+document.getElementById("year").textContent =
+    new Date().getFullYear();
 
 
-if(storedTheme){
 
-    document.documentElement
-        .setAttribute(
-            "data-theme",
-            storedTheme
-        );
-
-    updateThemeIcon(
-        storedTheme
-    );
-
-}
-
-
-function updateThemeIcon(theme){
-
-    themeBtn.textContent =
-        theme === "dark"
-        ? "☾"
-        : "☀";
-
-}
-
-
-themeBtn.addEventListener(
-    "click",
-    function(){
-
-        const current =
-            document.documentElement
-            .getAttribute(
-                "data-theme"
-            );
-
-
-        const next =
-            current === "dark"
-            ? "light"
-            : "dark";
-
-
-        document.documentElement
-            .setAttribute(
-                "data-theme",
-                next
-            );
-
-
-        localStorage.setItem(
-            "dilluTheme",
-            next
-        );
-
-
-        updateThemeIcon(
-            next
-        );
-
-    }
-);
-
-
-/* =========================================================
+/* ======================================================
    MOBILE MENU
-========================================================= */
+====================================================== */
 
 const menuBtn =
-    document.getElementById(
-        "menuBtn"
-    );
+    document.getElementById("menuBtn");
 
+const navbar =
+    document.getElementById("navbar");
 
 const navLinks =
-    document.getElementById(
-        "navLinks"
+    document.querySelector(".nav-links");
+
+
+menuBtn.addEventListener("click", () => {
+
+    navbar.classList.toggle("mobile-active");
+    document.body.classList.toggle("menu-open");
+
+});
+
+
+navLinks.querySelectorAll("a").forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        navbar.classList.remove("mobile-active");
+        document.body.classList.remove("menu-open");
+
+    });
+
+});
+
+
+
+/* ======================================================
+   SCROLL REVEAL
+====================================================== */
+
+const revealElements =
+    document.querySelectorAll(".reveal");
+
+
+const observer =
+    new IntersectionObserver(
+        (entries) => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("visible");
+
+                    observer.unobserve(entry.target);
+
+                }
+
+            });
+
+        },
+        {
+            threshold: .12
+        }
     );
 
 
-menuBtn.addEventListener(
-    "click",
-    function(){
+revealElements.forEach(element => {
 
-        navLinks.classList.toggle(
-            "open"
-        );
+    observer.observe(element);
 
-    }
-);
+});
 
 
-document.querySelectorAll(
-    ".nav-links a"
-).forEach(
-    link => {
 
-        link.addEventListener(
-            "click",
-            function(){
-
-                navLinks.classList.remove(
-                    "open"
-                );
-
-            }
-        );
-
-    }
-);
-
-
-/* =========================================================
-   GALLERY FILTER
-========================================================= */
-
-const filters =
-    document.querySelectorAll(
-        ".filter"
-    );
-
-
-const galleryItems =
-    document.querySelectorAll(
-        ".gallery-item"
-    );
-
-
-filters.forEach(
-    filter => {
-
-        filter.addEventListener(
-            "click",
-            function(){
-
-                filters.forEach(
-                    item =>
-                    item.classList.remove(
-                        "active"
-                    )
-                );
-
-
-                this.classList.add(
-                    "active"
-                );
-
-
-                const category =
-                    this.dataset.filter;
-
-
-                galleryItems.forEach(
-                    item => {
-
-                        if(
-                            category === "all" ||
-                            item.dataset.category === category
-                        ){
-
-                            item.style.display =
-                                "block";
-
-                        }
-                        else{
-
-                            item.style.display =
-                                "none";
-
-                        }
-
-                    }
-                );
-
-            }
-        );
-
-    }
-);
-
-
-/* =========================================================
+/* ======================================================
    LIGHTBOX
-========================================================= */
+====================================================== */
 
 const lightbox =
-    document.getElementById(
-        "lightbox"
-    );
-
+    document.getElementById("lightbox");
 
 const lightboxImage =
-    document.getElementById(
-        "lightboxImage"
-    );
-
+    document.getElementById("lightboxImage");
 
 const lightboxClose =
-    document.getElementById(
-        "lightboxClose"
-    );
+    document.getElementById("lightboxClose");
 
 
-galleryItems.forEach(
-    item => {
+document.querySelectorAll(".gallery-item").forEach(item => {
 
-        item.addEventListener(
-            "click",
-            function(){
+    item.addEventListener("click", () => {
 
-                const image =
-                    this.querySelector(
-                        "img"
-                    );
+        const image =
+            item.getAttribute("data-image");
 
+        lightboxImage.src = image;
 
-                lightboxImage.src =
-                    image.src;
+        lightbox.classList.add("active");
 
+        document.body.classList.add("menu-open");
 
-                lightbox.classList.add(
-                    "active"
-                );
+    });
 
-            }
-        );
-
-    }
-);
+});
 
 
-function closeLightbox(){
+function closeLightbox() {
 
-    lightbox.classList.remove(
-        "active"
-    );
+    lightbox.classList.remove("active");
+
+    document.body.classList.remove("menu-open");
+
+    setTimeout(() => {
+
+        lightboxImage.src = "";
+
+    }, 300);
 
 }
 
@@ -3733,698 +2005,51 @@ lightboxClose.addEventListener(
 );
 
 
-lightbox.addEventListener(
-    "click",
-    function(event){
+lightbox.addEventListener("click", event => {
 
-        if(
-            event.target === lightbox
-        ){
+    if (event.target === lightbox) {
 
-            closeLightbox();
-
-        }
-
-    }
-);
-
-
-document.addEventListener(
-    "keydown",
-    function(event){
-
-        if(
-            event.key === "Escape"
-        ){
-
-            closeLightbox();
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   CALENDAR
-========================================================= */
-
-const calendarDays =
-    document.getElementById(
-        "calendarDays"
-    );
-
-
-const monthName =
-    document.getElementById(
-        "monthName"
-    );
-
-
-const previousMonth =
-    document.getElementById(
-        "previousMonth"
-    );
-
-
-const nextMonth =
-    document.getElementById(
-        "nextMonth"
-    );
-
-
-let currentMonth =
-    new Date();
-
-
-let selectedDate =
-    null;
-
-
-let selectedTime =
-    null;
-
-
-const today =
-    new Date();
-
-
-today.setHours(
-    0,
-    0,
-    0,
-    0
-);
-
-
-const months = [
-
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-
-];
-
-
-function renderCalendar(){
-
-    const year =
-        currentMonth.getFullYear();
-
-
-    const month =
-        currentMonth.getMonth();
-
-
-    monthName.textContent =
-        `${months[month]} ${year}`;
-
-
-    calendarDays.innerHTML =
-        "";
-
-
-    const firstDay =
-        new Date(
-            year,
-            month,
-            1
-        ).getDay();
-
-
-    const totalDays =
-        new Date(
-            year,
-            month + 1,
-            0
-        ).getDate();
-
-
-    for(
-        let i = 0;
-        i < firstDay;
-        i++
-    ){
-
-        const empty =
-            document.createElement(
-                "div"
-            );
-
-        calendarDays.appendChild(
-            empty
-        );
+        closeLightbox();
 
     }
 
-
-    for(
-        let day = 1;
-        day <= totalDays;
-        day++
-    ){
-
-        const button =
-            document.createElement(
-                "button"
-            );
+});
 
 
-        button.textContent =
-            day;
+document.addEventListener("keydown", event => {
 
+    if (event.key === "Escape") {
 
-        const date =
-            new Date(
-                year,
-                month,
-                day
-            );
-
-
-        date.setHours(
-            0,
-            0,
-            0,
-            0
-        );
-
-
-        if(
-            date < today
-        ){
-
-            button.disabled =
-                true;
-
-            button.classList.add(
-                "disabled"
-            );
-
-        }
-
-
-        if(
-            date.getTime() ===
-            today.getTime()
-        ){
-
-            button.classList.add(
-                "today"
-            );
-
-        }
-
-
-        if(
-            selectedDate &&
-            date.getTime() ===
-            selectedDate.getTime()
-        ){
-
-            button.classList.add(
-                "selected"
-            );
-
-        }
-
-
-        button.addEventListener(
-            "click",
-            function(){
-
-                selectedDate =
-                    date;
-
-
-                selectedTime =
-                    null;
-
-
-                document
-                    .querySelectorAll(
-                        ".time-slot"
-                    )
-                    .forEach(
-                        slot =>
-                        slot.classList.remove(
-                            "selected"
-                        )
-                    );
-
-
-                renderCalendar();
-
-
-                updateSummary();
-
-            }
-        );
-
-
-        calendarDays.appendChild(
-            button
-        );
+        closeLightbox();
 
     }
 
-}
+});
 
 
-previousMonth.addEventListener(
-    "click",
-    function(){
 
-        const current =
-            new Date(
-                today.getFullYear(),
-                today.getMonth(),
-                1
-            );
+/* ======================================================
+   NAVIGATION BACKDROP EFFECT
+====================================================== */
 
+window.addEventListener("scroll", () => {
 
-        const previous =
-            new Date(
-                currentMonth.getFullYear(),
-                currentMonth.getMonth() - 1,
-                1
-            );
+    if (window.scrollY > 50) {
 
+        navbar.style.background =
+            "rgba(8,8,8,.75)";
 
-        if(
-            previous >= current
-        ){
+    } else {
 
-            currentMonth =
-                previous;
-
-            renderCalendar();
-
-        }
-
-    }
-);
-
-
-nextMonth.addEventListener(
-    "click",
-    function(){
-
-        currentMonth.setMonth(
-            currentMonth.getMonth() + 1
-        );
-
-
-        renderCalendar();
-
-    }
-);
-
-
-/* =========================================================
-   TIME
-========================================================= */
-
-document.querySelectorAll(
-    ".time-slot"
-).forEach(
-    slot => {
-
-        slot.addEventListener(
-            "click",
-            function(){
-
-                if(!selectedDate){
-
-                    showToast(
-                        "Please select a date first."
-                    );
-
-                    return;
-
-                }
-
-
-                document
-                    .querySelectorAll(
-                        ".time-slot"
-                    )
-                    .forEach(
-                        item =>
-                        item.classList.remove(
-                            "selected"
-                        )
-                    );
-
-
-                this.classList.add(
-                    "selected"
-                );
-
-
-                selectedTime =
-                    this.dataset.time;
-
-
-                updateSummary();
-
-            }
-        );
-
-    }
-);
-
-
-/* =========================================================
-   SUMMARY
-========================================================= */
-
-function formatDate(date){
-
-    return date.toLocaleDateString(
-        "en-IN",
-        {
-            weekday:
-                "long",
-
-            day:
-                "numeric",
-
-            month:
-                "long",
-
-            year:
-                "numeric"
-
-        }
-    );
-
-}
-
-
-function updateSummary(){
-
-    const summary =
-        document.getElementById(
-            "summaryText"
-        );
-
-
-    if(!selectedDate){
-
-        summary.textContent =
-            "Please select a date and time.";
-
-        return;
+        navbar.style.background =
+            "rgba(12,12,12,.52)";
 
     }
 
-
-    if(!selectedTime){
-
-        summary.textContent =
-            `${formatDate(selectedDate)} — select a time.`;
-
-        return;
-
-    }
-
-
-    summary.textContent =
-        `${formatDate(selectedDate)} at ${selectedTime}`;
-
-}
-
-
-/* =========================================================
-   WHATSAPP BOOKING
-========================================================= */
-
-document.getElementById(
-    "whatsappButton"
-).addEventListener(
-    "click",
-    function(){
-
-        const name =
-            document.getElementById(
-                "clientName"
-            ).value.trim();
-
-
-        const phone =
-            document.getElementById(
-                "clientPhone"
-            ).value.trim();
-
-
-        const service =
-            document.getElementById(
-                "serviceType"
-            ).value;
-
-
-        if(!name){
-
-            showToast(
-                "Please enter your name."
-            );
-
-            return;
-
-        }
-
-
-        if(!selectedDate){
-
-            showToast(
-                "Please select a date."
-            );
-
-            return;
-
-        }
-
-
-        if(!selectedTime){
-
-            showToast(
-                "Please select a time."
-            );
-
-            return;
-
-        }
-
-
-        const message =
-
-`Hello Dillu Captures! 📸
-
-I would like to book a photography session.
-
-Name: ${name}
-
-Phone: ${phone || "Not provided"}
-
-Service: ${service}
-
-Date: ${formatDate(selectedDate)}
-
-Time: ${selectedTime}
-
-Please confirm the availability of this slot.
-
-Thank you!`;
-
-
-        const url =
-            "https://wa.me/919700034138?text="
-            +
-            encodeURIComponent(
-                message
-            );
-
-
-        window.open(
-            url,
-            "_blank"
-        );
-
-    }
-);
-
-
-/* =========================================================
-   INSTAGRAM BOOKING
-========================================================= */
-
-document.getElementById(
-    "instagramButton"
-).addEventListener(
-    "click",
-    async function(){
-
-        const name =
-            document.getElementById(
-                "clientName"
-            ).value.trim();
-
-
-        const service =
-            document.getElementById(
-                "serviceType"
-            ).value;
-
-
-        if(!name){
-
-            showToast(
-                "Please enter your name."
-            );
-
-            return;
-
-        }
-
-
-        if(!selectedDate){
-
-            showToast(
-                "Please select a date."
-            );
-
-            return;
-
-        }
-
-
-        if(!selectedTime){
-
-            showToast(
-                "Please select a time."
-            );
-
-            return;
-
-        }
-
-
-        const message =
-
-`Hello Dillu Captures! 📸
-
-I would like to book a photography session.
-
-Name: ${name}
-
-Service: ${service}
-
-Date: ${formatDate(selectedDate)}
-
-Time: ${selectedTime}
-
-Please confirm availability.`;
-
-
-        try{
-
-            await navigator.clipboard.writeText(
-                message
-            );
-
-
-            showToast(
-                "Booking message copied. Opening Instagram..."
-            );
-
-        }
-        catch(error){
-
-            showToast(
-                "Opening Instagram..."
-            );
-
-        }
-
-
-        setTimeout(
-            function(){
-
-                window.open(
-                    "https://instagram.com/Dillu_Captures",
-                    "_blank"
-                );
-
-            },
-            800
-        );
-
-    }
-);
-
-
-/* =========================================================
-   TOAST
-========================================================= */
-
-function showToast(message){
-
-    const toast =
-        document.getElementById(
-            "toast"
-        );
-
-
-    toast.textContent =
-        message;
-
-
-    toast.classList.add(
-        "show"
-    );
-
-
-    setTimeout(
-        function(){
-
-            toast.classList.remove(
-                "show"
-            );
-
-        },
-        3000
-    );
-
-}
-
-
-/* =========================================================
-   START CALENDAR
-========================================================= */
-
-currentMonth =
-    new Date(
-        today.getFullYear(),
-        today.getMonth(),
-        1
-    );
-
-
-renderCalendar();
+});
 
 
 </script>
 
 </body>
-
 </html>
